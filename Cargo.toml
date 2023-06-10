@@ -26,9 +26,9 @@ path = "src/bin/game.rs"
 #name = "editor"
 #path = "src/bin/editor.rs"
 
-#[[bin]]
-#name = "network"
-#path = "src/bin/network.rs"
+[[bin]]
+name = "network"
+path = "src/bin/network.rs"
 
 [[bin]]
 name = "testscene"
@@ -37,6 +37,10 @@ path = "src/bin/testscene.rs"
 [[bin]]
 name = "launcher"
 path = "src/bin/launcher.rs"
+
+[[bin]]
+name = "testapp"
+path = "src/bin/testapp.rs"
 
 [dependencies]
 bevy = { version = "0.10.0", features = ["bevy_ui", "bmp", "jpeg", "wav", "zlib", "bevy_animation"] }
@@ -58,3 +62,4 @@ bevy_transform_gizmo = "0.6.0"
 bevy_renet = "0.0.8"
 bincode = "1.3.3"
 tracing-subscriber = "0.3"
+renet = {version = "0.0.12", features = ["bevy"]}
