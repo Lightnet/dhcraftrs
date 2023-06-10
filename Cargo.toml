@@ -31,6 +31,10 @@ path = "src/bin/game.rs"
 #path = "src/bin/network.rs"
 
 [[bin]]
+name = "testscene"
+path = "src/bin/testscene.rs"
+
+[[bin]]
 name = "launcher"
 path = "src/bin/launcher.rs"
 

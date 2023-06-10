@@ -1,4 +1,6 @@
-//! A simple 3D scene with light shining over a cube sitting on a plane.
+//===============================================
+//
+//===============================================
 
 //use std::{fs::File, io::Read};
 //use std::io::Write;
