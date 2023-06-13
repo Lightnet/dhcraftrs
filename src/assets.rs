@@ -1,3 +1,6 @@
+//===============================================
+// Assets for interal use
+//===============================================
 
 use bevy::prelude::*;
 use bevy_asset_loader::prelude::*;
@@ -14,10 +17,12 @@ pub struct MyAssets {
   
 }
 
-pub fn use_my_assets(_my_assets: Res<MyAssets>) {
+//pub fn use_my_assets(_my_assets: Res<MyAssets>) {
   // do something using the asset handles from the resource
-  println!("LOADED ASSETS...")
-}
+  //println!("LOADED ASSETS...")
+//}
+
+
 /*
 .add_loading_state(
       LoadingState::new(AppState::AssetLoading)

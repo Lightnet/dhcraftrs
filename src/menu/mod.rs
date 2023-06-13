@@ -5,7 +5,7 @@ mod systems;
 use bevy::prelude::*;
 
 use self::systems::layout::{spawn_main_menu, despawn_main_menu};
-use crate::AppState;
+use crate::api::AppState;
 
 pub struct MainMenuPlugin;
 
