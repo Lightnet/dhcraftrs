@@ -15,13 +15,13 @@ use dhcraftrs::plugins::DefaultCraftPlugin;
 //use dhcraftrs::api::CameraState;
 
 
-fn main() {
+fn main() {//Entry point
 
   println!("Test App!");
 
   App::new()
-    .add_plugins(DefaultPlugins)
-    .add_plugin(DefaultCraftPlugin)
+    .add_plugins(DefaultPlugins)//window scree set up
+    .add_plugin(DefaultCraftPlugin) //craft set up
     //.add_state::<AppState>()
     //.add_state::<CameraState>()
     //.add_plugin(MainMenuPlugin)

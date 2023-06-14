@@ -75,6 +75,22 @@ Appstate:
  https://www.youtube.com/watch?v=iW19V3a96tY
 
 
+# Design Layout:
+```
+src
+-bin
+--testlibapp.rs (testing setup and logic loading order something...)
+-menu
+--work in progress
+-lib.rs (library)
+-api.rs (testing / for easy access for struct)
+-plugins.rs (testing / setup logic)
+-style.rs ( color?)
+-systems.rs (testing / functions / set up)
+-events.rs ( n/a)
+
+```
+
 # Run Tests:
 ```
 cargo run --bin game
