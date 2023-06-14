@@ -28,6 +28,10 @@ impl Plugin for MainMenuPlugin {
         interact_with_quit_button
       ).in_set(OnUpdate(AppState::MainMenu))
     );
+    //app.add_system(
+      //interact_with_quit_button.in_set(OnEnter)
+    //);
+
     app.add_system(despawn_main_menu.in_schedule(OnExit(AppState::MainMenu)));
   }
 }

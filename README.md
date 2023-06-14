@@ -14,7 +14,7 @@ https://creativecommons.org/licenses/by-sa/4.0/
 # Information: (work in progress...)
   To build crafting and sandbox game base on minecraft. To play test how logic and module componets work in bevy engine in rust langauge.
 
-  Networking will be tested later once the some basic controls are working and building the world.
+  Networking will be tested later once the some basic controls, logics, game and other working and building the world.
   
 ## Network:
   To develop server and client. For players to enjoy the sandbox world. One reason is that to have permission system. To handle users permission as there will be default settings. As well to handle hacking and spam. For editing and playing at the same time. It would required some settings build into logic server.

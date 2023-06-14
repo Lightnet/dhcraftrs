@@ -15,6 +15,7 @@ pub mod systems;
 pub mod assets;
 pub mod api;
 pub mod plugins;
+pub mod components;
 //use menu::*;
 
 // Test public function call
