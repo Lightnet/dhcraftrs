@@ -6,7 +6,13 @@ mod systems;
 use bevy::prelude::*;
 
 use self::systems::layout::{spawn_main_menu, despawn_main_menu};
-use crate::api::AppState;
+use crate::{
+  api::AppState, 
+  menu::systems::interactions::{
+    interact_with_play_button,
+    interact_with_quit_button
+  }
+};
 
 pub struct MainMenuPlugin;
 
@@ -16,10 +22,16 @@ impl Plugin for MainMenuPlugin {
     println!("init main menu! plug in!");
 
     app.add_system(spawn_main_menu.in_schedule(OnEnter(AppState::MainMenu)));
+    app.add_systems(
+      (
+        interact_with_play_button,
+        interact_with_quit_button
+      ).in_set(OnUpdate(AppState::MainMenu))
+    );
     app.add_system(despawn_main_menu.in_schedule(OnExit(AppState::MainMenu)));
   }
 }
 
-pub fn main_menu(){
-  println!("You are on Main Menu.")
-}
+//pub fn main_menu(){
+  //println!("You are on Main Menu.")
+//}

@@ -24,18 +24,11 @@ pub fn despawn_main_menu(
 
 pub fn build_main_menu(
   commands: &mut Commands,
-  assets_server:&Res<AssetServer>
+  asset_server:&Res<AssetServer>
 )-> Entity{
   let main_menu_entity = commands.spawn(
     (NodeBundle{
-      style:Style {
-        flex_direction:FlexDirection::Column,
-        justify_content:JustifyContent::Center,
-        align_items:AlignItems::Center,
-        size:Size::new(Val::Percent(100.0), Val::Percent(100.0)),
-        gap:Size::new(Val::Px(8.0), Val::Px(8.0)),
-        ..default()
-      },
+      style:MAIN_MENU_STYLE,
       //background_color: Color::RED.into(),
       ..default()
     },
@@ -45,27 +38,17 @@ pub fn build_main_menu(
     //title
     parent.spawn(
       NodeBundle{
-        style:Style {
-          flex_direction:FlexDirection::Row,
-          justify_content:JustifyContent::Center,
-          align_items:AlignItems::Center,
-          size: Size::new(Val::Px(300.0), Val::Px(120.0)),
-          ..default()
-        },
+        style:TITLE_STYLE,
         ..default()
       }
     ).with_children(|parent | {
       //image 1
       parent.spawn(ImageBundle{
-        style: Style {
-          size:Size::new(Val::Px(64.0), Val::Px(64.0)),
-          margin:UiRect::new(Val::Px(8.0), Val::Px(8.0), Val::Px(8.0), Val::Px(8.0)),
-          ..default()
-        },
-        image:assets_server.load("images/whiteblockblackline.png").into(),
+        style:IMAGE_STYLE,
+        image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });
-      
+
       //text
       parent.spawn(
         TextBundle{
@@ -73,11 +56,8 @@ pub fn build_main_menu(
             sections: vec![
               TextSection::new(
                 "Test App", 
-                TextStyle {
-                  font: assets_server.load("fonts/FiraSans-Bold.ttf"),
-                  font_size:32.0,
-                  color: Color::WHITE,
-                })
+                get_title_text_style(&asset_server),
+              )
             ],
             alignment: TextAlignment::Center,
             ..default()
@@ -88,12 +68,8 @@ pub fn build_main_menu(
 
       //image 2
       parent.spawn(ImageBundle{
-        style: Style {
-          size:Size::new(Val::Px(64.0), Val::Px(64.0)),
-          margin:UiRect::new(Val::Px(8.0), Val::Px(8.0), Val::Px(8.0), Val::Px(8.0)),
-          ..default()
-        },
-        image:assets_server.load("images/whiteblockblackline.png").into(),
+        style: IMAGE_STYLE,
+        image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });
     });
@@ -113,11 +89,8 @@ pub fn build_main_menu(
             sections: vec![
               TextSection::new(
                 "Play", 
-                TextStyle {
-                  font: assets_server.load("fonts/FiraSans-Bold.ttf"),
-                  font_size:32.0,
-                  color: Color::WHITE,
-                })
+                get_button_text_style(&asset_server),
+              )
             ],
             alignment: TextAlignment::Center,
             ..default()
@@ -141,11 +114,8 @@ pub fn build_main_menu(
             sections: vec![
               TextSection::new(
                 "Quit", 
-                TextStyle {
-                  font: assets_server.load("fonts/FiraSans-Bold.ttf"),
-                  font_size:32.0,
-                  color: Color::WHITE,
-                })
+                get_button_text_style(&asset_server),
+              )
             ],
             alignment: TextAlignment::Center,
             ..default()
