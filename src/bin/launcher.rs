@@ -1,3 +1,10 @@
+/*
+  Project Name: dhcraftrs
+  License: CC BY-SA
+  Created by: Lightnet
+  Information: Note there are other licenses.
+ */
+
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
 //===============================================

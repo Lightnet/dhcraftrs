@@ -1,3 +1,0 @@
-//
-// premade mesh
-// preset mesh

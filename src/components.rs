@@ -1,6 +1,10 @@
-//===============================================
-// for editor and global config?
-//===============================================
+/*
+  Project Name: dhcraftrs
+  License: CC BY-SA
+  Created by: Lightnet
+  Information: Note there are other licenses.
+ */
+
 // https://google.github.io/comprehensive-rust/structs/field-shorthand.html
 use bevy::prelude::Component;
 

@@ -1,5 +1,12 @@
+/*
+  Project Name: dhcraftrs
+  License: CC BY-SA
+  Created by: Lightnet
+  Information: Note there are other licenses.
+ */
+
 //===============================================
-// Assets for interal use
+// Assets for interal use ?
 //===============================================
 
 use bevy::prelude::*;

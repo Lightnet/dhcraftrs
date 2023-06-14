@@ -1,4 +1,13 @@
-// Testing...
+/*
+  Project Name: dhcraftrs
+  License: CC BY-SA
+  Created by: Lightnet
+  Information: Note there are other licenses.
+ */
+
+
+// Main Menu set up...
+
 mod components;
 mod styles;
 mod systems;

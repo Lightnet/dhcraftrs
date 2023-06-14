@@ -1,3 +1,10 @@
+/*
+  Project Name: dhcraftrs
+  License: CC BY-SA
+  Created by: Lightnet
+  Information: Note there are other licenses.
+ */
+
 use bevy::prelude::*;
 
 pub const NORMAL_BUTTON_COLOR:Color = Color::rgb(0.15, 0.15, 0.15);
