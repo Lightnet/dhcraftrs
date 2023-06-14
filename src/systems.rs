@@ -4,7 +4,7 @@
 // for editor and global config?
 //===============================================
 
-use bevy::app::AppExit;
+//use bevy::app::AppExit;
 use bevy::prelude::*;
 use bevy::window::PrimaryWindow;
 
@@ -19,7 +19,6 @@ pub fn spawn_camera(mut commands: Commands, window_query: Query<&Window, With<Pr
       ..default()
   });
 }
-
 
 pub fn use_my_assets(_my_assets: Res<MyAssets>) {
   // do something using the asset handles from the resource
