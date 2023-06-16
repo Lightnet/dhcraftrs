@@ -35,3 +35,14 @@ pub enum CameraState{
   Vehicle,
   Specter,
 }
+
+#[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
+pub enum NetworkState{
+  #[default]
+  STANDALONE,
+  //#[default]
+  SERVER,
+  CLIENT,
+  PEERTOPEERSERVER,
+  PEERTOPEERCLIENT,
+}

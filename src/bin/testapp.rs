@@ -12,7 +12,10 @@ use bevy::{
   //tasks::IoTaskPool,
   //utils::Duration
 };
-use dhcraftrs::plugins::DefaultCraftPlugin;
+use dhcraftrs::plugins::{
+  DefaultCraftPlugin, 
+  Test01CraftPlugin
+};
 
 fn main() {//Entry point
 
@@ -20,7 +23,8 @@ fn main() {//Entry point
 
   App::new()
     .add_plugins(DefaultPlugins)//window scree set up
-    .add_plugin(DefaultCraftPlugin) //craft set up
+    //.add_plugin(DefaultCraftPlugin) //craft set up
+    .add_plugin(Test01CraftPlugin) //craft test
     .run();
 
 }

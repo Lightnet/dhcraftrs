@@ -44,7 +44,7 @@ path = "src/bin/launcher.rs"
 
 [[bin]]
 name = "testapp"
-path = "src/bin/testlibapp.rs"
+path = "src/bin/testapp.rs"
 
 [dependencies]
 bevy = { version = "0.10.0", features = ["bevy_ui", "bmp", "jpeg", "wav", "zlib", "bevy_animation"] }
@@ -53,8 +53,8 @@ bevy_console = "0.7.0"
 bevy_mod_picking = "0.13.0"
 bevy_rapier3d = "0.21.0"
 bevy-inspector-egui = "0.18.3"
-bevy_egui = "0.20.0"
-egui = "0.22.0"
+bevy_egui = "0.20"
+#egui = "0.22.0"
 eframe = { version = "0.22", default-features = false, features = [
   "__screenshot", # __screenshot is so we can dump a ascreenshot using EFRAME_SCREENSHOT_TO
   "default_fonts", # Embed the default egui fonts.
