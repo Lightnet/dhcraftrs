@@ -13,8 +13,9 @@ use bevy::{
   //utils::Duration
 };
 use dhcraftrs::plugins::{
-  DefaultCraftPlugin, 
-  Test01CraftPlugin
+  //DefaultCraftPlugin, 
+  //Test01CraftPlugin, 
+  Test02CraftPlugin,
 };
 
 fn main() {//Entry point
@@ -24,7 +25,8 @@ fn main() {//Entry point
   App::new()
     .add_plugins(DefaultPlugins)//window scree set up
     //.add_plugin(DefaultCraftPlugin) //craft set up
-    .add_plugin(Test01CraftPlugin) //craft test
+    //.add_plugin(Test01CraftPlugin) //craft test
+    .add_plugin(Test02CraftPlugin) //craft test
     .run();
 
 }

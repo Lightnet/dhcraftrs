@@ -26,7 +26,7 @@ use crate::{
   },
   assets::MyAssets, 
   menu::MainMenuPlugin, 
-  core::{ui::editor::systems::layout::ui_example_system, entity::prefab::{build_cube, set_up_test}}
+  core::{ui::editor::systems::layout::ui_example_system, entity::{prefab::{build_cube, set_up_test}, creature::player::{player_movement, create_entity_player}}}
 };
 pub struct EntryMenuPlugin;
 
@@ -122,4 +122,28 @@ fn check_app_states(
   app_state_next_state:ResMut<NextState<AppState>>,
 ){
   println!("app_state_next_state: {:?}", app_state_next_state.0);
+}
+
+
+pub struct Test02CraftPlugin;
+
+impl Plugin for Test02CraftPlugin{
+  fn build(&self, app: &mut App){
+    app.add_plugin(EguiPlugin);//menu 
+    app.add_state::<AppState>();//state app
+    app.add_state::<CameraState>();// state camera mode
+
+    //test for state
+    app.add_startup_system(set_game_state); //
+    app.add_startup_system(check_states); //
+    app.add_startup_system(check_app_states); //
+    app.add_startup_system(set_up_test); //
+
+    //player setup, config and logic
+    app.add_startup_system(create_entity_player);
+    app.add_system(player_movement); //
+    
+    //test
+    app.add_system(ui_example_system);
+  }
 }
