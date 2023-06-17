@@ -22,7 +22,7 @@
 use eframe::egui;
 
 //fn main() -> Result<(), eframe::Error> {
-fn main(){
+fn main()-> Result<(), eframe::Error >{
     // Log to stdout (if you run with `RUST_LOG=debug`).
     tracing_subscriber::fmt::init();
     println!("init app");
@@ -41,7 +41,7 @@ fn main(){
         "Tool Launcher",
         options,
         Box::new(|_cc| Box::new(MyApp::default())),
-    );
+    )//return result need to remove error
     //println!("End");
 }
 
@@ -66,21 +66,21 @@ fn main(){
 //}
 
 struct MyApp {
-  name: String,
+  //name: String,
   status: String,
-  age: u32,
+  //age: u32,
   progress: f32,
-  animate_progress_bar:bool,
+  //animate_progress_bar:bool,
 }
 
 impl Default for MyApp {
   fn default() -> Self {
     Self {
-      name: "Arthur".to_owned(),
+      //name: "Arthur".to_owned(),
       status: "Status:".to_owned(),
-      age: 42,
+      //age: 42,
       progress: 300.0,
-      animate_progress_bar:true,
+      //animate_progress_bar:true,
     }
   }
 }

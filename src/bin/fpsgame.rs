@@ -118,6 +118,10 @@ fn player_camera_controller(
     //camera_transform.rotate_x(ev.delta.y * TAU * -0.001);
     //camera_transform.rotate_z(0.0);
 
+    //let mut yaw = Quat::from_euler(EulerRot::XYZ,
+      //ev.delta.y * -0.001, ev.delta.x * -0.001, 0.);
+    //yaw.y = 0.0;
+
     camera_transform
       .rotate(Quat::from_euler(EulerRot::XYZ,
         ev.delta.y * -0.001, ev.delta.x * -0.001, 0.));

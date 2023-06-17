@@ -22,11 +22,11 @@ use crate::{
   systems::{
     spawn_camera,
     check_states, 
-    use_my_assets, load_gltf_test01,
+    use_my_assets, load_gltf_test01, spawn_camera3d,
   },
   assets::MyAssets, 
   menu::MainMenuPlugin, 
-  core::{ui::editor::systems::layout::ui_example_system, entity::{prefab::{build_cube, set_up_test}, creature::player::{player_movement, create_entity_player}}}
+  core::{ui::editor::systems::layout::ui_example_system, entity::{prefab::{build_cube, set_up_test}, creature::player::{player_movement, create_entity_player, player_movement01, player_movement02}}}
 };
 pub struct EntryMenuPlugin;
 
@@ -124,24 +124,56 @@ fn check_app_states(
   println!("app_state_next_state: {:?}", app_state_next_state.0);
 }
 
-
+//test simple character movement 
 pub struct Test02CraftPlugin;
+use bevy_flycam::PlayerPlugin;
 
 impl Plugin for Test02CraftPlugin{
   fn build(&self, app: &mut App){
-    app.add_plugin(EguiPlugin);//menu 
+    app.add_plugin(EguiPlugin);//menu egui
     app.add_state::<AppState>();//state app
     app.add_state::<CameraState>();// state camera mode
 
     //test for state
-    app.add_startup_system(set_game_state); //
-    app.add_startup_system(check_states); //
-    app.add_startup_system(check_app_states); //
-    app.add_startup_system(set_up_test); //
+    //app.add_startup_system(set_game_state); //
+    //app.add_startup_system(check_states); //
+    //app.add_startup_system(check_app_states); //
+    //app.add_startup_system(set_up_test); //
 
     //player setup, config and logic
+    //app.add_startup_system(spawn_camera3d);
+
+    app.add_plugin(PlayerPlugin);
     app.add_startup_system(create_entity_player);
-    app.add_system(player_movement); //
+    app.add_system(player_movement01); //
+    
+    //test
+    app.add_system(ui_example_system);
+  }
+}
+
+
+pub struct Test03CraftPlugin;
+
+impl Plugin for Test03CraftPlugin{
+  fn build(&self, app: &mut App){
+    app.add_plugin(EguiPlugin);//menu egui
+    app.add_state::<AppState>();//state app
+    app.add_state::<CameraState>();// state camera mode
+
+    //test for state
+    //app.add_startup_system(set_game_state); //
+    //app.add_startup_system(check_states); //
+    //app.add_startup_system(check_app_states); //
+    //app.add_startup_system(set_up_test); //
+
+    //player setup, config and logic
+    //app.add_startup_system(spawn_camera3d);
+
+    app.add_plugin(PlayerPlugin);
+    app.add_startup_system(create_entity_player);
+    //app.add_system(player_movement01); //
+    app.add_system(player_movement02); //
     
     //test
     app.add_system(ui_example_system);
