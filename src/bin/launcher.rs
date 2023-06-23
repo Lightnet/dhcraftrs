@@ -7,6 +7,9 @@
 
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
+// TODO: remove this when you're done with your implementation.
+#![allow(unused_imports, unused_variables, dead_code)]
+
 //===============================================
 //
 //===============================================
@@ -24,7 +27,7 @@ use eframe::egui;
 //fn main() -> Result<(), eframe::Error> {
 fn main()-> Result<(), eframe::Error >{
     // Log to stdout (if you run with `RUST_LOG=debug`).
-    tracing_subscriber::fmt::init();
+    //tracing_subscriber::fmt::init();
     println!("init app");
     //local_file();
     //readme_example1().unwrap();

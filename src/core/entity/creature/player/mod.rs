@@ -117,28 +117,26 @@ pub fn player_movement02(
     //let mut direction = Vec3::ZERO;
     if input.pressed(KeyCode::Up) {
       //direction.z += 1.0;
+      let direction = entity_transform.forward();
+      entity_transform.translation += time.delta_seconds() * 1.0 * direction;
     }
     if input.pressed(KeyCode::Down) {
-      //direction.z -= 1.0;
+      let direction = entity_transform.back();
+      entity_transform.translation += time.delta_seconds() * 1.0 * direction;
     }
     if input.pressed(KeyCode::Left) {
-      //direction.x -= 1.0;
+      //entity_transform.left()
       entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
-        //ev.delta.y * -0.001, ev.delta.x * -0.001, 0.)
         0., 1.0 * 0.01, 0.)
       );
     }
     if input.pressed(KeyCode::Right) {
-      //direction.x += 1.0;
-      //let mut yaw = Quat::from_euler(EulerRot::XYZ,
-        //ev.delta.y * -0.001, ev.delta.x * -0.001, 0.);
-      //yaw.y = 0.0;
 
       entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
-        //ev.delta.y * -0.001, ev.delta.x * -0.001, 0.)
         0., 1.0 * -0.01, 0.)
       );
     }
+    
 
     //transform.translation += time.delta_seconds() * 2.0 * direction;
   //}

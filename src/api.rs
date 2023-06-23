@@ -24,6 +24,9 @@ pub enum AppState{
   BootingApp,
   StartScreen,
   ErrorScreen,
+  NETWORK,
+  SERVER,
+  CLIENT,
 }
 
 #[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]

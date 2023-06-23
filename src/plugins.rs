@@ -26,7 +26,7 @@ use crate::{
   },
   assets::MyAssets, 
   menu::MainMenuPlugin, 
-  core::{ui::editor::systems::layout::ui_example_system, entity::{prefab::{build_cube, set_up_test}, creature::player::{player_movement, create_entity_player, player_movement01, player_movement02}}}
+  core::{ui::{editor::systems::layout::ui_example_system}, entity::{prefab::{build_cube, set_up_test}, creature::player::{player_movement, create_entity_player, player_movement01, player_movement02}}}
 };
 pub struct EntryMenuPlugin;
 
@@ -139,10 +139,8 @@ impl Plugin for Test02CraftPlugin{
     //app.add_startup_system(check_states); //
     //app.add_startup_system(check_app_states); //
     //app.add_startup_system(set_up_test); //
-
     //player setup, config and logic
     //app.add_startup_system(spawn_camera3d);
-
     app.add_plugin(PlayerPlugin);
     app.add_startup_system(create_entity_player);
     app.add_system(player_movement01); //
@@ -160,20 +158,41 @@ impl Plugin for Test03CraftPlugin{
     app.add_plugin(EguiPlugin);//menu egui
     app.add_state::<AppState>();//state app
     app.add_state::<CameraState>();// state camera mode
+    app.add_plugin(PlayerPlugin);
 
     //test for state
-    //app.add_startup_system(set_game_state); //
-    //app.add_startup_system(check_states); //
-    //app.add_startup_system(check_app_states); //
-    //app.add_startup_system(set_up_test); //
+    app.add_startup_system(set_network_menu);
 
-    //player setup, config and logic
-    //app.add_startup_system(spawn_camera3d);
-
-    app.add_plugin(PlayerPlugin);
     app.add_startup_system(create_entity_player);
     //app.add_system(player_movement01); //
     app.add_system(player_movement02); //
+    
+    //test
+    app.add_system(ui_example_system);
+  }
+}
+
+fn set_network_menu(
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  app_state_next_state.set(AppState::NETWORK);
+}
+
+pub struct LoadingTextCraftPlugin;
+
+impl Plugin for LoadingTextCraftPlugin{
+  fn build(&self, app: &mut App){
+    app.add_plugin(EguiPlugin);//menu egui
+    app.add_state::<AppState>();//state app
+    app.add_state::<CameraState>();// state camera mode
+    app.add_plugin(PlayerPlugin);
+
+    //test for state
+    //app.add_startup_system(set_network_menu);
+
+    //app.add_startup_system(create_entity_player);
+    //app.add_system(player_movement01); //
+    //app.add_system(player_movement02); //
     
     //test
     app.add_system(ui_example_system);

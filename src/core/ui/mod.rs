@@ -11,3 +11,5 @@
 
 pub mod editor;
 pub mod hud;
+pub mod network_test;
+pub mod loading_asset;

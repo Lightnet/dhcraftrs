@@ -6,7 +6,7 @@
 https://creativecommons.org/licenses/by-sa/4.0/
 
 # Code Language:
- * Rust 1.70.0 ( https://www.rust-lang.org/ )
+ * Rust 1.69.0 ( https://www.rust-lang.org/ )
 
 # Engine:
  * Bevy Engine 0.10.0  ( https://bevyengine.org/ )

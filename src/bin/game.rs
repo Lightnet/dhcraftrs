@@ -14,60 +14,62 @@ use bevy::{
   //tasks::IoTaskPool,
   //utils::Duration
 };
-
-use bevy_console::{
-  reply,
-  AddConsoleCommand,
-  ConsoleCommand,
-  ConsoleConfiguration, 
-  ConsolePlugin
+use dhcraftrs::{
+  api::AppState, 
+  core::console::ConsoleCraftPlugin
 };
 
+//use bevy_console::{
+  //reply,
+  //AddConsoleCommand,
+  //ConsoleCommand,
+  //ConsoleConfiguration, 
+  //ConsolePlugin
+//};
 
-use dhcraftrs::test_print;
+
+//use dhcraftrs::test_print;
 //use bevy_inspector_egui::quick::WorldInspectorPlugin;
 //use bevy_egui::{egui, EguiContext, EguiPlugin};
 
+//#[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
+//enum AppState{
+  //#[default]
+  //MainMenu,
+  //InGame,
+//}
 
-#[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
-enum AppState{
-  #[default]
-  MainMenu,
-  InGame,
-}
+//#[derive(SystemSet, PartialEq, Eq, Clone, Hash, Debug)]
+//enum PhysicsSet{
+  //Movement,
+  //CollisionDetection,
+//}
 
-#[derive(SystemSet, PartialEq, Eq, Clone, Hash, Debug)]
-enum PhysicsSet{
-  Movement,
-  CollisionDetection,
-}
-
-use clap::Parser;
+//use clap::Parser;
 
 /// Example command
-#[derive(Parser, ConsoleCommand)]
-#[command(name = "example")]
-struct ExampleCommand {
-    /// Some message
-    msg: String,
-}
+//#[derive(Parser, ConsoleCommand)]
+//#[command(name = "example")]
+//struct ExampleCommand {
+  /// Some message
+  //msg: String,
+//}
 
-fn example_command(mut log: ConsoleCommand<ExampleCommand>) {
-    if let Some(Ok(ExampleCommand { msg })) = log.take() {
-        // handle command
-    }
-}
+//fn example_command(mut log: ConsoleCommand<ExampleCommand>) {
+  //if let Some(Ok(ExampleCommand { msg })) = log.take() {
+    // handle command
+  //}
+//}
 
 fn main() {
-
-  test_print();
-
+  //test_print();
   App::new()
     .add_state::<AppState>()
     .add_plugins(DefaultPlugins)
     // Only run the app when there is user input. This will significantly reduce CPU/GPU use.
     .insert_resource(WinitSettings::desktop_app())
     //.add_plugin(ConsolePlugin)
+    .add_plugin(ConsoleCraftPlugin)
     //.insert_resource(ConsoleConfiguration {
       // override config here
       //..Default::default()
@@ -80,12 +82,13 @@ fn main() {
     //.add_startup_system(test_save_file)
     //.add_startup_system(test_load_file)
     //button stuff
-    .add_startup_system(setup_button)
-    .add_system(button_system)
+    //.add_startup_system(setup_button)
+    //.add_system(button_system)
     .run();
 }
 
-/// set up a simple 3D scene
+// set up a simple 3D scene
+/*
 fn setup_simple_scene(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
@@ -120,15 +123,15 @@ fn setup_simple_scene(
     ..default()
   });
 }
+*/
 
-/// set up test01
-fn setup_base(
-  mut commands: Commands,
-  mut meshes: ResMut<Assets<Mesh>>,
-  mut materials: ResMut<Assets<StandardMaterial>>,
-){
-
-}
+// set up test01
+//fn setup_base(
+  //mut commands: Commands,
+  //mut meshes: ResMut<Assets<Mesh>>,
+  //mut materials: ResMut<Assets<StandardMaterial>>,
+//){
+//}
 
 
 /*
@@ -189,7 +192,7 @@ fn test_load_file(
 //===============================================
 // TEST BUTTON
 //===============================================
-
+/*
 const NORMAL_BUTTON: Color = Color::rgb(0.15, 0.15, 0.15);
 const HOVERED_BUTTON: Color = Color::rgb(0.25, 0.25, 0.25);
 const PRESSED_BUTTON: Color = Color::rgb(0.35, 0.75, 0.35);
@@ -259,3 +262,4 @@ fn setup_button(mut commands: Commands, asset_server: Res<AssetServer>) {
               });
       });
 }
+*/
