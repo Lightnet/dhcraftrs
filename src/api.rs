@@ -24,6 +24,7 @@ pub enum AppState{
   BootingApp,
   StartScreen,
   ErrorScreen,
+  CREATEPLAYERNAME,
   NETWORK,
   SERVER,
   CLIENT,

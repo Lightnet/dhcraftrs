@@ -19,7 +19,8 @@ use crate::{
   api::AppState, 
   menu::systems::interactions::{
     interact_with_play_button,
-    interact_with_quit_button
+    interact_with_quit_button, 
+    interact_with_new_button
   }
 };
 
@@ -34,7 +35,8 @@ impl Plugin for MainMenuPlugin {
     app.add_systems(
       (
         interact_with_play_button,
-        interact_with_quit_button
+        interact_with_quit_button,
+        interact_with_new_button
       ).in_set(OnUpdate(AppState::MainMenu))
     );
     //app.add_system(

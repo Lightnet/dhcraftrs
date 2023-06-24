@@ -58,10 +58,10 @@ pub struct DefaultCraftPlugin;
 
 impl Plugin for DefaultCraftPlugin{
   fn build(&self, app: &mut App){
-    app.add_plugin(EguiPlugin);//menu 
-    app.add_state::<AppState>();//state app
+    //app.add_plugin(EguiPlugin);// menu 
+    app.add_state::<AppState>();// state app
     app.add_state::<CameraState>();// state camera mode
-    app.add_plugin(MainMenuPlugin);//menu
+    app.add_plugin(MainMenuPlugin);// menu
     app.add_startup_system(spawn_camera);//need this for bevy ui to render
     //loading assets state
     app.add_loading_state(
@@ -73,10 +73,10 @@ impl Plugin for DefaultCraftPlugin{
     //assets do something
     app.add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)));
     //check for state
-    app.add_startup_system(check_states); //
+    //app.add_startup_system(check_states); //
 
     //test
-    app.add_system(ui_example_system);
+    //app.add_system(ui_example_system);
   }
 }
 

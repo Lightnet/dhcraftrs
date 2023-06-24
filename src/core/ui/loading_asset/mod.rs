@@ -20,7 +20,7 @@ pub struct LoadingAssetsPlugin;
 impl Plugin for LoadingAssetsPlugin {
   fn build(&self, app: &mut App){
 
-    app.add_state::<AppState>();//state app
+    //app.add_state::<AppState>();//state app
     app.add_startup_system(set_loadingasset_menu);
     app.add_system(spawn_loading_asset_menu.in_schedule(OnEnter(AppState::AssetLoading)));
     app.add_system(despawn_loading_asset_menu.in_schedule(OnExit(AppState::AssetLoading)));
