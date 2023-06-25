@@ -34,12 +34,16 @@ pub fn spawn_camera3d(
   });
 }
 
-pub fn use_my_assets(_my_assets: Res<MyAssets>) {
+pub fn use_my_assets(
+  _my_assets: Res<MyAssets>
+) {
   // do something using the asset handles from the resource
   println!("LOADED ASSETS...")
 }
 
-pub fn check_states(camera_state: Res<State<CameraState>>) {
+pub fn check_states(
+  camera_state: Res<State<CameraState>>
+) {
   println!("LOADED ASSETS...");
   match camera_state.0 {
     CameraState::Player => {
@@ -53,6 +57,9 @@ pub fn check_states(camera_state: Res<State<CameraState>>) {
     }
     CameraState::Specter => {
       println!("CAMERA: Specter");
+    }
+    CameraState::Fixed => {
+      println!("CAMERA: Fixed");
     }
   }
 }

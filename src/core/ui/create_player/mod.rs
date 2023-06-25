@@ -17,7 +17,10 @@ use self::systems::{
     spawn_create_player_menu,
     despawn_create_player_menu
   }, 
-  interactions::interact_with_new_button
+  interactions::{
+    interact_with_new_button,
+    player_name_text_update
+  }
 };
 
 pub struct CreatePlayerPlugin;
@@ -30,7 +33,8 @@ impl Plugin for CreatePlayerPlugin {
     app.add_system(spawn_create_player_menu.in_schedule(OnEnter(AppState::CREATEPLAYERNAME)));
     app.add_system(despawn_create_player_menu.in_schedule(OnExit(AppState::CREATEPLAYERNAME)));
 
-    app.add_system(create_player_text_input);
+    //app.add_system(create_player_text_input);
+    app.add_system(player_name_text_update.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
     app.add_system(interact_with_new_button);
   }
 }

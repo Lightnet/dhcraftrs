@@ -12,3 +12,8 @@ pub struct CREATEPLAYERNAME {}
 
 #[derive(Component)]
 pub struct CREATEPLAYERNAMEBUTTON {}
+
+// https://bevyengine.org/examples/ui/text/
+// A unit struct to help identify the color-changing Text component
+#[derive(Component)]
+pub struct PlayerNameText;

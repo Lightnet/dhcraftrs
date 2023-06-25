@@ -11,6 +11,19 @@ https://creativecommons.org/licenses/by-sa/4.0/
 # Engine:
  * Bevy Engine 0.10.0  ( https://bevyengine.org/ )
 
+# Plugins:
+ * moonshine-save
+ * bevy_console
+ * bevy-inspector-egui
+ * bevy_mod_picking
+ * bevy_rapier3d
+ * bevy_egui
+ * bevy_flycam
+ * bevy_asset_loader
+ * bevy_transform_gizmo
+ * bevy_renet
+ * bevy_pkv
+
 # Information: (work in progress...)
   To build crafting and sandbox game base on minecraft. To play test how logic and module componets work in bevy engine in rust langauge.
 
@@ -40,6 +53,7 @@ https://creativecommons.org/licenses/by-sa/4.0/
  * state (struct)
  * set up / start up (once run)
  * enter
+ * on update
  * exit (clean up)
  * query and filter functions or struct ( loop )
  * component or struct (tag for filter for query)
@@ -86,7 +100,8 @@ Appstate:
 ```
 src
 -bin
---testlibapp.rs (testing setup and logic loading order something...)
+--testapp.rs (testing setup and logic loading order something...)
+--game.rs (testing setup and logic loading order something...)
 -menu
 --work in progress
 -lib.rs (library)

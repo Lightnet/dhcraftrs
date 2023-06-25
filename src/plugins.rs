@@ -9,7 +9,7 @@
 // base set up
 //===============================================
 
-use bevy::prelude::*;
+use bevy::{prelude::*, diagnostic::FrameTimeDiagnosticsPlugin};
 use bevy_asset_loader::prelude::*;
 use bevy_egui::{egui, EguiContexts, EguiPlugin};
 //lib craft
@@ -59,6 +59,7 @@ pub struct DefaultCraftPlugin;
 impl Plugin for DefaultCraftPlugin{
   fn build(&self, app: &mut App){
     //app.add_plugin(EguiPlugin);// menu 
+    app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     app.add_state::<AppState>();// state app
     app.add_state::<CameraState>();// state camera mode
     app.add_plugin(MainMenuPlugin);// menu

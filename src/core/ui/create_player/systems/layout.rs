@@ -10,7 +10,7 @@ use bevy::prelude::*;
 use crate::{menu::{
   components::*, 
   styles::*,
-}, core::ui::create_player::components::{CREATEPLAYERNAME, CREATEPLAYERNAMEBUTTON}};
+}, core::ui::create_player::components::{CREATEPLAYERNAME, CREATEPLAYERNAMEBUTTON, PlayerNameText}};
 
 pub fn spawn_create_player_menu(
   mut commands: Commands,
@@ -56,7 +56,7 @@ pub fn build_create_player_menu(
       });
 
       //text
-      parent.spawn(
+      parent.spawn((
         TextBundle{
           text: Text{
             sections: vec![
@@ -69,8 +69,9 @@ pub fn build_create_player_menu(
             ..default()
           },
           ..default()
-        }
-      );
+        },
+        PlayerNameText
+      ));
     });
 
     //new

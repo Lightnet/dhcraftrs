@@ -1,3 +1,4 @@
+use bevy::diagnostic::{Diagnostics, FrameTimeDiagnosticsPlugin};
 /*
   Project Name: dhcraftrs
   License: CC BY-SA
@@ -7,7 +8,7 @@
 use bevy::prelude::*;
  
 use crate::api::AppState;
-use crate::core::ui::create_player::components::CREATEPLAYERNAMEBUTTON;
+use crate::core::ui::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText};
 use crate::menu::styles::{
   HOVERED_BUTTON_COLOR,
   NORMAL_BUTTON_COLOR,
@@ -34,5 +35,39 @@ pub fn interact_with_new_button(
         *background_color = NORMAL_BUTTON_COLOR.into();
       }
     }
+  }
+}
+
+pub fn player_name_text_update(
+  diagnostics: Res<Diagnostics>,
+  mut query: Query<&mut Text, With<PlayerNameText>>,
+  mut evr_char: EventReader<ReceivedCharacter>,
+  kbd: Res<Input<KeyCode>>,
+  mut string: Local<String>,
+) {
+  if kbd.just_pressed(KeyCode::Return) {
+    println!("Text input: {}", &*string);
+    string.clear();
+  }
+  if kbd.just_pressed(KeyCode::Back) {
+    string.pop();
+  }
+  for ev in evr_char.iter() {
+    // ignore control (special) characters
+    if !ev.char.is_control() {
+      string.push(ev.char);
+      println!("CHAR: {}",ev.char);
+    }
+  }
+
+  for mut text in &mut query {
+      //if let Some(fps) = diagnostics.get(FrameTimeDiagnosticsPlugin::FPS) {
+          //if let Some(value) = fps.smoothed() {
+              // Update the value of the second section
+              //text.sections[1].value = format!("{value:.2}");
+          //}
+      //}
+      //text.sections[0].value = format!("test");
+      text.sections[0].value = format!("{}", string.to_string());
   }
 }

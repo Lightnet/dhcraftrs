@@ -19,6 +19,9 @@ pub enum AppState{
   InGame,
   EndGame,
   LoadingGame,
+  LoadingScene,
+  LoadingWorld,
+  SCENE,
   #[default]//note that if loading error when not first started. when fn use_my_assets error. 
   AssetLoading,
   BootingApp,
@@ -38,6 +41,8 @@ pub enum CameraState{
   Menu,
   Vehicle,
   Specter,
+  Fixed,
+  //CutScene,
 }
 
 #[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
