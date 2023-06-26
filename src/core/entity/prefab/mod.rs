@@ -36,7 +36,7 @@ pub fn set_up_test(
 
 pub fn build_cube(
   commands: &mut Commands,
-  asset_server: &Res<AssetServer>,
+  _asset_server: &Res<AssetServer>,
   meshes: &mut ResMut<Assets<Mesh>>,
   materials: &mut ResMut<Assets<StandardMaterial>>
 ){

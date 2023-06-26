@@ -7,7 +7,9 @@
 use bevy::prelude::*;
 
 pub const NORMAL_BUTTON_COLOR:Color = Color::rgb(0.15, 0.15, 0.15);
+#[allow(dead_code)]
 pub const HOVERED_BUTTON_COLOR:Color = Color::rgb(0.25, 0.25, 0.25);
+#[allow(dead_code)]
 pub const PRESSED_BUTTON_COLOR:Color = Color::rgb(0.35, 0.75, 0.35);
 
 pub const BUTTON_STYLE:Style = Style {

@@ -1,3 +1,4 @@
+#![allow(unused_variables)]
 /*
   Project Name: dhcraftrs
   License: CC BY-SA
@@ -8,6 +9,7 @@
 // https://google.github.io/comprehensive-rust/structs/field-shorthand.html
 use bevy::prelude::Component;
 
+#[allow(dead_code)]
 #[derive(Component, Debug)]
 pub struct Player {
   name:String,

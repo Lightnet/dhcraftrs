@@ -1,4 +1,4 @@
-use bevy::diagnostic::{Diagnostics, FrameTimeDiagnosticsPlugin};
+
 /*
   Project Name: dhcraftrs
   License: CC BY-SA
@@ -6,6 +6,11 @@ use bevy::diagnostic::{Diagnostics, FrameTimeDiagnosticsPlugin};
   Information: Note there are other licenses.
  */
 use bevy::prelude::*;
+
+//use bevy::diagnostic::{
+  //Diagnostics, 
+  //FrameTimeDiagnosticsPlugin
+//};
  
 use crate::api::AppState;
 use crate::core::ui::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText};
@@ -39,7 +44,7 @@ pub fn interact_with_new_button(
 }
 
 pub fn player_name_text_update(
-  diagnostics: Res<Diagnostics>,
+  //diagnostics: Res<Diagnostics>,
   mut query: Query<&mut Text, With<PlayerNameText>>,
   mut evr_char: EventReader<ReceivedCharacter>,
   kbd: Res<Input<KeyCode>>,

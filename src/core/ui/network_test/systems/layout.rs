@@ -17,7 +17,7 @@ pub fn spawn_network_menu(
   mut commands: Commands,
   asset_server:Res<AssetServer>
 ){
-  let main_menu_entity = build_network_menu(&mut commands, &asset_server);
+  let _main_menu_entity = build_network_menu(&mut commands, &asset_server);
 }
 
 pub fn despawn_network_menu(

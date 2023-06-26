@@ -17,7 +17,7 @@ pub fn spawn_main_menu(
   mut commands: Commands,
   asset_server:Res<AssetServer>
 ){
-  let main_menu_entity = build_main_menu(&mut commands, &asset_server);
+  let _main_menu_entity = build_main_menu(&mut commands, &asset_server);
 }
 
 pub fn despawn_main_menu(

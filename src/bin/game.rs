@@ -1,3 +1,5 @@
+#[warn(unused_imports)]
+
 /*
   Project Name: dhcraftrs
   License: CC BY-SA
@@ -14,12 +16,15 @@ use bevy::{
   //tasks::IoTaskPool,
   //utils::Duration
 };
+#[allow(dead_code)]
 use dhcraftrs::{
   api::AppState, 
-  core::{
-    console::ConsoleCraftPlugin, 
-    ui::create_player::CreatePlayerPlugin
-  }, plugins::DefaultCraftPlugin
+  //core::{
+    //console::ConsoleCraftPlugin, 
+    //ui::create_player::CreatePlayerPlugin
+    //splashscreen::SplashScreenPlugin,
+  //}, 
+  plugins::DefaultCraftPlugin,
 };
 
 //use dhcraftrs::test_print;
@@ -48,12 +53,13 @@ fn main() {
     .insert_resource(WinitSettings::desktop_app())
     //.add_plugin(ConsolePlugin)
     .add_plugin(DefaultCraftPlugin)
-    .add_plugin(ConsoleCraftPlugin)
+    //.add_plugin(ConsoleCraftPlugin)
     //.insert_resource(ConsoleConfiguration {
       // override config here
       //..Default::default()
     //})
-    .add_plugin(CreatePlayerPlugin)
+    //.add_plugin(SplashScreenPlugin)
+    //.add_plugin(CreatePlayerPlugin)
     .run();
 }
 

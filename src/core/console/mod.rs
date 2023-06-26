@@ -9,10 +9,10 @@ use bevy::prelude::*;
 
 use clap::Parser;
 use bevy_console::{
-  reply,
+  //reply,
   AddConsoleCommand,
   ConsoleCommand,
-  ConsoleConfiguration, 
+  //ConsoleConfiguration, 
   ConsolePlugin
 };
 
@@ -25,7 +25,7 @@ pub struct ExampleCommand {
 }
 
 fn example_command(mut log: ConsoleCommand<ExampleCommand>) {
-  if let Some(Ok(ExampleCommand { msg })) = log.take() {
+  if let Some(Ok(ExampleCommand { msg: _ })) = log.take() {
     // handle command
   }
 }

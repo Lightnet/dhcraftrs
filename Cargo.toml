@@ -22,9 +22,9 @@ default-run = "dhcraftrs"
 name = "dhcraftrs"
 path = "src/bin/game.rs"
 
-[[bin]]
-name = "game"
-path = "src/bin/game.rs"
+#[[bin]]
+#name = "game"
+#path = "src/bin/game.rs"
 
 #[[bin]]
 #name = "editor"
@@ -60,7 +60,7 @@ path = "src/bin/testdataplayer.rs"
 
 [dependencies]
 moonshine-save = {version = "0.2.3"}
-bevy = { version = "0.10.0", features = [
+bevy = { version = "0.10.1", features = [
   "bevy_ui",
   "bmp", 
   "jpeg", 

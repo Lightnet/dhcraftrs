@@ -12,6 +12,7 @@
 use bevy::prelude::*;
 use bevy_asset_loader::prelude::*;
 
+#[allow(dead_code)]
 #[derive(AssetCollection, Resource)]
 pub struct MyAssets {
   //#[asset(path = "images/player.png")]
@@ -31,6 +32,7 @@ pub struct MyAssets {
 
 
 /*
+app
 .add_loading_state(
       LoadingState::new(AppState::AssetLoading)
           .continue_to_state(AppState::MainMenu)

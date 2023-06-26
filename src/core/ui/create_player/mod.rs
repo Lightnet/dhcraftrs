@@ -38,7 +38,7 @@ impl Plugin for CreatePlayerPlugin {
     app.add_system(interact_with_new_button);
   }
 }
-
+/*
 fn create_player_text_input(
   mut evr_char: EventReader<ReceivedCharacter>,
   kbd: Res<Input<KeyCode>>,
@@ -59,3 +59,4 @@ fn create_player_text_input(
     }
   }
 }
+*/

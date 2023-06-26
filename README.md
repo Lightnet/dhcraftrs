@@ -115,6 +115,7 @@ src
 
 # Run Tests:
 ```
+cargo run (testing)
 cargo run --bin game (testing)
 cargo run --bin editor
 cargo run --bin launcher (testing)

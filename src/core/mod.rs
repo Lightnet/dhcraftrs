@@ -13,3 +13,5 @@ pub mod ui;
 pub mod controller;
 pub mod entity;
 pub mod console;
+pub mod splashscreen;
+pub mod watermark;

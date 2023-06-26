@@ -11,46 +11,62 @@
 
 use bevy::{prelude::*, diagnostic::FrameTimeDiagnosticsPlugin};
 use bevy_asset_loader::prelude::*;
-use bevy_egui::{egui, EguiContexts, EguiPlugin};
+use bevy_egui::{
+  //egui,
+  //EguiContexts, 
+  EguiPlugin
+};
 //lib craft
 use crate::{
-  
   api::{
     AppState,
     CameraState
   }, 
   systems::{
-    spawn_camera,
-    check_states, 
-    use_my_assets, load_gltf_test01, spawn_camera3d,
+    spawn_camera2d,
+    check_camera_state, 
+    use_my_assets, 
+    load_gltf_test01, 
+    //spawn_camera3d,
   },
   assets::MyAssets, 
   menu::MainMenuPlugin, 
-  core::{ui::{editor::systems::layout::ui_example_system}, entity::{prefab::{build_cube, set_up_test}, creature::player::{player_movement, create_entity_player, player_movement01, player_movement02}}}
+  core::{
+    ui::{
+      editor::systems::layout::ui_example_system, loading_asset::LoadingAssetUIPlugin
+    }, 
+    entity::{
+      prefab::{
+        //build_cube, 
+        set_up_test
+      }, 
+    creature::player::{
+      //player_movement, 
+      create_entity_player, 
+      player_movement01, 
+      player_movement02
+    }
+  }
+}
 };
-pub struct EntryMenuPlugin;
+pub struct LoadingAssetPlugin;
 
-impl Plugin for EntryMenuPlugin{
+impl Plugin for LoadingAssetPlugin{
   fn build(&self, app: &mut App){
-    //app.add_plugin(EguiPlugin);//menu 
-    app.add_state::<AppState>();//state app
-    app.add_state::<CameraState>();// state camera mode
-    app.add_plugin(MainMenuPlugin);//menu
-    app.add_startup_system(spawn_camera);//need this for bevy ui to render
+    println!("init loading assets! plug in!");
+    //app.add_startup_system(spawn_camera2d);//need this for bevy ui to render
     //loading assets state
     app.add_loading_state(
       LoadingState::new(AppState::AssetLoading)
         .continue_to_state(AppState::MainMenu)
+        //.on_failure_continue_to_state(next)
+        //.continue_to_state(AppState::AssetLoading)//test
     );
     //loading assets
     app.add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading);
     //assets do something
     app.add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)));
-    //check for state
-    app.add_startup_system(check_states); //
-
-    //test
-    //app.add_system(ui_example_system);
+    
   }
 }
 
@@ -62,20 +78,14 @@ impl Plugin for DefaultCraftPlugin{
     app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     app.add_state::<AppState>();// state app
     app.add_state::<CameraState>();// state camera mode
-    app.add_plugin(MainMenuPlugin);// menu
-    app.add_startup_system(spawn_camera);//need this for bevy ui to render
-    //loading assets state
-    app.add_loading_state(
-      LoadingState::new(AppState::AssetLoading)
-        .continue_to_state(AppState::MainMenu)
-    );
-    //loading assets
-    app.add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading);
-    //assets do something
-    app.add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)));
+    app.add_startup_system(spawn_camera2d);//need this for bevy ui to render
+    app.add_plugin(LoadingAssetUIPlugin); // ui loading...
+    app.add_plugin(LoadingAssetPlugin); // loading call
+    app.add_plugin(MainMenuPlugin); // main menu
+    
+    
     //check for state
     //app.add_startup_system(check_states); //
-
     //test
     //app.add_system(ui_example_system);
   }
@@ -102,7 +112,7 @@ impl Plugin for Test01CraftPlugin{
     //assets do something
     //app.add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)));
     //check for state
-    app.add_startup_system(check_states); //
+    app.add_startup_system(check_camera_state); //
 
     app.add_startup_system(check_app_states); //
 

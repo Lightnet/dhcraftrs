@@ -1,3 +1,4 @@
+#![allow(unused_variables)]
 /*
   Project Name: dhcraftrs
   License: CC BY-SA
@@ -5,7 +6,7 @@
   Information: Note there are other licenses.
  */
 use bevy::prelude::*;
-use bevy::input::mouse::MouseMotion;
+//use bevy::input::mouse::MouseMotion;
 
 //#[derive(Component)]
 //pub struct Movable;
@@ -15,12 +16,13 @@ pub struct PLAYERMOVABLE;
 #[derive(Component)]
 pub struct PlayerCamera;
 
+#[allow(dead_code)]
 pub struct PlayerInfo{
   id:String,
   idhash:String,
   name:String,
-  isDead:bool,
-  isSpawn:bool,
+  is_dead:bool,
+  is_spawn:bool,
 }
 
 
@@ -108,7 +110,7 @@ pub fn player_movement02(
   input: Res<Input<KeyCode>>,
   time: Res<Time>,
   mut query: Query<&mut Transform, With<PLAYERMOVABLE>>,
-  mut mouse_motion: EventReader<MouseMotion>,
+  //mut mouse_motion: EventReader<MouseMotion>,
   //mut camera_query: Query<(&mut Transform), With<Camera>>,
 ){
   let mut entity_transform = query.single_mut();

@@ -8,7 +8,7 @@
 use bevy::prelude::*;
 
 use crate::{menu::{
-  components::*, 
+  //components::*,
   styles::*,
 }, core::ui::create_player::components::{CREATEPLAYERNAME, CREATEPLAYERNAMEBUTTON, PlayerNameText}};
 
@@ -16,7 +16,7 @@ pub fn spawn_create_player_menu(
   mut commands: Commands,
   asset_server:Res<AssetServer>
 ){
-  let create_player_menu_entity = build_create_player_menu(&mut commands, &asset_server);
+  let _create_player_menu_entity = build_create_player_menu(&mut commands, &asset_server);
 }
 
 pub fn despawn_create_player_menu(

@@ -15,11 +15,9 @@ use bevy::{
   window::{PresentMode, RequestRedraw, WindowResolution, WindowPlugin},
 };
 use dhcraftrs::{plugins::{
-  //DefaultCraftPlugin, 
-  //Test01CraftPlugin, 
   Test02CraftPlugin, 
-  Test03CraftPlugin,
-}, core::ui::{network_test::NetworkMenuPlugin, loading_asset::LoadingAssetsPlugin}};
+  Test03CraftPlugin, DefaultCraftPlugin,
+}, core::ui::{network_test::NetworkMenuPlugin}};
 
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;
@@ -41,13 +39,7 @@ fn main() {//Entry point
       }),
       ..default()
     }))
-    //.add_plugin(DefaultCraftPlugin) //craft set up
-    //.add_plugin(Test01CraftPlugin) //craft test
-    //.add_plugin(Test02CraftPlugin) //craft test
-    //.add_plugin(Test03CraftPlugin) //craft test
-    //.add_plugin(NetworkMenuPlugin) //craft test
-
-    .add_plugin(LoadingAssetsPlugin) //craft test
+    .add_plugin(DefaultCraftPlugin) //craft test
     .run();
 
 }

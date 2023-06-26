@@ -7,24 +7,31 @@
 
 use bevy::prelude::*;
 
-use crate::menu::{
-  components::*, 
-  styles::*,
+use crate::{
+  core::ui::loading_asset::components::LoadingAsset, 
+  menu::styles::{
+    MAIN_MENU_STYLE, 
+    TITLE_STYLE, 
+    IMAGE_STYLE, 
+    get_title_text_style
+  }
 };
 
 pub fn spawn_loading_asset_menu(
   mut commands: Commands,
   asset_server:Res<AssetServer>
 ){
-  let main_menu_entity = build_loading_asset_menu(&mut commands, &asset_server);
+  let _loading_asset_entity = build_loading_asset_menu(&mut commands, &asset_server);
 }
 
 pub fn despawn_loading_asset_menu(
   mut commands: Commands,
-  main_menu_query:Query<Entity, With<MainMenu>>,
+  loading_asset_query:Query<Entity, With<LoadingAsset>>,
 ){
-  if let Ok(main_menu_entity) = main_menu_query.get_single(){
-    commands.entity(main_menu_entity).despawn_recursive();
+  println!("DELETE LOADING ASSETS...");
+  if let Ok(loading_asset_entity) = loading_asset_query.get_single(){
+    println!("FOUND LOADING ASSETS...");
+    commands.entity(loading_asset_entity).despawn_recursive();
   }
 }
 
@@ -38,7 +45,7 @@ pub fn build_loading_asset_menu(
       //background_color: Color::RED.into(),
       ..default()
     },
-    MainMenu {},
+    LoadingAsset {},
     )
   ).with_children(|parent |{
     //title
