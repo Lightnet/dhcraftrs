@@ -19,11 +19,11 @@ use crate::{
   }
 };
 
-
 pub struct LoadingAssetUIPlugin;
 
 impl Plugin for LoadingAssetUIPlugin {
   fn build(&self, app: &mut App){
+    //need to fixed or once time loading for assets?
 
     //app.add_state::<AppState>();//state app
     //set up once

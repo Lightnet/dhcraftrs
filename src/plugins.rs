@@ -24,9 +24,9 @@ use crate::{
   }, 
   systems::{
     spawn_camera2d,
-    check_camera_state, 
-    use_my_assets, 
-    load_gltf_test01, 
+    check_camera_state,
+    use_my_assets,
+    load_gltf_test01,
     //spawn_camera3d,
   },
   assets::MyAssets, 
@@ -46,14 +46,14 @@ use crate::{
       player_movement01, 
       player_movement02
     }
-  }
+  }, watermark::WaterMarkPlugin
 }
 };
 pub struct LoadingAssetPlugin;
 
 impl Plugin for LoadingAssetPlugin{
   fn build(&self, app: &mut App){
-    println!("init loading assets! plug in!");
+    //println!("init loading assets! plug in!");
     //app.add_startup_system(spawn_camera2d);//need this for bevy ui to render
     //loading assets state
     app.add_loading_state(
@@ -82,6 +82,7 @@ impl Plugin for DefaultCraftPlugin{
     app.add_plugin(LoadingAssetUIPlugin); // ui loading...
     app.add_plugin(LoadingAssetPlugin); // loading call
     app.add_plugin(MainMenuPlugin); // main menu
+    app.add_plugin(WaterMarkPlugin); // water mark
     
     
     //check for state

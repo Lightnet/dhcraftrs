@@ -73,6 +73,7 @@ fn main() {
     .run();
 }
 
+#[allow(unused_variables, dead_code, unused_parens, unused_mut)]
 fn setup(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,

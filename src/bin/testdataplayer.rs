@@ -41,8 +41,8 @@ fn setup_pkv(mut pkv: ResMut<PkvStore>) {
 
 fn setup(
   mut commands: Commands,
-  mut meshes: ResMut<Assets<Mesh>>,
-  mut materials: ResMut<Assets<StandardMaterial>>,
+  mut _meshes: ResMut<Assets<Mesh>>,
+  mut _materials: ResMut<Assets<StandardMaterial>>,
 ){
 
   //println!("setup...");
@@ -53,7 +53,7 @@ fn setup(
   });
 }
 
-
+#[allow(unused_mut)]
 fn input_key(
   mut commands: Commands,
   input: Res<Input<KeyCode>>,

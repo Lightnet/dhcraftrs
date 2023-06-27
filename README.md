@@ -135,6 +135,13 @@ https://github.com/lucaspoffo/renet/tree/master/bevy_renet
 cargo run --package testlib //param
 ```
 
+# Cargo watch:
+```
+cargo install cargo-watch
+
+cargo watch -x run
+```
+
 # Credits:
  * https://www.youtube.com/watch?v=iW19V3a96tY
 

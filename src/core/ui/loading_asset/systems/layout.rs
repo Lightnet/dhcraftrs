@@ -28,9 +28,9 @@ pub fn despawn_loading_asset_menu(
   mut commands: Commands,
   loading_asset_query:Query<Entity, With<LoadingAsset>>,
 ){
-  println!("DELETE LOADING ASSETS...");
+  //println!("CHECK ENTITY FOR DELETE LOADING ASSETS...");
   if let Ok(loading_asset_entity) = loading_asset_query.get_single(){
-    println!("FOUND LOADING ASSETS...");
+    //println!("FOUND LOADING ASSETS...");
     commands.entity(loading_asset_entity).despawn_recursive();
   }
 }

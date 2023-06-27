@@ -9,7 +9,7 @@
 
 // https://bevyengine.org/learn/book/getting-started/ecs/
 // https://github.com/bevyengine/bevy/blob/v0.10.1/examples/window/low_power.rs
-
+#[allow(unused_imports)]
 use bevy::{
   prelude::*,
   input::mouse::MouseMotion,
@@ -46,6 +46,7 @@ fn main() {
     .run();
 }
 
+#[allow(dead_code)]
 fn setup_camera(
   mut commands: Commands,
 ){
@@ -101,7 +102,7 @@ fn setup(
   //});
 }
 
-
+#[allow(dead_code,unused_mut, unused_variables, unused_parens, non_snake_case)]
 fn player_camera_controller(
   mut mouse_motion: EventReader<MouseMotion>,
   //windows: Res<Windows>,
