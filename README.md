@@ -1,36 +1,39 @@
 # dhcraftrs
 
 # License: CC BY-SA
+ * https://creativecommons.org/licenses/by-sa/4.0/
+ * Note that there bevy example files for testing.
 
 # Created By: Lightnet
-https://creativecommons.org/licenses/by-sa/4.0/
 
 # Code Language:
  * Rust 1.69.0 ( https://www.rust-lang.org/ )
 
 # Engine:
- * Bevy Engine 0.10.0  ( https://bevyengine.org/ )
+ * Bevy Engine 0.10.1  ( https://bevyengine.org/ )
 
 # Plugins:
- * moonshine-save
- * bevy_console
- * bevy-inspector-egui
- * bevy_mod_picking
- * bevy_rapier3d
- * bevy_egui
- * bevy_flycam
- * bevy_asset_loader
- * bevy_transform_gizmo
- * bevy_renet
- * bevy_pkv
+ * moonshine-save ()
+ * bevy_console ( console gui )
+ * bevy-inspector-egui ( gui )
+ * bevy_mod_picking (ray casting)
+ * bevy_rapier3d ( physics 3D )
+ * bevy_egui ( gui )
+ * bevy_flycam (camera control)
+ * bevy_asset_loader (assets loading files)
+ * bevy_transform_gizmo ( editor transform handler location, rotation and scale )
+ * bevy_renet (network)
+ * bevy_pkv (config save and load)
 
-# Information: (work in progress...)
-  To build crafting and sandbox game base on minecraft. To play test how logic and module componets work in bevy engine in rust langauge.
+# Information: 
+  Note this is prototype and work in progress testing. Files are subject to changes.
 
-  Networking will be tested later once the some basic controls, logics, game and other working and building the world.
-  
+  To build crafting and sandbox game base on minecraft. To play test how logic and module components work in Bevy Engine in Rust Langauge.
+
 ## Network:
-  To develop server and client. For players to enjoy the sandbox world. One reason is that to have permission system. To handle users permission as there will be default settings. As well to handle hacking and spam. For editing and playing at the same time. It would required some settings build into logic server.
+  Networking will be tested later once the some basic controls, logics, game and other working and building the world.
+
+  To develop server and client. For players to enjoy the sandbox world. One required to build permission system. To handle users permission as there will be default settings. As well to handle hacking and spam. For editing and playing at the same time. It would required some settings build into logic server.
 
   Similar to chat group system.
 
@@ -46,19 +49,19 @@ https://creativecommons.org/licenses/by-sa/4.0/
 
   * https://bevy-cheatbook.github.io/
 
-  Note there youtube, github, offical site examples are good start point but note that it might outdate or upate depend on the coder update it. Since it still in development and refine by the coders working hard to develop stable engine.
+  Note there youtube, github, offical site examples are good start point but note that it might outdate or upate depend on the writer, coder and dev update it. Since it still in development and refine by the dev and coders working hard to develop stable engine.
 
-## logics:
+## Logics:
  * resources set up assets
  * state (struct)
- * set up / start up (once run)
- * enter
- * on update
- * exit (clean up)
+ * start up (once run)
+ * on enter ( set up )
+ * on update ( loop | query)
+ * on exit ( clean up )
  * query and filter functions or struct ( loop )
  * component or struct (tag for filter for query)
- * stageless
- * system (loop)
+ * stageless ()
+ * system (loop | conditions)
  * commands (for creating entity and other things)
  * assets (loading content data)
 
@@ -98,28 +101,31 @@ Appstate:
 
 # Design Layout:
 ```
-src
--bin
---testapp.rs (testing setup and logic loading order something...)
---game.rs (testing setup and logic loading order something...)
--menu
---work in progress
--lib.rs (library)
--api.rs (testing / for easy access for struct)
--plugins.rs (testing / setup logic)
--style.rs ( color?)
--systems.rs (testing / functions / set up)
--events.rs ( n/a)
-
+src ( work in progress and subjec to change)
+- bin
+-- fpsgame.rs (testing first person shooter camera)
+-- game.rs (testing and prototype build)
+-- network.rs (simple test in case of break next version)
+-- launcher.rs (simple application gui test)
+-- testscene.rs (simple test)
+- core
+-- setup builds
+- menu
+-- main menu
+- lib.rs (library)
+- api.rs (testing / for easy access for struct)
+- plugins.rs (testing / setup logic)
+- styles.rs ( color?)
+- systems.rs (testing / functions / set up)
+- events.rs ( n/a)
 ```
 
 # Run Tests:
 ```
 cargo run (testing)
 cargo run --bin game (testing)
-cargo run --bin editor
-cargo run --bin launcher (testing)
-cargo run --bin testapp (testing / prototyping)
+cargo run --bin launcher ( testing )
+cargo run --bin testapp ( prototyping)
 ```
 ## Network test:
 
@@ -129,15 +135,9 @@ cargo run --bin network -- client
 ```
 https://github.com/lucaspoffo/renet/tree/master/bevy_renet
 
-
-# Cargo params:
-```
-cargo run --package testlib //param
-```
-
 # Cargo watch:
 ```
-cargo install cargo-watch
+cargo install cargo-watch // install cargo watch for debug detect change for rerun application.
 
 cargo watch -x run
 ```
