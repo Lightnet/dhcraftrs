@@ -33,7 +33,9 @@ use crate::{
   menu::MainMenuPlugin, 
   core::{
     ui::{
-      editor::systems::layout::ui_example_system, loading_asset::LoadingAssetUIPlugin
+      editor::systems::layout::ui_example_system, 
+      loading_asset::LoadingAssetUIPlugin, 
+      watermark::WaterMarkPlugin
     }, 
     entity::{
       prefab::{
@@ -46,7 +48,7 @@ use crate::{
       player_movement01, 
       player_movement02
     }
-  }, watermark::WaterMarkPlugin
+  }, 
 }
 };
 pub struct LoadingAssetPlugin;
@@ -83,7 +85,6 @@ impl Plugin for DefaultCraftPlugin{
     app.add_plugin(LoadingAssetPlugin); // loading call
     app.add_plugin(MainMenuPlugin); // main menu
     app.add_plugin(WaterMarkPlugin); // water mark
-    
     
     //check for state
     //app.add_startup_system(check_states); //

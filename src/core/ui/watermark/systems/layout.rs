@@ -11,7 +11,7 @@
 
 use bevy::prelude::*;
 
-use crate::{menu::styles::{get_button_text_style}, core::watermark::{WaterMark, styles::WATER_MARK_STYLE}};
+use crate::{menu::styles::{get_button_text_style}, core::ui::watermark::{styles::WATER_MARK_STYLE, components::WaterMark}};
 
 pub fn spawn_water_mark(
   mut commands: Commands,

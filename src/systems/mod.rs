@@ -43,13 +43,13 @@ pub fn use_my_assets(
     commands.entity(loading_asset_entity).despawn_recursive();
   }
   // do something using the asset handles from the resource
-  println!("LOADED ASSETS...")
+  //println!("LOADED ASSETS...")
 }
 
 pub fn check_camera_state(
   camera_state: Res<State<CameraState>>
 ) {
-  println!("LOADED ASSETS...");
+  //println!("LOADED ASSETS...");
   match camera_state.0 {
     CameraState::Player => {
       println!("CAMERA: Player");

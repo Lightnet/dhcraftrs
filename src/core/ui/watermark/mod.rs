@@ -9,15 +9,17 @@
 //
 //===============================================
 // https://bevy-cheatbook.github.io/features/time.html
-use bevy::prelude::*;
 
+mod components;
+mod styles;
+mod systems;
+
+//use std::time::Duration;
+use bevy::prelude::*;
 use crate::api::AppState;
 
-use self::systems::layout::{despawn_water_mark, spawn_water_mark};
-//use std::time::Duration;
-pub mod components;
-pub mod systems;
-pub mod styles;
+use self::systems::layout::spawn_water_mark;
+use self::systems::layout::despawn_water_mark;
 
 #[derive(Component)]
 pub struct WaterMark;
@@ -31,11 +33,10 @@ impl Plugin for WaterMarkPlugin{
 
   fn build(&self, app: &mut App){
     app.add_startup_system(setup_water_mark);
-    app.add_system(spawn_splash);
+    //app.add_system(setup_water_mark)
     app.add_system(spawn_water_mark.in_schedule(OnEnter(AppState::MainMenu)));
     app.add_system(despawn_water_mark.in_schedule(OnExit(AppState::MainMenu)));
   }
-
 }
 
 fn setup_water_mark(
@@ -43,13 +44,13 @@ fn setup_water_mark(
 ){
   commands.insert_resource(WaterMarkConfig)
 }
-
+//todolist : remove?
+#[allow(dead_code)]
 fn spawn_splash(
   mut _commands: Commands,
   mut _config: ResMut<WaterMarkConfig>,
 ){
   //need to check if exist
-
 }
 
 

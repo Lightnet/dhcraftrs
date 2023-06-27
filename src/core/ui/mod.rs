@@ -14,3 +14,5 @@ pub mod hud;
 pub mod network_test;
 pub mod loading_asset;
 pub mod create_player;
+pub mod watermark;
+pub mod splashscreen;
