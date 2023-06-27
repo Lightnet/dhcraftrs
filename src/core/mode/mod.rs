@@ -5,5 +5,7 @@
   Information: Note there are other licenses.
  */
 
-// stream world ???
-pub mod prefab;
+pub mod base;
+pub mod creative;
+pub mod dungeon;
+pub mod rule;

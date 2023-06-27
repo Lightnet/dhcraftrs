@@ -46,8 +46,8 @@ use dhcraftrs::{
 fn main() {
   //test_print();
   App::new()
-    .add_state::<AppState>()
-    .add_plugins(DefaultPlugins)
+    //.add_state::<AppState>()
+    //.add_plugins(DefaultPlugins)
     //.add_plugin(WorldInspectorPlugin)
     // Only run the app when there is user input. This will significantly reduce CPU/GPU use.
     .insert_resource(WinitSettings::desktop_app())

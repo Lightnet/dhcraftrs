@@ -9,15 +9,19 @@
 // base set up
 //===============================================
 
-use bevy::{prelude::*, diagnostic::FrameTimeDiagnosticsPlugin};
+use bevy::{prelude::*, diagnostic::FrameTimeDiagnosticsPlugin, window::WindowResolution};
 use bevy_asset_loader::prelude::*;
-use bevy_pkv::PkvStore;
 use bevy_egui::{
   //egui,
   //EguiContexts, 
   EguiPlugin
 };
-use crate::{components::PlayerInfo, core::{ui::create_player::CreatePlayerPlugin, data::BaseDataPlugin}};
+use crate::{
+  core::{
+    ui::create_player::CreatePlayerPlugin, 
+    data::CraftBaseDataPlugin, world::prefab::WorldBasicPlugin
+  }, systems::spawn_camera3d
+};
 //lib craft
 #[allow(unused_imports)]
 use crate::{
@@ -54,6 +58,11 @@ use crate::{
   }, 
 }
 };
+
+pub const HEIGHT: f32 = 720.0;
+pub const WIDTH: f32 = 1280.0;
+
+
 pub struct LoadingAssetPlugin;
 
 impl Plugin for LoadingAssetPlugin{
@@ -79,15 +88,30 @@ pub struct DefaultCraftPlugin;
 
 impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
   fn build(&self, app: &mut App){
-    //app.add_plugin(EguiPlugin);// menu 
-    app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     app.add_state::<AppState>(); // state app
+    //app.add_plugin(EguiPlugin);// menu 
+    app.add_plugins(DefaultPlugins.set(WindowPlugin {
+      primary_window: Some(Window {
+        //width: WIDTH,
+        //height: HEIGHT,
+        resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
+        title: "Bevy Game Test".to_string(),
+        resizable: false,
+        ..default()
+      }),
+      ..default()
+    }));
+    app.add_plugin(FrameTimeDiagnosticsPlugin::default());
+    //app.add_state::<AppState>(); // state app
     app.add_state::<CameraState>(); // state camera mode
 
-    app.add_plugin(BaseDataPlugin); // loading player data base
+    app.add_plugin(CraftBaseDataPlugin); // loading player data base
     
+    // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
-    app.add_startup_system(spawn_camera2d); //need this for bevy ui to render
+    //app.add_startup_system(spawn_camera2d); // need this for bevy ui to render
+    app.add_startup_system(spawn_camera3d); // 
+    //note it need one camera at the time else log error on multiple camera active.
 
     //app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
     app.add_plugin(LoadingAssetUIPlugin); // ui loading
@@ -95,7 +119,8 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugin(MainMenuPlugin); // main menu
     app.add_plugin(WaterMarkPlugin); // water mark //testing
     app.add_plugin(CreatePlayerPlugin); // 
-    
+    app.add_plugin(WorldBasicPlugin); // 
+
     //check for state
     //app.add_startup_system(check_states); //
     //test

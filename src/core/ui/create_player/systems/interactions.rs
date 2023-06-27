@@ -42,10 +42,8 @@ pub fn interact_with_new_button(
         pkv.set_string("username", player_info.name.as_str() )
         .expect("failed to store username");
 
-
-
         //need to check blank incase of player name string is empty later...
-        app_state_next_state.set(AppState::LoadingGame);
+        app_state_next_state.set(AppState::InGame);
         
       }
       Interaction::Hovered =>{

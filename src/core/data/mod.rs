@@ -10,9 +10,9 @@ use bevy_pkv::PkvStore;
 
 use crate::components::PlayerInfo;
 
-pub struct BaseDataPlugin;
+pub struct CraftBaseDataPlugin;
 
-impl Plugin for BaseDataPlugin{
+impl Plugin for CraftBaseDataPlugin{
   fn build(&self, app: &mut App){
     app.insert_resource(PkvStore::new("dhcraftrs", "playerdata")); // Users\<username>\AppData\Roaming\<dhcraftrs>
     //https://bevy-cheatbook.github.io/programming/res.html

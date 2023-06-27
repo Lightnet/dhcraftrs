@@ -4,6 +4,3 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
-
-// stream world ???
-pub mod prefab;
