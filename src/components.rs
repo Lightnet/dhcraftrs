@@ -7,7 +7,16 @@
  */
 
 // https://google.github.io/comprehensive-rust/structs/field-shorthand.html
-use bevy::prelude::Component;
+//use bevy::prelude::Component;
+use bevy::prelude::*;
+
+#[allow(dead_code)]
+#[derive(Debug, Default, Resource)]
+pub struct PlayerInfo {
+  pub name:String,
+  pub idhash:String,
+}
+
 
 #[allow(dead_code)]
 #[derive(Component, Debug)]
@@ -22,7 +31,6 @@ impl Default for Player {
     }
   }
 }
-
 
 #[derive(Component)]
 pub struct Enemy {}

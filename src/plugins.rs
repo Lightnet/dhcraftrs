@@ -11,12 +11,15 @@
 
 use bevy::{prelude::*, diagnostic::FrameTimeDiagnosticsPlugin};
 use bevy_asset_loader::prelude::*;
+use bevy_pkv::PkvStore;
 use bevy_egui::{
   //egui,
   //EguiContexts, 
   EguiPlugin
 };
+use crate::{components::PlayerInfo, core::{ui::create_player::CreatePlayerPlugin, data::BaseDataPlugin}};
 //lib craft
+#[allow(unused_imports)]
 use crate::{
   api::{
     AppState,
@@ -35,7 +38,7 @@ use crate::{
     ui::{
       editor::systems::layout::ui_example_system, 
       loading_asset::LoadingAssetUIPlugin, 
-      watermark::WaterMarkPlugin
+      watermark::WaterMarkPlugin, splashscreen::SplashScreenPlugin
     }, 
     entity::{
       prefab::{
@@ -74,17 +77,24 @@ impl Plugin for LoadingAssetPlugin{
 
 pub struct DefaultCraftPlugin;
 
-impl Plugin for DefaultCraftPlugin{
+impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
   fn build(&self, app: &mut App){
     //app.add_plugin(EguiPlugin);// menu 
     app.add_plugin(FrameTimeDiagnosticsPlugin::default());
-    app.add_state::<AppState>();// state app
-    app.add_state::<CameraState>();// state camera mode
-    app.add_startup_system(spawn_camera2d);//need this for bevy ui to render
-    app.add_plugin(LoadingAssetUIPlugin); // ui loading...
+    app.add_state::<AppState>(); // state app
+    app.add_state::<CameraState>(); // state camera mode
+
+    app.add_plugin(BaseDataPlugin); // loading player data base
+    
+    // for ui set up for camera need for render
+    app.add_startup_system(spawn_camera2d); //need this for bevy ui to render
+
+    //app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
+    app.add_plugin(LoadingAssetUIPlugin); // ui loading
     app.add_plugin(LoadingAssetPlugin); // loading call
     app.add_plugin(MainMenuPlugin); // main menu
-    app.add_plugin(WaterMarkPlugin); // water mark
+    app.add_plugin(WaterMarkPlugin); // water mark //testing
+    app.add_plugin(CreatePlayerPlugin); // 
     
     //check for state
     //app.add_startup_system(check_states); //

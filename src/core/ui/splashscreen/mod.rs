@@ -25,9 +25,11 @@ pub struct SplashScreenPlugin;
 impl Plugin for SplashScreenPlugin{
 
   fn build(&self, app: &mut App){
+
     app.add_startup_system(setup_splash_spawning);
+    app.add_startup_system(spawn_splash);
     app.add_system(splash_screen_time);
-    app.add_system(spawn_splash);
+    //app.add_system(spawn_splash);
     
   }
 

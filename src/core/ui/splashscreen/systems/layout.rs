@@ -7,7 +7,7 @@
 use bevy::prelude::*;
 use std::time::Duration;
 
-use crate::core::ui::splashscreen::components::{SplashTime, SplashSpawnConfig};
+use crate::{core::ui::splashscreen::components::{SplashTime, SplashSpawnConfig}, menu::styles::{get_button_text_style, MAIN_MENU_STYLE}};
 
 pub fn splash_screen_time(//loop
   mut commands: Commands,
@@ -20,31 +20,47 @@ pub fn splash_screen_time(//loop
 
       // if it finished, despawn the bomb
       if splash_timer.timer.finished() {
-          println!("DELETE splash...");
-          commands.entity(entity).despawn();
+        println!("DELETE splash...");
+        commands.entity(entity).despawn();
       }
   }
 }
 
-/// Spawn a new splash in set intervals of time
 pub fn spawn_splash(
   mut commands: Commands,
-  time: Res<Time>,
-  mut config: ResMut<SplashSpawnConfig>,
+  //time: Res<Time>,
+  //mut config: ResMut<SplashSpawnConfig>,
+  asset_server:Res<AssetServer>,
 ) {
-  // tick the timer
-  config.timer.tick(time.delta());
-
-  if config.timer.finished() {
-    println!("create splash");
-    commands.spawn((
-      SplashTime {
-        // create the non-repeating fuse timer
-        timer: Timer::new(Duration::from_secs(5), TimerMode::Once),
-      },
-      // ... other components ...
-    ));
-  }
+  println!("create splash");
+  commands.spawn((
+    SplashTime {
+      // create the non-repeating fuse timer
+      timer: Timer::new(Duration::from_secs(5), TimerMode::Once),
+    },
+    NodeBundle{
+      style:MAIN_MENU_STYLE,
+      //background_color: Color::RED.into(),
+      ..default()
+    }
+    // ... other components ...
+  )).with_children(|parent |{
+    parent.spawn(
+      TextBundle{
+        text: Text{
+          sections: vec![
+            TextSection::new(
+              "[Splash Screen]", 
+              get_button_text_style(&asset_server),
+            )
+          ],
+          alignment: TextAlignment::Center,
+          ..default()
+        },
+        ..default()
+      }
+    );
+  });
 }
 
 /// Configure our bomb spawning algorithm
@@ -58,3 +74,48 @@ pub fn setup_splash_spawning(
     timer: Timer::new(Duration::from_secs(10), TimerMode::Once),
   })
 }
+
+// Spawn a new splash in set intervals of time
+/*
+pub fn spawn_splash(
+  mut commands: Commands,
+  time: Res<Time>,
+  mut config: ResMut<SplashSpawnConfig>,
+  asset_server:Res<AssetServer>,
+) {
+  // tick the timer
+  config.timer.tick(time.delta());
+
+  if config.timer.finished() {
+    println!("create splash");
+    commands.spawn((
+      SplashTime {
+        // create the non-repeating fuse timer
+        timer: Timer::new(Duration::from_secs(5), TimerMode::Once),
+      },
+      NodeBundle{
+        style:MAIN_MENU_STYLE,
+        //background_color: Color::RED.into(),
+        ..default()
+      }
+      // ... other components ...
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "[Splash Screen]", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+  }
+}
+*/
