@@ -14,24 +14,24 @@ use bevy::prelude::*;
 #[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
 pub enum AppState{
   //#[default]
-  MainMenu,
+  MainMenu, // use
   //Next,
-  InGame,
-  EndGame,
-  LoadingGame,
+  InGame, // use, testing...
+  EndGame, // not yet
+  LoadingGame, // not yet
   //LoadingScene,
   //LoadingWorld,
   //SCENE,
   #[default]//note that if loading error when not first started. when fn use_my_assets error. 
-  AssetLoading,
+  AssetLoading, // use
   //BootingApp,
   //StartScreen,
   //ErrorScreen,
-  OPTIONS,
-  CREATEPLAYERNAME,
-  NETWORK,
-  SERVER,
-  CLIENT,
+  OPTIONS, // use
+  CREATEPLAYERNAME, // use
+  NETWORK, // use
+  SERVER, // use
+  CLIENT, // use
 }
 
 #[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]

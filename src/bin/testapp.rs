@@ -14,10 +14,7 @@ use bevy::{
   //utils::Duration,
   window::{PresentMode, RequestRedraw, WindowResolution, WindowPlugin},
 };
-use dhcraftrs::{plugins::{
-  Test02CraftPlugin, 
-  Test03CraftPlugin, DefaultCraftPlugin,
-}, core::ui::{network::NetworkMenuPlugin}};
+use dhcraftrs::{plugins::BaseCraftPlugin, core::data::CraftBaseDataPlugin};
 
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;
@@ -28,6 +25,7 @@ fn main() {//Entry point
 
   App::new()
     //.add_plugins(DefaultPlugins)//window scree set up
+    /*
     .add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
         //width: WIDTH,
@@ -39,7 +37,13 @@ fn main() {//Entry point
       }),
       ..default()
     }))
-    .add_plugin(DefaultCraftPlugin) //craft test
+    */
+    //.add_plugin(DefaultCraftPlugin) //craft test
+    .add_plugin(CraftBaseDataPlugin) // loading player data base
+    //.add_state(AppState::InGame)
+    .add_plugin(BaseCraftPlugin)
+    //.add_startup_system(spawn_camera3d) // 
+    //.add_plugin(CraftPlayerPlugin) // event testing...
     .run();
 
 }

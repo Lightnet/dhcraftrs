@@ -6,6 +6,8 @@
   Information: Note there are other licenses.
  */
 use bevy::prelude::*;
+
+use crate::api::AppState;
 //use bevy::input::mouse::MouseMotion;
 
 //#[derive(Component)]
@@ -132,13 +134,33 @@ pub fn player_movement02(
       );
     }
     if input.pressed(KeyCode::Right) {
-
       entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
         0., 1.0 * -0.01, 0.)
       );
     }
-    
 
-    //transform.translation += time.delta_seconds() * 2.0 * direction;
+    //entity_transform.translation += time.delta_seconds() * 2.0 * direction;
   //}
+}
+
+
+pub struct CraftPlayerPlugin;
+
+impl Plugin for CraftPlayerPlugin{
+
+  fn build(&self, app: &mut App){
+    //app.add_startup_system(create_entity_player);
+    //app.add_system(player_movement02); //
+
+    app.add_system(create_entity_player.in_schedule(OnEnter(AppState::InGame)));
+    app.add_system(player_movement02.in_set(OnUpdate(AppState::InGame)));
+
+    app.add_startup_system(set_app_state_game);
+  }
+}
+
+fn set_app_state_game(
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  app_state_next_state.set(AppState::InGame);
 }
