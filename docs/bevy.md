@@ -57,13 +57,14 @@ c:\Users\<username>\AppData\Roaming\username
 
 
 
-# refs:
+# Refs:
  * https://www.youtube.com/watch?v=5oKEPZ6LbNE&t=52s
  * https://www.youtube.com/watch?v=GqyJl3tamXU
  * https://www.youtube.com/watch?v=RJHdfLAXptQ Coding an Animated Fox in Rust - Bevy Game Engine - ASMR Programming (No Talking)
  * 
- * 
- * 
+
+# Notes:
+ * https://www.reddit.com/r/bevy/comments/xit4a5/the_stageless_scheduling_rfc_is_merged/
  * 
  * 
  * 

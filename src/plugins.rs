@@ -5,10 +5,6 @@
   Information: Note there are other licenses.
  */
 
-//===============================================
-// base set up
-//===============================================
-
 use bevy::{prelude::*, diagnostic::FrameTimeDiagnosticsPlugin, window::WindowResolution};
 use bevy_asset_loader::prelude::*;
 use bevy_egui::{
@@ -61,7 +57,6 @@ use crate::{
 
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;
-
 pub struct LoadingAssetPlugin;
 
 impl Plugin for LoadingAssetPlugin{
@@ -86,8 +81,6 @@ impl Plugin for LoadingAssetPlugin{
 pub struct BaseCraftPlugin;
 impl Plugin for BaseCraftPlugin{
   fn build(&self, app: &mut App){
-    app.add_state::<AppState>(); // state app
-    //app.add_plugin(EguiPlugin);// menu 
     app.add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
         //width: WIDTH,
@@ -99,12 +92,13 @@ impl Plugin for BaseCraftPlugin{
       }),
       ..default()
     }));
-
     app.add_plugin(FrameTimeDiagnosticsPlugin::default());
-    //app.add_state::<AppState>(); // state app
+    //app.add_plugin(EguiPlugin); // menu 
+
+    app.add_state::<AppState>(); // state app
     app.add_state::<CameraState>(); // state camera mode
 
-    //app.add_plugin(CraftBaseDataPlugin); // loading player data base
+    app.add_plugin(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render

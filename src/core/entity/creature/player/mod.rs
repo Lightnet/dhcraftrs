@@ -33,6 +33,20 @@ pub fn create_entity_player(
   mut materials: ResMut<Assets<StandardMaterial>>,
   asset_server: Res<AssetServer>,
 ){
+
+  commands.spawn((
+    PbrBundle {
+        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+        material: materials.add(StandardMaterial {
+            base_color: Color::GRAY,
+            ..default()
+        }),
+        transform: Transform::from_xyz(0.0, 0.0, 0.0),
+        ..default()
+    },
+    //PLAYERMOVABLE,
+  ));
+
   // cube
   commands.spawn((
     PbrBundle {
@@ -45,7 +59,24 @@ pub fn create_entity_player(
         ..default()
     },
     PLAYERMOVABLE,
-  ));
+  )).with_children(| parent | {
+
+    
+    parent.spawn((
+      Camera3dBundle {
+        camera: Camera  { 
+          order:1,
+          //priority: 1 ,
+          ..default()
+        },
+      transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+      ..Default::default()
+      },
+      PlayerCamera
+    ));
+    
+
+  });
 
   // camera
   //commands.spawn(Camera3dBundle {

@@ -69,10 +69,8 @@ pub fn check_camera_state(
   }
 }
 
-//
+// Testing for add 3D model into scene
 pub fn load_gltf_test01(mut commands: Commands, asset_server: Res<AssetServer>) {
-
-
   commands.spawn(SceneBundle {
     scene: asset_server.load("models/blockframe01.gltf#Scene0"),
     ..default()

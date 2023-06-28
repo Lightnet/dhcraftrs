@@ -6,6 +6,9 @@
 
 # Created By: Lightnet
 
+# Notes:
+ * There might be incorrect set up for many plugins due to lagging for player movements.
+
 # Code Language:
  * Rust 1.69.0 ( https://www.rust-lang.org/ )
 

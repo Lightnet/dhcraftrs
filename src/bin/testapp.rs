@@ -39,7 +39,7 @@ fn main() {//Entry point
     }))
     */
     //.add_plugin(DefaultCraftPlugin) //craft test
-    .add_plugin(CraftBaseDataPlugin) // loading player data base
+    //.add_plugin(CraftBaseDataPlugin) // loading player data base
     //.add_state(AppState::InGame)
     .add_plugin(BaseCraftPlugin)
     //.add_startup_system(spawn_camera3d) // 
