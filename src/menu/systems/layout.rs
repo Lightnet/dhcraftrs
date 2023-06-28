@@ -39,7 +39,7 @@ pub fn build_main_menu(
       //background_color: Color::RED.into(),
       ..default()
     },
-    MainMenu {},
+    MainMenu,
     )
   ).with_children(|parent |{
     //title
@@ -88,7 +88,7 @@ pub fn build_main_menu(
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
-      NewButton {}
+      NewButton
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{
@@ -114,7 +114,7 @@ pub fn build_main_menu(
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
-      PlayButton {}
+      PlayButton
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{
@@ -133,6 +133,58 @@ pub fn build_main_menu(
       );
     });
 
+    //online
+    parent.spawn((
+      ButtonBundle {
+        style:BUTTON_STYLE,
+        background_color: NORMAL_BUTTON_COLOR.into(),
+        ..default()
+      },
+      OnlineButton
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "Online", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //OPTIONS
+    parent.spawn((
+      ButtonBundle {
+        style:BUTTON_STYLE,
+        background_color: NORMAL_BUTTON_COLOR.into(),
+        ..default()
+      },
+      OnlineButton
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "Options", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
     //quit
     parent.spawn((
       ButtonBundle {
@@ -140,7 +192,7 @@ pub fn build_main_menu(
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
-      QuitButton {}
+      QuitButton
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{

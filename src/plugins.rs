@@ -18,7 +18,7 @@ use bevy_egui::{
 };
 use crate::{
   core::{
-    ui::create_player::CreatePlayerPlugin, 
+    ui::{create_player::CreatePlayerPlugin, network::NetworkMenuPlugin}, 
     data::CraftBaseDataPlugin, world::prefab::WorldBasicPlugin
   }, systems::spawn_camera3d
 };
@@ -120,6 +120,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugin(WaterMarkPlugin); // water mark //testing
     app.add_plugin(CreatePlayerPlugin); // 
     app.add_plugin(WorldBasicPlugin); // 
+    app.add_plugin(NetworkMenuPlugin); // 
 
     //check for state
     //app.add_startup_system(check_states); //

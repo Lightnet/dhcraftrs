@@ -14,7 +14,7 @@ use bevy::prelude::*;
 //use self::systems::layout::{spawn_menu, despawn_menu};
 use crate::{
   api::AppState, 
-  core::ui::network_test::systems::{
+  core::ui::network::systems::{
     layout::{
       spawn_network_menu, 
       despawn_network_menu

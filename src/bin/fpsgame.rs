@@ -5,8 +5,7 @@
   Information: Note there are other licenses.
  */
 
-//Tests
-
+// Simple Testing
 // https://bevyengine.org/learn/book/getting-started/ecs/
 // https://github.com/bevyengine/bevy/blob/v0.10.1/examples/window/low_power.rs
 #[allow(unused_imports)]
@@ -25,7 +24,6 @@ fn main() {
   let mut app = App::new();
     //.add_plugins(DefaultPlugins)
     //app.insert_resource(ClearColor(Color::BLACK));
-    
     app.add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
         //width: WIDTH,
@@ -38,7 +36,6 @@ fn main() {
       ..default()
     }));
     
-
     app.add_plugin(PlayerPlugin)
     //.add_plugin(WorldInspectorPlugin)
     .add_startup_system(setup)
@@ -130,11 +127,11 @@ fn player_camera_controller(
 
   /*
   for (mut transform) in query.iter_mut() {
-      for ev in motion.iter() {
-          yaw = ev.delta.x * 0.01 ; // window.x * player.sensitivity;
-          pitch = ev.delta.y * -0.01; // / window.y * player.sensitivity;
-      }
-      transform.rotate(Quat::from_rotation_y(-yaw) * Quat::from_rotation_x(pitch) * Quat::from_rotation_z(0.));
+    for ev in motion.iter() {
+      yaw = ev.delta.x * 0.01 ; // window.x * player.sensitivity;
+      pitch = ev.delta.y * -0.01; // / window.y * player.sensitivity;
+    }
+    transform.rotate(Quat::from_rotation_y(-yaw) * Quat::from_rotation_x(pitch) * Quat::from_rotation_z(0.));
   }
   */
 }

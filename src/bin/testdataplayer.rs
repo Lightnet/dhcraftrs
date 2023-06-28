@@ -4,6 +4,7 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+// Testing saving player info and config.
 
 // TODO: remove this when you're done with your implementation.
 #![allow(unused_imports, unused_variables, dead_code)]

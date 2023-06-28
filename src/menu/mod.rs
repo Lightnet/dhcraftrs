@@ -20,7 +20,8 @@ use crate::{
   menu::systems::interactions::{
     interact_with_play_button,
     interact_with_quit_button, 
-    interact_with_new_button
+    interact_with_new_button,
+    interact_with_online_button,
   }
 };
 
@@ -36,7 +37,8 @@ impl Plugin for MainMenuPlugin {
       (
         interact_with_play_button,
         interact_with_quit_button,
-        interact_with_new_button
+        interact_with_new_button,
+        interact_with_online_button
       ).in_set(OnUpdate(AppState::MainMenu))
     );
     //app.add_system(

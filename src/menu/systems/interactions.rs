@@ -16,6 +16,7 @@ use crate::menu::styles::{
   PRESSED_BUTTON_COLOR
 };
 
+// NEW, CREATE PLAYER
 pub fn interact_with_new_button(
   mut button_query:Query<
     (&Interaction, &mut BackgroundColor),
@@ -39,7 +40,7 @@ pub fn interact_with_new_button(
   }
 }
 
-
+// PLAY ACTION
 pub fn interact_with_play_button(
   mut button_query:Query<
     (&Interaction, &mut BackgroundColor),
@@ -63,6 +64,55 @@ pub fn interact_with_play_button(
   }
 }
 
+// ONLINE ACTION
+pub fn interact_with_online_button(
+  mut button_query:Query<
+    (&Interaction, &mut BackgroundColor),
+    (Changed<Interaction>, With<OnlineButton>)
+  >,
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
+    match *interaction {
+      Interaction::Clicked =>{
+        *background_color = PRESSED_BUTTON_COLOR.into();
+        app_state_next_state.set(AppState::NETWORK);
+      }
+      Interaction::Hovered =>{
+        *background_color = HOVERED_BUTTON_COLOR.into();
+      }
+      Interaction::None =>{
+        *background_color = NORMAL_BUTTON_COLOR.into();
+      }
+    }
+  }
+}
+
+// OPTIONS ACTION
+pub fn interact_with_options_button(
+  mut button_query:Query<
+    (&Interaction, &mut BackgroundColor),
+    (Changed<Interaction>, With<OptionsButton>)
+  >,
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
+    match *interaction {
+      Interaction::Clicked =>{
+        *background_color = PRESSED_BUTTON_COLOR.into();
+        app_state_next_state.set(AppState::NETWORK);
+      }
+      Interaction::Hovered =>{
+        *background_color = HOVERED_BUTTON_COLOR.into();
+      }
+      Interaction::None =>{
+        *background_color = NORMAL_BUTTON_COLOR.into();
+      }
+    }
+  }
+}
+
+//QUIT ACTION
 pub fn interact_with_quit_button(
   mut app_exit_event_writer:EventWriter<AppExit>,
   mut button_query:Query<

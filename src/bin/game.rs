@@ -13,29 +13,11 @@
 use bevy::{
   prelude::*, 
   winit::WinitSettings,
-  //tasks::IoTaskPool,
-  //utils::Duration
 };
 #[allow(dead_code)]
-use dhcraftrs::{
-  api::AppState, 
-  //core::{
-    //console::ConsoleCraftPlugin, 
-    //ui::create_player::CreatePlayerPlugin
-    //splashscreen::SplashScreenPlugin,
-  //}, 
-  plugins::DefaultCraftPlugin,
-};
+use dhcraftrs::plugins::DefaultCraftPlugin;
 
-//use dhcraftrs::test_print;
 //use bevy_inspector_egui::quick::WorldInspectorPlugin;
-
-//#[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
-//enum AppState{
-  //#[default]
-  //MainMenu,
-  //InGame,
-//}
 
 //#[derive(SystemSet, PartialEq, Eq, Clone, Hash, Debug)]
 //enum PhysicsSet{
@@ -46,7 +28,6 @@ use dhcraftrs::{
 fn main() {
   //test_print();
   App::new()
-    //.add_state::<AppState>()
     //.add_plugins(DefaultPlugins)
     //.add_plugin(WorldInspectorPlugin)
     // Only run the app when there is user input. This will significantly reduce CPU/GPU use.
@@ -58,48 +39,8 @@ fn main() {
       // override config here
       //..Default::default()
     //})
-    //.add_plugin(SplashScreenPlugin)
-    //.add_plugin(CreatePlayerPlugin)
     .run();
 }
-
-// set up a simple 3D scene
-/*
-fn setup_simple_scene(
-  mut commands: Commands,
-  mut meshes: ResMut<Assets<Mesh>>,
-  mut materials: ResMut<Assets<StandardMaterial>>,
-) {
-  // plane
-  commands.spawn(PbrBundle {
-    mesh: meshes.add(shape::Plane::from_size(5.0).into()),
-    material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
-    ..default()
-  });
-  // cube
-  commands.spawn(PbrBundle {
-    mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-    material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
-    transform: Transform::from_xyz(0.0, 0.5, 0.0),
-    ..default()
-  });
-  // light
-  commands.spawn(PointLightBundle {
-    point_light: PointLight {
-      intensity: 1500.0,
-      shadows_enabled: true,
-      ..default()
-    },
-    transform: Transform::from_xyz(4.0, 8.0, 4.0),
-    ..default()
-  });
-  // camera
-  commands.spawn(Camera3dBundle {
-    transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
-    ..default()
-  });
-}
-*/
 
 /*
 // The new, updated scene data will be saved here so that you can see the changes

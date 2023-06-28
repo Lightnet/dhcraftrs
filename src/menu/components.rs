@@ -8,13 +8,19 @@
 use bevy::prelude::Component;
 
 #[derive(Component)]
-pub struct MainMenu {}
+pub struct MainMenu;
 
 #[derive(Component)]
-pub struct NewButton {}
+pub struct NewButton;
 
 #[derive(Component)]
-pub struct PlayButton {}
+pub struct PlayButton;
 
 #[derive(Component)]
-pub struct QuitButton {}
+pub struct OnlineButton;
+
+#[derive(Component)]
+pub struct OptionsButton;
+
+#[derive(Component)]
+pub struct QuitButton;

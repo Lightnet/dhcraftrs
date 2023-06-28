@@ -8,7 +8,7 @@
 
 use bevy::prelude::*;
 
-use crate::core::ui::network_test::{
+use crate::core::ui::network::{
   components::*, 
   styles::*,
 };

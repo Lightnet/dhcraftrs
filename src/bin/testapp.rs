@@ -17,7 +17,7 @@ use bevy::{
 use dhcraftrs::{plugins::{
   Test02CraftPlugin, 
   Test03CraftPlugin, DefaultCraftPlugin,
-}, core::ui::{network_test::NetworkMenuPlugin}};
+}, core::ui::{network::NetworkMenuPlugin}};
 
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;

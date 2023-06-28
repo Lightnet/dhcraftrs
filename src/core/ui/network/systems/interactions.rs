@@ -9,7 +9,7 @@
 use bevy::prelude::*;
 
 use crate::api::AppState;
-use crate::core::ui::network_test::components::{HostNetworkButton, JoinNetworkButton};
+use crate::core::ui::network::components::{HostNetworkButton, JoinNetworkButton};
 //use crate::menu::components::*;
 use crate::menu::styles::{
   HOVERED_BUTTON_COLOR,
