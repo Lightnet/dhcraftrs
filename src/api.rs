@@ -27,6 +27,7 @@ pub enum AppState{
   //BootingApp,
   //StartScreen,
   //ErrorScreen,
+  OPTIONS,
   CREATEPLAYERNAME,
   NETWORK,
   SERVER,

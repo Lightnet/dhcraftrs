@@ -25,7 +25,6 @@ pub struct PlayerInfo{
   is_spawn:bool,
 }
 
-
 pub fn create_entity_player(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,

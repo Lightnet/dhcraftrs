@@ -9,6 +9,8 @@ use bevy::app::AppExit;
 use bevy::prelude::*;
 
 use crate::api::AppState;
+#[allow(unused_imports)]
+use crate::events::{PlayerXp, LevelUpEvent};
 use crate::menu::components::*;
 use crate::menu::styles::{
   HOVERED_BUTTON_COLOR,
@@ -95,12 +97,22 @@ pub fn interact_with_options_button(
     (Changed<Interaction>, With<OptionsButton>)
   >,
   mut app_state_next_state:ResMut<NextState<AppState>>,
+  //mut ev_levelup: EventWriter<LevelUpEvent>,
+  //query: Query<(Entity, &PlayerXp)>,
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     match *interaction {
       Interaction::Clicked =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
-        app_state_next_state.set(AppState::NETWORK);
+        println!("SELECT OPTIONS");
+        app_state_next_state.set(AppState::OPTIONS);
+        
+        //for (entity, xp) in query.iter() {
+          //if xp.0 > 1000 {
+            //ev_levelup.send(LevelUpEvent(entity));
+          //}
+        //}
+
       }
       Interaction::Hovered =>{
         *background_color = HOVERED_BUTTON_COLOR.into();

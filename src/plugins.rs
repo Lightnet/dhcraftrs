@@ -20,7 +20,7 @@ use crate::{
   core::{
     ui::{create_player::CreatePlayerPlugin, network::NetworkMenuPlugin}, 
     data::CraftBaseDataPlugin, world::prefab::WorldBasicPlugin
-  }, systems::spawn_camera3d
+  }, systems::spawn_camera3d, events::CraftEventPlugin
 };
 //lib craft
 #[allow(unused_imports)]
@@ -121,6 +121,8 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugin(CreatePlayerPlugin); // 
     app.add_plugin(WorldBasicPlugin); // 
     app.add_plugin(NetworkMenuPlugin); // 
+    app.add_plugin(CraftEventPlugin); // event testing...
+
 
     //check for state
     //app.add_startup_system(check_states); //

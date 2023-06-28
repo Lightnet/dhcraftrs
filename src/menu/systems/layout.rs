@@ -166,7 +166,7 @@ pub fn build_main_menu(
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
-      OnlineButton
+      OptionsButton
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{

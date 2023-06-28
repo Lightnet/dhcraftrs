@@ -23,7 +23,7 @@ pub mod assets;
 pub mod api;
 pub mod plugins;
 pub mod components;
-//use menu::*;
+pub mod events;
 
 // Test public function call
 pub fn test_print(){
