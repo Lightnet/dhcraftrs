@@ -12,6 +12,8 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
+use crate::api::NetworkState;
+#[allow(unused_imports)]
 use crate::{
   core::{
     ui::{create_player::CreatePlayerPlugin, network::NetworkMenuPlugin}, 
@@ -81,6 +83,9 @@ impl Plugin for LoadingAssetPlugin{
 pub struct BaseCraftPlugin;
 impl Plugin for BaseCraftPlugin{
   fn build(&self, app: &mut App){
+    app.add_state::<AppState>(); // state app
+    app.add_state::<CameraState>(); // state camera mode
+    app.add_state::<NetworkState>(); // state network mode
     app.add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
         //width: WIDTH,
@@ -94,10 +99,6 @@ impl Plugin for BaseCraftPlugin{
     }));
     app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_plugin(EguiPlugin); // menu 
-
-    app.add_state::<AppState>(); // state app
-    app.add_state::<CameraState>(); // state camera mode
-
     app.add_plugin(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
@@ -108,26 +109,33 @@ impl Plugin for BaseCraftPlugin{
 
     //app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
     //app.add_plugin(LoadingAssetUIPlugin); // ui loading
-    //app.add_plugin(LoadingAssetPlugin); // loading call
-    //app.add_plugin(MainMenuPlugin); // main menu
+    app.add_plugin(LoadingAssetPlugin); // loading call
+    app.add_plugin(MainMenuPlugin); // main menu
     //app.add_plugin(WaterMarkPlugin); // water mark //testing
     //app.add_plugin(CreatePlayerPlugin); // 
-    //app.add_plugin(WorldBasicPlugin); // 
+    app.add_plugin(WorldBasicPlugin); // simple scene test
     //app.add_plugin(NetworkMenuPlugin); // 
     //app.add_plugin(CraftEventPlugin); // event testing...
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
     
     app.add_plugin(CraftPlayerPlugin); // event testing...
+
+
   }
 }
 
 
+//===============================================
+// MAIN?
+//===============================================
 pub struct DefaultCraftPlugin;
 
 impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
   fn build(&self, app: &mut App){
     app.add_state::<AppState>(); // state app
+    app.add_state::<CameraState>(); // state camera mode
+    app.add_state::<NetworkState>(); // state network mode
     //app.add_plugin(EguiPlugin);// menu 
     app.add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
@@ -142,8 +150,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     }));
     app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_state::<AppState>(); // state app
-    app.add_state::<CameraState>(); // state camera mode
-
+    
     app.add_plugin(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
@@ -156,11 +163,11 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugin(LoadingAssetUIPlugin); // ui loading
     app.add_plugin(LoadingAssetPlugin); // loading call
     app.add_plugin(MainMenuPlugin); // main menu
-    app.add_plugin(WaterMarkPlugin); // water mark //testing
+    //app.add_plugin(WaterMarkPlugin); // water mark //testing
     app.add_plugin(CreatePlayerPlugin); // 
     app.add_plugin(WorldBasicPlugin); // 
-    app.add_plugin(NetworkMenuPlugin); // 
-    app.add_plugin(CraftEventPlugin); // event testing...
+    //app.add_plugin(NetworkMenuPlugin); // 
+    //app.add_plugin(CraftEventPlugin); // event testing...
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
     

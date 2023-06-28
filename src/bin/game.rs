@@ -27,11 +27,12 @@ use dhcraftrs::plugins::DefaultCraftPlugin;
 
 fn main() {
   //test_print();
+  println!("GAME APPLICATION");
   App::new()
     //.add_plugins(DefaultPlugins)
     //.add_plugin(WorldInspectorPlugin)
     // Only run the app when there is user input. This will significantly reduce CPU/GPU use.
-    .insert_resource(WinitSettings::desktop_app())
+    //.insert_resource(WinitSettings::desktop_app())//lag input?
     //.add_plugin(ConsolePlugin)
     .add_plugin(DefaultCraftPlugin)
     //.add_plugin(ConsoleCraftPlugin)

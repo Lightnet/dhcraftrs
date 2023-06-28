@@ -67,9 +67,4 @@ pub fn basic_scene_player_test(
     ..default()
   });
 
-
-
-
-
-
 }

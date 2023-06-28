@@ -35,13 +35,13 @@ pub fn spawn_camera3d(
 }
 
 pub fn use_my_assets(
-  mut commands: Commands,
+  mut _commands: Commands,
   _my_assets: Res<MyAssets>,
-  loading_asset_query:Query<Entity, With<LoadingAsset>>,
+  _loading_asset_query:Query<Entity, With<LoadingAsset>>,
 ) {
-  if let Ok(loading_asset_entity) = loading_asset_query.get_single(){
-    commands.entity(loading_asset_entity).despawn_recursive();
-  }
+  //if let Ok(loading_asset_entity) = loading_asset_query.get_single(){
+    //commands.entity(loading_asset_entity).despawn_recursive();
+  //}
   // do something using the asset handles from the resource
   //println!("LOADED ASSETS...")
 }

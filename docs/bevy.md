@@ -70,3 +70,24 @@ c:\Users\<username>\AppData\Roaming\username
  * 
  * 
  * 
+
+ # Entity: 
+  * https://bevy-cheatbook.github.io/programming/commands.html
+  * 
+
+```
+fn despawn_system<M: Component>(
+    mut commands: Commands, 
+    query: Query<Entity, With<M>>
+) {
+    query.for_each(|entity| {
+        commands.entity(entity).despawn();
+    });
+}
+```
+```
+app.add_system_set( 
+    SystemSet::on_exit(AppState::MenuUi) 
+    .with_system(despawn_system<MenUiMarker>) 
+);
+```

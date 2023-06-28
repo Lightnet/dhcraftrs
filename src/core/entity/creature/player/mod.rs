@@ -33,7 +33,7 @@ pub fn create_entity_player(
   mut materials: ResMut<Assets<StandardMaterial>>,
   asset_server: Res<AssetServer>,
 ){
-
+  /*
   commands.spawn((
     PbrBundle {
         mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
@@ -46,7 +46,7 @@ pub fn create_entity_player(
     },
     //PLAYERMOVABLE,
   ));
-
+  */
   // cube
   commands.spawn((
     PbrBundle {
@@ -61,7 +61,6 @@ pub fn create_entity_player(
     PLAYERMOVABLE,
   )).with_children(| parent | {
 
-    
     parent.spawn((
       Camera3dBundle {
         camera: Camera  { 
@@ -75,7 +74,6 @@ pub fn create_entity_player(
       PlayerCamera
     ));
     
-
   });
 
   // camera
@@ -180,8 +178,19 @@ pub struct CraftPlayerPlugin;
 impl Plugin for CraftPlayerPlugin{
 
   fn build(&self, app: &mut App){
-    //app.add_startup_system(create_entity_player);
-    //app.add_system(player_movement02); //
+
+    app.add_system(create_entity_player.in_schedule(OnEnter(AppState::InGame)));
+    app.add_system(player_movement02.in_set(OnUpdate(AppState::InGame)));
+
+    //app.add_startup_system(set_app_state_game);
+  }
+}
+
+pub struct CraftPlayerTestPlugin;
+
+impl Plugin for CraftPlayerTestPlugin{
+
+  fn build(&self, app: &mut App){
 
     app.add_system(create_entity_player.in_schedule(OnEnter(AppState::InGame)));
     app.add_system(player_movement02.in_set(OnUpdate(AppState::InGame)));
@@ -190,8 +199,11 @@ impl Plugin for CraftPlayerPlugin{
   }
 }
 
+#[allow(dead_code)]
 fn set_app_state_game(
   mut app_state_next_state:ResMut<NextState<AppState>>,
 ){
+  //app_state_next_state.set(AppState::InGame);
   app_state_next_state.set(AppState::InGame);
 }
+
