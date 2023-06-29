@@ -5,6 +5,8 @@
   Information: Note there are other licenses.
  */
 
+// for store in user local data
+
 use bevy::prelude::*;
 use bevy_pkv::PkvStore;
 

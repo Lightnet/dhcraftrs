@@ -58,6 +58,10 @@ path = "src/bin/testdata.rs"
 name = "testdataplayer"
 path = "src/bin/testdataplayer.rs"
 
+[[bin]]
+name = "physics3d"
+path = "src/bin/physics3d.rs"
+
 [dependencies]
 moonshine-save = {version = "0.2.3"}
 bevy = { version = "0.10.1", features = [
@@ -70,8 +74,8 @@ bevy = { version = "0.10.1", features = [
 ]}
 clap = { version = "4.1.10", features = ["derive"]}
 bevy_console = "0.7.0"
-#bevy_mod_picking = "0.13.0"
-#bevy_rapier3d = "0.21.0"
+bevy_mod_picking = "0.13.0"
+bevy_rapier3d = {version="0.21.0", features = [ "simd-stable", "debug-render-3d" ] }
 bevy-inspector-egui = "0.18.3"
 bevy_egui = "0.20"
 bevy_flycam = {version ="0.10"}
