@@ -135,9 +135,10 @@ src ( work in progress and subjec to change)
 # Run Tests:
 ```
 cargo run (testing)
-cargo run --bin game (testing)
+cargo run --bin game ( testing )
 cargo run --bin launcher ( testing )
-cargo run --bin testapp ( prototyping)
+cargo run --bin testapp ( prototyping )
+cargo run --bin physics3d ( prototyping )
 ```
 ## Network test:
 
