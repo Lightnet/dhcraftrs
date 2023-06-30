@@ -48,12 +48,20 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
 
 fn create_player(
   mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
 ){
   /* Create the ground. */
   commands
     .spawn(Collider::cuboid(100.0, 0.1, 100.0))
     .insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)));
 
+  //https://bevyengine.org/examples/3d/parenting/
+  let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));
+  let cube_material_handle = materials.add(StandardMaterial {
+    base_color: Color::rgb(0.8, 0.7, 0.6),
+    ..default()
+  });
   /* Create the bouncing ball. */
   /*
   commands
@@ -62,14 +70,77 @@ fn create_player(
     .insert(Restitution::coefficient(0.7))
     .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)));
   */
-  //player
+  /*
   commands
-    //.spawn(RigidBody::Dynamic)
-    .spawn(RigidBody::KinematicPositionBased)
+    .spawn(
+      PbrBundle {
+          mesh: cube_handle.clone(),
+          material: cube_material_handle.clone(),
+          transform: Transform::from_xyz(0.0, 0.0, 0.0),
+          ..default()
+        }
+    );
+    */
+  //player
+  //commands.spawn((1,2,3)); 3 max
+  commands
+    .spawn(
+    PbrBundle {
+        mesh: cube_handle.clone(),
+        material: cube_material_handle.clone(),
+        //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+        ..default()
+    })
     .insert(Collider::ball(0.5))
-    .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
     .insert(KinematicCharacterController::default())
+    .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)));
+  /*
+  commands
+    .spawn(
+      PbrBundle {
+          mesh: cube_handle.clone(),
+          material: cube_material_handle.clone(),
+          //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+          ..default()
+        }
+    ).with_children(|parent| {
+      parent.spawn((
+        Collider::ball(0.1),
+        KinematicCharacterController::default(),
+        TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0))
+      ));
+    })
     ;
+    */
+    
+
+
+  /*
+  commands
+  .spawn((
+    Collider::ball(0.5),
+    KinematicCharacterController::default(),
+    TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0))
+  ))
+    //.spawn(RigidBody::Dynamic)
+    //.spawn(Collider::ball(0.5))
+    //.spawn(RigidBody::KinematicPositionBased)
+    //.insert(Collider::ball(0.5))
+    
+    //.insert(KinematicCharacterController::default())
+    //.insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
+    .with_children(|parent| {
+      parent.spawn(
+        PbrBundle {
+          mesh: cube_handle.clone(),
+          material: cube_material_handle.clone(),
+          //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+          ..default()
+        }
+      );
+    })
+    ;
+    */
 }
 
 fn move_player_physics(
