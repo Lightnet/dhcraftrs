@@ -8,6 +8,7 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
         .add_plugin(CraftPhysics3DPlugin)
+        //.add_plugin(CraftPhysics3DPlugin)
         //.add_plugin(RapierPhysicsPlugin::<NoUserData>::default())
         //.add_plugin(RapierDebugRenderPlugin::default())
         //.add_startup_system(setup_graphics)

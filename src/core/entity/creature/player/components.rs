@@ -6,3 +6,9 @@
  */
 
 use bevy::prelude::*;
+
+#[derive(Component)]
+pub struct PLAYERMOVABLE;
+
+#[derive(Component)]
+pub struct PlayerCamera;

@@ -8,15 +8,14 @@
 use bevy::prelude::*;
 
 use crate::api::AppState;
+
+use self::components::{PLAYERMOVABLE, PlayerCamera};
+pub mod components;
 //use bevy::input::mouse::MouseMotion;
 
 //#[derive(Component)]
 //pub struct Movable;
 
-#[derive(Component)]
-pub struct PLAYERMOVABLE;
-#[derive(Component)]
-pub struct PlayerCamera;
 
 #[allow(dead_code)]
 pub struct PlayerInfo{

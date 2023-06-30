@@ -10,6 +10,8 @@ use bevy_rapier3d::prelude::*;
 
 use crate::api::AppState;
 
+use super::entity::creature::player::components::{PLAYERMOVABLE, PlayerCamera};
+
 pub struct CraftPhysics3DPlugin;
 
 impl Plugin for CraftPhysics3DPlugin{
@@ -37,15 +39,63 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
     app.add_plugin(RapierDebugRenderPlugin::default());
 
     //app.add_startup_system(create_player);
-    app.add_system(create_player.in_schedule(OnEnter(AppState::InGame)));
+
+
+    app.add_system(create_ground.in_schedule(OnEnter(AppState::InGame)));
+    app.add_system(create_player01.in_schedule(OnEnter(AppState::InGame)));
+
+
+    app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
+
+
+
+    //app.add_system(create_player.in_schedule(OnEnter(AppState::InGame)));
     //app.add_startup_system(create_player);
-    
-    app.add_system(move_player_physics.in_set(OnUpdate(AppState::InGame)));
-    app.add_system(read_result_system.in_set(OnUpdate(AppState::InGame)));
+    //app.add_system(move_player_physics.in_set(OnUpdate(AppState::InGame)));
+    //app.add_system(read_result_system.in_set(OnUpdate(AppState::InGame)));
 
   }
 }
 
+#[allow(dead_code)]
+fn create_ground(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+){
+  /* Create the ground. */
+  commands.spawn(PbrBundle {
+    mesh: meshes.add(shape::Plane::from_size(100.0).into()),
+    material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
+    ..default()
+  })
+    .insert(Collider::cuboid(100.0, 0.1, 100.0))
+    .insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)));
+
+  // cube
+  commands.spawn(PbrBundle {
+    mesh: meshes.add(Mesh::from(shape::Cube { size:1.0 })),
+    material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
+    transform: Transform::from_xyz(0.0, 0.0, 0.0),
+    ..default()
+  }).insert(Name::new("cube"));
+
+  // light
+  commands.spawn(PointLightBundle {
+    point_light: PointLight {
+        intensity: 1500.0,
+        shadows_enabled: true,
+        ..default()
+    },
+    transform: Transform::from_xyz(4.0, 8.0, 4.0),
+    ..default()
+  }).insert(Name::new("light"));
+
+}
+
+
+//test
+#[allow(dead_code)]
 fn create_player(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
@@ -112,8 +162,6 @@ fn create_player(
     })
     ;
     */
-    
-
 
   /*
   commands
@@ -143,6 +191,7 @@ fn create_player(
     */
 }
 
+#[allow(dead_code)]
 fn move_player_physics(
   mut controllers: Query<&mut KinematicCharacterController>
 ){
@@ -152,6 +201,71 @@ fn move_player_physics(
   }
 }
 
+#[allow(dead_code)]
+fn create_player01(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+){
+  let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));
+  let cube_material_handle = materials.add(StandardMaterial {
+    base_color: Color::rgb(0.8, 0.7, 0.6),
+    ..default()
+  });
+
+  //player entity set up
+  //mesh
+  //Collider
+  //KinematicCharacterController
+  //TransformBundle -> set up position
+
+  commands
+    .spawn(
+    PbrBundle {
+        mesh: cube_handle.clone(),
+        material: cube_material_handle.clone(),
+        //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+        ..default()
+    })
+    .insert(PLAYERMOVABLE)
+    .insert(Collider::ball(0.8))
+    .insert(KinematicCharacterController::default())
+    .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
+    .with_children(|parent|{
+      parent.spawn((
+        Camera3dBundle {
+          camera: Camera  { 
+            order:1,
+            //priority: 1 ,
+            ..default()
+          },
+        //transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+        transform: Transform::from_xyz(0.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+        ..Default::default()
+        },
+        PlayerCamera
+      ));
+    })
+    ;
+
+}
+
+#[allow(dead_code)]
+fn move_player_physics01(
+  input: Res<Input<KeyCode>>,
+  time: Res<Time>,
+  mut query: Query<&mut Transform, With<PLAYERMOVABLE>>,
+  mut controllers: Query<&mut KinematicCharacterController>,
+){
+
+  //controllers.get_single_mut();
+  for mut controller in controllers.iter_mut() {
+    //controller.translation = Some(Vec3::new(1.0, -0.5, 1.0));//too fast
+    controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
+  }
+}
+
+#[allow(dead_code)]
 fn read_result_system(controllers: Query<(Entity, &KinematicCharacterControllerOutput)>) {
   for (entity, output) in controllers.iter() {
       println!("Entity {:?} moved by {:?} and touches the ground: {:?}",
