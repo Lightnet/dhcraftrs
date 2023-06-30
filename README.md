@@ -140,6 +140,12 @@ cargo run --bin launcher ( testing )
 cargo run --bin testapp ( prototyping )
 cargo run --bin physics3d ( prototyping )
 ```
+
+# Controls:
+ * A,D = rotate camera
+ * W,S = direction movement
+ * mouse, click = interaction
+
 ## Network test:
 
 ```
