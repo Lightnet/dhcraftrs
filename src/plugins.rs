@@ -12,7 +12,7 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
-use crate::api::NetworkState;
+use crate::{api::NetworkState, core::physics::CraftPhysics3CharacterDPlugin};
 #[allow(unused_imports)]
 use crate::{
   core::{
@@ -119,7 +119,9 @@ impl Plugin for BaseCraftPlugin{
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
     
-    app.add_plugin(CraftPlayerPlugin); // event testing...
+    //app.add_plugin(CraftPlayerPlugin); // event testing...
+    app.add_plugin(CraftPhysics3CharacterDPlugin); // event testing...
+
 
 
   }
@@ -165,13 +167,15 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugin(MainMenuPlugin); // main menu
     //app.add_plugin(WaterMarkPlugin); // water mark //testing
     app.add_plugin(CreatePlayerPlugin); // 
-    app.add_plugin(WorldBasicPlugin); // 
+    //app.add_plugin(WorldBasicPlugin); // 
     //app.add_plugin(NetworkMenuPlugin); // 
     //app.add_plugin(CraftEventPlugin); // event testing...
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
     
-    app.add_plugin(CraftPlayerPlugin); // event testing...
+    //app.add_plugin(CraftPlayerPlugin); // event testing...
+
+    app.add_plugin(CraftPhysics3CharacterDPlugin); // event testing...
 
     //check for state
     //app.add_startup_system(check_states); //

@@ -8,6 +8,7 @@
 
 # Notes:
  * There might be incorrect set up for many plugins due to lagging for player movements.
+ * simple menu set up for next menu and load simple scene
 
 # Code Language:
  * Rust 1.69.0 ( https://www.rust-lang.org/ )
@@ -46,7 +47,7 @@
   To develop module components is not easy as every part is broke up to handle render and logics.
 
 # Bevy Engine:
-  If you learn from godot or unity engine they work simalar ways. As well javascript from react, solid and other frame work design. Module components that have common logic. Reason is simple to reduce loop and render by query filter components that are need in run time application to not waste cpu or gpu data.
+  If you learn from godot or unity engine they work simalar ways. As well javascript from react, solid and other frame work design. Module components that have common logic. Reason is simple to reduce loop and render by query filter components that are need in run time application to not waste cpu or gpu data and loop.
 
   It has basic or same logic like start up, mount, unmount, clean up and other simple logic.
 
@@ -80,7 +81,15 @@
 
 ```
   -bevy engine
-  --empty scene or entity
+  --state AppState
+  --state NetworkState
+  --resources PlayerInfo 
+  ---entities
+  --system (loop)
+  --startup (function one trigger for set up)
+  ---load player data
+  ---load assets?
+  ---load map?
 ```
 
 ```
