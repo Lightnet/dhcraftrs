@@ -64,13 +64,20 @@ fn create_ground(
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
   /* Create the ground. */
-  commands.spawn(PbrBundle {
-    mesh: meshes.add(shape::Plane::from_size(100.0).into()),
-    material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
-    ..default()
-  })
+  commands.spawn(
+    //NodeBundle{
+      //..default()
+    //}
+    PbrBundle {
+      mesh: meshes.add(shape::Plane::from_size(100.0).into()),
+      material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
+      transform: Transform::from_xyz(0.0, 0.0, 0.0),
+      ..default()
+    }
+  )
     .insert(Collider::cuboid(100.0, 0.1, 100.0))
-    .insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)));
+    .insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)))
+    ;
 
   // cube
   commands.spawn(PbrBundle {
@@ -259,10 +266,39 @@ fn move_player_physics01(
 ){
 
   //controllers.get_single_mut();
-  for mut controller in controllers.iter_mut() {
+  //for mut controller in controllers.iter_mut() {
     //controller.translation = Some(Vec3::new(1.0, -0.5, 1.0));//too fast
-    controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
+    //controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
+  //}
+
+  let mut controller = controllers.get_single_mut().unwrap();
+  //controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
+
+  let mut entity_transform = query.single_mut();
+  controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
+
+  if input.pressed(KeyCode::Up) {
+    let direction = entity_transform.forward();
+    controller.translation = Some(direction);
   }
+  if input.pressed(KeyCode::Down) {
+    let direction = entity_transform.back();
+    controller.translation = Some(direction);
+  }
+  if input.pressed(KeyCode::Left) {
+    entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+      0., 1.0 * 0.1, 0.)
+    );
+  }
+  if input.pressed(KeyCode::Right) {
+    entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+      0., 1.0 * -0.1, 0.)
+    );
+  }
+
+  
+  
+
 }
 
 #[allow(dead_code)]
