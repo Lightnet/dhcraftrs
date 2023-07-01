@@ -6,3 +6,4 @@
  */
 
 pub mod create_player;
+pub mod main;

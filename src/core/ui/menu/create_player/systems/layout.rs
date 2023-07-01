@@ -7,7 +7,13 @@
 
 use bevy::prelude::*;
 
-use crate::{core::ui::menu::create_player::components::{CREATEPLAYERNAME, PlayerNameText, CREATEPLAYERNAMEBUTTON}, menu::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, get_title_text_style, BUTTON_STYLE, NORMAL_BUTTON_COLOR, get_button_text_style}};
+use crate::{
+  core::ui::menu::{create_player::components::{
+    CREATEPLAYERNAME, 
+    PlayerNameText, 
+    CREATEPLAYERNAMEBUTTON
+  }, main::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, get_title_text_style, NORMAL_BUTTON_COLOR, BUTTON_STYLE, get_button_text_style}}
+};
 
 pub fn spawn_create_player_menu(
   mut commands: Commands,

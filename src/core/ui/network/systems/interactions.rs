@@ -5,17 +5,11 @@
   Information: Note there are other licenses.
  */
 
-//use bevy::app::AppExit;
 use bevy::prelude::*;
 
 use crate::core::api::AppState;
 use crate::core::ui::network::components::{HostNetworkButton, JoinNetworkButton};
-//use crate::menu::components::*;
-use crate::menu::styles::{
-  HOVERED_BUTTON_COLOR,
-  NORMAL_BUTTON_COLOR,
-  PRESSED_BUTTON_COLOR
-};
+use crate::core::ui::network::styles::*;
 
 pub fn interact_with_host_button(
   mut button_query:Query<

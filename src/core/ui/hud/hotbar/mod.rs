@@ -15,7 +15,7 @@ pub mod styles;
 
 use bevy::prelude::*;
 
-use crate::{core::{ui::hud::hotbar::systems::layout::{spawn_hud_hot_bars, despawn_hud_hot_bars}, api::AppState}};
+use crate::{core::{ui::hud::hotbar::systems::{layout::{spawn_hud_hot_bars, despawn_hud_hot_bars}, interactions::{interact_hot_bar_0_button, interact_hot_bar_1_button}}, api::AppState}};
 
 pub struct HUDHotBarPlugin;
 
@@ -35,6 +35,10 @@ impl Plugin for HUDHotBarPlugin {
       //).in_set(OnUpdate(AppState::MainMenu))
     //);
     //app.add_system(interact_with_quit_button.in_set(OnEnter));
+    app.add_system(
+        interact_hot_bar_0_button
+      .in_set(OnUpdate(AppState::InGame))
+    );
 
     app.add_system(despawn_hud_hot_bars.in_schedule(OnExit(AppState::InGame)));
   }

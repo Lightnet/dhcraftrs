@@ -7,7 +7,12 @@
 use bevy::prelude::*;
 use std::time::Duration;
 
-use crate::{core::ui::splashscreen::components::{SplashTime, SplashSpawnConfig}, menu::styles::{get_button_text_style, MAIN_MENU_STYLE}};
+use crate::{
+  core::{ui::{splashscreen::components::{
+    SplashTime,
+    SplashSpawnConfig
+  }, menu::main::styles::MAIN_MENU_STYLE}, styles::get_button_text_style}
+};
 
 pub fn splash_screen_time(//loop
   mut commands: Commands,

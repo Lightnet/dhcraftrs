@@ -8,17 +8,13 @@
 use bevy::prelude::*;
 
 use crate::{
-  menu::styles::{ 
-    NORMAL_BUTTON_COLOR, 
-    get_button_text_style
-  }, 
-  core::ui::hud::hotbar::{
+  core::{ui::hud::hotbar::{
     styles::{
       HOT_BAR_STYLE, 
-      ICON_HOT_BAR_STYLE
+      ICON_HOT_BAR_STYLE, NORMAL_ICON_BUTTON_COLOR
     }, 
     components::*
-  }
+  }, styles::get_button_text_style}
 };
 
 pub fn spawn_hud_hot_bars(
@@ -46,7 +42,7 @@ pub fn build_hot_bar(
     parent.spawn((
       ButtonBundle {
         style:ICON_HOT_BAR_STYLE,
-        background_color: NORMAL_BUTTON_COLOR.into(),
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
       HOTBAR0
@@ -72,7 +68,7 @@ pub fn build_hot_bar(
     parent.spawn((
       ButtonBundle {
         style:ICON_HOT_BAR_STYLE,
-        background_color: NORMAL_BUTTON_COLOR.into(),
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
       HOTBAR1

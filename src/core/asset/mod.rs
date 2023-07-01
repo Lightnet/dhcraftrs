@@ -56,7 +56,7 @@ pub fn use_my_assets(
     //commands.entity(loading_asset_entity).despawn_recursive();
   //}
   // do something using the asset handles from the resource
-  //println!("LOADED ASSETS...")
+  //println!("LOADED ASSETS...");
 }
 
 //pub fn use_my_assets(_my_assets: Res<MyAssets>) {

@@ -5,8 +5,12 @@
   Information: Note there are other licenses.
  */
 
-use bevy::{prelude::*, diagnostic::FrameTimeDiagnosticsPlugin, window::WindowResolution};
-use bevy_asset_loader::prelude::*;
+use bevy::{
+  prelude::*, 
+  diagnostic::FrameTimeDiagnosticsPlugin, 
+  window::WindowResolution
+};
+
 use bevy_egui::{
   //egui,
   //EguiContexts, 
@@ -14,8 +18,30 @@ use bevy_egui::{
 };
 use crate::{
   core::{
-    physics::CraftPhysics3CharacterDPlugin, ui::{menu::create_player::CreatePlayerPlugin, hud::hotbar::HUDHotBarPlugin, loading_asset::LoadingAssetUIPlugin}, api::{AppState, CameraState, NetworkState}, entity::{creature::player::{player_movement02, create_entity_player, player_movement01}, prefab::set_up_test}, asset::LoadingAssetPlugin
-  }, systems::{load_gltf_test01}, menu::MainMenuPlugin
+    physics::CraftPhysics3CharacterDPlugin, 
+    ui::{
+      menu::{create_player::CreatePlayerPlugin, main::MainMenuPlugin}, 
+      hud::hotbar::HUDHotBarPlugin, 
+      loading_asset::LoadingAssetUIPlugin
+    }, 
+    api::{
+      AppState, 
+      CameraState, 
+      NetworkState
+    }, 
+    entity::{
+      creature::player::{
+        player_movement02, 
+        create_entity_player, 
+        player_movement01
+      }, 
+      prefab::set_up_test
+    }, 
+    asset::LoadingAssetPlugin
+    }, 
+  systems::{
+    load_gltf_test01
+  }
 };
 #[allow(unused_imports)]
 use crate::{

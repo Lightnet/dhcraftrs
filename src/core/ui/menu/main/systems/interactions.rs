@@ -8,13 +8,11 @@
 use bevy::app::AppExit;
 use bevy::prelude::*;
 
-#[allow(unused_imports)]
-use crate::menu::components::*;
-use crate::{menu::styles::{
-  HOVERED_BUTTON_COLOR,
-  NORMAL_BUTTON_COLOR,
-  PRESSED_BUTTON_COLOR
-}, core::api::AppState};
+use crate::core::api::AppState;
+use crate::core::ui::menu::main::components::*;
+use crate::core::ui::menu::main::styles::*;
+
+//#[allow(unused_imports)]
 
 // NEW, CREATE PLAYER
 pub fn interact_with_new_button(

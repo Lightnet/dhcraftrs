@@ -7,10 +7,9 @@
 
 use bevy::prelude::*;
 
-//use crate::menu::components::{MainMenu, PlayButton};
-use crate::menu::{
+use crate::core::ui::menu::main::{
   components::*, 
-  styles::*,
+  styles::*
 };
 
 pub fn spawn_main_menu(

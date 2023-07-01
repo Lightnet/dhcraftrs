@@ -7,6 +7,10 @@
 
 use bevy::prelude::*;
 
+pub const NORMAL_ICON_BUTTON_COLOR:Color = Color::rgb(0.15, 0.15, 0.15);
+pub const HOVERED_ICON_BUTTON_COLOR:Color = Color::rgb(0.25, 0.25, 0.25);
+pub const PRESSED_ICON_BUTTON_COLOR:Color = Color::rgb(0.35, 0.75, 0.35);
+
 pub const HOT_BAR_STYLE:Style = Style {
   position_type: PositionType::Absolute,
   position: UiRect {

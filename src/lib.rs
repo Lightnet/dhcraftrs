@@ -17,7 +17,6 @@
 
 //public for library access to bin 
 pub mod core;
-pub mod menu;
 pub mod systems;
 pub mod plugins;
 

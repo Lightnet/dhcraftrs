@@ -8,13 +8,8 @@
 use bevy::prelude::*;
 
 use crate::{
-  core::ui::loading_asset::components::LoadingAsset, 
-  menu::styles::{
-    MAIN_MENU_STYLE, 
-    TITLE_STYLE, 
-    IMAGE_STYLE, 
-    get_title_text_style
-  }
+  core::ui::{loading_asset::components::LoadingAsset, 
+  menu::main::styles::*}
 };
 
 pub fn spawn_loading_asset_menu(
