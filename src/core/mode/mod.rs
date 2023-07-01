@@ -5,6 +5,9 @@
   Information: Note there are other licenses.
  */
 
+// Game Modes
+// need to set up correct logic
+
 pub mod base;
 pub mod creative;
 pub mod dungeon;

@@ -5,10 +5,6 @@
   Information: Note there are other licenses.
  */
 
-//===============================================
-//
-//===============================================
-
 use bevy::prelude::*;
 
 pub const WATER_MARK_STYLE:Style = Style {

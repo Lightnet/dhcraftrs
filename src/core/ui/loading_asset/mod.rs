@@ -4,12 +4,10 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+
 pub mod components;
 pub mod systems;
-use bevy::{
-  prelude::*,
-  //window::PrimaryWindow
-};
+use bevy::prelude::*;
 
 use crate::{
   core::{ui::loading_asset::systems::layout::{

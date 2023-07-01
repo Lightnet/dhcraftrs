@@ -5,7 +5,15 @@
   Information: Note there are other licenses.
  */
 
-// for store in user local data
+/*
+  Information:
+    For store in user local data.
+
+    To able to save data in user folder default not in current application?
+
+    
+ 
+ */
 
 use bevy::prelude::*;
 use bevy_pkv::PkvStore;

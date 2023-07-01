@@ -4,7 +4,13 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
-
+/*
+  Information:
+    The use for cheat, testing and debug?
+    Admin for network console commands.
+    * spawn item
+    * teleport?
+ */
 use bevy::prelude::*;
 
 use clap::Parser;

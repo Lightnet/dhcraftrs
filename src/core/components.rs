@@ -17,7 +17,6 @@ pub struct PlayerInfo {
   pub idhash:String,
 }
 
-
 #[allow(dead_code)]
 #[derive(Component, Debug)]
 pub struct Player {

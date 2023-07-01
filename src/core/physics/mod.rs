@@ -4,7 +4,9 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+
 // https://rapier.rs/docs/user_guides/bevy_plugin/getting_started_bevy/
+
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
 

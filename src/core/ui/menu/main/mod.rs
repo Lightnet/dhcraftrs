@@ -28,8 +28,7 @@ pub struct MainMenuPlugin;
 
 impl Plugin for MainMenuPlugin {
   fn build(&self, app: &mut App){
-    //app.add_startup_system(main_menu);
-    println!("init main menu! plug in!");
+    //println!("init main menu! plug in!");
 
     app.add_system(spawn_main_menu.in_schedule(OnEnter(AppState::MainMenu)));
     app.add_systems(
@@ -41,9 +40,6 @@ impl Plugin for MainMenuPlugin {
         interact_with_options_button
       ).in_set(OnUpdate(AppState::MainMenu))
     );
-    //app.add_system(
-      //interact_with_quit_button.in_set(OnEnter)
-    //);
 
     app.add_system(despawn_main_menu.in_schedule(OnExit(AppState::MainMenu)));
   }

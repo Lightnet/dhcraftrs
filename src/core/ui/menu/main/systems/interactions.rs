@@ -12,8 +12,6 @@ use crate::core::api::AppState;
 use crate::core::ui::menu::main::components::*;
 use crate::core::ui::menu::main::styles::*;
 
-//#[allow(unused_imports)]
-
 // NEW, CREATE PLAYER
 pub fn interact_with_new_button(
   mut button_query:Query<

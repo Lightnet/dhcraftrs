@@ -4,10 +4,10 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
-
-//===============================================
-//
-//===============================================
+/*
+  Information:
+    Just for prototype to add watermark in case of stolen content that not made by the user.
+ */
 // https://bevy-cheatbook.github.io/features/time.html
 
 mod components;

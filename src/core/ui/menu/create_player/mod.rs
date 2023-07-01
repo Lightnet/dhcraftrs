@@ -34,26 +34,3 @@ impl Plugin for CreatePlayerPlugin {
     app.add_system(interact_button_create_player.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
   }
 }
-
-/*
-fn create_player_text_input(
-  mut evr_char: EventReader<ReceivedCharacter>,
-  kbd: Res<Input<KeyCode>>,
-  mut string: Local<String>,
-) {
-  if kbd.just_pressed(KeyCode::Return) {
-    println!("Text input: {}", &*string);
-    string.clear();
-  }
-  if kbd.just_pressed(KeyCode::Back) {
-    string.pop();
-  }
-  for ev in evr_char.iter() {
-    // ignore control (special) characters
-    if !ev.char.is_control() {
-      string.push(ev.char);
-      println!("CHAR: {}",ev.char);
-    }
-  }
-}
-*/

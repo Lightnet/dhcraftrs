@@ -4,6 +4,7 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+
 use bevy::prelude::*;
 use std::time::Duration;
 

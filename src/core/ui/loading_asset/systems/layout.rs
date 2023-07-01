@@ -40,7 +40,7 @@ pub fn build_loading_asset_menu(
       //background_color: Color::RED.into(),
       ..default()
     },
-    LoadingAsset {},
+    LoadingAsset,
     )
   ).with_children(|parent |{
     //title

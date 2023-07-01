@@ -4,10 +4,24 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+
+/*
+  Information:
+    Idea design to handle scene and entity when scene chnages.
+  * game mode set up
+  * scene load
+  * load map
+  * load player
+  * scene clean up
+  * quest
+  * save and load
+  * 
+  
+
+ */
+
 // https://bevy-cheatbook.github.io/patterns/manual-event-clear.html
 // https://bevy-cheatbook.github.io/programming/events.
-
-// Testing...
 
 use bevy::prelude::*;
 

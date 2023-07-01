@@ -4,10 +4,13 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+/*
+  Information:
+    Need to preload assets. For easy access as keep the loading reduce some degree.
 
-//===============================================
-// Assets for interal use ?
-//===============================================
+    Assets for interal use ?
+
+ */
 
 use bevy::prelude::*;
 use bevy_asset_loader::prelude::*;
