@@ -257,7 +257,7 @@ fn create_player01(
 
 }
 
-#[allow(dead_code)]
+#[allow(dead_code, unused_variables)]
 fn move_player_physics01(
   input: Res<Input<KeyCode>>,
   time: Res<Time>,

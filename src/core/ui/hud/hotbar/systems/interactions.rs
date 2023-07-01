@@ -31,7 +31,7 @@ pub fn interact_hot_bar_0_button(
     }
   }
 }
-
+#[allow( unused_variables, unused_mut)]
 pub fn interact_hot_bar_1_button(
   mut button_query:Query<
     (&Interaction, &mut BackgroundColor),
