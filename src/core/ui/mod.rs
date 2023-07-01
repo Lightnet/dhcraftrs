@@ -16,3 +16,4 @@ pub mod loading_asset;
 pub mod create_player;
 pub mod watermark;
 pub mod splashscreen;
+pub mod hud_hotbar;

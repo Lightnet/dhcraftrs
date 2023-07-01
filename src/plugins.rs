@@ -12,7 +12,7 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
-use crate::{api::NetworkState, core::physics::CraftPhysics3CharacterDPlugin};
+use crate::{api::NetworkState, core::{physics::CraftPhysics3CharacterDPlugin, ui::hud_hotbar::HUDHotBarPlugin}};
 #[allow(unused_imports)]
 use crate::{
   core::{
@@ -175,6 +175,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     
     //app.add_plugin(CraftPlayerPlugin); // event testing...
 
+    app.add_plugin(HUDHotBarPlugin); // event testing...
     app.add_plugin(CraftPhysics3CharacterDPlugin); // event testing...
 
     //check for state

@@ -15,7 +15,7 @@ use crate::menu::{
 
 pub fn spawn_main_menu(
   mut commands: Commands,
-  asset_server:Res<AssetServer>
+  asset_server:Res<AssetServer>,
 ){
   let _main_menu_entity = build_main_menu(&mut commands, &asset_server);
 }
