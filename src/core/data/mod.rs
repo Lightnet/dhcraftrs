@@ -10,7 +10,7 @@
 use bevy::prelude::*;
 use bevy_pkv::PkvStore;
 
-use crate::components::PlayerInfo;
+use super::components::PlayerInfo;
 
 pub struct CraftBaseDataPlugin;
 

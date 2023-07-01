@@ -16,7 +16,8 @@ mod systems;
 
 //use std::time::Duration;
 use bevy::prelude::*;
-use crate::api::AppState;
+
+use crate::core::api::AppState;
 
 use self::systems::layout::spawn_water_mark;
 use self::systems::layout::despawn_water_mark;

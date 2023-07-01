@@ -12,73 +12,28 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
-use crate::{api::NetworkState, core::{physics::CraftPhysics3CharacterDPlugin, ui::hud_hotbar::HUDHotBarPlugin}};
+use crate::{
+  core::{
+    physics::CraftPhysics3CharacterDPlugin, ui::{menu::create_player::CreatePlayerPlugin, hud::hotbar::HUDHotBarPlugin, loading_asset::LoadingAssetUIPlugin}, api::{AppState, CameraState, NetworkState}, entity::{creature::player::{player_movement02, create_entity_player, player_movement01}, prefab::set_up_test}, asset::LoadingAssetPlugin
+  }, systems::{load_gltf_test01}, menu::MainMenuPlugin
+};
 #[allow(unused_imports)]
 use crate::{
   core::{
-    ui::{create_player::CreatePlayerPlugin, network::NetworkMenuPlugin}, 
-    data::CraftBaseDataPlugin, world::prefab::WorldBasicPlugin, entity::creature::player::CraftPlayerPlugin
-  }, systems::spawn_camera3d, events::CraftEventPlugin
+    ui::{
+      network::NetworkMenuPlugin
+    }, 
+    data::CraftBaseDataPlugin, 
+    world::prefab::WorldBasicPlugin, 
+    entity::creature::player::CraftPlayerPlugin
+  }, 
+  systems::spawn_camera3d,
 };
 //lib craft
 #[allow(unused_imports)]
-use crate::{
-  api::{
-    AppState,
-    CameraState
-  }, 
-  systems::{
-    spawn_camera2d,
-    check_camera_state,
-    use_my_assets,
-    load_gltf_test01,
-    //spawn_camera3d,
-  },
-  assets::MyAssets, 
-  menu::MainMenuPlugin, 
-  core::{
-    ui::{
-      editor::systems::layout::ui_example_system, 
-      loading_asset::LoadingAssetUIPlugin, 
-      watermark::WaterMarkPlugin, splashscreen::SplashScreenPlugin
-    }, 
-    entity::{
-      prefab::{
-        //build_cube, 
-        set_up_test
-      }, 
-    creature::player::{
-      //player_movement, 
-      create_entity_player, 
-      player_movement01, 
-      player_movement02
-    }
-  }, 
-}
-};
 
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;
-pub struct LoadingAssetPlugin;
-
-impl Plugin for LoadingAssetPlugin{
-  fn build(&self, app: &mut App){
-    //println!("init loading assets! plug in!");
-    //app.add_startup_system(spawn_camera2d);//need this for bevy ui to render
-    //loading assets state
-    app.add_loading_state(
-      LoadingState::new(AppState::AssetLoading)
-        .continue_to_state(AppState::MainMenu)
-        //.on_failure_continue_to_state(next)
-        //.continue_to_state(AppState::AssetLoading)//test
-    );
-    //loading assets
-    app.add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading);
-    //assets do something
-    app.add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)));
-    
-  }
-}
 
 pub struct BaseCraftPlugin;
 impl Plugin for BaseCraftPlugin{
@@ -206,14 +161,14 @@ impl Plugin for Test01CraftPlugin{
     //assets do something
     //app.add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)));
     //check for state
-    app.add_startup_system(check_camera_state); //
+    //app.add_startup_system(check_camera_state); //
 
     app.add_startup_system(check_app_states); //
 
     app.add_startup_system(set_up_test);
     app.add_startup_system(load_gltf_test01);
     //test
-    app.add_system(ui_example_system);
+    //app.add_system(ui_example_system);
   }
 }
 
@@ -251,7 +206,7 @@ impl Plugin for Test02CraftPlugin{
     app.add_system(player_movement01); //
     
     //test
-    app.add_system(ui_example_system);
+    //app.add_system(ui_example_system);
   }
 }
 
@@ -273,7 +228,7 @@ impl Plugin for Test03CraftPlugin{
     app.add_system(player_movement02); //
     
     //test
-    app.add_system(ui_example_system);
+    //app.add_system(ui_example_system);
   }
 }
 
@@ -302,6 +257,6 @@ impl Plugin for LoadingCraftPlayerPlugin{
     //app.add_system(player_movement02); //
     
     //test
-    app.add_system(ui_example_system);
+    //app.add_system(ui_example_system);
   }
 }

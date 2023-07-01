@@ -16,14 +16,13 @@ use bevy::prelude::*;
 
 use self::systems::layout::{spawn_main_menu, despawn_main_menu};
 use crate::{
-  api::AppState, 
   menu::systems::interactions::{
     interact_with_play_button,
     interact_with_quit_button, 
     interact_with_new_button,
     interact_with_online_button, 
     interact_with_options_button,
-  }
+  }, core::api::AppState
 };
 
 pub struct MainMenuPlugin;

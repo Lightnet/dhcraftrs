@@ -15,7 +15,7 @@ pub mod styles;
 
 use bevy::prelude::*;
 
-use crate::{core::ui::hud_hotbar::systems::layout::{spawn_hud_hot_bars, despawn_hud_hot_bars}, api::AppState};
+use crate::{core::{ui::hud::hotbar::systems::layout::{spawn_hud_hot_bars, despawn_hud_hot_bars}, api::AppState}};
 
 pub struct HUDHotBarPlugin;
 

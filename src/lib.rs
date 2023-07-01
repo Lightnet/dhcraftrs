@@ -19,11 +19,7 @@
 pub mod core;
 pub mod menu;
 pub mod systems;
-pub mod assets;
-pub mod api;
 pub mod plugins;
-pub mod components;
-pub mod events;
 
 // Test public function call
 pub fn test_print(){

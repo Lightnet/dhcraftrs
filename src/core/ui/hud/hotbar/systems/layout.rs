@@ -7,7 +7,19 @@
 
 use bevy::prelude::*;
 
-use crate::{menu::styles::{ BUTTON_STYLE, NORMAL_BUTTON_COLOR, get_button_text_style}, core::ui::hud_hotbar::{components::{HOTBAR, HOTBAR0, HOTBAR1}, styles::{HOT_BAR_STYLE, ICON_HOT_BAR_STYLE}}};
+use crate::{
+  menu::styles::{ 
+    NORMAL_BUTTON_COLOR, 
+    get_button_text_style
+  }, 
+  core::ui::hud::hotbar::{
+    styles::{
+      HOT_BAR_STYLE, 
+      ICON_HOT_BAR_STYLE
+    }, 
+    components::*
+  }
+};
 
 pub fn spawn_hud_hot_bars(
   mut commands: Commands,

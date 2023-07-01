@@ -8,9 +8,7 @@
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
 
-use crate::api::AppState;
-
-use super::entity::creature::player::components::{PLAYERMOVABLE, PlayerCamera};
+use super::{entity::creature::player::components::{PLAYERMOVABLE, PlayerCamera}, api::AppState};
 
 pub struct CraftPhysics3DPlugin;
 

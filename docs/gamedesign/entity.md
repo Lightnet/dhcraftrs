@@ -1,7 +1,7 @@
 # Entity:
  * Player
-   * Controller ( )
-   * Model ( )
+   * Controller ( added )
+   * Model ( added )
    * Animation ( )
    * equipements ( )
    * weapon ( )

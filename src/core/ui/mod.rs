@@ -13,7 +13,6 @@ pub mod editor;
 pub mod hud;
 pub mod network;
 pub mod loading_asset;
-pub mod create_player;
 pub mod watermark;
 pub mod splashscreen;
-pub mod hud_hotbar;
+pub mod menu;

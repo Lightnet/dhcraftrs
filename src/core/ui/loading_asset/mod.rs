@@ -12,11 +12,10 @@ use bevy::{
 };
 
 use crate::{
-  api::AppState,
-  core::ui::loading_asset::systems::layout::{
+  core::{ui::loading_asset::systems::layout::{
     despawn_loading_asset_menu,
     spawn_loading_asset_menu
-  }
+  }, api::AppState}
 };
 
 pub struct LoadingAssetUIPlugin;

@@ -1,30 +1,24 @@
-
 /*
   Project Name: dhcraftrs
   License: CC BY-SA
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+
+// https://github.com/bevyengine/bevy/blob/main/examples/ecs/ecs_guide.rs
 use bevy::prelude::*;
 use bevy_pkv::PkvStore;
 
-//use bevy::diagnostic::{
-  //Diagnostics, 
-  //FrameTimeDiagnosticsPlugin
-//};
-
-// https://github.com/bevyengine/bevy/blob/main/examples/ecs/ecs_guide.rs
- 
-use crate::api::AppState;
-use crate::components::PlayerInfo;
-use crate::core::ui::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText};
+use crate::core::api::AppState;
+use crate::core::components::PlayerInfo;
+use crate::core::ui::menu::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText};
 use crate::menu::styles::{
   HOVERED_BUTTON_COLOR,
   NORMAL_BUTTON_COLOR,
   PRESSED_BUTTON_COLOR
 };
  
-pub fn interact_with_new_button(
+pub fn interact_button_create_player(
   mut button_query:Query<
     (&Interaction, &mut BackgroundColor),
     (Changed<Interaction>, With<CREATEPLAYERNAMEBUTTON>)
@@ -34,6 +28,7 @@ pub fn interact_with_new_button(
   mut pkv: ResMut<PkvStore>,
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
+    println!("new button player create");
     match *interaction {
       Interaction::Clicked =>{
         *background_color = PRESSED_BUTTON_COLOR.into();

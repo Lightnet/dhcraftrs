@@ -7,7 +7,7 @@
  */
 use bevy::prelude::*;
 
-use crate::api::AppState;
+use crate::core::api::AppState;
 
 use self::components::{PLAYERMOVABLE, PlayerCamera};
 pub mod components;

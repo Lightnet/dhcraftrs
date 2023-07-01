@@ -7,10 +7,7 @@
 
 use bevy::prelude::*;
 
-use crate::{menu::{
-  //components::*,
-  styles::*,
-}, core::ui::create_player::components::{CREATEPLAYERNAME, CREATEPLAYERNAMEBUTTON, PlayerNameText}};
+use crate::{core::ui::menu::create_player::components::{CREATEPLAYERNAME, PlayerNameText, CREATEPLAYERNAMEBUTTON}, menu::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, get_title_text_style, BUTTON_STYLE, NORMAL_BUTTON_COLOR, get_button_text_style}};
 
 pub fn spawn_create_player_menu(
   mut commands: Commands,
@@ -38,7 +35,7 @@ pub fn build_create_player_menu(
       //background_color: Color::RED.into(),
       ..default()
     },
-    CREATEPLAYERNAME {},
+    CREATEPLAYERNAME,
     )
   ).with_children(|parent |{
     //title
@@ -74,14 +71,14 @@ pub fn build_create_player_menu(
       ));
     });
 
-    //new
+    //Create Player Name
     parent.spawn((
       ButtonBundle {
         style:BUTTON_STYLE,
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
-      CREATEPLAYERNAMEBUTTON {}
+      CREATEPLAYERNAMEBUTTON
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{

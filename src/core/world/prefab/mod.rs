@@ -8,10 +8,9 @@
 pub mod base;
 use bevy::prelude::*;
 
-use crate::api::AppState;
+use crate::core::api::AppState;
 
 use self::base::basic_scene_test;
-
 
 pub struct WorldBasicPlugin;
 

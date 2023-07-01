@@ -5,5 +5,6 @@
   Information: Note there are other licenses.
  */
 
-pub mod interactions;
-pub mod layout;
+// npc message
+
+use bevy::prelude::*;

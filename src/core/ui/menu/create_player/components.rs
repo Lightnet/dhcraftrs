@@ -8,10 +8,10 @@
  use bevy::prelude::Component;
 
 #[derive(Component)]
-pub struct CREATEPLAYERNAME {}
+pub struct CREATEPLAYERNAME;
 
 #[derive(Component)]
-pub struct CREATEPLAYERNAMEBUTTON {}
+pub struct CREATEPLAYERNAMEBUTTON;
 
 // https://bevyengine.org/examples/ui/text/
 // A unit struct to help identify the color-changing Text component

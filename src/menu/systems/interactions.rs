@@ -8,15 +8,13 @@
 use bevy::app::AppExit;
 use bevy::prelude::*;
 
-use crate::api::AppState;
 #[allow(unused_imports)]
-use crate::events::{PlayerXp, LevelUpEvent};
 use crate::menu::components::*;
-use crate::menu::styles::{
+use crate::{menu::styles::{
   HOVERED_BUTTON_COLOR,
   NORMAL_BUTTON_COLOR,
   PRESSED_BUTTON_COLOR
-};
+}, core::api::AppState};
 
 // NEW, CREATE PLAYER
 pub fn interact_with_new_button(

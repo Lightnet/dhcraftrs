@@ -13,8 +13,7 @@ use bevy::prelude::*;
  
 //use self::systems::layout::{spawn_menu, despawn_menu};
 use crate::{
-  api::AppState, 
-  core::ui::network::systems::{
+  core::{ui::network::systems::{
     layout::{
       spawn_network_menu, 
       despawn_network_menu
@@ -22,7 +21,7 @@ use crate::{
       interact_with_host_button, 
       interact_with_join_button
     }
-  }
+  }, api::AppState}
 };
  
 pub struct NetworkMenuPlugin;

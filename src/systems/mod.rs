@@ -9,9 +9,7 @@
 use bevy::prelude::*;
 use bevy::window::PrimaryWindow;
 
-use crate::api::CameraState;
-use crate::assets::MyAssets;
-use crate::core::ui::loading_asset::components::LoadingAsset;
+use crate::core::api::CameraState;
 
 pub fn spawn_camera2d(mut commands: Commands, window_query: Query<&Window, With<PrimaryWindow>>) {
   let window = window_query.get_single().unwrap();
@@ -33,18 +31,6 @@ pub fn spawn_camera3d(
       transform: Transform::from_xyz(-4.0, 5.0, 10.0).looking_at(Vec3::ZERO, Vec3::Y),
       ..default()
   });
-}
-
-pub fn use_my_assets(
-  mut _commands: Commands,
-  _my_assets: Res<MyAssets>,
-  _loading_asset_query:Query<Entity, With<LoadingAsset>>,
-) {
-  //if let Ok(loading_asset_entity) = loading_asset_query.get_single(){
-    //commands.entity(loading_asset_entity).despawn_recursive();
-  //}
-  // do something using the asset handles from the resource
-  //println!("LOADED ASSETS...")
 }
 
 pub fn check_camera_state(

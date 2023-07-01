@@ -8,7 +8,7 @@
 //use bevy::app::AppExit;
 use bevy::prelude::*;
 
-use crate::api::AppState;
+use crate::core::api::AppState;
 use crate::core::ui::network::components::{HostNetworkButton, JoinNetworkButton};
 //use crate::menu::components::*;
 use crate::menu::styles::{
