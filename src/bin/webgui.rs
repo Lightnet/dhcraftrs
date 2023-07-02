@@ -13,7 +13,7 @@ fn main()-> Result<(), eframe::Error >{
   };
   //println!("init egui");
   eframe::run_native(
-      "Tool Launcher",
+      "Tool Web REST Test",
       options,
       Box::new(|_cc| Box::new(MyApp::default())),
   )//return result need to remove error
@@ -79,52 +79,59 @@ impl eframe::App for MyApp {
         });
         ui.horizontal(|ui| {
           //ui.
-          if ui.button("Check").clicked() {
-              println!("Hello")
-          }
-          if ui.button("Repair").clicked() {
-              
-          }
-          if ui.button("Start").clicked() {
-              
-          }
-          if ui.button("+").clicked() {
-            self.progress += 10.0;
-          }
-
-          if ui.button("-").clicked() {
-            self.progress -= 10.0;
-          }
-
-          if ui.button("http request").clicked() {
+          //if ui.button("Check").clicked() {
+            //println!("Hello")
+          //}
+          //if ui.button("Repair").clicked() {
+          //}
+          //if ui.button("Start").clicked() { 
+          //}
+          //if ui.button("+").clicked() {
+            //self.progress += 10.0;
+          //}
+          //if ui.button("-").clicked() {
             //self.progress -= 10.0;
-            // https://docs.rs/reqwest/0.10.1/reqwest/blocking/index.html
-            //let body = reqwest::get("https://www.rust-lang.org")
-              //.await?
-              //.text()
-              //.await?;
+          //}
 
-            //println!("body = {:?}", body);
-
-            //let resp = reqwest::blocking::get("https://httpbin.org/ip")?
-              //.json::<HashMap<String, String>>()?;
-            //println!("{:#?}", resp);
-
+          if ui.button("http request echo").clicked() {
+            //self.progress -= 10.0;
+            // https://stackoverflow.com/questions/71165876/rust-json-method-not-found-in-resultreqwestblockingresponse-reqwester
             //works
             //let body = reqwest::blocking::get("https://www.rust-lang.org").unwrap().text().unwrap();
-            let body = reqwest::blocking::get("http://localhost:3000/api/bevy/echo").unwrap().text().unwrap();
-            println!("body = {:?}", body);
-            MyApp::test();
+            //let body = reqwest::blocking::get("http://localhost:3000/api/bevy/echo").unwrap().text().unwrap();
 
+            //let body = reqwest::blocking::get("http://localhost:3000/api/bevy/echo").unwrap().text().unwrap_or("none".to_string());
+
+            //let body = reqwest::blocking::get("http://localhost:3000/api/bevy/echo").unwrap().text().unwrap();
+            //println!("body = {:?}", body);
+
+            let response = match reqwest::blocking::get("http://localhost:3000/api/bevy/echo") {
+              // Unwraps the response value from the Result
+              Ok(r) => r,
+          
+              // Unwraps the error from the Result and terminates main()
+              Err(err) => {
+                println!("Request failed: {}", err.to_string());
+                return;
+              },
+            };
+
+            if response.status().is_success() {
+              println!("PASS!");
+            }else{
+              println!("FAIL!"); //nope
+            }
+
+            //MyApp::test();
           }
 
-          if ui.button("test").clicked() {
-            MyApp::test();
-          }
+          //if ui.button("test").clicked() {
+            //MyApp::test();
+          //}
 
-          if ui.button("test2").clicked() {
-            self.test02();
-          }
+          //if ui.button("test2").clicked() {
+            //self.test02();
+          //}
         });
         //ui.add(egui::Slider::new(&mut self.age, 0..=120).text("age"));
         //if ui.button("Click each year").clicked() {
