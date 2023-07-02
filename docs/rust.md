@@ -36,3 +36,10 @@ let body = reqwest::blocking::get("https://www.rust-lang.org")?
 let body = reqwest::blocking::get("https://www.rust-lang.org").unwrap().text().unwrap();
 println!("body = {:?}", body);
 ```
+# Window:
+ * https://stackoverflow.com/questions/30291757/attaching-an-icon-resource-to-a-rust-application
+ * https://stackoverflow.com/questions/75038925/how-to-link-an-icon-to-a-rust-windows-application
+ * 
+ * 
+ * 
+ * 

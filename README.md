@@ -7,11 +7,12 @@
 # Created By: Lightnet
 
 # Notes:
- * There might be incorrect set up for many plugins due to lagging for player movements.
+ * Work in progress build and subject to change.
  * simple menu set up for next menu and load simple scene
+ * 
 
 # Code Language:
- * Rust 1.69.0 ( https://www.rust-lang.org/ )
+ * Rust 1.70.0 ( https://www.rust-lang.org/ )
 
 # Engine:
  * Bevy Engine 0.10.1  ( https://bevyengine.org/ )
@@ -43,10 +44,7 @@
 
   There will be three more types. Admin, moderator, land/plots owners and players.
 
-## Design:
-  To develop module components is not easy as every part is broke up to handle render and logics.
-
-# Bevy Engine:
+## Bevy Engine:
   If you learn from godot or unity engine they work simalar ways. As well javascript from react, solid and other frame work design. Module components that have common logic. Reason is simple to reduce loop and render by query filter components that are need in run time application to not waste cpu or gpu data and loop.
 
   It has basic or same logic like start up, mount, unmount, clean up and other simple logic.
@@ -54,6 +52,9 @@
   * https://bevy-cheatbook.github.io/
 
   Note there youtube, github, offical site examples are good start point but note that it might outdate or upate depend on the writer, coder and dev update it. Since it still in development and refine by the dev and coders working hard to develop stable engine.
+
+## Design:
+  To develop module components is not easy as every part is broke up to handle render and logics.
 
 ## Logics:
  * resources set up assets
@@ -84,9 +85,14 @@
   --state AppState
   --state NetworkState
   --resources PlayerInfo 
-  ---entities
+  --entities
   --system (loop)
+  ---game mode
+  ---player controller
+  ---check for event for player death
+  ---menu interaction
   --startup (function one trigger for set up)
+  ---menu set up
   ---load player data
   ---load assets?
   ---load map?
@@ -139,6 +145,7 @@ cargo run --bin game ( testing )
 cargo run --bin launcher ( testing )
 cargo run --bin testapp ( prototyping )
 cargo run --bin physics3d ( prototyping )
+cargo run --bin webgui ( prototyping http rest api )
 ```
 
 # Controls:
@@ -173,7 +180,4 @@ cargo watch -x run
  * https://www.youtube.com/watch?v=y50VKG1YvPA Splash screens with bevy asset loader
  * https://github.com/NiklasEi/bevy_common_assets
  * https://github.com/NiklasEi/bevy_asset_loader
- * 
- * 
- * 
  * 
