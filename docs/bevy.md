@@ -46,16 +46,8 @@ https://levelup.gitconnected.com/risk-of-rust-part-7-game-development-8187073446
  * 
  * https://crates.io/crates/bevy_pkv
 ```
-c:\Users\<username>\AppData\Roaming\username
+c:\Users\<username>\AppData\Roaming\<company>\<game>
 ```
-
-
-
-
-
-
-
-
 
 # Refs:
  * https://www.youtube.com/watch?v=5oKEPZ6LbNE&t=52s
@@ -91,3 +83,12 @@ app.add_system_set(
     .with_system(despawn_system<MenUiMarker>) 
 );
 ```
+
+# file size:
+ * https://bevy-cheatbook.github.io/platforms/wasm/size-opt.html
+ * 
+
+# Window:
+ * https://github.com/bevyengine/bevy/blob/main/examples/window/window_settings.rs
+ * https://bevy-cheatbook.github.io/window/icon.html
+

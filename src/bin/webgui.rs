@@ -39,6 +39,18 @@ impl Default for MyApp {
   }
 }
 
+
+// https://doc.rust-lang.org/std/keyword.impl.html
+impl MyApp {
+  fn test(){
+    println!("Hello");
+  }
+
+  fn test02(&self){
+    println!("Progress: {}", self.progress);
+  }
+}
+
 impl eframe::App for MyApp {
   fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
     egui::CentralPanel::default().show(ctx, |ui| {
@@ -99,9 +111,19 @@ impl eframe::App for MyApp {
             //println!("{:#?}", resp);
 
             //works
-            let body = reqwest::blocking::get("https://www.rust-lang.org").unwrap().text().unwrap();
+            //let body = reqwest::blocking::get("https://www.rust-lang.org").unwrap().text().unwrap();
+            let body = reqwest::blocking::get("http://localhost:3000/api/bevy/echo").unwrap().text().unwrap();
             println!("body = {:?}", body);
+            MyApp::test();
 
+          }
+
+          if ui.button("test").clicked() {
+            MyApp::test();
+          }
+
+          if ui.button("test2").clicked() {
+            self.test02();
           }
         });
         //ui.add(egui::Slider::new(&mut self.age, 0..=120).text("age"));
@@ -111,5 +133,6 @@ impl eframe::App for MyApp {
         //ui.label(format!("Hello '{}', age {}", self.name, self.age));
     });
   }
+
 }
 

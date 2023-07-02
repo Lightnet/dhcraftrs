@@ -55,8 +55,6 @@ use crate::{
   }, 
   systems::spawn_camera3d,
 };
-//lib craft
-#[allow(unused_imports)]
 
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;
@@ -72,7 +70,7 @@ impl Plugin for BaseCraftPlugin{
         //width: WIDTH,
         //height: HEIGHT,
         resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
-        title: "Bevy Game Test".to_string(),
+        title: "Bevy dhcraftrs".to_string(),
         resizable: false,
         ..default()
       }),
@@ -102,8 +100,6 @@ impl Plugin for BaseCraftPlugin{
     
     //app.add_plugin(CraftPlayerPlugin); // event testing...
     app.add_plugin(CraftPhysics3CharacterDPlugin); // event testing...
-
-
 
   }
 }
