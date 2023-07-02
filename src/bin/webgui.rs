@@ -1,6 +1,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
-use bevy_rapier3d::prelude::AsyncCollider;
 use eframe::egui;
 
 fn main()-> Result<(), eframe::Error >{
@@ -41,7 +40,9 @@ impl Default for MyApp {
 
 
 // https://doc.rust-lang.org/std/keyword.impl.html
+#[allow(dead_code)]
 impl MyApp {
+  
   fn test(){
     println!("Hello");
   }

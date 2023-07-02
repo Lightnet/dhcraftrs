@@ -19,7 +19,7 @@ pub fn set_window_icon(
     //windows: Res<Window>,
     windows: Query<(Entity, &Window), With<PrimaryWindow>>,
 ) {
-    if let Ok((entity, window)) = windows.get_single(){
+    if let Ok((entity, _window)) = windows.get_single(){
         let primary = winit.get_window(entity).unwrap();
         println!("FOUND SCREEN ID");
 

@@ -7,9 +7,6 @@
  * https://github.com/mwbryant/logic_management_game
  * 
  * 
- * 
- * 
- * 
 
 # Cargo params:
 ```

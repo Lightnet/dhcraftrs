@@ -30,14 +30,9 @@ use crate::{
       NetworkState
     }, 
     entity::{
-      creature::player::{
-        player_movement02, 
-        create_entity_player, 
-        player_movement01
-      }, 
-      prefab::set_up_test
+      prefab::set_up_test, creature::player::systems::{create_entity_player, player_movement01, player_movement02}
     }, 
-    asset::LoadingAssetPlugin
+    asset::LoadingAssetPlugin, window::set_window_icon
     }, 
   systems::{
     load_gltf_test01
@@ -60,6 +55,8 @@ pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;
 
 pub struct BaseCraftPlugin;
+//testing need to bare minimal
+// for console, headless server?
 impl Plugin for BaseCraftPlugin{
   fn build(&self, app: &mut App){
     app.add_state::<AppState>(); // state app
@@ -70,12 +67,13 @@ impl Plugin for BaseCraftPlugin{
         //width: WIDTH,
         //height: HEIGHT,
         resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
-        title: "Bevy dhcraftrs".to_string(),
+        title: "Bevy Engine dhcraftrs".to_string(),
         resizable: false,
         ..default()
       }),
       ..default()
     }));
+    app.add_startup_system(set_window_icon);
     app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_plugin(EguiPlugin); // menu 
     app.add_plugin(CraftBaseDataPlugin); // loading player data base
@@ -127,6 +125,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
       }),
       ..default()
     }));
+    app.add_startup_system(set_window_icon);
     app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_state::<AppState>(); // state app
     

@@ -30,13 +30,15 @@ fn main() {
   //test_print();
   println!("GAME APPLICATION");
   App::new()
-    .add_plugins(DefaultPlugins)
+    //.add_plugins(DefaultPlugins)
     //.add_plugin(WorldInspectorPlugin)
     // Only run the app when there is user input. This will significantly reduce CPU/GPU use.
     //.insert_resource(WinitSettings::desktop_app())//lag input?
     //.add_plugin(ConsolePlugin)
-    //.add_plugin(DefaultCraftPlugin)
-    .add_startup_system(set_window_icon)
+    
+    .add_plugin(DefaultCraftPlugin)
+    //.add_startup_system(set_window_icon)
+    
     //.add_plugin(ConsoleCraftPlugin)
     //.insert_resource(ConsoleConfiguration {
       // override config here
