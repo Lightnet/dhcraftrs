@@ -14,26 +14,10 @@ use bevy_rapier3d::prelude::*;
 #[allow(unused_imports)]
 use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}}, api::AppState};
 
+// CHARACTER CONTROLLER TEST
 pub struct CraftPhysics3DPlugin;
 
 impl Plugin for CraftPhysics3DPlugin{
-
-  fn build(&self, app: &mut App){
-
-    app.add_plugin(RapierPhysicsPlugin::<NoUserData>::default());
-    app.add_plugin(RapierDebugRenderPlugin::default());
-
-    app.add_startup_system(setup_graphics);
-    app.add_startup_system(setup_physics);
-    app.add_system(print_ball_altitude);
-
-  }
-}
-
-// CHARACTER CONTROLLER TEST
-pub struct CraftPhysics3CharacterDPlugin;
-
-impl Plugin for CraftPhysics3CharacterDPlugin{
 
   fn build(&self, app: &mut App){
 
@@ -55,6 +39,8 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
 
   }
 }
+
+
 
 #[allow(dead_code,unused_variables, unused_mut)]
 pub fn create_ground(
@@ -308,9 +294,6 @@ pub fn move_player_physics01(
     );
   }
 
-  
-  
-
 }
 
 #[allow(dead_code)]
@@ -320,22 +303,15 @@ pub fn read_result_system(controllers: Query<(Entity, &KinematicCharacterControl
                 entity, output.effective_translation, output.grounded);
   }
 }
-
-
-// SIMPLE TEST
+// TEST
 pub struct CraftPhysics3DTestPlugin;
-
 impl Plugin for CraftPhysics3DTestPlugin{
-
   fn build(&self, app: &mut App){
-
     app.add_plugin(RapierPhysicsPlugin::<NoUserData>::default());
     app.add_plugin(RapierDebugRenderPlugin::default());
-
     app.add_startup_system(setup_graphics);
     app.add_startup_system(setup_physics);
     app.add_system(print_ball_altitude);
-
   }
 }
 

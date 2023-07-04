@@ -12,3 +12,5 @@
 pub mod creature;
 pub mod prefab;
 pub mod mesh;
+pub mod tool;
+pub mod item;

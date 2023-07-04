@@ -6,11 +6,12 @@
  */
 
 //use bevy::app::AppExit;
+#[allow(unused_imports)]
 use bevy::prelude::*;
 use bevy::window::PrimaryWindow;
-use bevy_mod_picking::prelude::RaycastPickCamera;
+//use bevy_mod_picking::prelude::RaycastPickCamera;
 
-use crate::core::api::CameraState;
+use crate::core::api::{CameraState, AppState};
 
 pub fn spawn_camera2d(mut commands: Commands, window_query: Query<&Window, With<PrimaryWindow>>) {
   let window = window_query.get_single().unwrap();
@@ -30,10 +31,11 @@ pub fn spawn_camera3d(
     Camera3dBundle  {
       //transform: Transform::from_xyz(window.width() / 2.0, window.height() / 2.0, 0.0),
       //transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
-      transform: Transform::from_xyz(-4.0, 5.0, 10.0).looking_at(Vec3::ZERO, Vec3::Y),
+      //transform: Transform::from_xyz(-4.0, 5.0, 10.0).looking_at(Vec3::ZERO, Vec3::Y),
+      transform: Transform::from_xyz(0., 5.0, 10.0).looking_at(Vec3::ZERO, Vec3::Y),
       ..default()
     },
-    RaycastPickCamera::default(),
+    //RaycastPickCamera::default(),
   ));
 }
 
@@ -66,4 +68,23 @@ pub fn load_gltf_test01(mut commands: Commands, asset_server: Res<AssetServer>) 
     scene: asset_server.load("models/blockframe01.gltf#Scene0"),
     ..default()
   });
+}
+
+#[allow(dead_code)]
+pub fn set_game_state(
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  app_state_next_state.set(AppState::InGame);
+}
+#[allow(dead_code)]
+pub fn check_app_states(
+  app_state_next_state:ResMut<NextState<AppState>>,
+){
+  println!("app_state_next_state: {:?}", app_state_next_state.0);
+}
+#[allow(dead_code)]
+pub fn set_network_menu(
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  app_state_next_state.set(AppState::NETWORK);
 }

@@ -23,12 +23,13 @@ impl Plugin for CraftRayCastPlugin{//main entry point still in testing...
           .build()
           .disable::<DefaultHighlightingPlugin>(),
     );
-    app.add_startup_system(setup_test);
+    //app.add_startup_system(setup_test);
 
   }
 
 }
 
+#[allow(dead_code)]
 pub fn setup_test(
   mut commands: Commands,
   //app: &mut App,

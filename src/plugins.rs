@@ -7,7 +7,7 @@
 
 use bevy::{
   prelude::*, 
-  diagnostic::FrameTimeDiagnosticsPlugin, 
+  //diagnostic::FrameTimeDiagnosticsPlugin, 
   window::WindowResolution
 };
 
@@ -16,11 +16,11 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
-use crate::core::ui::hud::hotbar::HUDHotBarPlugin;
+
+use crate::core::{ui::hud::hotbar::HUDHotBarPlugin, physics::CraftPhysics3DPlugin};
 #[allow(unused_imports)]
 use crate::{
   core::{
-    physics::CraftPhysics3CharacterDPlugin, 
     ui::{
       menu::{ main::MainMenuPlugin}, 
     }, 
@@ -68,7 +68,7 @@ impl Plugin for BaseCraftPlugin{
       ..default()
     }));
     app.add_startup_system(set_window_icon);
-    app.add_plugin(FrameTimeDiagnosticsPlugin::default());
+    //app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_plugin(EguiPlugin); // menu 
     app.add_plugin(CraftBaseDataPlugin); // loading player data base
     
@@ -84,14 +84,14 @@ impl Plugin for BaseCraftPlugin{
     app.add_plugin(MainMenuPlugin); // main menu
     //app.add_plugin(WaterMarkPlugin); // water mark //testing
     //app.add_plugin(CreatePlayerPlugin); // 
-    app.add_plugin(WorldBasicPlugin); // simple scene test
+    //app.add_plugin(WorldBasicPlugin); // simple scene test
     //app.add_plugin(NetworkMenuPlugin); // 
     //app.add_plugin(CraftEventPlugin); // event testing...
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
     
     //app.add_plugin(CraftPlayerPlugin); // event testing...
-    app.add_plugin(CraftPhysics3CharacterDPlugin); // event testing...
+    app.add_plugin(CraftPhysics3DPlugin); // event testing...
 
   }
 }
@@ -120,7 +120,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
       ..default()
     }));
     app.add_startup_system(set_window_icon);
-    app.add_plugin(FrameTimeDiagnosticsPlugin::default());
+    //app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_state::<AppState>(); // state app
     
     app.add_plugin(CraftBaseDataPlugin); // loading player data base
@@ -141,40 +141,21 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugin(CraftRayCastPlugin); // 
     //app.add_plugin(WorldBasicPlugin); // 
     //app.add_plugin(NetworkMenuPlugin); // 
-    //app.add_plugin(CraftEventPlugin); // event testing...
+    //app.add_plugin(CraftEventPlugin); // Events
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
     
-    //app.add_plugin(CraftPlayerPlugin); // event testing...
+    //app.add_plugin(CraftPlayerPlugin); //
 
-    app.add_plugin(HUDHotBarPlugin); //over lap ray pick not working...
-    app.add_plugin(CraftPhysics3CharacterDPlugin); // event testing...
+    app.add_plugin(HUDHotBarPlugin); // set up hot bar
+    app.add_plugin(CraftPhysics3DPlugin); // set up physics
 
-
+    // Test scene place 
     app.add_plugin(BaseWorldPlugin); //preload entity tests
 
     //check for state
     //app.add_startup_system(check_states); //
   }
-}
-
-#[allow(dead_code)]
-fn set_game_state(
-  mut app_state_next_state:ResMut<NextState<AppState>>,
-){
-  app_state_next_state.set(AppState::InGame);
-}
-#[allow(dead_code)]
-fn check_app_states(
-  app_state_next_state:ResMut<NextState<AppState>>,
-){
-  println!("app_state_next_state: {:?}", app_state_next_state.0);
-}
-#[allow(dead_code)]
-fn set_network_menu(
-  mut app_state_next_state:ResMut<NextState<AppState>>,
-){
-  app_state_next_state.set(AppState::NETWORK);
 }
 
 pub struct LoadingCraftPlayerPlugin;

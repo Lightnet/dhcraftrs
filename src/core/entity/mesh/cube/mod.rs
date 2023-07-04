@@ -10,6 +10,7 @@ use bevy_mod_picking::prelude::*;
 use bevy_rapier3d::prelude::*;
 //use bevy_eventlistener::prelude::*;
 
+// System
 pub fn create_entity_cube(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
@@ -30,8 +31,7 @@ pub fn create_entity_cube(
       }
     );
 }
-
-
+// System
 pub fn create_entity_cube_pick(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
@@ -75,6 +75,7 @@ pub fn create_entity_cube_pick(
     ;
 }
 
+// System
 #[allow(dead_code,unused_variables)]
 pub fn create_entity_cube_physics(
   mut commands: Commands,
@@ -86,6 +87,7 @@ pub fn create_entity_cube_physics(
   create_cube_physics(&mut commands, &mut meshes, &mut materials,  Vec3::new(0., 0., -3.));
 }
 
+// no System
 #[allow(dead_code,unused_variables)]
 pub fn create_cube_physics(
   commands: &mut Commands,
@@ -132,8 +134,11 @@ pub fn create_cube_physics(
 }
 
 
+// BUILD block here?
 // https://bevy-cheatbook.github.io/input/mouse.html#mouse-buttons
-//trigger once
+// trigger once
+// System
+#[allow(unused_mut, unused_variables)]
 fn click_event_test(
   // The first parameter is always the `ListenedEvent`, passed in by the event listening system.
   In(event): In<ListenedEvent<Click>>,
@@ -142,13 +147,18 @@ fn click_event_test(
   mut materials: ResMut<Assets<StandardMaterial>>,
   //buttons: Res<Input<MouseButton>>,
 )-> Bubble{
-  println!("[[[ ======....................");
+  //println!("[[[ ======....................");
   //if buttons.pressed(MouseButton::Right){
     //println!("[[                    ====]]");
   //}
 
   //println!("EVENT: {:?}", buttons.pressed(MouseButton::Right));
   println!("EVENT: {:?}", event.button);
+  println!("hit: {:?}", event.hit);
+  println!("listener: {:?}", event.listener);
+  println!("pointer_id: {:?}", event.pointer_id);
+  println!("pointer_location: {:?}", event.pointer_location);
+  println!("target: {:?}", event.target);
 
   Bubble::Up // Determines if the event should continue to bubble through the hierarchy.
 }

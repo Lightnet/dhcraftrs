@@ -12,7 +12,6 @@
 pub mod asset;
 pub mod ui;
 pub mod controller;
-pub mod effect;
 pub mod entity;
 pub mod console;
 pub mod data;
