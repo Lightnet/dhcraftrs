@@ -7,6 +7,7 @@
 
 use bevy::prelude::*;
 use bevy_mod_picking::prelude::*;
+use bevy_rapier3d::prelude::*;
 //use bevy_eventlistener::prelude::*;
 
 pub fn create_entity_cube(
@@ -80,6 +81,17 @@ pub fn create_entity_cube_physics(
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
+  create_cube_physics(&mut commands, &mut meshes, &mut materials, Vec3::new(0., -1.5, 1.));
+  create_cube_physics(&mut commands, &mut meshes, &mut materials, Vec3::new(0., 0., -3.));
+}
+
+#[allow(dead_code,unused_variables)]
+pub fn create_cube_physics(
+  commands: &mut Commands,
+  meshes: &mut ResMut<Assets<Mesh>>,
+  materials: &mut ResMut<Assets<StandardMaterial>>,
+  position: Vec3
+){
   commands
   .spawn((
     PbrBundle{
@@ -95,6 +107,7 @@ pub fn create_entity_cube_physics(
       println!("Right Click============================");
     }),
   ))
+  .insert(Collider::cuboid(0.5, 0.5, 0.5))
   .insert(PickableBundle::default())
   .insert( RaycastPickTarget::default())
   .insert(OnPointer::<Click>::target_commands_mut(|click, target_commands| {
@@ -102,6 +115,7 @@ pub fn create_entity_cube_physics(
         //target_commands.despawn();
       //}
       println!("Right Click===[[[ create_entity_cube_physics ]]]===");
-    }))
-    ;
+  }))
+  .insert(TransformBundle::from(Transform::from_xyz(position.x, position.y, position.z)))
+  ;
 }
