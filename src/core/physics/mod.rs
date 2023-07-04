@@ -8,6 +8,7 @@
 // https://rapier.rs/docs/user_guides/bevy_plugin/getting_started_bevy/
 
 use bevy::prelude::*;
+use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
 use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}, systems::{create_entity_prototype_player, fade_transparency}}, api::AppState};
@@ -38,15 +39,14 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
     app.add_plugin(RapierPhysicsPlugin::<NoUserData>::default());
     app.add_plugin(RapierDebugRenderPlugin::default());
 
+    //app.add_system(create_ground.in_schedule(OnEnter(AppState::InGame)));
+    //app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::InGame)));
+    //app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
+
+
     //app.add_startup_system(create_player);
-
-    app.add_system(create_ground.in_schedule(OnEnter(AppState::InGame)));
     //app.add_system(create_player01.in_schedule(OnEnter(AppState::InGame)));
-    app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::InGame)));
-    app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
-
     //app.add_system(fade_transparency.in_set(OnUpdate(AppState::InGame)));
-
     //app.add_system(create_player.in_schedule(OnEnter(AppState::InGame)));
     //app.add_startup_system(create_player);
     //app.add_system(move_player_physics.in_set(OnUpdate(AppState::InGame)));
@@ -56,7 +56,7 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
 }
 
 #[allow(dead_code)]
-fn create_ground(
+pub fn create_ground(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
@@ -102,7 +102,7 @@ fn create_ground(
 
 //test
 #[allow(dead_code)]
-fn create_player(
+pub fn create_player(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
@@ -198,7 +198,7 @@ fn create_player(
 }
 
 #[allow(dead_code)]
-fn move_player_physics(
+pub fn move_player_physics(
   mut controllers: Query<&mut KinematicCharacterController>
 ){
   for mut controller in controllers.iter_mut() {
@@ -208,7 +208,7 @@ fn move_player_physics(
 }
 
 #[allow(dead_code)]
-fn create_player01(
+pub fn create_player01(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
@@ -254,7 +254,8 @@ fn create_player01(
         transform: Transform::from_xyz(0.0, 5., 10.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..Default::default()
         },
-        PlayerCamera
+        PlayerCamera,
+        RaycastPickCamera::default()
       ));
     })
     ;
@@ -262,7 +263,7 @@ fn create_player01(
 }
 
 #[allow(dead_code, unused_variables)]
-fn move_player_physics01(
+pub fn move_player_physics01(
   input: Res<Input<KeyCode>>,
   time: Res<Time>,
   mut query: Query<&mut Transform, With<PLAYERMOVABLE>>,
@@ -283,24 +284,24 @@ fn move_player_physics01(
   let gravity = Vec3::new(0.0, -0.05, 0.0);
   
 
-  if input.pressed(KeyCode::Up) {
+  if input.pressed( KeyCode::W) {
     let direction = entity_transform.forward() * 0.1;
     //controller.translation.apply() ; Some(direction)
     //controller.translation;
     controller.translation = Some(direction + gravity);
-  }else if input.pressed(KeyCode::Down) {
+  }else if input.pressed( KeyCode::S) {
     let direction = entity_transform.back() * 0.1;
     controller.translation = Some(direction + gravity);
   }else{
     controller.translation = Some(gravity);
   }
 
-  if input.pressed(KeyCode::Left) {
+  if input.pressed( KeyCode::A) {
     entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
       0., 1.0 * 0.1, 0.)
     );
   }
-  if input.pressed(KeyCode::Right) {
+  if input.pressed( KeyCode::D) {
     entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
       0., 1.0 * -0.1, 0.)
     );
@@ -312,7 +313,7 @@ fn move_player_physics01(
 }
 
 #[allow(dead_code)]
-fn read_result_system(controllers: Query<(Entity, &KinematicCharacterControllerOutput)>) {
+pub fn read_result_system(controllers: Query<(Entity, &KinematicCharacterControllerOutput)>) {
   for (entity, output) in controllers.iter() {
       println!("Entity {:?} moved by {:?} and touches the ground: {:?}",
                 entity, output.effective_translation, output.grounded);
@@ -337,7 +338,7 @@ impl Plugin for CraftPhysics3DTestPlugin{
   }
 }
 
-fn setup_graphics(mut commands: Commands) {
+pub fn setup_graphics(mut commands: Commands) {
   // Add a camera so we can see the debug-render.
   commands.spawn(Camera3dBundle {
       transform: Transform::from_xyz(-3.0, 3.0, 10.0).looking_at(Vec3::ZERO, Vec3::Y),
@@ -345,7 +346,7 @@ fn setup_graphics(mut commands: Commands) {
   });
 }
 
-fn setup_physics(mut commands: Commands) {
+pub fn setup_physics(mut commands: Commands) {
   /* Create the ground. */
   commands
       .spawn(Collider::cuboid(100.0, 0.1, 100.0))
@@ -359,7 +360,7 @@ fn setup_physics(mut commands: Commands) {
       .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)));
 }
 
-fn print_ball_altitude(positions: Query<&Transform, With<RigidBody>>) {
+pub fn print_ball_altitude(positions: Query<&Transform, With<RigidBody>>) {
   for transform in positions.iter() {
       println!("Ball altitude: {}", transform.translation.y);
   }

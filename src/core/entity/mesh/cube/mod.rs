@@ -1,0 +1,80 @@
+/*
+  Project Name: dhcraftrs
+  License: CC BY-SA
+  Created by: Lightnet
+  Information: Note there are other licenses.
+ */
+
+use bevy::prelude::*;
+use bevy_mod_picking::prelude::*;
+//use bevy_eventlistener::prelude::*;
+
+pub fn create_entity_cube(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+){
+  
+  commands
+    .spawn(
+      PbrBundle{
+        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+        material: materials.add(StandardMaterial {
+          base_color: Color::rgba(0.6, 0.6, 0.6, 0.5),
+          alpha_mode: AlphaMode::Blend,
+          ..default()
+        }),
+        //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+        ..default()
+      }
+    );
+}
+
+
+pub fn create_entity_cube_pick(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+){
+  
+  commands
+    .spawn((
+      PbrBundle{
+        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+        material: materials.add(Color::WHITE.into()),
+        //material: materials.add(StandardMaterial {
+          //base_color: Color::rgba(0.1, 0.6, 0.6, 0.5),
+          //alpha_mode: AlphaMode::Blend,
+          //..default()
+        //}),
+        //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+        ..default()
+      },
+      PickableBundle::default(),
+      RaycastPickTarget::default(),
+      OnPointer::<Click>::target_commands_mut(|click, target_commands| {
+        //if click.target != click.listener && click.button == PointerButton::Secondary {
+            //target_commands.despawn();
+        //}
+        println!("Right Click============================");
+      }),
+    ))
+    //.insert(PickableBundle::default())
+    //.insert( RaycastPickTarget::default())
+    //.insert(OnPointer::<Click>::target_commands_mut(|click, target_commands| {
+      //if click.target != click.listener() && click.button == PointerButton::Secondary {
+        //target_commands.despawn();
+        //println!("CLICKED...");
+        //target_commands.despawn();
+      //}
+    //}))
+
+    //.insert(OnPointer::<Click>::run_callback(my_pick_click))
+    ;
+}
+
+pub fn my_pick_click(
+  mut commands: Commands,
+){
+
+}

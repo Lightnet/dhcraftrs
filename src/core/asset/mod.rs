@@ -66,10 +66,10 @@ pub fn use_my_assets(
   // do something using the asset handles from the resource
   //println!("LOADED ASSETS...");
 
-  commands.spawn(SceneBundle {
-    scene: my_assets.blockframe01.clone(),
-    ..Default::default()
-  });
+  //commands.spawn(SceneBundle {
+    //scene: my_assets.blockframe01.clone(),
+    //..Default::default()
+  //});
 }
 
 //pub fn use_my_assets(_my_assets: Res<MyAssets>) {

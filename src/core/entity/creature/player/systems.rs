@@ -6,6 +6,7 @@
  */
 
 use bevy::prelude::*;
+use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
 use crate::core::api::AppState;
@@ -56,6 +57,7 @@ pub fn create_entity_prototype_player(
     .insert(KinematicCharacterController::default())
     .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
     .with_children(|parent|{
+      /*
       parent.spawn((
         Camera3dBundle {
           camera: Camera  { 
@@ -67,11 +69,14 @@ pub fn create_entity_prototype_player(
         transform: Transform::from_xyz(0.0, 5., 10.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..Default::default()
         },
-        PlayerCamera
+        //PlayerCamera,
+        //RaycastPickCamera::default()
       ));
+      */
     })
     
     ;
+    // https://github.com/aevyrie/bevy_mod_picking/blob/v0.13/examples/event_listener.rs
 
 }
 // https://bevyengine.org/examples/3d/texture/
@@ -88,8 +93,6 @@ pub fn fade_transparency(time: Res<Time>, mut materials: ResMut<Assets<StandardM
       material.base_color.set_a(alpha);
   }
 }
-
-
 
 pub fn create_entity_player0(
   mut commands: Commands,

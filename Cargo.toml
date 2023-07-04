@@ -4,11 +4,11 @@ version = "0.1.0"
 edition = "2021"
 default-run = "dhcraftrs"
 
-#[profile.dev]
-#opt-level = 1
+[profile.dev]
+opt-level = 1
 
-#[profile.dev.package."*"]
-#opt-level = 3
+[profile.dev.package."*"]
+opt-level = 3
 
 #[profile.release]
 #strip = true #automatically strip symbols from binary
@@ -66,6 +66,11 @@ path = "src/bin/physics3d.rs"
 name = "webgui"
 path = "src/bin/webgui.rs"
 
+
+[[bin]]
+name = "pick_event"
+path = "src/bin/pick_event.rs"
+
 [dependencies]
 moonshine-save = {version = "0.2.3"}
 bevy = { version = "0.10.1", features = [
@@ -101,3 +106,4 @@ renet = {version = "0.0.12", features = ["bevy"]}
 reqwest = { version ="0.11.18", features = ["blocking", "json"] }
 winit = "0.28.6"
 image = "0.24.6"
+#bevy_eventlistener = "0.1.1"

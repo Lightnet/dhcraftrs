@@ -11,3 +11,4 @@
  */
 pub mod creature;
 pub mod prefab;
+pub mod mesh;

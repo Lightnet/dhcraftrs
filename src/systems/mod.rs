@@ -8,6 +8,7 @@
 //use bevy::app::AppExit;
 use bevy::prelude::*;
 use bevy::window::PrimaryWindow;
+use bevy_mod_picking::prelude::RaycastPickCamera;
 
 use crate::core::api::CameraState;
 
@@ -25,12 +26,15 @@ pub fn spawn_camera3d(
   //window_query: Query<&Window, With<PrimaryWindow>>
 ) {
   //let window = window_query.get_single().unwrap();
-  commands.spawn(Camera3dBundle  {
+  commands.spawn((
+    Camera3dBundle  {
       //transform: Transform::from_xyz(window.width() / 2.0, window.height() / 2.0, 0.0),
       //transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
       transform: Transform::from_xyz(-4.0, 5.0, 10.0).looking_at(Vec3::ZERO, Vec3::Y),
       ..default()
-  });
+    },
+    RaycastPickCamera::default(),
+  ));
 }
 
 pub fn check_camera_state(
