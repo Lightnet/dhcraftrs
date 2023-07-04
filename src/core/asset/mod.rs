@@ -15,7 +15,7 @@
 use bevy::prelude::*;
 use bevy_asset_loader::prelude::*;
 
-use super::{api::AppState, ui::loading_asset::components::LoadingAsset};
+use super::api::AppState;
 
 #[allow(dead_code)]
 #[derive(AssetCollection, Resource)]
@@ -24,6 +24,9 @@ pub struct MyAssets {
   //player: Handle<Image>,
   //#[asset(path = "walking.ogg")]
   //walking: Handle<AudioSource>,
+  //#[asset(path = "models/blockframe01.gltf")]//nope
+  #[asset(path = "models/blockframe01.gltf#Scene0")]
+  blockframe01: Handle<Scene>,
 
   #[asset(path = "images/whiteblockblackline.png")]
   blockwhiteblackline: Handle<Image>,
@@ -50,16 +53,23 @@ impl Plugin for LoadingAssetPlugin{
   }
 }
 
+// https://bevy-cheatbook.github.io/assets/assetserver.html
 pub fn use_my_assets(
-  mut _commands: Commands,
-  _my_assets: Res<MyAssets>,
-  _loading_asset_query:Query<Entity, With<LoadingAsset>>,
+  mut commands: Commands,
+  my_assets: Res<MyAssets>,
+  //_loading_asset_query:Query<Entity, With<LoadingAsset>>,
 ) {
+  println!("loaded?");
   //if let Ok(loading_asset_entity) = loading_asset_query.get_single(){
     //commands.entity(loading_asset_entity).despawn_recursive();
   //}
   // do something using the asset handles from the resource
   //println!("LOADED ASSETS...");
+
+  commands.spawn(SceneBundle {
+    scene: my_assets.blockframe01.clone(),
+    ..Default::default()
+  });
 }
 
 //pub fn use_my_assets(_my_assets: Res<MyAssets>) {

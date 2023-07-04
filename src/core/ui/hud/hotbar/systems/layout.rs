@@ -11,7 +11,7 @@ use crate::{
   core::{ui::hud::hotbar::{
     styles::{
       HOT_BAR_STYLE, 
-      ICON_HOT_BAR_STYLE, NORMAL_ICON_BUTTON_COLOR
+      ICON_HOT_BAR_STYLE, NORMAL_ICON_BUTTON_COLOR, ICON_HOT_BAR_STYLE01
     }, 
     components::*
   }, styles::get_button_text_style}
@@ -41,11 +41,11 @@ pub fn build_hot_bar(
     //HOTBAR 1
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE,
+        style:ICON_HOT_BAR_STYLE01,
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
-      HOTBAR0
+      HOTBARID(1)
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{
@@ -64,14 +64,14 @@ pub fn build_hot_bar(
       );
     });
 
-    //HOTBAR 1
+    //HOTBAR 2
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE,
+        style:ICON_HOT_BAR_STYLE01,
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
-      HOTBAR1
+      HOTBARID(2)
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{
@@ -90,6 +90,58 @@ pub fn build_hot_bar(
       );
     });
 
+    //HOTBAR 3
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(3)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No3", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //HOTBAR 4
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(4)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No4", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+    
 
   })
   .id();

@@ -40,14 +40,9 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
 
     //app.add_startup_system(create_player);
 
-
     app.add_system(create_ground.in_schedule(OnEnter(AppState::InGame)));
     app.add_system(create_player01.in_schedule(OnEnter(AppState::InGame)));
-
-
     app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
-
-
 
     //app.add_system(create_player.in_schedule(OnEnter(AppState::InGame)));
     //app.add_startup_system(create_player);
@@ -214,11 +209,11 @@ fn create_player01(
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
-  let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));
-  let cube_material_handle = materials.add(StandardMaterial {
-    base_color: Color::rgb(0.8, 0.7, 0.6),
-    ..default()
-  });
+  //let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));
+  //let cube_material_handle = materials.add(StandardMaterial {
+    //base_color: Color::rgb(0.8, 0.7, 0.6),
+    //..default()
+  //});
 
   //player entity set up
   //mesh
@@ -229,8 +224,13 @@ fn create_player01(
   commands
     .spawn(
     PbrBundle {
-        mesh: cube_handle.clone(),
-        material: cube_material_handle.clone(),
+        //mesh: cube_handle.clone(),
+        //material: cube_material_handle.clone(),
+        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+        material: materials.add(StandardMaterial {
+          base_color: Color::GREEN,
+          ..default()
+        }),
         //transform: Transform::from_xyz(0.0, 0.0, 0.0),
         ..default()
     })
@@ -247,7 +247,7 @@ fn create_player01(
             ..default()
           },
         //transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
-        transform: Transform::from_xyz(0.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+        transform: Transform::from_xyz(0.0, 5., 10.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..Default::default()
         },
         PlayerCamera
@@ -275,16 +275,22 @@ fn move_player_physics01(
   //controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
 
   let mut entity_transform = query.single_mut();
-  controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
+
+  let gravity = Vec3::new(0.0, -0.05, 0.0);
+  
 
   if input.pressed(KeyCode::Up) {
-    let direction = entity_transform.forward();
-    controller.translation = Some(direction);
+    let direction = entity_transform.forward() * 0.1;
+    //controller.translation.apply() ; Some(direction)
+    //controller.translation;
+    controller.translation = Some(direction + gravity);
+  }else if input.pressed(KeyCode::Down) {
+    let direction = entity_transform.back() * 0.1;
+    controller.translation = Some(direction + gravity);
+  }else{
+    controller.translation = Some(gravity);
   }
-  if input.pressed(KeyCode::Down) {
-    let direction = entity_transform.back();
-    controller.translation = Some(direction);
-  }
+
   if input.pressed(KeyCode::Left) {
     entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
       0., 1.0 * 0.1, 0.)

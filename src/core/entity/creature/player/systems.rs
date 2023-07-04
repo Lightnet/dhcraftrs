@@ -20,26 +20,19 @@ pub fn set_app_state_game(
 }
 
 
+
+
+
+
+
+
 pub fn create_entity_player(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
   asset_server: Res<AssetServer>,
 ){
-  /*
-  commands.spawn((
-    PbrBundle {
-        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-        material: materials.add(StandardMaterial {
-            base_color: Color::GRAY,
-            ..default()
-        }),
-        transform: Transform::from_xyz(0.0, 0.0, 0.0),
-        ..default()
-    },
-    //PLAYERMOVABLE,
-  ));
-  */
+
   // cube
   commands.spawn((
     PbrBundle {
@@ -52,7 +45,9 @@ pub fn create_entity_player(
         ..default()
     },
     PLAYERMOVABLE,
-  )).with_children(| parent | {
+  ))
+  
+  .with_children(| parent | {
 
     parent.spawn((
       Camera3dBundle {

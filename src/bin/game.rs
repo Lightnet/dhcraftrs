@@ -1,5 +1,3 @@
-#[warn(unused_imports)]
-
 /*
   Project Name: dhcraftrs
   License: CC BY-SA
@@ -10,11 +8,8 @@
 //use std::{fs::File, io::Read};
 //use std::io::Write;
 
-use bevy::{
-  prelude::*, 
-  winit::WinitSettings,
-};
-use dhcraftrs::core::window::set_window_icon;
+use bevy::prelude::*;
+
 #[allow(dead_code)]
 use dhcraftrs::plugins::DefaultCraftPlugin;
 

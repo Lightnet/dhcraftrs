@@ -20,8 +20,7 @@ use crate::{
         despawn_hud_hot_bars
       }, 
       interactions::{
-        interact_hot_bar_0_button, 
-        interact_hot_bar_1_button
+        interact_hot_bar_id_button
       }
     }, 
     api::AppState
@@ -36,7 +35,7 @@ impl Plugin for HUDHotBarPlugin {
     app.add_system(spawn_hud_hot_bars.in_schedule(OnEnter(AppState::InGame)));
     // update listen to button events
     app.add_system(
-        interact_hot_bar_0_button
+      interact_hot_bar_id_button
       .in_set(OnUpdate(AppState::InGame))
     );
     // remove entity hot bar UI

@@ -2,6 +2,13 @@
 # Information:
   Looking for crate packages to run well to build sandbox world.
 
+
+# terms:
+ * Signed 
+ * Unsigned - only positive numbers
+
+
+
 # Packages refs:
  * https://www.youtube.com/watch?v=QTUEyAZmdv4 Pathfinding and Async Tasks in Bevy
  * https://github.com/mwbryant/logic_management_game
