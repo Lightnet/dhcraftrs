@@ -37,7 +37,13 @@ pub fn create_entity_prototype_player(
           ..default()
         })),
         material: materials.add(StandardMaterial {
-          base_color: Color::GREEN,
+          //base_color: Color::GREEN,
+          //base_color: Color::rgba(0.2, 0.7, 0.1, 0.0),
+          base_color: Color::rgba(0.9, 0.9, 0.9, 0.5),
+          //alpha_mode:  AlphaMode::Mask(0.8),
+          alpha_mode: AlphaMode::Blend,
+          //unlit: true,
+          //cull_mode: None,
           ..default()
         }),
         //transform: Transform::from_xyz(0.0, 0.0, 0.0),
@@ -67,12 +73,21 @@ pub fn create_entity_prototype_player(
     
     ;
 
-
-
 }
-
-
-
+// https://bevyengine.org/examples/3d/texture/
+// https://github.com/bevyengine/bevy/blob/main/examples/3d/transparency_3d.rs
+/// Fades the alpha channel of all materials between 0 and 1 over time.
+/// Each blend mode responds differently to this:
+/// - [`Opaque`](AlphaMode::Opaque): Ignores alpha channel altogether, these materials stay completely opaque.
+/// - [`Mask(f32)`](AlphaMode::Mask): Object appears when the alpha value goes above the mask's threshold, disappears
+///                when the alpha value goes back below the threshold.
+/// - [`Blend`](AlphaMode::Blend): Object fades in and out smoothly.
+pub fn fade_transparency(time: Res<Time>, mut materials: ResMut<Assets<StandardMaterial>>) {
+  let alpha = (time.elapsed_seconds().sin() / 2.0) + 0.5;
+  for (_, material) in materials.iter_mut() {
+      material.base_color.set_a(alpha);
+  }
+}
 
 
 

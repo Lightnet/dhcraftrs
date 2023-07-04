@@ -10,7 +10,7 @@
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
 
-use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}, systems::create_entity_prototype_player}, api::AppState};
+use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}, systems::{create_entity_prototype_player, fade_transparency}}, api::AppState};
 
 pub struct CraftPhysics3DPlugin;
 
@@ -44,6 +44,8 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
     //app.add_system(create_player01.in_schedule(OnEnter(AppState::InGame)));
     app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::InGame)));
     app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
+
+    //app.add_system(fade_transparency.in_set(OnUpdate(AppState::InGame)));
 
     //app.add_system(create_player.in_schedule(OnEnter(AppState::InGame)));
     //app.add_startup_system(create_player);
