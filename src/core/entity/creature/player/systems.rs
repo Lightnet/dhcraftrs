@@ -6,6 +6,7 @@
  */
 
 use bevy::prelude::*;
+use bevy_rapier3d::prelude::*;
 
 use crate::core::api::AppState;
 
@@ -20,13 +21,62 @@ pub fn set_app_state_game(
 }
 
 
+// DEFAULT ?
+pub fn create_entity_prototype_player(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+  asset_server: Res<AssetServer>,
+){
+
+  commands
+    .spawn(
+      PbrBundle{
+        mesh: meshes.add(Mesh::from(shape::Capsule {  
+          radius:0.9,
+          ..default()
+        })),
+        material: materials.add(StandardMaterial {
+          base_color: Color::GREEN,
+          ..default()
+        }),
+        //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+        ..default()
+      }
+    )
+    .insert(PLAYERMOVABLE)
+    //.insert(Collider::ball(1.))
+    .insert(Collider::capsule(Vec3 { x: 0., y: -0.5, z: 0. },Vec3 { x: 0., y: 0.5, z: 0. } , 1.0))
+    .insert(KinematicCharacterController::default())
+    .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
+    .with_children(|parent|{
+      parent.spawn((
+        Camera3dBundle {
+          camera: Camera  { 
+            order:1,
+            //priority: 1 ,
+            ..default()
+          },
+        //transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+        transform: Transform::from_xyz(0.0, 5., 10.0).looking_at(Vec3::ZERO, Vec3::Y),
+        ..Default::default()
+        },
+        PlayerCamera
+      ));
+    })
+    
+    ;
+
+
+
+}
 
 
 
 
 
 
-pub fn create_entity_player(
+pub fn create_entity_player0(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,

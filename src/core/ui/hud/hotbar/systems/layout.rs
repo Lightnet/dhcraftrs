@@ -9,10 +9,7 @@ use bevy::prelude::*;
 
 use crate::{
   core::{ui::hud::hotbar::{
-    styles::{
-      HOT_BAR_STYLE, 
-      ICON_HOT_BAR_STYLE, NORMAL_ICON_BUTTON_COLOR, ICON_HOT_BAR_STYLE01
-    }, 
+    styles::*, 
     components::*
   }, styles::get_button_text_style}
 };
@@ -131,6 +128,162 @@ pub fn build_hot_bar(
             sections: vec![
               TextSection::new(
                 "No4", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //HOTBAR 5
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(5)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No5", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //HOTBAR 6
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(6)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No6", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //HOTBAR 7
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(7)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No7", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //HOTBAR 8
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(8)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No8", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //HOTBAR 9
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(9)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No9", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
+    //HOTBAR 0
+    parent.spawn((
+      ButtonBundle {
+        style:ICON_HOT_BAR_STYLE01,
+        background_color: NORMAL_ICON_BUTTON_COLOR.into(),
+        ..default()
+      },
+      HOTBARID(0)
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "No0", 
                 get_button_text_style(&asset_server),
               )
             ],

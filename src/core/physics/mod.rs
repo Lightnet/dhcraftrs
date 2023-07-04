@@ -10,7 +10,7 @@
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
 
-use super::{entity::creature::player::components::{PLAYERMOVABLE, PlayerCamera}, api::AppState};
+use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}, systems::create_entity_prototype_player}, api::AppState};
 
 pub struct CraftPhysics3DPlugin;
 
@@ -41,7 +41,8 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
     //app.add_startup_system(create_player);
 
     app.add_system(create_ground.in_schedule(OnEnter(AppState::InGame)));
-    app.add_system(create_player01.in_schedule(OnEnter(AppState::InGame)));
+    //app.add_system(create_player01.in_schedule(OnEnter(AppState::InGame)));
+    app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::InGame)));
     app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
 
     //app.add_system(create_player.in_schedule(OnEnter(AppState::InGame)));
@@ -59,28 +60,29 @@ fn create_ground(
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
   /* Create the ground. */
-  commands.spawn(
+  commands
+    //.spawn(
     //NodeBundle{
       //..default()
     //}
-    PbrBundle {
-      mesh: meshes.add(shape::Plane::from_size(100.0).into()),
-      material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
-      transform: Transform::from_xyz(0.0, 0.0, 0.0),
-      ..default()
-    }
-  )
-    .insert(Collider::cuboid(100.0, 0.1, 100.0))
+    //PbrBundle {
+      //mesh: meshes.add(shape::Plane::from_size(100.0).into()),
+      //material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
+      //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+      //..default()
+    //}
+  //)
+    .spawn(Collider::cuboid(100.0, 0.1, 100.0))
     .insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)))
     ;
 
   // cube
-  commands.spawn(PbrBundle {
-    mesh: meshes.add(Mesh::from(shape::Cube { size:1.0 })),
-    material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
-    transform: Transform::from_xyz(0.0, 0.0, 0.0),
-    ..default()
-  }).insert(Name::new("cube"));
+  //commands.spawn(PbrBundle {
+    //mesh: meshes.add(Mesh::from(shape::Cube { size:1.0 })),
+    //material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
+    //transform: Transform::from_xyz(0.0, 0.0, 0.0),
+    //..default()
+  //}).insert(Name::new("cube"));
 
   // light
   commands.spawn(PointLightBundle {
@@ -104,9 +106,9 @@ fn create_player(
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
   /* Create the ground. */
-  commands
-    .spawn(Collider::cuboid(100.0, 0.1, 100.0))
-    .insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)));
+  //commands
+    //.spawn(Collider::cuboid(100.0, 0.1, 100.0))
+    //.insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)));
 
   //https://bevyengine.org/examples/3d/parenting/
   let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));

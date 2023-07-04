@@ -30,7 +30,10 @@ use crate::{
       NetworkState
     }, 
     entity::{
-      prefab::set_up_test, creature::player::systems::{create_entity_player, player_movement01, player_movement02}
+      prefab::set_up_test, creature::player::systems::{
+        player_movement01,
+        player_movement02
+      }
     }, 
     asset::LoadingAssetPlugin, window::set_window_icon
     }, 
@@ -223,7 +226,7 @@ impl Plugin for Test02CraftPlugin{
     //player setup, config and logic
     //app.add_startup_system(spawn_camera3d);
     app.add_plugin(PlayerPlugin);
-    app.add_startup_system(create_entity_player);
+    //app.add_startup_system(create_entity_player);
     app.add_system(player_movement01); //
     
     //test
@@ -244,7 +247,7 @@ impl Plugin for Test03CraftPlugin{
     //test for state
     app.add_startup_system(set_network_menu);
 
-    app.add_startup_system(create_entity_player);
+    //app.add_startup_system(create_entity_player);
     //app.add_system(player_movement01); //
     app.add_system(player_movement02); //
     
