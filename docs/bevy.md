@@ -92,3 +92,43 @@ app.add_system_set(
  * https://github.com/bevyengine/bevy/blob/main/examples/window/window_settings.rs
  * https://bevy-cheatbook.github.io/window/icon.html
 
+# query:
+
+```rs
+#[derive(Component, Debug)]
+pub struct HOTBARID(pub u8);
+```
+
+```rs
+pub fn interact_hot_bar_id_button(
+  mut button_query:Query<
+    (&Interaction, &mut BackgroundColor, &HOTBARID),
+    (Changed<Interaction>, &HOTBARID, With<HOTBARID>)
+  >,
+  //mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  for (interaction, mut background_color, hotbarid) in button_query.iter_mut(){
+
+    match *interaction {
+      Interaction::Clicked =>{
+        *background_color = PRESSED_ICON_BUTTON_COLOR.into();
+        //app_state_next_state.set(AppState::CREATEPLAYERNAME);
+        println!("HOTBARID {:?}", interaction );
+        println!("background_color {:?}", background_color );
+        println!("HOTBAR ID: {:?}", hotbarid );
+        if hotbarid.0 == 2{
+          println!("FOUND @!@");
+        }
+      }
+      Interaction::Hovered =>{
+        *background_color = HOVERED_ICON_BUTTON_COLOR.into();
+      }
+      Interaction::None =>{
+        *background_color = NORMAL_ICON_BUTTON_COLOR.into();
+      }
+    }
+  }
+
+}
+```
+

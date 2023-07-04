@@ -10,5 +10,5 @@ use bevy::prelude::Component;
 #[derive(Component)]
 pub struct HOTBAR;
 
-#[derive(Component)]
+#[derive(Component, Debug)]
 pub struct HOTBARID(pub u8);
