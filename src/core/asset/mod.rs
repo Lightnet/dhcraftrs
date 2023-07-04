@@ -54,6 +54,7 @@ impl Plugin for LoadingAssetPlugin{
 }
 
 // https://bevy-cheatbook.github.io/assets/assetserver.html
+#[allow(dead_code,unused_mut,unused_variables)]
 pub fn use_my_assets(
   mut commands: Commands,
   my_assets: Res<MyAssets>,

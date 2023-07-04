@@ -16,13 +16,13 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
+use crate::core::ui::hud::hotbar::HUDHotBarPlugin;
+#[allow(unused_imports)]
 use crate::{
   core::{
     physics::CraftPhysics3CharacterDPlugin, 
     ui::{
-      menu::{create_player::CreatePlayerPlugin, main::MainMenuPlugin}, 
-      hud::hotbar::HUDHotBarPlugin, 
-      loading_asset::LoadingAssetUIPlugin
+      menu::{ main::MainMenuPlugin}, 
     }, 
     api::{
       AppState, 
@@ -147,7 +147,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     
     //app.add_plugin(CraftPlayerPlugin); // event testing...
 
-    //app.add_plugin(HUDHotBarPlugin); //over lap ray pick not working...
+    app.add_plugin(HUDHotBarPlugin); //over lap ray pick not working...
     app.add_plugin(CraftPhysics3CharacterDPlugin); // event testing...
 
 

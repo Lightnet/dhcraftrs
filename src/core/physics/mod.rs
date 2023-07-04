@@ -11,7 +11,8 @@ use bevy::prelude::*;
 use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
-use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}, systems::{create_entity_prototype_player, fade_transparency}}, api::AppState};
+#[allow(unused_imports)]
+use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}}, api::AppState};
 
 pub struct CraftPhysics3DPlugin;
 
@@ -55,7 +56,7 @@ impl Plugin for CraftPhysics3CharacterDPlugin{
   }
 }
 
-#[allow(dead_code)]
+#[allow(dead_code,unused_variables, unused_mut)]
 pub fn create_ground(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,

@@ -52,6 +52,7 @@ pub fn create_entity_cube_pick(
       },
       PickableBundle::default(),
       RaycastPickTarget::default(),
+      #[allow(dead_code,unused_variables)]
       OnPointer::<Click>::target_commands_mut(|click, target_commands| {
         //if click.target != click.listener && click.button == PointerButton::Secondary {
             //target_commands.despawn();
@@ -73,8 +74,34 @@ pub fn create_entity_cube_pick(
     ;
 }
 
-pub fn my_pick_click(
+#[allow(dead_code,unused_variables)]
+pub fn create_entity_cube_physics(
   mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
 ){
-
+  commands
+  .spawn((
+    PbrBundle{
+      mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+      material: materials.add(Color::BLACK.into()),
+      ..default()
+    },
+    #[allow(dead_code,unused_variables)]
+    OnPointer::<Click>::target_commands_mut(|click, target_commands| {
+      //if click.target != click.listener && click.button == PointerButton::Secondary {
+          //target_commands.despawn();
+      //}
+      println!("Right Click============================");
+    }),
+  ))
+  .insert(PickableBundle::default())
+  .insert( RaycastPickTarget::default())
+  .insert(OnPointer::<Click>::target_commands_mut(|click, target_commands| {
+      //if click.target != click.listener && click.button == PointerButton::Secondary {
+        //target_commands.despawn();
+      //}
+      println!("Right Click===[[[ create_entity_cube_physics ]]]===");
+    }))
+    ;
 }

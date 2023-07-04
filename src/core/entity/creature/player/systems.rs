@@ -57,7 +57,7 @@ pub fn create_entity_prototype_player(
     .insert(KinematicCharacterController::default())
     .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
     .with_children(|parent|{
-      /*
+      
       parent.spawn((
         Camera3dBundle {
           camera: Camera  { 
@@ -69,10 +69,10 @@ pub fn create_entity_prototype_player(
         transform: Transform::from_xyz(0.0, 5., 10.0).looking_at(Vec3::ZERO, Vec3::Y),
         ..Default::default()
         },
-        //PlayerCamera,
-        //RaycastPickCamera::default()
+        PlayerCamera,
+        RaycastPickCamera::default()//when main camera is active and select to update ray cast
       ));
-      */
+      
     })
     
     ;
