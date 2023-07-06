@@ -13,13 +13,6 @@ use crate::core::api::AppState;
 
 use super::components::{PLAYERMOVABLE, PlayerCamera};
 
-#[allow(dead_code)]
-pub fn set_app_state_game(
-  mut app_state_next_state:ResMut<NextState<AppState>>,
-){
-  //app_state_next_state.set(AppState::InGame);
-  app_state_next_state.set(AppState::InGame);
-}
 
 
 // DEFAULT ?
@@ -79,6 +72,56 @@ pub fn create_entity_prototype_player(
     // https://github.com/aevyrie/bevy_mod_picking/blob/v0.13/examples/event_listener.rs
 
 }
+
+#[allow(dead_code, unused_variables)]
+pub fn move_player_physics01(
+  input: Res<Input<KeyCode>>,
+  time: Res<Time>,
+  mut query: Query<(&mut Transform, &mut KinematicCharacterController), With<PLAYERMOVABLE>>,
+  //mut controllers: Query<&mut KinematicCharacterController>,
+){
+
+  //controllers.get_single_mut();
+  //for mut controller in controllers.iter_mut() {
+    //controller.translation = Some(Vec3::new(1.0, -0.5, 1.0));//too fast
+    //controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
+  //}
+  //need for player id later to control them later...
+  for (mut entity_transform,mut controller) in query.iter_mut() {
+    let gravity = Vec3::new(0.0, -0.1, 0.0);
+    if input.pressed( KeyCode::W) {
+      let direction = entity_transform.forward() * 0.1;
+      //controller.translation.apply() ; Some(direction)
+      //controller.translation;
+      controller.translation = Some(direction + gravity);
+    }else if input.pressed( KeyCode::S) {
+      let direction = entity_transform.back() * 0.1;
+      controller.translation = Some(direction + gravity);
+    }else{
+      controller.translation = Some(gravity);
+    }
+  
+    if input.pressed( KeyCode::A) {
+      entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        0., 1.0 * 0.1, 0.)
+      );
+    }
+    if input.pressed( KeyCode::D) {
+      entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        0., 1.0 * -0.1, 0.)
+      );
+    }
+  
+    if input.pressed(KeyCode::Space) {
+      let mut direction = Vec3::ZERO;
+      direction.y = 20.;
+      entity_transform.translation += time.delta_seconds() * 1.0 * direction;
+    }
+  }
+
+}
+
+
 // https://bevyengine.org/examples/3d/texture/
 // https://github.com/bevyengine/bevy/blob/main/examples/3d/transparency_3d.rs
 /// Fades the alpha channel of all materials between 0 and 1 over time.
@@ -94,6 +137,8 @@ pub fn fade_transparency(time: Res<Time>, mut materials: ResMut<Assets<StandardM
   }
 }
 
+
+/*
 pub fn create_entity_player0(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
@@ -138,7 +183,17 @@ pub fn create_entity_player0(
     //..default()
   //});
 }
+*/
 
+#[allow(dead_code)]
+pub fn set_app_state_game(
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+){
+  //app_state_next_state.set(AppState::InGame);
+  app_state_next_state.set(AppState::InGame);
+}
+
+/*
 pub fn player_movement(
   input: Res<Input<KeyCode>>,
   time: Res<Time>,
@@ -165,7 +220,9 @@ pub fn player_movement(
     transform.translation += time.delta_seconds() * 2.0 * direction;
   }
 }
+*/
 
+/*
 pub fn player_movement01(
   input: Res<Input<KeyCode>>,
   time: Res<Time>,
@@ -191,7 +248,9 @@ pub fn player_movement01(
     transform.translation += time.delta_seconds() * 2.0 * direction;
   }
 }
+*/
 
+/*
 pub fn player_movement02(
   input: Res<Input<KeyCode>>,
   time: Res<Time>,
@@ -232,5 +291,6 @@ pub fn player_movement02(
     //entity_transform.translation += time.delta_seconds() * 2.0 * direction;
   //}
 }
+*/
 
 

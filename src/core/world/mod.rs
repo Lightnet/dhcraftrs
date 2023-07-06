@@ -13,11 +13,10 @@ use bevy::prelude::*;
 use super::{
   api::AppState, 
   physics::{
-    create_ground, 
-    move_player_physics01
+    create_ground
   }, 
   entity::{
-    creature::player::systems::create_entity_prototype_player, 
+    creature::player::systems::{create_entity_prototype_player, move_player_physics01}, 
     mesh::cube::{ 
       //create_entity_cube_pick, 
       create_entity_cube_physics

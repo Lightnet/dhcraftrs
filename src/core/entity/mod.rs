@@ -14,3 +14,4 @@ pub mod prefab;
 pub mod mesh;
 pub mod tool;
 pub mod item;
+pub mod pointlight;

@@ -40,8 +40,6 @@ impl Plugin for CraftPhysics3DPlugin{
   }
 }
 
-
-
 #[allow(dead_code,unused_variables, unused_mut)]
 pub fn create_ground(
   mut commands: Commands,
@@ -94,10 +92,6 @@ pub fn create_player(
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
-  /* Create the ground. */
-  //commands
-    //.spawn(Collider::cuboid(100.0, 0.1, 100.0))
-    //.insert(TransformBundle::from(Transform::from_xyz(0.0, -2.0, 0.0)));
 
   //https://bevyengine.org/examples/3d/parenting/
   let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));
@@ -105,25 +99,7 @@ pub fn create_player(
     base_color: Color::rgb(0.8, 0.7, 0.6),
     ..default()
   });
-  /* Create the bouncing ball. */
-  /*
-  commands
-    .spawn(RigidBody::Dynamic)
-    .insert(Collider::ball(0.5))
-    .insert(Restitution::coefficient(0.7))
-    .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)));
-  */
-  /*
-  commands
-    .spawn(
-      PbrBundle {
-          mesh: cube_handle.clone(),
-          material: cube_material_handle.clone(),
-          transform: Transform::from_xyz(0.0, 0.0, 0.0),
-          ..default()
-        }
-    );
-    */
+
   //player
   //commands.spawn((1,2,3)); 3 max
   commands
@@ -156,34 +132,8 @@ pub fn create_player(
     ;
     */
 
-  /*
-  commands
-  .spawn((
-    Collider::ball(0.5),
-    KinematicCharacterController::default(),
-    TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0))
-  ))
-    //.spawn(RigidBody::Dynamic)
-    //.spawn(Collider::ball(0.5))
-    //.spawn(RigidBody::KinematicPositionBased)
-    //.insert(Collider::ball(0.5))
-    
-    //.insert(KinematicCharacterController::default())
-    //.insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
-    .with_children(|parent| {
-      parent.spawn(
-        PbrBundle {
-          mesh: cube_handle.clone(),
-          material: cube_material_handle.clone(),
-          //transform: Transform::from_xyz(0.0, 0.0, 0.0),
-          ..default()
-        }
-      );
-    })
-    ;
-    */
 }
-
+/*
 #[allow(dead_code)]
 pub fn move_player_physics(
   mut controllers: Query<&mut KinematicCharacterController>
@@ -193,7 +143,7 @@ pub fn move_player_physics(
     controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
   }
 }
-
+*/
 #[allow(dead_code)]
 pub fn create_player01(
   mut commands: Commands,
@@ -248,7 +198,7 @@ pub fn create_player01(
     ;
 
 }
-
+/*
 #[allow(dead_code, unused_variables)]
 pub fn move_player_physics01(
   input: Res<Input<KeyCode>>,
@@ -300,9 +250,8 @@ pub fn move_player_physics01(
     entity_transform.translation += time.delta_seconds() * 1.0 * direction;
   }
 
-
 }
-
+*/
 #[allow(dead_code)]
 pub fn read_result_system(controllers: Query<(Entity, &KinematicCharacterControllerOutput)>) {
   for (entity, output) in controllers.iter() {

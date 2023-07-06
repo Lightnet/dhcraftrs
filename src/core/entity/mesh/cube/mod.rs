@@ -10,6 +10,20 @@ use bevy_mod_picking::prelude::*;
 use bevy_rapier3d::prelude::*;
 //use bevy_eventlistener::prelude::*;
 
+//basic set up cube test
+pub fn setup_create_cube(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+){
+  commands.spawn(PbrBundle {
+    mesh: meshes.add(Mesh::from(shape::Cube { size:1.0 })),
+    material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
+    transform: Transform::from_xyz(0.0, 0.0, 0.0),
+    ..default()
+  }).insert(Name::new("cube"));
+}
+
 // System
 pub fn create_entity_cube(
   mut commands: Commands,
