@@ -24,3 +24,31 @@ pub struct PlayerInfo{
   is_dead:bool,
   is_spawn:bool,
 }
+
+#[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
+pub enum PawnState{
+  #[default]
+  Player,
+  Ghost,
+  Specter,
+  Vehicle,
+  Mount,
+  Fly,
+  Dead,
+  Custom,
+}
+
+#[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
+pub enum MoveState{
+  #[default]
+  Idle,
+  Walk,
+  Jump,
+  Fall,
+  Climb,
+  Ghost,
+  Mount,
+  Fly,
+  Dead,
+  Custom,
+}

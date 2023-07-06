@@ -17,7 +17,7 @@ use bevy_egui::{
   EguiPlugin
 };
 
-use crate::core::{ui::hud::hotbar::HUDHotBarPlugin, physics::CraftPhysics3DPlugin};
+use crate::core::{ui::hud::hotbar::HUDHotBarPlugin, physics::CraftPhysics3DPlugin, subapp::CraftSubAppPlugin};
 #[allow(unused_imports)]
 use crate::{
   core::{
@@ -152,6 +152,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
 
     // Test scene place 
     app.add_plugin(BaseWorldPlugin); //preload entity tests
+    //app.add_plugin(CraftSubAppPlugin); // testing app and sub app
 
     //check for state
     //app.add_startup_system(check_states); //

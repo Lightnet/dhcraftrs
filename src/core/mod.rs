@@ -23,3 +23,4 @@ pub mod components;
 pub mod styles;
 pub mod window;
 pub mod raycast;
+pub mod subapp;

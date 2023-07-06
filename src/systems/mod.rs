@@ -10,7 +10,7 @@
 use bevy::prelude::*;
 use bevy::window::PrimaryWindow;
 //use bevy_mod_picking::prelude::RaycastPickCamera;
-
+#[allow(unused_imports)]
 use crate::core::api::{CameraState, AppState};
 
 pub fn spawn_camera2d(mut commands: Commands, window_query: Query<&Window, With<PrimaryWindow>>) {
@@ -38,7 +38,7 @@ pub fn spawn_camera3d(
     //RaycastPickCamera::default(),
   ));
 }
-
+/*
 pub fn check_camera_state(
   camera_state: Res<State<CameraState>>
 ) {
@@ -61,6 +61,7 @@ pub fn check_camera_state(
     }
   }
 }
+*/
 
 // Testing for add 3D model into scene
 pub fn load_gltf_test01(mut commands: Commands, asset_server: Res<AssetServer>) {

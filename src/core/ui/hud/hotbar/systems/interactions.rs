@@ -20,7 +20,7 @@ use crate::core::{
 pub fn interact_hot_bar_id_button(
   mut button_query:Query<
     (&Interaction, &mut BackgroundColor, &HOTBARID),
-    (Changed<Interaction>, &HOTBARID, With<HOTBARID>)
+    (Changed<Interaction>, With<HOTBARID>)//need this? &HOTBARID
   >,
   //mut app_state_next_state:ResMut<NextState<AppState>>,
 ){

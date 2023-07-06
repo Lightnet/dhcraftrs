@@ -40,6 +40,7 @@ pub enum CameraState{
   Player,
   #[default]
   Menu,
+  Creature,
   Vehicle,
   Specter,
   Fixed,

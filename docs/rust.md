@@ -45,3 +45,5 @@ println!("body = {:?}", body);
  * https://stackoverflow.com/questions/75038925/how-to-link-an-icon-to-a-rust-windows-application
  * 
  * 
+# Json:
+ * https://blog.devgenius.io/reading-and-writing-a-json-file-in-rust-2731da8d6ad0
