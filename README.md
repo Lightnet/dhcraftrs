@@ -9,7 +9,7 @@
 # Notes:
  * Work in progress build and subject to change.
  * simple menu set up for next menu and load simple scene
- * 
+ * modules, components, functions query is work in progress
 
 # Code Language:
  * Rust 1.70.0 ( https://www.rust-lang.org/ )
@@ -84,8 +84,9 @@
   -bevy engine
   --state AppState
   --state NetworkState
-  --resources PlayerInfo 
-  --entities
+  --resources PlayerInfo
+  --world
+  ---entities
   --system (loop)
   ---game mode
   ---player controller
@@ -128,8 +129,8 @@ src ( work in progress and subjec to change)
 -- testscene.rs (simple test)
 - core
 -- setup builds
-- menu
--- main menu
+-- menu
+--- main
 - lib.rs (library)
 - api.rs (testing / for easy access for struct)
 - plugins.rs (testing / setup logic)

@@ -16,7 +16,7 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
-
+#[allow(unused_imports)]
 use crate::core::{ui::hud::hotbar::HUDHotBarPlugin, physics::CraftPhysics3DPlugin, subapp::CraftSubAppPlugin};
 #[allow(unused_imports)]
 use crate::{

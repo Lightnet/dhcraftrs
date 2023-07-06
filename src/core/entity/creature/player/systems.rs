@@ -223,6 +223,11 @@ pub fn player_movement02(
         0., 1.0 * -0.01, 0.)
       );
     }
+    if input.pressed(KeyCode::Space) {
+      let mut direction = Vec3::ZERO;
+      direction.y = 5.;
+      entity_transform.translation += time.delta_seconds() * 1.0 * direction;
+    }
 
     //entity_transform.translation += time.delta_seconds() * 2.0 * direction;
   //}

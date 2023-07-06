@@ -294,6 +294,13 @@ pub fn move_player_physics01(
     );
   }
 
+  if input.pressed(KeyCode::Space) {
+    let mut direction = Vec3::ZERO;
+    direction.y = 5.;
+    entity_transform.translation += time.delta_seconds() * 1.0 * direction;
+  }
+
+
 }
 
 #[allow(dead_code)]

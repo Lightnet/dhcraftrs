@@ -10,7 +10,20 @@ pub mod prefab;
 
 use bevy::prelude::*;
 
-use super::{api::AppState, physics::{create_ground, move_player_physics01}, entity::{creature::player::systems::create_entity_prototype_player, mesh::cube::{ create_entity_cube_pick, create_entity_cube_physics}}};
+use super::{
+  api::AppState, 
+  physics::{
+    create_ground, 
+    move_player_physics01
+  }, 
+  entity::{
+    creature::player::systems::create_entity_prototype_player, 
+    mesh::cube::{ 
+      //create_entity_cube_pick, 
+      create_entity_cube_physics
+    }
+  }
+};
 
 pub struct BaseWorldPlugin;
 //testing need to bare minimal
