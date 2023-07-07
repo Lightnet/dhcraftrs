@@ -18,6 +18,7 @@ use bevy_egui::{
 };
 use crate::core::event::CraftEventPlugin;
 use crate::core::ui::menu::create_player::CreatePlayerPlugin;
+use crate::core::ui::menu::network::NetworkMenuPlugin;
 use crate::core::ui::menu::options::OptionsPlugin;
 #[allow(unused_imports)]
 use crate::core::{ui::hud::hotbar::HUDHotBarPlugin, physics::CraftPhysics3DPlugin, subapp::CraftSubAppPlugin};
@@ -38,9 +39,6 @@ use crate::{
 #[allow(unused_imports)]
 use crate::{
   core::{
-    ui::{
-      network::NetworkMenuPlugin
-    }, 
     data::CraftBaseDataPlugin, 
     world::prefab::WorldBasicPlugin, 
     entity::creature::player::CraftPlayerPlugin

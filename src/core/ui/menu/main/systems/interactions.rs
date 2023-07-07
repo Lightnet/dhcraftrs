@@ -16,7 +16,7 @@ use crate::core::ui::menu::main::styles::*;
 pub fn interact_with_new_button(
   mut button_query:Query<
     (&Interaction, &mut BackgroundColor),
-    (Changed<Interaction>, With<NewButton>)
+    (Changed<Interaction>, With<NewGameButton>)
   >,
   mut app_state_next_state:ResMut<NextState<AppState>>,
 ){

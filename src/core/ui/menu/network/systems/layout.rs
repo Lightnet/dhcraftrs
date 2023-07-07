@@ -7,10 +7,8 @@
 
 use bevy::prelude::*;
 
-use crate::core::ui::network::{
-  components::*, 
-  styles::*,
-};
+use crate::core::ui::menu::network::components::*;
+use crate::core::ui::menu::network::styles::*;
 
 pub fn spawn_network_menu(
   mut commands: Commands,
@@ -43,6 +41,78 @@ pub fn build_network_menu(
     NetworkMenu,
     )
   ).with_children(|parent | {
+
+    //text
+      parent.spawn((
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "Address", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        },
+      ));
+    // Server
+    parent.spawn((
+      TextBundle{
+        text: Text{
+          sections: vec![
+            TextSection::new(
+              "127.0.0.1", 
+              get_button_text_style(&asset_server),
+            )
+          ],
+          alignment: TextAlignment::Center,
+          ..default()
+        },
+        ..default()
+      },
+      ServerText
+    ));
+
+    // Text
+    parent.spawn((
+      TextBundle{
+        text: Text{
+          sections: vec![
+            TextSection::new(
+              "Address", 
+              get_button_text_style(&asset_server),
+            )
+          ],
+          alignment: TextAlignment::Center,
+          ..default()
+        },
+        ..default()
+      },
+    ));
+
+    // PORT text
+    parent.spawn((
+      TextBundle{
+        text: Text{
+          sections: vec![
+            TextSection::new(
+              "5000", 
+              get_button_text_style(&asset_server),
+            )
+          ],
+          alignment: TextAlignment::Center,
+          ..default()
+        },
+        ..default()
+      },
+      PortText
+    ));
+
+
+
 
     // HOST BUTTON
     parent.spawn((

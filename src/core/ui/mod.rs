@@ -11,7 +11,6 @@
 
 pub mod editor;
 pub mod hud;
-pub mod network;
 pub mod loading_asset;
 pub mod watermark;
 pub mod splashscreen;

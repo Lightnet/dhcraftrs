@@ -11,7 +11,7 @@ use bevy::prelude::Component;
 pub struct MainMenu;
 
 #[derive(Component)]
-pub struct NewButton;
+pub struct NewGameButton;
 
 #[derive(Component)]
 pub struct PlayButton;

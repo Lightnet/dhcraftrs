@@ -9,6 +9,12 @@ use bevy::prelude::Component;
 
 #[derive(Component)]
 pub struct NetworkMenu;
+
+#[derive(Component)]
+pub struct ServerText;
+
+#[derive(Component)]
+pub struct PortText;
  
 #[derive(Component)]
 pub struct HostNetworkButton;

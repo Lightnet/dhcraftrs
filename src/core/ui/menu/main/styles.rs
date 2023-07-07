@@ -36,7 +36,10 @@ pub const TITLE_STYLE:Style = Style {
 };
 
 pub const IMAGE_STYLE:Style =  Style {
-  size:Size::new(Val::Px(64.0), Val::Px(64.0)),
+  //size:Size::new(Val::Px(64.0), Val::Px(64.0)),
+  size: Size::width(Val::Px(64.0)),
+  justify_content: JustifyContent::Center,
+  align_items: AlignItems::Center,
   margin:UiRect::new(Val::Px(8.0), Val::Px(8.0), Val::Px(8.0), Val::Px(8.0)),
   ..Style::DEFAULT
 };

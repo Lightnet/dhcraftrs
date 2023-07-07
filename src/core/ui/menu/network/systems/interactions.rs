@@ -8,8 +8,8 @@
 use bevy::prelude::*;
 
 use crate::core::api::AppState;
-use crate::core::ui::network::components::{HostNetworkButton, JoinNetworkButton, BackButton};
-use crate::core::ui::network::styles::*;
+use crate::core::ui::menu::network::components::{HostNetworkButton, JoinNetworkButton, BackButton};
+use crate::core::ui::menu::network::styles::*;
 
 pub fn interact_with_host_button(
   mut button_query:Query<

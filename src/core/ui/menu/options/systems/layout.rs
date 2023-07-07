@@ -9,9 +9,7 @@ use bevy::prelude::*;
 
 use crate::{
   core::ui::menu::{
-    create_player::components::{
-    }, 
-    main::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, get_title_text_style, NORMAL_BUTTON_COLOR, BUTTON_STYLE, get_button_text_style}, options::components::{MenuOptions, BackButton}}
+    main::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, NORMAL_BUTTON_COLOR, BUTTON_STYLE, get_button_text_style}, options::components::{MenuOptions, BackButton}}
 };
 
 pub fn spawn_options_menu(

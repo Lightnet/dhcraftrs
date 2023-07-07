@@ -54,14 +54,13 @@ pub fn build_main_menu(
         image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });
-
       //text
       parent.spawn(
         TextBundle{
           text: Text{
             sections: vec![
               TextSection::new(
-                "Test App", 
+                "dhcraftrs", 
                 get_title_text_style(&asset_server),
               )
             ],
@@ -71,7 +70,6 @@ pub fn build_main_menu(
           ..default()
         }
       );
-
       //image 2
       parent.spawn(ImageBundle{
         style: IMAGE_STYLE,
@@ -87,14 +85,14 @@ pub fn build_main_menu(
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
-      NewButton
+      NewGameButton
     )).with_children(|parent |{
       parent.spawn(
         TextBundle{
           text: Text{
             sections: vec![
               TextSection::new(
-                "New", 
+                "New Game", 
                 get_button_text_style(&asset_server),
               )
             ],
