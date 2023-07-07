@@ -32,13 +32,13 @@ pub struct HUDHotBarPlugin;
 impl Plugin for HUDHotBarPlugin {
   fn build(&self, app: &mut App){
     // setup enity hot bar UI
-    app.add_system(spawn_hud_hot_bars.in_schedule(OnEnter(AppState::InGame)));
+    app.add_system(spawn_hud_hot_bars.in_schedule(OnEnter(AppState::Game)));
     // update listen to button events
     app.add_system(
       interact_hot_bar_id_button
-      .in_set(OnUpdate(AppState::InGame))
+      .in_set(OnUpdate(AppState::Game))
     );
     // remove entity hot bar UI
-    app.add_system(despawn_hud_hot_bars.in_schedule(OnExit(AppState::InGame)));
+    app.add_system(despawn_hud_hot_bars.in_schedule(OnExit(AppState::Game)));
   }
 }

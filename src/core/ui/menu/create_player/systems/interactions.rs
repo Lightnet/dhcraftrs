@@ -10,7 +10,7 @@ use bevy::prelude::*;
 use bevy_pkv::PkvStore;
 use crate::core::api::AppState;
 use crate::core::components::PlayerInfo;
-use crate::core::ui::menu::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText};
+use crate::core::ui::menu::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText, BackButton};
 use crate::core::ui::menu::main::styles::{PRESSED_BUTTON_COLOR, HOVERED_BUTTON_COLOR, NORMAL_BUTTON_COLOR};
 
 pub fn interact_button_create_player(
@@ -33,7 +33,40 @@ pub fn interact_button_create_player(
         .expect("failed to store username");
 
         //need to check blank incase of player name string is empty later...
-        app_state_next_state.set(AppState::InGame);
+        app_state_next_state.set(AppState::Game);
+        
+      }
+      Interaction::Hovered =>{
+        *background_color = HOVERED_BUTTON_COLOR.into();
+      }
+      Interaction::None =>{
+        *background_color = NORMAL_BUTTON_COLOR.into();
+      }
+    }
+  }
+}
+
+pub fn interact_button_back(
+  mut button_query:Query<
+    (&Interaction, &mut BackgroundColor),
+    (Changed<Interaction>, With<BackButton>)
+  >,
+  mut app_state_next_state:ResMut<NextState<AppState>>,
+  player_info: Res<PlayerInfo>,
+  mut pkv: ResMut<PkvStore>,
+){
+  if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
+    println!("new button player create");
+    match *interaction {
+      Interaction::Clicked =>{
+        *background_color = PRESSED_BUTTON_COLOR.into();
+        println!("Player Name: {}", player_info.name );
+
+        pkv.set_string("username", player_info.name.as_str() )
+        .expect("failed to store username");
+
+        //need to check blank incase of player name string is empty later...
+        app_state_next_state.set(AppState::MainMenu);
         
       }
       Interaction::Hovered =>{

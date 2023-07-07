@@ -17,3 +17,6 @@ pub struct CREATEPLAYERNAMEBUTTON;
 // A unit struct to help identify the color-changing Text component
 #[derive(Component)]
 pub struct PlayerNameText;
+
+#[derive(Component)]
+pub struct BackButton;

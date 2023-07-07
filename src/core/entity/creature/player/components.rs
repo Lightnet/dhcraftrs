@@ -16,6 +16,9 @@ pub struct PLAYERMOVABLE;
 #[derive(Component)]
 pub struct PlayerCamera;
 
+#[derive(Component, Debug)]
+pub struct IsGround(pub bool);
+
 #[allow(dead_code)]
 pub struct PlayerInfo{
   id:String,

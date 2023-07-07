@@ -5,6 +5,10 @@
   Information: Note there are other licenses.
  */
 
-pub mod create_player;
-pub mod main;
-pub mod options;
+use bevy::prelude::Component;
+
+#[derive(Component)]
+pub struct MenuOptions;
+
+#[derive(Component)]
+pub struct BackButton;

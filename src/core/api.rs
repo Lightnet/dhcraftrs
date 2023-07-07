@@ -16,9 +16,9 @@ pub enum AppState{
   //#[default]
   MainMenu, // use
   //Next,
-  InGame, // use, testing...
-  EndGame, // not yet
   LoadingGame, // not yet
+  Game, // use
+  EndGame, // not yet
   //LoadingScene,
   //LoadingWorld,
   //SCENE,
@@ -32,6 +32,16 @@ pub enum AppState{
   NETWORK, // use
   SERVER, // use
   CLIENT, // use
+}
+
+#[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]
+pub enum GameState{
+  #[default]
+  Loading,
+  //Start,
+  Game,
+  Unloading,
+  //End,
 }
 
 #[derive(States, PartialEq, Eq, Clone, Hash, Debug, Default)]

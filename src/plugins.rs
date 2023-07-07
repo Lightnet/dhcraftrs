@@ -16,6 +16,9 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
+use crate::core::event::CraftEventPlugin;
+use crate::core::ui::menu::create_player::CreatePlayerPlugin;
+use crate::core::ui::menu::options::OptionsPlugin;
 #[allow(unused_imports)]
 use crate::core::{ui::hud::hotbar::HUDHotBarPlugin, physics::CraftPhysics3DPlugin, subapp::CraftSubAppPlugin};
 #[allow(unused_imports)]
@@ -82,11 +85,12 @@ impl Plugin for BaseCraftPlugin{
     //app.add_plugin(LoadingAssetUIPlugin); // ui loading
     app.add_plugin(LoadingAssetPlugin); // loading call
     app.add_plugin(MainMenuPlugin); // main menu
+    app.add_plugin(OptionsPlugin); // menu
     //app.add_plugin(WaterMarkPlugin); // water mark //testing
     //app.add_plugin(CreatePlayerPlugin); // 
     //app.add_plugin(WorldBasicPlugin); // simple scene test
-    //app.add_plugin(NetworkMenuPlugin); // 
-    //app.add_plugin(CraftEventPlugin); // event testing...
+    app.add_plugin(NetworkMenuPlugin); // 
+    app.add_plugin(CraftEventPlugin); // event testing...
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
     
@@ -131,20 +135,22 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_startup_system(spawn_camera3d); // 
     //note it need one camera at the time else log error on multiple camera active.
 
+    //app.add_plugin(WaterMarkPlugin); // water mark //testing
     //app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
+
+    
     //app.add_plugin(LoadingAssetUIPlugin); // ui loading
     app.add_plugin(LoadingAssetPlugin); // loading call
     app.add_plugin(MainMenuPlugin); // main menu
-    //app.add_plugin(WaterMarkPlugin); // water mark //testing
-    //app.add_plugin(CreatePlayerPlugin); // 
+    app.add_plugin(OptionsPlugin); // menu
+    app.add_plugin(CreatePlayerPlugin); // 
 
     app.add_plugin(CraftRayCastPlugin); // 
     //app.add_plugin(WorldBasicPlugin); // 
-    //app.add_plugin(NetworkMenuPlugin); // 
-    //app.add_plugin(CraftEventPlugin); // Events
+    app.add_plugin(NetworkMenuPlugin); // 
+    app.add_plugin(CraftEventPlugin); // Events
 
     //app.add_plugin(PlayerPlugin);//conflict camera?
-    
     //app.add_plugin(CraftPlayerPlugin); //
 
     app.add_plugin(HUDHotBarPlugin); // set up hot bar

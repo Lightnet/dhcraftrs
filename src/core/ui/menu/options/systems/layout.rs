@@ -8,30 +8,29 @@
 use bevy::prelude::*;
 
 use crate::{
-  core::ui::menu::{create_player::components::{
-    CREATEPLAYERNAME, 
-    PlayerNameText, 
-    CREATEPLAYERNAMEBUTTON, BackButton
-  }, main::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, get_title_text_style, NORMAL_BUTTON_COLOR, BUTTON_STYLE, get_button_text_style}}
+  core::ui::menu::{
+    create_player::components::{
+    }, 
+    main::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, get_title_text_style, NORMAL_BUTTON_COLOR, BUTTON_STYLE, get_button_text_style}, options::components::{MenuOptions, BackButton}}
 };
 
-pub fn spawn_create_player_menu(
+pub fn spawn_options_menu(
   mut commands: Commands,
   asset_server:Res<AssetServer>
 ){
-  let _create_player_menu_entity = build_create_player_menu(&mut commands, &asset_server);
+  let _create_options_menu_entity = build_create_options_menu(&mut commands, &asset_server);
 }
 
-pub fn despawn_create_player_menu(
+pub fn despawn_options_menu(
   mut commands: Commands,
-  main_menu_query:Query<Entity, With<CREATEPLAYERNAME>>,
+  main_menu_query:Query<Entity, With<MenuOptions>>,
 ){
   if let Ok(main_menu_entity) = main_menu_query.get_single(){
     commands.entity(main_menu_entity).despawn_recursive();
   }
 }
 
-pub fn build_create_player_menu(
+pub fn build_create_options_menu(
   commands: &mut Commands,
   asset_server:&Res<AssetServer>
 )-> Entity{
@@ -41,7 +40,7 @@ pub fn build_create_player_menu(
       //background_color: Color::RED.into(),
       ..default()
     },
-    CREATEPLAYERNAME,
+    MenuOptions,
     )
   ).with_children(|parent |{
     //title
@@ -57,52 +56,8 @@ pub fn build_create_player_menu(
         image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });
-
-      //text
-      parent.spawn((
-        TextBundle{
-          text: Text{
-            sections: vec![
-              TextSection::new(
-                "player name", 
-                get_title_text_style(&asset_server),
-              )
-            ],
-            alignment: TextAlignment::Center,
-            ..default()
-          },
-          ..default()
-        },
-        PlayerNameText
-      ));
     });
-
-    //Create Player Name
-    parent.spawn((
-      ButtonBundle {
-        style:BUTTON_STYLE,
-        background_color: NORMAL_BUTTON_COLOR.into(),
-        ..default()
-      },
-      CREATEPLAYERNAMEBUTTON
-    )).with_children(|parent |{
-      parent.spawn(
-        TextBundle{
-          text: Text{
-            sections: vec![
-              TextSection::new(
-                "Create", 
-                get_button_text_style(&asset_server),
-              )
-            ],
-            alignment: TextAlignment::Center,
-            ..default()
-          },
-          ..default()
-        }
-      );
-    });
-
+    
     parent.spawn((
       ButtonBundle {
         style:BUTTON_STYLE,

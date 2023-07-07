@@ -1,6 +1,10 @@
 
 # Physics:
 
+# Notes:
+ * there are two type KinematicCharacterControllerOutput and KinematicCharacterController query does not seem to work togehter.
+ one is translation and other is check collision and ground.
+
 ```rs
 
   let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));

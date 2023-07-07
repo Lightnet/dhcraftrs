@@ -48,7 +48,7 @@ pub fn interact_with_play_button(
     match *interaction {
       Interaction::Clicked =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
-        app_state_next_state.set(AppState::InGame);
+        app_state_next_state.set(AppState::Game);
       }
       Interaction::Hovered =>{
         *background_color = HOVERED_BUTTON_COLOR.into();
@@ -72,6 +72,7 @@ pub fn interact_with_online_button(
     match *interaction {
       Interaction::Clicked =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
+        println!("NETWORK SET...");
         app_state_next_state.set(AppState::NETWORK);
       }
       Interaction::Hovered =>{

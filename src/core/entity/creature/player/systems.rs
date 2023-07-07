@@ -11,7 +11,7 @@ use bevy_rapier3d::prelude::*;
 
 use crate::core::api::AppState;
 
-use super::components::{PLAYERMOVABLE, PlayerCamera};
+use super::components::{PLAYERMOVABLE, PlayerCamera, IsGround};
 
 
 
@@ -44,7 +44,9 @@ pub fn create_entity_prototype_player(
         ..default()
       }
     )
+    .insert(IsGround(true))
     .insert(PLAYERMOVABLE)
+    .insert(RigidBody::KinematicPositionBased)
     //.insert(Collider::ball(1.))
     .insert(Collider::capsule(Vec3 { x: 0., y: -0.5, z: 0. },Vec3 { x: 0., y: 0.5, z: 0. } , 1.0))
     .insert(KinematicCharacterController::default())
@@ -72,22 +74,30 @@ pub fn create_entity_prototype_player(
     // https://github.com/aevyrie/bevy_mod_picking/blob/v0.13/examples/event_listener.rs
 
 }
-
+// https://rapier.rs/docs/user_guides/bevy_plugin/character_controller
 #[allow(dead_code, unused_variables)]
 pub fn move_player_physics01(
   input: Res<Input<KeyCode>>,
   time: Res<Time>,
-  mut query: Query<(&mut Transform, &mut KinematicCharacterController), With<PLAYERMOVABLE>>,
-  //mut controllers: Query<&mut KinematicCharacterController>,
+  mut query: Query<(
+    &mut Transform, 
+    &mut KinematicCharacterController, 
+    //&KinematicCharacterControllerOutput,
+    //Entity,
+    &IsGround
+  ), With<PLAYERMOVABLE>>,
 ){
-
-  //controllers.get_single_mut();
-  //for mut controller in controllers.iter_mut() {
-    //controller.translation = Some(Vec3::new(1.0, -0.5, 1.0));//too fast
-    //controller.translation = Some(Vec3::new(0.0, -0.01, 0.0));
-  //}
   //need for player id later to control them later...
-  for (mut entity_transform,mut controller) in query.iter_mut() {
+
+  
+  for (
+    mut entity_transform,
+    mut controller, 
+    //controlleroutput, // controller & controlleroutput = does not work?
+    //entity
+    is_ground
+  ) in query.iter_mut() {
+    println!("IsGround: {}", is_ground.0);
     let gravity = Vec3::new(0.0, -0.1, 0.0);
     if input.pressed( KeyCode::W) {
       let direction = entity_transform.forward() * 0.1;
@@ -117,10 +127,27 @@ pub fn move_player_physics01(
       direction.y = 20.;
       entity_transform.translation += time.delta_seconds() * 1.0 * direction;
     }
+
+    //println!("controlleroutput grounded: {}", controlleroutput.grounded);
+    //println!("controlleroutput effective_translation: {:?}", controlleroutput.effective_translation);
   }
 
 }
 
+// https://rapier.rs/docs/user_guides/bevy_plugin/character_controller
+pub fn read_result_system_player(
+  mut controllers: Query<(
+    Entity, 
+    &KinematicCharacterControllerOutput, 
+    &mut IsGround
+  ), With<PLAYERMOVABLE>>) {
+
+  for (entity,output, mut isground) in controllers.iter_mut() {
+      println!("Entity {:?} moved by {:?} and touches the ground: {:?}",
+                entity, output.effective_translation, output.grounded);
+      isground.0 = output.grounded;
+  }
+}
 
 // https://bevyengine.org/examples/3d/texture/
 // https://github.com/bevyengine/bevy/blob/main/examples/3d/transparency_3d.rs
@@ -190,7 +217,7 @@ pub fn set_app_state_game(
   mut app_state_next_state:ResMut<NextState<AppState>>,
 ){
   //app_state_next_state.set(AppState::InGame);
-  app_state_next_state.set(AppState::InGame);
+  app_state_next_state.set(AppState::Game);
 }
 
 /*

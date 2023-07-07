@@ -16,7 +16,7 @@ use super::{
     create_ground
   }, 
   entity::{
-    creature::player::systems::{create_entity_prototype_player, move_player_physics01}, 
+    creature::player::systems::{create_entity_prototype_player, move_player_physics01, read_result_system_player}, 
     mesh::cube::{ 
       //create_entity_cube_pick, 
       create_entity_cube_physics
@@ -31,14 +31,15 @@ impl Plugin for BaseWorldPlugin{
   fn build(&self, app: &mut App){
 
 
-    app.add_system(create_ground.in_schedule(OnEnter(AppState::InGame)));
+    app.add_system(create_ground.in_schedule(OnEnter(AppState::Game)));
 
     //app.add_system(create_entity_cube.in_schedule(OnEnter(AppState::InGame)));
     //app.add_system(create_entity_cube_pick.in_schedule(OnEnter(AppState::InGame)));
-    app.add_system(create_entity_cube_physics.in_schedule(OnEnter(AppState::InGame)));
+    app.add_system(create_entity_cube_physics.in_schedule(OnEnter(AppState::Game)));
 
-    app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::InGame)));
-    app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
+    app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::Game)));
+    app.add_system(move_player_physics01.in_set(OnUpdate(AppState::Game)));
+    app.add_system(read_result_system_player.in_set(OnUpdate(AppState::Game)));
 
 
   }

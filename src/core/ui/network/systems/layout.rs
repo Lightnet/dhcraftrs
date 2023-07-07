@@ -16,7 +16,8 @@ pub fn spawn_network_menu(
   mut commands: Commands,
   asset_server:Res<AssetServer>
 ){
-  let _main_menu_entity = build_network_menu(&mut commands, &asset_server);
+  println!("init network menu");
+  let _network_menu_entity = build_network_menu(&mut commands, &asset_server);
 }
 
 pub fn despawn_network_menu(
@@ -24,6 +25,7 @@ pub fn despawn_network_menu(
   network_menu_query:Query<Entity, With<NetworkMenu>>,
 ){
   if let Ok(network_menu_entity) = network_menu_query.get_single(){
+    println!("remove network menu");
     commands.entity(network_menu_entity).despawn_recursive();
   }
 }
@@ -38,10 +40,11 @@ pub fn build_network_menu(
       //background_color: Color::RED.into(),
       ..default()
     },
-    NetworkMenu {},
+    NetworkMenu,
     )
   ).with_children(|parent | {
-    //play
+
+    // HOST BUTTON
     parent.spawn((
       ButtonBundle {
         style:BUTTON_STYLE,
@@ -67,7 +70,7 @@ pub fn build_network_menu(
       );
     });
 
-    //play
+    // JOIN BUTTON
     parent.spawn((
       ButtonBundle {
         style:BUTTON_STYLE,
@@ -92,6 +95,33 @@ pub fn build_network_menu(
         }
       );
     });
+
+    // BACK BUTTON
+    parent.spawn((
+      ButtonBundle {
+        style:BUTTON_STYLE,
+        background_color: NORMAL_BUTTON_COLOR.into(),
+        ..default()
+      },
+      BackButton
+    )).with_children(|parent |{
+      parent.spawn(
+        TextBundle{
+          text: Text{
+            sections: vec![
+              TextSection::new(
+                "Back", 
+                get_button_text_style(&asset_server),
+              )
+            ],
+            alignment: TextAlignment::Center,
+            ..default()
+          },
+          ..default()
+        }
+      );
+    });
+
   })
   .id();
 

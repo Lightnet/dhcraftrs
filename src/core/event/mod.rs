@@ -16,8 +16,6 @@
   * quest
   * save and load
   * 
-  
-
  */
 
 // https://bevy-cheatbook.github.io/patterns/manual-event-clear.html
@@ -57,7 +55,7 @@ impl Plugin for CraftEventPlugin{//main entry point still in testing...
     app.add_event::<LevelUpEvent>();
     app.add_system(player_level_up);
     app.add_system(debug_levelups);
-    app.add_startup_system (create_test_plauer);
+    app.add_startup_system(create_test_plauer);
   }
 }
 

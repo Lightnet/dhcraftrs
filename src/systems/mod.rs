@@ -75,7 +75,7 @@ pub fn load_gltf_test01(mut commands: Commands, asset_server: Res<AssetServer>) 
 pub fn set_game_state(
   mut app_state_next_state:ResMut<NextState<AppState>>,
 ){
-  app_state_next_state.set(AppState::InGame);
+  app_state_next_state.set(AppState::Game);
 }
 #[allow(dead_code)]
 pub fn check_app_states(

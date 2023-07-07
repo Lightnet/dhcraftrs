@@ -13,7 +13,7 @@ use bevy::prelude::*;
 
 use crate::core::api::AppState;
 
-use self::systems::{layout::{spawn_create_player_menu, despawn_create_player_menu}, interactions::{player_name_text_update, interact_button_create_player}};
+use self::systems::{layout::{spawn_create_player_menu, despawn_create_player_menu}, interactions::{player_name_text_update, interact_button_create_player, interact_button_back}};
 
 pub struct CreatePlayerPlugin;
 
@@ -32,5 +32,6 @@ impl Plugin for CreatePlayerPlugin {
     app.add_system(player_name_text_update.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
     //button event interact
     app.add_system(interact_button_create_player.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
+    app.add_system(interact_button_back.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
   }
 }
