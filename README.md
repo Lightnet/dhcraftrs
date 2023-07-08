@@ -18,17 +18,19 @@
  * Bevy Engine 0.10.1  ( https://bevyengine.org/ )
 
 # Plugins:
- * moonshine-save ()
- * bevy_console ( console gui )
- * bevy-inspector-egui ( gui )
- * bevy_mod_picking (ray casting)
- * bevy_rapier3d ( physics 3D )
- * bevy_egui ( gui )
- * bevy_flycam (camera control)
- * bevy_asset_loader (assets loading files)
- * bevy_transform_gizmo ( editor transform handler location, rotation and scale )
- * bevy_renet (network)
- * bevy_pkv (config save and load)
+ * moonshine-save v0.2.3 ()
+ * clap v4.1.10
+ * bevy_console v0.7.0 ( console gui )
+ * bevy-inspector-egui v0.18.3 ( gui )
+ * bevy_mod_picking v0.13.0 (ray casting)
+ * bevy_rapier3d vbevy_rapier3d ( physics 3D )
+ * bevy_egui v0.20 ( gui )
+ * bevy_flycam v0.10 (camera control)
+ * bevy_asset_loader v0.16 (assets loading files)
+ * bevy_transform_gizmo v0.6 ( editor transform handler location, rotation and scale )
+ * bevy_renet v0.0.12 (network)
+ * bevy_pkv v0.7.0 (config save and load)
+ * bevy_svg v0.10.1 
 
 # Information: 
   Note this is prototype and work in progress testing. Files are subject to changes.

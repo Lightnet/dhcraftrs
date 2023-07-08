@@ -4,11 +4,13 @@ version = "0.1.0"
 edition = "2021"
 default-run = "dhcraftrs"
 
+resolver = "2" # path reslove packages
+
 [profile.dev]
 opt-level = 1
 
-#[profile.dev.package."*"]
-#opt-level = 3
+[profile.dev.package."*"]
+opt-level = 3
 
 #[profile.release]
 #strip = true #automatically strip symbols from binary
@@ -31,45 +33,44 @@ path = "src/bin/game.rs"
 #path = "src/bin/editor.rs"
 
 [[bin]]
-name = "fpsgame"
-path = "src/bin/fpsgame.rs"
-
-[[bin]]
 name = "network"
 path = "src/bin/network.rs"
-
-[[bin]]
-name = "testscene"
-path = "src/bin/testscene.rs"
 
 [[bin]]
 name = "launcher"
 path = "src/bin/launcher.rs"
 
-[[bin]]
+[[example]]
+name = "fpsgame"
+path = "src/example/fpsgame.rs"
+
+[[example]]
+name = "testscene"
+path = "src/example/testscene.rs"
+
+[[example]]
 name = "testapp"
-path = "src/bin/testapp.rs"
+path = "src/example/testapp.rs"
 
-[[bin]]
+[[example]]
 name = "testdata"
-path = "src/bin/testdata.rs"
+path = "src/example/testdata.rs"
 
-[[bin]]
+[[example]]
 name = "testdataplayer"
-path = "src/bin/testdataplayer.rs"
+path = "src/example/testdataplayer.rs"
 
-[[bin]]
+[[example]]
 name = "physics3d"
-path = "src/bin/physics3d.rs"
+path = "src/example/physics3d.rs"
 
-[[bin]]
+[[example]]
 name = "webgui"
-path = "src/bin/webgui.rs"
+path = "src/example/webgui.rs"
 
-
-[[bin]]
+[[example]]
 name = "pick_event"
-path = "src/bin/pick_event.rs"
+path = "src/example/pick_event.rs"
 
 [dependencies]
 moonshine-save = {version = "0.2.3"}
@@ -106,4 +107,5 @@ renet = {version = "0.0.12", features = ["bevy"]}
 reqwest = { version ="0.11.18", features = ["blocking", "json"] }
 winit = "0.28.6"
 image = "0.24.6"
+bevy_svg = "0.10.1"
 #bevy_eventlistener = "0.1.1"
