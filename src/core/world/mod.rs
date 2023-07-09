@@ -19,7 +19,7 @@ use super::{
     creature::player::systems::{create_entity_prototype_player, move_player_physics01, read_result_system_player}, 
     mesh::cube::{ 
       //create_entity_cube_pick, 
-      create_entity_cube_physics
+      create_entity_cube_physics, setup_ph_cube, place_holder_update
     }
   }
 };
@@ -37,7 +37,9 @@ impl Plugin for BaseWorldPlugin{
     //app.add_system(create_entity_cube_pick.in_schedule(OnEnter(AppState::InGame)));
     app.add_system(create_entity_cube_physics.in_schedule(OnEnter(AppState::Game)));
 
+    app.add_system(setup_ph_cube.in_schedule(OnEnter(AppState::Game)));
     app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::Game)));
+    app.add_system(place_holder_update.in_set(OnUpdate(AppState::Game)));
     app.add_system(move_player_physics01.in_set(OnUpdate(AppState::Game)));
     app.add_system(read_result_system_player.in_set(OnUpdate(AppState::Game)));
 

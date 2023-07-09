@@ -51,3 +51,6 @@ pub struct Attack {}
 
 #[derive(Component)]
 pub struct Defense {}
+
+#[derive(Component)]
+pub struct PlaceHolder;
