@@ -20,8 +20,8 @@ impl Plugin for CraftRayCastPlugin{//main entry point still in testing...
     //app.add_plugins(DefaultPickingPlugins);
     app.add_plugins(
       DefaultPickingPlugins
-          .build()
-          .disable::<DefaultHighlightingPlugin>(),
+        .build()
+        .disable::<DefaultHighlightingPlugin>(),
     );
     //app.add_startup_system(setup_test);
 

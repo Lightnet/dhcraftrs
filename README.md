@@ -48,7 +48,8 @@
 
 ## Notes:
  * Bevy Renet plugin required some thinking.
- * Simple plugin build but no way to handle close session event yet. 
+ * Simple plugin build but no way to handle close session event yet.
+ * Conflict with local test config plugin for loading to crash
 
 ## Bevy Engine:
   If you learn from godot or unity engine they work simalar ways. As well javascript from react, solid and other frame work design. Module components that have common logic. Reason is simple to reduce loop and render by query filter components that are need in run time application to not waste cpu or gpu data and loop.

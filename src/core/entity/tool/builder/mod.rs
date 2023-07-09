@@ -6,13 +6,16 @@
  */
 
 /*
+  Information:
+    For using block to build collision.
+
+
   To do List:
   * Blocks:
     * build
     * destory
-  * off set model
-
-
+  * Off set model
+  * delay time or click by picker.
  */
 
 

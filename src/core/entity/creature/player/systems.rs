@@ -10,10 +10,7 @@ use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
 use crate::core::api::AppState;
-
 use super::components::{PLAYERMOVABLE, PlayerCamera, IsGround};
-
-
 
 // DEFAULT ?
 pub fn create_entity_prototype_player(
@@ -88,8 +85,6 @@ pub fn move_player_physics01(
   ), With<PLAYERMOVABLE>>,
 ){
   //need for player id later to control them later...
-
-  
   for (
     mut entity_transform,
     mut controller, 
@@ -97,7 +92,7 @@ pub fn move_player_physics01(
     //entity
     is_ground
   ) in query.iter_mut() {
-    println!("IsGround: {}", is_ground.0);
+    //println!("IsGround: {}", is_ground.0);
     let gravity = Vec3::new(0.0, -0.1, 0.0);
     if input.pressed( KeyCode::W) {
       let direction = entity_transform.forward() * 0.1;
@@ -143,8 +138,8 @@ pub fn read_result_system_player(
   ), With<PLAYERMOVABLE>>) {
 
   for (entity,output, mut isground) in controllers.iter_mut() {
-      println!("Entity {:?} moved by {:?} and touches the ground: {:?}",
-                entity, output.effective_translation, output.grounded);
+      //println!("Entity {:?} moved by {:?} and touches the ground: {:?}",
+                //entity, output.effective_translation, output.grounded);
       isground.0 = output.grounded;
   }
 }
