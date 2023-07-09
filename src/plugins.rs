@@ -17,6 +17,7 @@ use bevy_egui::{
   EguiPlugin
 };
 use crate::core::event::CraftEventPlugin;
+use crate::core::network::NetworkCraftPlugin;
 use crate::core::ui::menu::create_player::CreatePlayerPlugin;
 use crate::core::ui::menu::network::NetworkMenuPlugin;
 use crate::core::ui::menu::options::OptionsPlugin;
@@ -125,7 +126,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     //app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_state::<AppState>(); // state app
     
-    app.add_plugin(CraftBaseDataPlugin); // loading player data base
+    //app.add_plugin(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
@@ -156,6 +157,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
 
     // Test scene place 
     app.add_plugin(BaseWorldPlugin); //preload entity tests
+    app.add_plugin(NetworkCraftPlugin); //
     //app.add_plugin(CraftSubAppPlugin); // testing app and sub app
 
     //check for state
