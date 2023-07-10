@@ -113,8 +113,6 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     //app.add_plugin(EguiPlugin);// menu 
     app.add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
-        //width: WIDTH,
-        //height: HEIGHT,
         resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
         title: "Bevy Game Test".to_string(),
         resizable: false,

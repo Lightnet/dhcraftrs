@@ -10,7 +10,7 @@ use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
 use crate::core::api::AppState;
-use super::components::{PLAYERMOVABLE, PlayerCamera, IsGround};
+use super::components::{PLAYERMOVABLE, PlayerCamera, IsGround, PlayerTool};
 
 // DEFAULT ?
 pub fn create_entity_prototype_player(
@@ -42,6 +42,8 @@ pub fn create_entity_prototype_player(
       }
     )
     .insert(IsGround(true))
+    //player tool check
+    .insert(PlayerTool("builds".to_string()))
     .insert(PLAYERMOVABLE)
     .insert(RigidBody::KinematicPositionBased)
     //.insert(Collider::ball(1.))

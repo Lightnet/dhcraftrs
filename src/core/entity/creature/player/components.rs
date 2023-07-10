@@ -19,6 +19,11 @@ pub struct PlayerCamera;
 #[derive(Component, Debug)]
 pub struct IsGround(pub bool);
 
+// player tool example build, pickaxe for deal with switch tool by filter?
+#[derive(Component, Debug)]
+pub struct PlayerTool(pub String);
+
+
 #[allow(dead_code)]
 pub struct PlayerInfo{
   id:String,

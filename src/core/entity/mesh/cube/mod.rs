@@ -11,7 +11,7 @@ use bevy::prelude::*;
 use bevy_mod_picking::prelude::*;
 use bevy_rapier3d::prelude::*;
 
-use crate::core::components::PlaceHolder;
+use crate::core::{components::PlaceHolder, entity::creature::player::components::{PLAYERMOVABLE, PlayerTool}};
 //use bevy_eventlistener::prelude::*;
 
 //basic set up cube test
@@ -200,6 +200,7 @@ fn click_event_test(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,
+  tool_query: Query<&PlayerTool, With<PLAYERMOVABLE>>,
   //buttons: Res<Input<MouseButton>>,
 )-> Bubble{
   //println!("[[[ ======....................");
@@ -215,22 +216,23 @@ fn click_event_test(
   //println!("pointer_location: {:?}", event.pointer_location);
   //println!("target: {:?}", event.target);
   if PointerButton::Primary == event.button {
-    let pos = event.hit.position.unwrap();
-    let normal = event.hit.normal.unwrap();
 
-    //if normal.y == 1.0 && normal.x == 0.0 && normal.z == 0.0 {
-      //let fixed_place = Vec3::floor(pos) + Vec3::new(0.0, 1.0, 0.0);
-      //println!("TOP {:?}",fixed_place);
-      //create_cube_physics(&mut commands, &mut meshes, &mut materials, Vec3::new(fixed_place.x, fixed_place.y, fixed_place.z))
-    //}
+    if let Ok(tool) = tool_query.get_single(){
+      //println!("[[Tool   ]]: {:?}", tool.0);
+      if tool.0 == format!("build") {
+        let pos = event.hit.position.unwrap();
+        let normal = event.hit.normal.unwrap();
 
-    let fixed_pos = Vec3::floor(pos) + normal;
-    println!("TOP {:?}",fixed_pos);
-    create_cube_physics(&mut commands, &mut meshes, &mut materials, fixed_pos)
-    //create_cube_physics(&mut commands, &mut meshes, &mut materials, Vec3::new(fixed_place.x, fixed_place.y, fixed_place.z))
+        let fixed_pos = Vec3::floor(pos) + normal;
+        //println!("TOP {:?}",fixed_pos);
+        create_cube_physics(&mut commands, &mut meshes, &mut materials, fixed_pos)
+        //create_cube_physics(&mut commands, &mut meshes, &mut materials, Vec3::new(fixed_place.x, fixed_place.y, fixed_place.z))
+      }
+    }
   }
 
   if PointerButton::Secondary == event.button {
+    //remove entity
     //target_commands.despawn();
     commands.entity(event.target).despawn_recursive();
   }
@@ -241,15 +243,22 @@ fn click_event_test(
 fn update_place_holder_item(
   In(event): In<ListenedEvent<Move>>,
   mut query: Query<&mut Transform, With<PlaceHolder>>,
+  tool_query: Query<&PlayerTool, With<PLAYERMOVABLE>>,
 )-> Bubble{
-  if let Ok(mut entity) = query.get_single_mut(){
-    //println!("event: {:?}", event);
-    println!("hit: {:?}", event.hit);
-    let fixed = Vec3::floor(event.hit.position.unwrap()).add(event.hit.normal.unwrap());
-    println!("entity: {:?}", entity);
-    entity.translation = fixed;
-    //commands.entity(loading_asset_entity).despawn_recursive();
-  }
 
+  if let Ok(tool) = tool_query.get_single(){
+    //println!("[[Tool   ]]: {:?}", tool.0);
+    if tool.0 == format!("build") {
+      if let Ok(mut entity) = query.get_single_mut(){
+        //println!("event: {:?}", event);
+        //println!("hit: {:?}", event.hit);
+        let fixed = Vec3::floor(event.hit.position.unwrap()).add(event.hit.normal.unwrap());
+        //println!("entity: {:?}", entity);
+        entity.translation = fixed;
+        //commands.entity(loading_asset_entity).despawn_recursive();
+      }
+    }
+  }
+  
   Bubble::Up // Determines if the event should continue to bubble through the hierarchy.
 }
