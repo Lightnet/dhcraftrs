@@ -182,7 +182,7 @@ pub fn create_cube_physics(
       //}
       //println!("Right Click===[[[ create_entity_cube_physics ]]]===");
   //}))
-  .insert(OnPointer::<Click>::run_callback(click_event_test))
+  .insert(OnPointer::<Click>::run_callback(click_build_block))
   .insert(TransformBundle::from(Transform::from_xyz(position.x, position.y, position.z)))
   .insert(OnPointer::<Move>::run_callback(update_place_holder_item))
   ;
@@ -194,7 +194,7 @@ pub fn create_cube_physics(
 // trigger once
 // System
 #[allow(unused_mut, unused_variables)]
-fn click_event_test(
+fn click_build_block(
   // The first parameter is always the `ListenedEvent`, passed in by the event listening system.
   In(event): In<ListenedEvent<Click>>,
   mut commands: Commands,
@@ -220,10 +220,30 @@ fn click_event_test(
     if let Ok(tool) = tool_query.get_single(){
       //println!("[[Tool   ]]: {:?}", tool.0);
       if tool.0 == format!("build") {
-        let pos = event.hit.position.unwrap();
+        let mut pos = event.hit.position.unwrap();
         let normal = event.hit.normal.unwrap();
 
-        let fixed_pos = Vec3::floor(pos) + normal;
+        pos = pos + normal;
+        pos.x = pos.x * 10.0;
+        pos.y = pos.y * 10.0;
+        pos.z = pos.z * 10.0;
+        pos = Vec3::floor(pos);
+        pos.x = pos.x / 10.0;
+        pos.y = pos.y / 10.0;
+        pos.z = pos.z / 10.0;
+        pos = Vec3::floor(pos);
+        if normal.x == -1. {//odd bug?
+          pos.x = pos.x + 1.;
+        }
+
+        if normal.y == -1. {//odd bug?
+          pos.y = pos.y + 1.;
+        }
+
+        if normal.z == -1. {//odd bug?
+          pos.z = pos.z + 1.;
+        }
+        let fixed_pos = pos;
         //println!("TOP {:?}",fixed_pos);
         create_cube_physics(&mut commands, &mut meshes, &mut materials, fixed_pos)
         //create_cube_physics(&mut commands, &mut meshes, &mut materials, Vec3::new(fixed_place.x, fixed_place.y, fixed_place.z))
@@ -252,9 +272,36 @@ fn update_place_holder_item(
       if let Ok(mut entity) = query.get_single_mut(){
         //println!("event: {:?}", event);
         //println!("hit: {:?}", event.hit);
-        let fixed = Vec3::floor(event.hit.position.unwrap()).add(event.hit.normal.unwrap());
+        //let fixed = Vec3::floor(event.hit.position.unwrap()).add(event.hit.normal.unwrap());
         //println!("entity: {:?}", entity);
-        entity.translation = fixed;
+
+        let mut pos = event.hit.position.unwrap();
+        let normal = event.hit.normal.unwrap();
+
+        pos = pos + normal;
+        pos.x = pos.x * 10.0;
+        pos.y = pos.y * 10.0;
+        pos.z = pos.z * 10.0;
+        pos = Vec3::floor(pos);
+        pos.x = pos.x / 10.0;
+        pos.y = pos.y / 10.0;
+        pos.z = pos.z / 10.0;
+        pos = Vec3::floor(pos);
+        if normal.x == -1. {//odd bug?
+          pos.x = pos.x + 1.;
+        }
+
+        if normal.y == -1. {//odd bug?
+          pos.y = pos.y + 1.;
+        }
+
+        if normal.z == -1. {//odd bug?
+          pos.z = pos.z + 1.;
+        }
+        let fixed_pos = pos;
+        println!("fixed_pos: {}",fixed_pos);
+
+        entity.translation = fixed_pos;
         //commands.entity(loading_asset_entity).despawn_recursive();
       }
     }

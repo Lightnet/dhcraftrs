@@ -13,33 +13,23 @@
 mod components;
 mod styles;
 mod systems;
-
 //use std::time::Duration;
 use bevy::prelude::*;
-
 use crate::core::api::AppState;
-
-use self::systems::layout::spawn_water_mark;
-use self::systems::layout::despawn_water_mark;
-
-#[derive(Component)]
-pub struct WaterMark;
-
-#[derive(Resource)]
-pub struct WaterMarkConfig;
+use self::{systems::layout::*, components::WaterMarkConfig};
 
 pub struct WaterMarkPlugin;
 
 impl Plugin for WaterMarkPlugin{
 
   fn build(&self, app: &mut App){
-    app.add_startup_system(setup_water_mark);
-    //app.add_system(setup_water_mark)
-    app.add_system(spawn_water_mark.in_schedule(OnEnter(AppState::MainMenu)));
-    app.add_system(despawn_water_mark.in_schedule(OnExit(AppState::MainMenu)));
+    //app.add_startup_system(setup_water_mark);
+    app.add_system(spawn_water_mark.in_schedule(OnEnter(AppState::AssetLoading)));
+    //app.add_system(despawn_water_mark.in_schedule(OnExit(AppState::MainMenu)));
   }
 }
 
+#[allow(dead_code)]
 fn setup_water_mark(
   mut commands: Commands,
 ){

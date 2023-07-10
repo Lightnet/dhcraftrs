@@ -8,27 +8,24 @@
 use bevy::prelude::*;
 use std::time::Duration;
 
-use crate::{
-  core::{ui::{splashscreen::components::{
-    SplashTime,
-    SplashSpawnConfig
-  }, menu::main::styles::MAIN_MENU_STYLE}, styles::get_button_text_style}
-};
+use crate::core::{ui::splashscreen::{components::{SplashTime, SplashSpawnConfig}, styles::SPLASH_SCREEN_STYLE}, styles::get_button_text_style};
 
 pub fn splash_screen_time(//loop
   mut commands: Commands,
-  mut q: Query<(Entity, &mut SplashTime)>,
+  mut q: Query<(Entity, &mut SplashTime), With<SplashTime>>,
   time: Res<Time>,
 ) {
   for (entity, mut splash_timer) in q.iter_mut() {
-      // timers gotta be ticked, to work
-      splash_timer.timer.tick(time.delta());
+    // timers gotta be ticked, to work
+    splash_timer.timer.tick(time.delta());
 
-      // if it finished, despawn the bomb
-      if splash_timer.timer.finished() {
-        println!("DELETE splash...");
-        commands.entity(entity).despawn();
-      }
+    // if it finished, despawn the bomb
+    if splash_timer.timer.finished() {
+      println!("DELETE splash...");
+      //commands.entity(entity).despawn();
+      commands.entity(entity).despawn_recursive();
+      commands.remove_resource::<SplashSpawnConfig>();
+    }
   }
 }
 
@@ -45,7 +42,7 @@ pub fn spawn_splash(
       timer: Timer::new(Duration::from_secs(5), TimerMode::Once),
     },
     NodeBundle{
-      style:MAIN_MENU_STYLE,
+      style:SPLASH_SCREEN_STYLE,
       //background_color: Color::RED.into(),
       ..default()
     }

@@ -8,8 +8,7 @@
   Information:
     Need to preload assets. For easy access as keep the loading reduce some degree.
 
-    Assets for interal use ?
-
+    Assets for internal use?
  */
 
 use bevy::prelude::*;
@@ -72,19 +71,3 @@ pub fn use_my_assets(
     //..Default::default()
   //});
 }
-
-//pub fn use_my_assets(_my_assets: Res<MyAssets>) {
-  // do something using the asset handles from the resource
-  //println!("LOADED ASSETS...")
-//}
-
-/*
-app
-.add_loading_state(
-      LoadingState::new(AppState::AssetLoading)
-          .continue_to_state(AppState::MainMenu)
-    )
-    .add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading)
-    .add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)))
-
- */

@@ -80,7 +80,8 @@ bevy = { version = "0.10.1", features = [
   "jpeg", 
   "wav", 
   "zlib", 
-  "bevy_animation"
+  "bevy_animation",
+  "dynamic_linking"
 ]}
 clap = { version = "4.1.10", features = ["derive"]}
 bevy_console = "0.7.0"

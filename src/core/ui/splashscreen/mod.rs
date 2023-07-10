@@ -6,6 +6,11 @@
  */
 
 // https://bevy-cheatbook.github.io/features/time.html
+
+pub mod systems;
+pub mod components;
+pub mod styles;
+
 use bevy::prelude::*;
 //use std::time::Duration;
 
@@ -14,8 +19,6 @@ use self::systems::layout::{
   splash_screen_time, 
   spawn_splash
 };
-pub mod systems;
-pub mod components;
 
 pub struct SplashScreenPlugin;
 

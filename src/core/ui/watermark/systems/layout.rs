@@ -11,7 +11,7 @@
 
 use bevy::prelude::*;
 
-use crate::{core::{ui::watermark::{styles::WATER_MARK_STYLE, components::WaterMark}, styles::get_button_text_style}};
+use crate::core::{ui::watermark::{components::WaterMark, styles::WATER_MARK_STYLE}, styles::get_button_text_style};
 
 pub fn spawn_water_mark(
   mut commands: Commands,
@@ -21,6 +21,7 @@ pub fn spawn_water_mark(
   let _water_mark_entity = build_water_mark(&mut commands, &asset_server);
 }
 
+#[allow(dead_code)]
 pub fn despawn_water_mark(
   mut commands: Commands,
   water_mark_query:Query<Entity, With<WaterMark>>,

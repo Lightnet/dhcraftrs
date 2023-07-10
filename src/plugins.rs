@@ -16,35 +16,34 @@ use bevy_egui::{
   //EguiContexts, 
   EguiPlugin
 };
-use crate::core::event::CraftEventPlugin;
-use crate::core::network::NetworkCraftPlugin;
-use crate::core::ui::menu::create_player::CreatePlayerPlugin;
-use crate::core::ui::menu::network::NetworkMenuPlugin;
-use crate::core::ui::menu::options::OptionsPlugin;
-#[allow(unused_imports)]
-use crate::core::{ui::hud::hotbar::HUDHotBarPlugin, physics::CraftPhysics3DPlugin, subapp::CraftSubAppPlugin};
-#[allow(unused_imports)]
+
 use crate::{
   core::{
-    ui::{
-      menu::{ main::MainMenuPlugin}, 
-    }, 
     api::{
       AppState, 
       CameraState, 
       NetworkState
     }, 
-    asset::LoadingAssetPlugin, window::set_window_icon, raycast::CraftRayCastPlugin, world::BaseWorldPlugin
-  }, 
-};
-#[allow(unused_imports)]
-use crate::{
-  core::{
+    window::set_window_icon, 
     data::CraftBaseDataPlugin, 
-    world::prefab::WorldBasicPlugin, 
+    asset::LoadingAssetPlugin, 
+    ui::{
+      menu::{
+        main::MainMenuPlugin, 
+        options::OptionsPlugin, 
+        network::NetworkMenuPlugin, 
+        create_player::CreatePlayerPlugin
+      }, 
+      hud::hotbar::HUDHotBarPlugin, watermark::WaterMarkPlugin, splashscreen::SplashScreenPlugin, loading::LoadingAssetUIPlugin
+    }, 
+    event::CraftEventPlugin, 
+    physics::CraftPhysics3DPlugin, 
+    raycast::CraftRayCastPlugin, 
+    world::BaseWorldPlugin, 
+    network::NetworkCraftPlugin, 
     entity::creature::player::CraftPlayerPlugin
   }, 
-  systems::spawn_camera3d,
+  systems::spawn_camera3d
 };
 
 pub const HEIGHT: f32 = 720.0;
@@ -54,14 +53,13 @@ pub struct BaseCraftPlugin;
 //testing need to bare minimal
 // for console, headless server?
 impl Plugin for BaseCraftPlugin{
+
   fn build(&self, app: &mut App){
     app.add_state::<AppState>(); // state app
     app.add_state::<CameraState>(); // state camera mode
     app.add_state::<NetworkState>(); // state network mode
     app.add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
-        //width: WIDTH,
-        //height: HEIGHT,
         resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
         title: "Bevy Engine dhcraftrs".to_string(),
         resizable: false,
@@ -123,20 +121,19 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_startup_system(set_window_icon);
     //app.add_plugin(FrameTimeDiagnosticsPlugin::default());
     //app.add_state::<AppState>(); // state app
-    
     //app.add_plugin(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
-    //app.add_startup_system(spawn_camera2d); // need this for bevy ui to render
+    // need this for bevy ui to render
+    //app.add_startup_system(spawn_camera2d); 
     app.add_startup_system(spawn_camera3d); // 
     //note it need one camera at the time else log error on multiple camera active.
 
     //app.add_plugin(WaterMarkPlugin); // water mark //testing
-    //app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
+    app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
 
-    
-    //app.add_plugin(LoadingAssetUIPlugin); // ui loading
+    app.add_plugin(LoadingAssetUIPlugin); // ui loading
     app.add_plugin(LoadingAssetPlugin); // loading call
     app.add_plugin(MainMenuPlugin); // main menu
     app.add_plugin(OptionsPlugin); // menu

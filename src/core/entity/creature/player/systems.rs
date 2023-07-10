@@ -43,7 +43,8 @@ pub fn create_entity_prototype_player(
     )
     .insert(IsGround(true))
     //player tool check
-    .insert(PlayerTool("builds".to_string()))
+    //.insert(PlayerTool("builds".to_string()))
+    .insert(PlayerTool("build".to_string()))
     .insert(PLAYERMOVABLE)
     .insert(RigidBody::KinematicPositionBased)
     //.insert(Collider::ball(1.))

@@ -7,19 +7,16 @@
 
 use bevy::prelude::*;
 
-use crate::{
-  core::ui::{loading_asset::components::LoadingAsset, 
-  menu::main::styles::*}
-};
+use crate::core::ui::{loading::components::LoadingAsset, menu::main::styles::*};
 
-pub fn spawn_loading_asset_menu(
+pub fn spawn_loading_asset_ui(
   mut commands: Commands,
   asset_server:Res<AssetServer>
 ){
-  let _loading_asset_entity = build_loading_asset_menu(&mut commands, &asset_server);
+  let _loading_asset_entity = build_loading_asset_ui(&mut commands, &asset_server);
 }
 
-pub fn despawn_loading_asset_menu(
+pub fn despawn_loading_asset_ui(
   mut commands: Commands,
   loading_asset_query:Query<Entity, With<LoadingAsset>>,
 ){
@@ -30,7 +27,7 @@ pub fn despawn_loading_asset_menu(
   }
 }
 
-pub fn build_loading_asset_menu(
+pub fn build_loading_asset_ui(
   commands: &mut Commands,
   asset_server:&Res<AssetServer>
 )-> Entity{
