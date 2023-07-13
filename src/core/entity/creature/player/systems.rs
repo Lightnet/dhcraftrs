@@ -6,6 +6,7 @@
  */
 
 use bevy::prelude::*;
+use bevy::input::mouse::MouseMotion;
 use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
@@ -13,6 +14,61 @@ use crate::core::api::AppState;
 use super::components::{PLAYERMOVABLE, PlayerCamera, IsGround, PlayerTool};
 
 // DEFAULT ?
+
+pub fn create_entity_first_person_player(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+  asset_server: Res<AssetServer>,
+){
+  commands
+  .spawn(
+    PbrBundle{
+      mesh: meshes.add(Mesh::from(shape::Capsule {  
+        radius:0.9,
+        ..default()
+      })),
+      material: materials.add(StandardMaterial {
+        base_color: Color::rgba(0.9, 0.9, 0.9, 0.5),
+        alpha_mode: AlphaMode::Blend,
+        ..default()
+      }),
+      ..default()
+    }
+  )
+  .insert(IsGround(true))
+  .insert(Name::new("Player"))
+  //player tool check
+  .insert(PlayerTool("none".to_string()))
+  //.insert(PlayerTool("build".to_string()))
+  .insert(PLAYERMOVABLE)
+  .insert(RigidBody::KinematicPositionBased)
+  //.insert(Collider::ball(1.))
+  .insert(Collider::capsule(Vec3 { x: 0., y: -0.5, z: 0. },Vec3 { x: 0., y: 0.5, z: 0. } , 1.0))
+  .insert(KinematicCharacterController::default())
+  .insert(TransformBundle::from(Transform::from_xyz(0.0, 4.0, 0.0)))
+  .with_children(|parent|{
+    //CAMERA
+    parent.spawn((
+      Camera3dBundle {
+        camera: Camera  { 
+          order:1,
+          ..default()
+        },
+        //transform: Transform::from_xyz(0.0, 1., -1.0).looking_at(Vec3::ZERO, Vec3::Y),
+        transform: Transform::from_xyz(0.0, 1., -1.0),
+        ..Default::default()
+      },
+      PlayerCamera,
+      RaycastPickCamera::default() //when main camera is active and select to update ray cast
+    ));
+
+  });
+}
+
+
+// player
+// physics
 pub fn create_entity_prototype_player(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
@@ -118,6 +174,123 @@ pub fn move_player_physics01(
       entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
         0., 1.0 * -0.1, 0.)
       );
+    }
+  
+    if input.pressed(KeyCode::Space) {
+      let mut direction = Vec3::ZERO;
+      direction.y = 20.;
+      entity_transform.translation += time.delta_seconds() * 1.0 * direction;
+    }
+
+    //println!("controlleroutput grounded: {}", controlleroutput.grounded);
+    //println!("controlleroutput effective_translation: {:?}", controlleroutput.effective_translation);
+  }
+
+}
+
+
+pub fn move_first_person_player_cam(
+  time: Res<Time>,
+  mut mouse_motion: EventReader<MouseMotion>,
+  //mut camera_query: Query<(&Camera, &mut Transform), With<PlayerCamera>>,
+  mut camera_query: Query<(&Camera, &mut Transform), With<PlayerCamera>>,
+){
+  //let (_, mut camera_transform) = camera_query.single_mut();
+  //println!("camera_transform: {:}", camera_transform.type_name());
+
+  //entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        //ev.delta.y * -0.005,0., 0.)
+      //);
+
+      //camera_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        //1. * -0.005,0., 0.)
+      //);
+}
+
+// https://stackoverflow.com/questions/67008987/how-to-move-camera-arbitrary-of-user-input-in-bevy
+// https://bevy-cheatbook.github.io/features/camera.html
+#[allow(dead_code, unused_variables)]
+pub fn move_first_person_player_physics(
+  input: Res<Input<KeyCode>>,
+  time: Res<Time>,
+  mut mouse_motion: EventReader<MouseMotion>,
+  mut query: Query<(
+    &mut Transform, 
+    &mut KinematicCharacterController, 
+    //&KinematicCharacterControllerOutput,
+    //Entity,
+    &IsGround
+  ), With<PLAYERMOVABLE>>,
+  //mut q: Query<&mut Transform, (With<PerspectiveProjection>, With<PlayerCamera>)>,
+  //mut q: Query<&mut Transform, With<PlayerCamera>>,
+  //mut q: Query<&mut PerspectiveProjection, With<PlayerCamera>>,
+  //mut q: Query<&mut Camera, With<PlayerCamera>>,
+  //mut q: Query<&mut Transform, With<PlayerCamera>>,
+  //mut q: Query<(&mut Camera, &mut Transform, With<PlayerCamera>)>,
+  //mut q: Query<&mut Transform, With<PlayerCamera>>,
+  //mut camera_query: Query<(&Camera, &mut Transform)>,
+){
+
+  //for (mut pan_orbit, mut transform, projection) in query.iter_mut() {
+
+
+  //let projection = q.single_mut();
+  //println!("projection: {:?}", projection);
+
+  //for ( cam ) in q.iter_mut() {
+    //println!("CAM: {:?}", cam.type_name());
+  //}
+  
+  //need for player id later to control them later...
+  for (
+    mut entity_transform,
+    mut controller, 
+    //controlleroutput, // controller & controlleroutput = does not work?
+    //entity
+    is_ground
+  ) in query.iter_mut() {
+    //println!("IsGround: {}", is_ground.0);
+    let gravity = Vec3::new(0.0, -0.1, 0.0);
+    if input.pressed( KeyCode::W) {
+      let direction = entity_transform.forward() * 0.1;
+      //controller.translation.apply() ; Some(direction)
+      //controller.translation;
+      controller.translation = Some(direction + gravity);
+    }else if input.pressed( KeyCode::S) {
+      let direction = entity_transform.back() * 0.1;
+      controller.translation = Some(direction + gravity);
+    }else{
+      controller.translation = Some(gravity);
+    }
+  
+    if input.pressed( KeyCode::A) {
+      //entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        //0., 1.0 * 0.1, 0.)
+      //);
+      let direction = entity_transform.left() * 0.1;
+      controller.translation = Some(direction + gravity);
+    }
+    if input.pressed( KeyCode::D) {
+      let direction = entity_transform.right() * 0.1;
+      controller.translation = Some(direction + gravity);
+    }
+
+    for ev in mouse_motion.iter() { //rewrite
+      //entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        //ev.delta.y * -0.001, ev.delta.x * -0.001, 0.)
+      //);
+      entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        0., ev.delta.x * -0.005, 0.)
+      );
+      //if projection {
+        //projection.rotate(Quat::from_euler(EulerRot::XYZ,
+          //ev.delta.y * -0.005,0., 0.)
+        //)
+      //}
+      
+      //entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
+        //ev.delta.y * -0.005,0., 0.)
+      //);
     }
   
     if input.pressed(KeyCode::Space) {

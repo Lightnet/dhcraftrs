@@ -27,6 +27,9 @@ pub struct MyAssets {
   #[asset(path = "models/blockframe01.gltf#Scene0")]
   blockframe01: Handle<Scene>,
 
+  #[asset(path = "models/character/male01/male01.gltf#Scene0")]
+  male01: Handle<Scene>,
+
   #[asset(path = "images/whiteblockblackline.png")]
   blockwhiteblackline: Handle<Image>,
 }
@@ -65,6 +68,11 @@ pub fn use_my_assets(
   //}
   // do something using the asset handles from the resource
   //println!("LOADED ASSETS...");
+
+  commands.spawn(SceneBundle {
+    scene: my_assets.male01.clone(),
+    ..Default::default()
+  });
 
   //commands.spawn(SceneBundle {
     //scene: my_assets.blockframe01.clone(),

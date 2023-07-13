@@ -9,7 +9,12 @@ use bevy::prelude::*;
 
 use crate::{
   core::ui::menu::{
-    main::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, NORMAL_BUTTON_COLOR, BUTTON_STYLE, get_button_text_style}, options::components::{MenuOptions, BackButton}}
+    main::styles::*, 
+    options::components::{
+      MenuOptions, 
+      BackButton
+    }
+  }
 };
 
 pub fn spawn_options_menu(
@@ -44,13 +49,13 @@ pub fn build_create_options_menu(
     //title
     parent.spawn(
       NodeBundle{
-        style:TITLE_STYLE,
+        style:get_title_style(),
         ..default()
       }
     ).with_children(|parent | {
       //image 1
       parent.spawn(ImageBundle{
-        style:IMAGE_STYLE,
+        style:get_image_style(),
         image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });

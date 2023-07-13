@@ -8,11 +8,14 @@
 use bevy::prelude::*;
 
 use crate::{
-  core::ui::menu::{create_player::components::{
-    CREATEPLAYERNAME, 
-    PlayerNameText, 
-    CREATEPLAYERNAMEBUTTON, BackButton
-  }, main::styles::{MAIN_MENU_STYLE, TITLE_STYLE, IMAGE_STYLE, get_title_text_style, NORMAL_BUTTON_COLOR, BUTTON_STYLE, get_button_text_style}}
+  core::ui::menu::{
+    create_player::components::{
+      CREATEPLAYERNAME, 
+      PlayerNameText, 
+      CREATEPLAYERNAMEBUTTON, BackButton
+    }, 
+  main::styles::*
+  }
 };
 
 pub fn spawn_create_player_menu(
@@ -47,13 +50,13 @@ pub fn build_create_player_menu(
     //title
     parent.spawn(
       NodeBundle{
-        style:TITLE_STYLE,
+        style:get_title_style(),
         ..default()
       }
     ).with_children(|parent | {
       //image 1
       parent.spawn(ImageBundle{
-        style:IMAGE_STYLE,
+        style:get_image_style(),
         image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });

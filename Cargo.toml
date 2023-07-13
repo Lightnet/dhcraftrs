@@ -32,48 +32,48 @@ path = "src/bin/game.rs"
 #name = "editor"
 #path = "src/bin/editor.rs"
 
-[[bin]]
-name = "network"
-path = "src/bin/network.rs"
+#[[bin]]
+#name = "network"
+#path = "src/bin/network.rs"
 
-[[bin]]
-name = "launcher"
-path = "src/bin/launcher.rs"
+#[[bin]]
+#name = "launcher"
+#path = "src/bin/launcher.rs"
 
-[[example]]
-name = "fpsgame"
-path = "src/example/fpsgame.rs"
+#[[example]]
+#name = "fpsgame"
+#path = "src/example/fpsgame.rs"
 
-[[example]]
-name = "testscene"
-path = "src/example/testscene.rs"
+#[[example]]
+#name = "testscene"
+#path = "src/example/testscene.rs"
 
-[[example]]
-name = "testapp"
-path = "src/example/testapp.rs"
+#[[example]]
+#name = "testapp"
+#path = "src/example/testapp.rs"
 
-[[example]]
-name = "testdata"
-path = "src/example/testdata.rs"
+#[[example]]
+#name = "testdata"
+#path = "src/example/testdata.rs"
 
-[[example]]
-name = "testdataplayer"
-path = "src/example/testdataplayer.rs"
+#[[example]]
+#name = "testdataplayer"
+#path = "src/example/testdataplayer.rs"
 
-[[example]]
-name = "physics3d"
-path = "src/example/physics3d.rs"
+#[[example]]
+#name = "physics3d"
+#path = "src/example/physics3d.rs"
 
-[[example]]
-name = "webgui"
-path = "src/example/webgui.rs"
+#[[example]]
+#name = "webgui"
+#path = "src/example/webgui.rs"
 
-[[example]]
-name = "pick_event"
-path = "src/example/pick_event.rs"
+#[[example]]
+#name = "pick_event"
+#path = "src/example/pick_event.rs"
 
 [dependencies]
-moonshine-save = {version = "0.2.3"}
+#moonshine-save = {version = "0.2.3"}
 bevy = { version = "0.10.1", features = [
   "bevy_ui",
   "bmp", 
@@ -83,30 +83,30 @@ bevy = { version = "0.10.1", features = [
   "bevy_animation",
   "dynamic_linking"
 ]}
-clap = { version = "4.1.10", features = ["derive"]}
-bevy_console = "0.7.0"
+#clap = { version = "4.1.10", features = ["derive"]}
+#bevy_console = "0.7.0"
 bevy_mod_picking = "0.13.0"
 bevy_rapier3d = {version="0.21.0", features = [ "simd-stable", "debug-render-3d" ] }
-bevy-inspector-egui = "0.18.3"
-bevy_egui = "0.20"
-bevy_flycam = {version ="0.10"}
+#bevy-inspector-egui = "0.18.3"
+#bevy_egui = "0.20"
+#bevy_flycam = {version ="0.10"}
 bevy_asset_loader = {version ="0.16"}
 #bevy_transform_gizmo = "0.6.0"
-bevy_renet = "0.0.8"
+#bevy_renet = "0.0.8"
 #egui = "0.22.0"
-eframe = { version = "0.22", default-features = false, features = [
-  "__screenshot", # __screenshot is so we can dump a ascreenshot using EFRAME_SCREENSHOT_TO
-  "default_fonts", # Embed the default egui fonts.
-  "glow",          # Use the glow rendering backend. Alternative: "wgpu".
-  "persistence",   # Enable restoring app state when restarting the app.
-] }
+#eframe = { version = "0.22", default-features = false, features = [
+  #"__screenshot", # __screenshot is so we can dump a ascreenshot using EFRAME_SCREENSHOT_TO
+  #"default_fonts", # Embed the default egui fonts.
+  #"glow",          # Use the glow rendering backend. Alternative: "wgpu".
+  #"persistence",   # Enable restoring app state when restarting the app.
+#] }
 serde = { version = "1", features = ["derive"] }
-bevy_pkv = "0.7.0"
-bincode = "1.3.3"
+#bevy_pkv = "0.7.0"
+#bincode = "1.3.3"
 #tracing-subscriber = "0.3"
-renet = {version = "0.0.12", features = ["bevy"]}
-reqwest = { version ="0.11.18", features = ["blocking", "json"] }
+#renet = {version = "0.0.12", features = ["bevy"]}
+#reqwest = { version ="0.11.18", features = ["blocking", "json"] }
 winit = "0.28.6"
 image = "0.24.6"
-bevy_svg = "0.10.1"
+#bevy_svg = "0.10.1"
 #bevy_eventlistener = "0.1.1"

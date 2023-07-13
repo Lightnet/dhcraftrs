@@ -31,7 +31,7 @@ impl Plugin for CreatePlayerPlugin {
     //input text
     app.add_system(player_name_text_update.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
     //button event interact
-    app.add_system(interact_button_create_player.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
-    app.add_system(interact_button_back.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
+    //app.add_system(interact_button_create_player.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
+    //app.add_system(interact_button_back.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
   }
 }

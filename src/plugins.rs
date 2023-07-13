@@ -11,12 +11,13 @@ use bevy::{
   window::WindowResolution
 };
 
-use bevy_egui::{
+//use bevy_egui::{
   //egui,
   //EguiContexts, 
-  EguiPlugin
-};
+  //EguiPlugin
+//};
 
+#[allow(unused_imports)]
 use crate::{
   core::{
     api::{
@@ -38,9 +39,9 @@ use crate::{
     }, 
     event::CraftEventPlugin, 
     physics::CraftPhysics3DPlugin, 
-    raycast::CraftRayCastPlugin, 
+    //raycast::CraftRayCastPlugin, 
     world::BaseWorldPlugin, 
-    network::NetworkCraftPlugin, 
+    //network::NetworkCraftPlugin, 
     entity::creature::player::CraftPlayerPlugin
   }, 
   systems::spawn_camera3d
@@ -97,7 +98,6 @@ impl Plugin for BaseCraftPlugin{
   }
 }
 
-
 //===============================================
 // MAIN?
 //===============================================
@@ -139,7 +139,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugin(OptionsPlugin); // menu
     app.add_plugin(CreatePlayerPlugin); // 
 
-    app.add_plugin(CraftRayCastPlugin); // 
+    //app.add_plugin(CraftRayCastPlugin); // 
     //app.add_plugin(WorldBasicPlugin); // 
     app.add_plugin(NetworkMenuPlugin); // 
     app.add_plugin(CraftEventPlugin); // Events
@@ -152,7 +152,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
 
     // Test scene place 
     app.add_plugin(BaseWorldPlugin); //preload entity tests
-    app.add_plugin(NetworkCraftPlugin); //
+    //app.add_plugin(NetworkCraftPlugin); //
     //app.add_plugin(CraftSubAppPlugin); // testing app and sub app
 
     //check for state
@@ -164,12 +164,12 @@ pub struct LoadingCraftPlayerPlugin;
 
 impl Plugin for LoadingCraftPlayerPlugin{
   fn build(&self, app: &mut App){
-    app.add_plugin(EguiPlugin);//menu egui
-    app.add_state::<AppState>();//state app
-    app.add_state::<CameraState>();// state camera mode
+    //app.add_plugin(EguiPlugin); //menu egui
+    app.add_state::<AppState>(); //state app
+    app.add_state::<CameraState>(); // state camera mode
     //app.add_plugin(PlayerPlugin);
 
-    app.add_plugin(CraftPlayerPlugin); // event testing...
+    app.add_plugin(CraftPlayerPlugin); // 
 
     //test for state
     //app.add_startup_system(set_network_menu);

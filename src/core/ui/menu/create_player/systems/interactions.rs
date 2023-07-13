@@ -7,7 +7,7 @@
 
 // https://github.com/bevyengine/bevy/blob/main/examples/ecs/ecs_guide.rs
 use bevy::prelude::*;
-use bevy_pkv::PkvStore;
+//use bevy_pkv::PkvStore;
 use crate::core::api::AppState;
 use crate::core::components::PlayerInfo;
 use crate::core::ui::menu::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText, BackButton};
@@ -20,7 +20,7 @@ pub fn interact_button_create_player(
   >,
   mut app_state_next_state:ResMut<NextState<AppState>>,
   player_info: Res<PlayerInfo>,
-  mut pkv: ResMut<PkvStore>,
+  //mut pkv: ResMut<PkvStore>,
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     println!("new button player create");
@@ -29,8 +29,8 @@ pub fn interact_button_create_player(
         *background_color = PRESSED_BUTTON_COLOR.into();
         println!("Player Name: {}", player_info.name );
 
-        pkv.set_string("username", player_info.name.as_str() )
-        .expect("failed to store username");
+        //pkv.set_string("username", player_info.name.as_str() )
+        //.expect("failed to store username");
 
         //need to check blank incase of player name string is empty later...
         app_state_next_state.set(AppState::Game);
@@ -53,7 +53,7 @@ pub fn interact_button_back(
   >,
   mut app_state_next_state:ResMut<NextState<AppState>>,
   player_info: Res<PlayerInfo>,
-  mut pkv: ResMut<PkvStore>,
+  //mut pkv: ResMut<PkvStore>,
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     println!("new button player create");
@@ -62,8 +62,8 @@ pub fn interact_button_back(
         *background_color = PRESSED_BUTTON_COLOR.into();
         println!("Player Name: {}", player_info.name );
 
-        pkv.set_string("username", player_info.name.as_str() )
-        .expect("failed to store username");
+        //pkv.set_string("username", player_info.name.as_str() )
+        //.expect("failed to store username");
 
         //need to check blank incase of player name string is empty later...
         app_state_next_state.set(AppState::MainMenu);

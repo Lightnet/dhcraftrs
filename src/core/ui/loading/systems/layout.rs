@@ -43,13 +43,13 @@ pub fn build_loading_asset_ui(
     //title
     parent.spawn(
       NodeBundle{
-        style:TITLE_STYLE,
+        style:get_title_style(),
         ..default()
       }
     ).with_children(|parent | {
       //image 1
       parent.spawn(ImageBundle{
-        style:IMAGE_STYLE,
+        style:get_image_style(),
         image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });

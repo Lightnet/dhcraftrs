@@ -27,22 +27,26 @@ pub const MAIN_MENU_STYLE:Style = Style {
   ..Style::DEFAULT
 };
 
-pub const TITLE_STYLE:Style = Style {
-  flex_direction:FlexDirection::Row,
-  justify_content:JustifyContent::Center,
-  align_items:AlignItems::Center,
-  size: Size::new(Val::Px(300.0), Val::Px(120.0)),
-  ..Style::DEFAULT
-};
+pub fn get_title_style()-> Style{
+  Style {
+    flex_direction:FlexDirection::Row,
+    justify_content:JustifyContent::Center,
+    align_items:AlignItems::Center,
+    size: Size::new(Val::Px(300.0), Val::Px(120.0)),
+    ..Style::DEFAULT
+  }
+}
 
-pub const IMAGE_STYLE:Style =  Style {
-  //size:Size::new(Val::Px(64.0), Val::Px(64.0)),
-  size: Size::width(Val::Px(64.0)),
-  justify_content: JustifyContent::Center,
-  align_items: AlignItems::Center,
-  margin:UiRect::new(Val::Px(8.0), Val::Px(8.0), Val::Px(8.0), Val::Px(8.0)),
-  ..Style::DEFAULT
-};
+pub fn get_image_style()-> Style{
+  Style {
+    //size:Size::new(Val::Px(64.0), Val::Px(64.0)),
+    size: Size::width(Val::Px(64.0)),
+    justify_content: JustifyContent::Center,
+    align_items: AlignItems::Center,
+    margin:UiRect::new(Val::Px(8.0), Val::Px(8.0), Val::Px(8.0), Val::Px(8.0)),
+    ..Style::DEFAULT
+  }
+}
 
 pub fn get_title_text_style(asset_server: &Res<AssetServer>) -> TextStyle {
   TextStyle {

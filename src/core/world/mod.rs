@@ -16,7 +16,7 @@ use super::{
     create_ground
   }, 
   entity::{
-    creature::player::systems::{create_entity_prototype_player, move_player_physics01, read_result_system_player}, 
+    creature::player::systems::{create_entity_prototype_player, move_player_physics01, read_result_system_player, create_entity_first_person_player, move_first_person_player_physics, move_first_person_player_cam}, 
     mesh::cube::{ 
       //create_entity_cube_pick, 
       create_entity_cube_physics, setup_ph_cube, place_holder_update
@@ -38,9 +38,13 @@ impl Plugin for BaseWorldPlugin{
     app.add_system(create_entity_cube_physics.in_schedule(OnEnter(AppState::Game)));
 
     app.add_system(setup_ph_cube.in_schedule(OnEnter(AppState::Game)));
-    app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::Game)));
+    //app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::Game)));
+    app.add_system(create_entity_first_person_player.in_schedule(OnEnter(AppState::Game)));
+
     app.add_system(place_holder_update.in_set(OnUpdate(AppState::Game)));
-    app.add_system(move_player_physics01.in_set(OnUpdate(AppState::Game)));
+    //app.add_system(move_player_physics01.in_set(OnUpdate(AppState::Game)));
+    app.add_system(move_first_person_player_physics);
+    app.add_system(move_first_person_player_cam);
     app.add_system(read_result_system_player.in_set(OnUpdate(AppState::Game)));
 
 

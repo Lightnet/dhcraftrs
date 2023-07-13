@@ -144,6 +144,7 @@ pub fn move_player_physics(
   }
 }
 */
+/*
 #[allow(dead_code)]
 pub fn create_player01(
   mut commands: Commands,
@@ -196,8 +197,8 @@ pub fn create_player01(
       ));
     })
     ;
-
 }
+*/
 /*
 #[allow(dead_code, unused_variables)]
 pub fn move_player_physics01(

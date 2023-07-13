@@ -44,13 +44,13 @@ pub fn build_main_menu(
     //title
     parent.spawn(
       NodeBundle{
-        style:TITLE_STYLE,
+        style:get_title_style(),
         ..default()
       }
     ).with_children(|parent | {
       //image 1
       parent.spawn(ImageBundle{
-        style:IMAGE_STYLE,
+        style:get_image_style(),
         image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });
@@ -72,7 +72,7 @@ pub fn build_main_menu(
       );
       //image 2
       parent.spawn(ImageBundle{
-        style: IMAGE_STYLE,
+        style: get_image_style(),
         image:asset_server.load("images/whiteblockblackline.png").into(),
         ..default()
       });
