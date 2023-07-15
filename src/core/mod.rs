@@ -10,6 +10,7 @@
 //===============================================
 
 pub mod asset;
+pub mod systems;
 pub mod ui;
 pub mod controller;
 pub mod entity;

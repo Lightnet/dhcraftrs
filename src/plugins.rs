@@ -17,9 +17,9 @@ use bevy::{
   //EguiPlugin
 //};
 
+use crate::core::systems::spawn_camera3d;
 #[allow(unused_imports)]
-use crate::{
-  core::{
+use crate::core::{
     api::{
       AppState, 
       CameraState, 
@@ -43,9 +43,7 @@ use crate::{
     world::BaseWorldPlugin, 
     //network::NetworkCraftPlugin, 
     entity::creature::player::CraftPlayerPlugin
-  }, 
-  systems::spawn_camera3d
-};
+  };
 
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;

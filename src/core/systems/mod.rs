@@ -4,6 +4,11 @@
   Created by: Lightnet
   Information: Note there are other licenses.
  */
+/*
+  Information:
+    For basic set up for UI stuff and other common for testing builds.
+
+*/
 
 //use bevy::app::AppExit;
 #[allow(unused_imports)]
