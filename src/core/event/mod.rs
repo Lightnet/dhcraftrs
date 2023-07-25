@@ -23,6 +23,7 @@
 
 use bevy::prelude::*;
 
+#[derive(Event)]
 pub struct LevelUpEvent(pub Entity);
 
 #[derive(Component, Debug)]
@@ -53,9 +54,9 @@ pub struct CraftEventPlugin;
 impl Plugin for CraftEventPlugin{//main entry point still in testing...
   fn build(&self, app: &mut App){
     app.add_event::<LevelUpEvent>();
-    app.add_system(player_level_up);
-    app.add_system(debug_levelups);
-    app.add_startup_system(create_test_plauer);
+    app.add_systems(Update, player_level_up);
+    app.add_systems(Update, debug_levelups);
+    app.add_systems(Startup, create_test_plauer);
   }
 }
 

@@ -11,7 +11,7 @@
 
 use bevy::prelude::*;
 
-use crate::core::{ui::watermark::{components::WaterMark, styles::WATER_MARK_STYLE}, styles::get_button_text_style};
+use crate::core::{ui::watermark::{components::WaterMark, styles::get_water_make_style}, styles::get_button_text_style};
 
 pub fn spawn_water_mark(
   mut commands: Commands,
@@ -37,7 +37,7 @@ pub fn build_water_mark(
 )-> Entity{
   let watermark_entity = commands.spawn(
     (NodeBundle{
-      style:WATER_MARK_STYLE,
+      style:get_water_make_style(),
       //background_color: Color::RED.into(),
       ..default()
     },

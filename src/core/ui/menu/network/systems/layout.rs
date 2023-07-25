@@ -34,7 +34,7 @@ pub fn build_network_menu(
 )-> Entity{
   let menu_entity = commands.spawn(
     (NodeBundle{
-      style:NETWORK_MENU_STYLE,
+      style:get_network_menu_style(),
       //background_color: Color::RED.into(),
       ..default()
     },
@@ -117,7 +117,7 @@ pub fn build_network_menu(
     // HOST BUTTON
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
@@ -143,7 +143,7 @@ pub fn build_network_menu(
     // JOIN BUTTON
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
@@ -169,7 +169,7 @@ pub fn build_network_menu(
     // BACK BUTTON
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },

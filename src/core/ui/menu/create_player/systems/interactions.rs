@@ -25,7 +25,7 @@ pub fn interact_button_create_player(
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     println!("new button player create");
     match *interaction {
-      Interaction::Clicked =>{
+      Interaction::Pressed =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
         println!("Player Name: {}", player_info.name );
 
@@ -58,7 +58,7 @@ pub fn interact_button_back(
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     println!("new button player create");
     match *interaction {
-      Interaction::Clicked =>{
+      Interaction::Pressed =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
         println!("Player Name: {}", player_info.name );
 

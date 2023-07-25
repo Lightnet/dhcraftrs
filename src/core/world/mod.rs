@@ -31,21 +31,21 @@ impl Plugin for BaseWorldPlugin{
   fn build(&self, app: &mut App){
 
 
-    app.add_system(create_ground.in_schedule(OnEnter(AppState::Game)));
+    app.add_systems(OnEnter(AppState::Game),create_ground);
 
     //app.add_system(create_entity_cube.in_schedule(OnEnter(AppState::InGame)));
     //app.add_system(create_entity_cube_pick.in_schedule(OnEnter(AppState::InGame)));
-    app.add_system(create_entity_cube_physics.in_schedule(OnEnter(AppState::Game)));
+    app.add_systems(OnEnter(AppState::Game) ,create_entity_cube_physics);
 
-    app.add_system(setup_ph_cube.in_schedule(OnEnter(AppState::Game)));
+    app.add_systems(OnEnter(AppState::Game), setup_ph_cube);
     //app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::Game)));
-    app.add_system(create_entity_first_person_player.in_schedule(OnEnter(AppState::Game)));
+    app.add_systems(OnEnter(AppState::Game), create_entity_first_person_player);
 
-    app.add_system(place_holder_update.in_set(OnUpdate(AppState::Game)));
+    app.add_systems(Update,place_holder_update.run_if(in_state(AppState::Game)));
     //app.add_system(move_player_physics01.in_set(OnUpdate(AppState::Game)));
-    app.add_system(move_first_person_player_physics);
-    app.add_system(move_first_person_player_cam);
-    app.add_system(read_result_system_player.in_set(OnUpdate(AppState::Game)));
+    app.add_systems(Update,move_first_person_player_physics);
+    app.add_systems(Update,move_first_person_player_cam);
+    app.add_systems(Update,read_result_system_player.run_if(in_state(AppState::Game)));
 
 
   }

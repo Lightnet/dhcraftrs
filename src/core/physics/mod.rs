@@ -8,11 +8,11 @@
 // https://rapier.rs/docs/user_guides/bevy_plugin/getting_started_bevy/
 
 use bevy::prelude::*;
-use bevy_mod_picking::prelude::RaycastPickCamera;
+//use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
 #[allow(unused_imports)]
-use super::{entity::creature::player::{components::{PLAYERMOVABLE, PlayerCamera}}, api::AppState};
+use super::{entity::creature::player::components::{PLAYERMOVABLE, PlayerCamera}, api::AppState};
 
 // CHARACTER CONTROLLER TEST
 pub struct CraftPhysics3DPlugin;
@@ -21,22 +21,9 @@ impl Plugin for CraftPhysics3DPlugin{
 
   fn build(&self, app: &mut App){
 
-    app.add_plugin(RapierPhysicsPlugin::<NoUserData>::default());
-    app.add_plugin(RapierDebugRenderPlugin::default());
-
-    //app.add_system(create_ground.in_schedule(OnEnter(AppState::InGame)));
-    //app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::InGame)));
-    //app.add_system(move_player_physics01.in_set(OnUpdate(AppState::InGame)));
-
-
-    //app.add_startup_system(create_player);
-    //app.add_system(create_player01.in_schedule(OnEnter(AppState::InGame)));
-    //app.add_system(fade_transparency.in_set(OnUpdate(AppState::InGame)));
-    //app.add_system(create_player.in_schedule(OnEnter(AppState::InGame)));
-    //app.add_startup_system(create_player);
-    //app.add_system(move_player_physics.in_set(OnUpdate(AppState::InGame)));
-    //app.add_system(read_result_system.in_set(OnUpdate(AppState::InGame)));
-
+    app.add_plugins(RapierPhysicsPlugin::<NoUserData>::default());
+    app.add_plugins(RapierDebugRenderPlugin::default());
+    
   }
 }
 

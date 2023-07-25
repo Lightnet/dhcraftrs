@@ -8,7 +8,7 @@
 use std::ops::Add;
 
 use bevy::prelude::*;
-use bevy_mod_picking::prelude::*;
+//use bevy_mod_picking::prelude::*;
 use bevy_rapier3d::prelude::*;
 
 use crate::core::{components::PlaceHolder, entity::creature::player::components::{PLAYERMOVABLE, PlayerTool}};
@@ -105,15 +105,15 @@ pub fn create_entity_cube_pick(
         //transform: Transform::from_xyz(0.0, 0.0, 0.0),
         ..default()
       },
-      PickableBundle::default(),
-      RaycastPickTarget::default(),
-      #[allow(dead_code,unused_variables)]
-      OnPointer::<Click>::target_commands_mut(|click, target_commands| {
+      //PickableBundle::default(),
+      //RaycastPickTarget::default(),
+      //#[allow(dead_code,unused_variables)]
+      //OnPointer::<Click>::target_commands_mut(|click, target_commands| {
         //if click.target != click.listener && click.button == PointerButton::Secondary {
             //target_commands.despawn();
         //}
-        println!("Right Click============================");
-      }),
+        //println!("Right Click============================");
+      //}),
     ))
     //.insert(PickableBundle::default())
     //.insert( RaycastPickTarget::default())
@@ -174,17 +174,17 @@ pub fn create_cube_physics(
     //}),
   ))
   .insert(Collider::cuboid(0.5, 0.5, 0.5))
-  .insert(PickableBundle::default())
-  .insert( RaycastPickTarget::default())
+  //.insert(PickableBundle::default())
+  //.insert( RaycastPickTarget::default())
   //.insert(OnPointer::<Click>::target_commands_mut(|click, target_commands| {
       //if click.target != click.listener && click.button == PointerButton::Secondary {
         //target_commands.despawn();
       //}
       //println!("Right Click===[[[ create_entity_cube_physics ]]]===");
   //}))
-  .insert(OnPointer::<Click>::run_callback(click_build_block))
+  //.insert(OnPointer::<Click>::run_callback(click_build_block))
   .insert(TransformBundle::from(Transform::from_xyz(position.x, position.y, position.z)))
-  .insert(OnPointer::<Move>::run_callback(update_place_holder_item))
+  //.insert(OnPointer::<Move>::run_callback(update_place_holder_item))
   ;
 }
 
@@ -193,6 +193,7 @@ pub fn create_cube_physics(
 // https://bevy-cheatbook.github.io/input/mouse.html#mouse-buttons
 // trigger once
 // System
+/*
 #[allow(unused_mut, unused_variables)]
 fn click_build_block(
   // The first parameter is always the `ListenedEvent`, passed in by the event listening system.
@@ -259,7 +260,8 @@ fn click_build_block(
 
   Bubble::Up // Determines if the event should continue to bubble through the hierarchy.
 }
-
+*/
+/*
 fn update_place_holder_item(
   In(event): In<ListenedEvent<Move>>,
   mut query: Query<&mut Transform, With<PlaceHolder>>,
@@ -309,3 +311,4 @@ fn update_place_holder_item(
   
   Bubble::Up // Determines if the event should continue to bubble through the hierarchy.
 }
+*/

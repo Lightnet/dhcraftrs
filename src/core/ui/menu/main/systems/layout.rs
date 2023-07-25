@@ -34,7 +34,7 @@ pub fn build_main_menu(
 )-> Entity{
   let main_menu_entity = commands.spawn(
     (NodeBundle{
-      style:MAIN_MENU_STYLE,
+      style:get_main_menu_style(),
       //background_color: Color::RED.into(),
       ..default()
     },
@@ -81,7 +81,7 @@ pub fn build_main_menu(
     //new
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
@@ -107,7 +107,7 @@ pub fn build_main_menu(
     //play
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
@@ -133,7 +133,7 @@ pub fn build_main_menu(
     //online
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
@@ -159,7 +159,7 @@ pub fn build_main_menu(
     //OPTIONS
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },
@@ -185,7 +185,7 @@ pub fn build_main_menu(
     //quit
     parent.spawn((
       ButtonBundle {
-        style:BUTTON_STYLE,
+        style:get_button_style(),
         background_color: NORMAL_BUTTON_COLOR.into(),
         ..default()
       },

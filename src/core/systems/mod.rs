@@ -18,6 +18,14 @@ use bevy::window::PrimaryWindow;
 #[allow(unused_imports)]
 use crate::core::api::{CameraState, AppState};
 
+pub fn get_text_style(asset_server: &Res<AssetServer>) -> TextStyle {
+  TextStyle {
+    font: asset_server.load("fonts/FiraSans-Bold.ttf"),
+    font_size:28.0,
+    color: Color::WHITE,
+  }
+}
+
 pub fn spawn_camera2d(mut commands: Commands, window_query: Query<&Window, With<PrimaryWindow>>) {
   let window = window_query.get_single().unwrap();
 
@@ -43,6 +51,29 @@ pub fn spawn_camera3d(
     //RaycastPickCamera::default(),
   ));
 }
+
+pub fn system_query_info(
+  keyboard_input: Res<Input<KeyCode>>,
+  //mut player_info: ResMut<PlayerInfo>,
+){
+  //if keyboard_input.pressed(KeyCode::A) {
+    //println!("player_info: {:?}", player_info);
+    //println!("player Name: {:}", player_info.name);
+  //}
+
+  //keyboard_input.get_just_released()
+
+  if keyboard_input.just_released(KeyCode::A) {
+    //println!("player_info: {:?}", player_info);
+    //println!("player Name: {:}", player_info.name);
+  }
+
+  if keyboard_input.just_pressed(KeyCode::D) {
+    //println!("[[player_info]]: {:?}", player_info);
+  }
+}
+
+
 /*
 pub fn check_camera_state(
   camera_state: Res<State<CameraState>>

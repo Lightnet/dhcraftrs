@@ -7,7 +7,7 @@
 
 use bevy::prelude::*;
 use bevy::input::mouse::MouseMotion;
-use bevy_mod_picking::prelude::RaycastPickCamera;
+//use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
 use crate::core::api::AppState;
@@ -60,7 +60,7 @@ pub fn create_entity_first_person_player(
         ..Default::default()
       },
       PlayerCamera,
-      RaycastPickCamera::default() //when main camera is active and select to update ray cast
+      //RaycastPickCamera::default() //when main camera is active and select to update ray cast
     ));
 
   });
@@ -121,7 +121,7 @@ pub fn create_entity_prototype_player(
         ..Default::default()
         },
         PlayerCamera,
-        RaycastPickCamera::default()//when main camera is active and select to update ray cast
+        //RaycastPickCamera::default()//when main camera is active and select to update ray cast
       ));
       
     })

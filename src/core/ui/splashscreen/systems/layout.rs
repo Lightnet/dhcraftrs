@@ -8,7 +8,7 @@
 use bevy::prelude::*;
 use std::time::Duration;
 
-use crate::core::{ui::splashscreen::{components::{SplashTime, SplashSpawnConfig}, styles::SPLASH_SCREEN_STYLE}, styles::get_button_text_style};
+use crate::core::{ui::splashscreen::{components::{SplashTime, SplashSpawnConfig}, styles::get_splash_screen_style}, styles::get_button_text_style};
 
 pub fn splash_screen_time(//loop
   mut commands: Commands,
@@ -42,7 +42,7 @@ pub fn spawn_splash(
       timer: Timer::new(Duration::from_secs(5), TimerMode::Once),
     },
     NodeBundle{
-      style:SPLASH_SCREEN_STYLE,
+      style:get_splash_screen_style(),
       //background_color: Color::RED.into(),
       ..default()
     }

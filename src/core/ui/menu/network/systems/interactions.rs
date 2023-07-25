@@ -20,7 +20,7 @@ pub fn interact_with_host_button(
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     match *interaction {
-      Interaction::Clicked =>{
+      Interaction::Pressed =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
         app_state_next_state.set(AppState::SERVER);
       }
@@ -43,7 +43,7 @@ pub fn interact_with_join_button(
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     match *interaction {
-      Interaction::Clicked =>{
+      Interaction::Pressed =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
         app_state_next_state.set(AppState::CLIENT);
       }
@@ -66,7 +66,7 @@ pub fn interact_with_back_button(
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     match *interaction {
-      Interaction::Clicked =>{
+      Interaction::Pressed =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
         app_state_next_state.set(AppState::MainMenu);
       }

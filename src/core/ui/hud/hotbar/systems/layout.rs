@@ -27,7 +27,7 @@ pub fn build_hot_bar(
 )-> Entity{
   let hot_bar_entity = commands.spawn(
     (NodeBundle{
-      style:HOT_BAR_STYLE,
+      style:get_hotbar_style(),
       //background_color: Color::RED.into(),
       ..default()
     },
@@ -38,7 +38,7 @@ pub fn build_hot_bar(
     //HOTBAR 1
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -64,7 +64,7 @@ pub fn build_hot_bar(
     //HOTBAR 2
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -90,7 +90,7 @@ pub fn build_hot_bar(
     //HOTBAR 3
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -116,7 +116,7 @@ pub fn build_hot_bar(
     //HOTBAR 4
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -142,7 +142,7 @@ pub fn build_hot_bar(
     //HOTBAR 5
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -168,7 +168,7 @@ pub fn build_hot_bar(
     //HOTBAR 6
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -194,7 +194,7 @@ pub fn build_hot_bar(
     //HOTBAR 7
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -220,7 +220,7 @@ pub fn build_hot_bar(
     //HOTBAR 8
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -246,7 +246,7 @@ pub fn build_hot_bar(
     //HOTBAR 9
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },
@@ -272,7 +272,7 @@ pub fn build_hot_bar(
     //HOTBAR 0
     parent.spawn((
       ButtonBundle {
-        style:ICON_HOT_BAR_STYLE01,
+        style:get_icon_hotbar_style(),
         background_color: NORMAL_ICON_BUTTON_COLOR.into(),
         ..default()
       },

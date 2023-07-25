@@ -24,7 +24,7 @@ impl Plugin for WaterMarkPlugin{
 
   fn build(&self, app: &mut App){
     //app.add_startup_system(setup_water_mark);
-    app.add_system(spawn_water_mark.in_schedule(OnEnter(AppState::AssetLoading)));
+    app.add_systems(OnEnter(AppState::AssetLoading) ,spawn_water_mark);
     //app.add_system(despawn_water_mark.in_schedule(OnExit(AppState::MainMenu)));
   }
 }

@@ -28,7 +28,7 @@ pub fn interact_hot_bar_id_button(
   for (interaction, mut background_color, hotbarid) in button_query.iter_mut(){
 
     match *interaction {
-      Interaction::Clicked =>{
+      Interaction::Pressed =>{
         *background_color = PRESSED_ICON_BUTTON_COLOR.into();
         //app_state_next_state.set(AppState::CREATEPLAYERNAME);
         println!("HOTBARID {:?}", interaction );

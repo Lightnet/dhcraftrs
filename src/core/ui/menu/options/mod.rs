@@ -18,11 +18,11 @@ impl Plugin for OptionsPlugin {
   fn build(&self, app: &mut App){
 
     //create ui
-    app.add_system(spawn_options_menu.in_schedule(OnEnter(AppState::OPTIONS)));
+    app.add_systems(OnEnter(AppState::OPTIONS),spawn_options_menu);
     //remove ui
-    app.add_system(despawn_options_menu.in_schedule(OnExit(AppState::OPTIONS)));
+    app.add_systems(OnExit(AppState::OPTIONS),despawn_options_menu);
     //input text
     //button event interact
-    app.add_system(interact_button_back.in_set(OnUpdate(AppState::OPTIONS)));
+    app.add_systems(Update,interact_button_back.run_if(in_state(AppState::OPTIONS)));
   }
 }

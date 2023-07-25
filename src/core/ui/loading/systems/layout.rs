@@ -33,7 +33,7 @@ pub fn build_loading_asset_ui(
 )-> Entity{
   let menu_loading_asset_entity = commands.spawn(
     (NodeBundle{
-      style:MAIN_MENU_STYLE,
+      style:get_main_menu_style(),
       //background_color: Color::RED.into(),
       ..default()
     },

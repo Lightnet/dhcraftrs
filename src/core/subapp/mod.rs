@@ -32,12 +32,12 @@ impl Plugin for CraftSubAppPlugin{//main entry point still in testing...
     let mut sub_app = App::empty();
 
     // add an outer schedule that runs the main schedule
-    sub_app.add_simple_outer_schedule();
+    //sub_app.add_simple_outer_schedule();
     sub_app.insert_resource(Val(100));
 
     // initialize main schedule
-    sub_app.init_schedule(CoreSchedule::Main);
-    sub_app.add_system(|counter: Res<Val>| {
+    //sub_app.init_schedule(CoreSchedule::Main);
+    sub_app.add_systems(Main, |counter: Res<Val>| {
       // since we assigned the value from the main world in extract
       // we see that value instead of 100
       assert_eq!(counter.0, 10);

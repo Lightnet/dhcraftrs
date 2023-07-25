@@ -20,7 +20,7 @@ impl Plugin for LoadingAssetUIPlugin {
   fn build(&self, app: &mut App){
     //need to fixed or once time loading for assets?
     //set up
-    app.add_startup_system(spawn_loading_asset_ui);
-    app.add_system(despawn_loading_asset_ui.in_schedule(OnExit(AppState::AssetLoading)));
+    app.add_systems(Startup, spawn_loading_asset_ui);
+    app.add_systems(OnExit(AppState::AssetLoading), despawn_loading_asset_ui);
   }
 }

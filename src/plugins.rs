@@ -66,32 +66,32 @@ impl Plugin for BaseCraftPlugin{
       }),
       ..default()
     }));
-    app.add_startup_system(set_window_icon);
-    //app.add_plugin(FrameTimeDiagnosticsPlugin::default());
-    //app.add_plugin(EguiPlugin); // menu 
-    app.add_plugin(CraftBaseDataPlugin); // loading player data base
+    app.add_systems(Startup, set_window_icon);
+    //app.add_plugins(FrameTimeDiagnosticsPlugin::default());
+    //app.add_plugins(EguiPlugin); // menu 
+    app.add_plugins(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
     //app.add_startup_system(spawn_camera2d); // need this for bevy ui to render
-    app.add_startup_system(spawn_camera3d); // 
+    app.add_systems(Startup, spawn_camera3d); // 
     //note it need one camera at the time else log error on multiple camera active.
 
-    //app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
-    //app.add_plugin(LoadingAssetUIPlugin); // ui loading
-    app.add_plugin(LoadingAssetPlugin); // loading call
-    app.add_plugin(MainMenuPlugin); // main menu
-    app.add_plugin(OptionsPlugin); // menu
-    //app.add_plugin(WaterMarkPlugin); // water mark //testing
-    //app.add_plugin(CreatePlayerPlugin); // 
-    //app.add_plugin(WorldBasicPlugin); // simple scene test
-    app.add_plugin(NetworkMenuPlugin); // 
-    app.add_plugin(CraftEventPlugin); // event testing...
+    //app.add_plugins(SplashScreenPlugin); // Splash Screen //nope need rework
+    //app.add_plugins(LoadingAssetUIPlugin); // ui loading
+    app.add_plugins(LoadingAssetPlugin); // loading call
+    app.add_plugins(MainMenuPlugin); // main menu
+    app.add_plugins(OptionsPlugin); // menu
+    //app.add_plugins(WaterMarkPlugin); // water mark //testing
+    //app.add_plugins(CreatePlayerPlugin); // 
+    //app.add_plugins(WorldBasicPlugin); // simple scene test
+    app.add_plugins(NetworkMenuPlugin); // 
+    app.add_plugins(CraftEventPlugin); // event testing...
 
-    //app.add_plugin(PlayerPlugin);//conflict camera?
+    //app.add_plugins(PlayerPlugin);//conflict camera?
     
-    //app.add_plugin(CraftPlayerPlugin); // event testing...
-    app.add_plugin(CraftPhysics3DPlugin); // event testing...
+    //app.add_plugins(CraftPlayerPlugin); // event testing...
+    app.add_plugins(CraftPhysics3DPlugin); // event testing...
 
   }
 }
@@ -116,45 +116,43 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
       }),
       ..default()
     }));
-    app.add_startup_system(set_window_icon);
-    //app.add_plugin(FrameTimeDiagnosticsPlugin::default());
+    app.add_systems(Startup, set_window_icon);
+    //app.add_plugins(FrameTimeDiagnosticsPlugin::default());
     //app.add_state::<AppState>(); // state app
-    //app.add_plugin(CraftBaseDataPlugin); // loading player data base
+    //app.add_plugins(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
     // need this for bevy ui to render
     //app.add_startup_system(spawn_camera2d); 
-    app.add_startup_system(spawn_camera3d); // 
+    app.add_systems(Startup,spawn_camera3d); // 
     //note it need one camera at the time else log error on multiple camera active.
 
     //app.add_plugin(WaterMarkPlugin); // water mark //testing
-    app.add_plugin(SplashScreenPlugin); // Splash Screen //nope need rework
+    app.add_plugins(SplashScreenPlugin); // Splash Screen //nope need rework
 
-    app.add_plugin(LoadingAssetUIPlugin); // ui loading
-    app.add_plugin(LoadingAssetPlugin); // loading call
-    app.add_plugin(MainMenuPlugin); // main menu
-    app.add_plugin(OptionsPlugin); // menu
-    app.add_plugin(CreatePlayerPlugin); // 
+    app.add_plugins(LoadingAssetUIPlugin); // ui loading
+    app.add_plugins(LoadingAssetPlugin); // loading call
+    app.add_plugins(MainMenuPlugin); // main menu
+    app.add_plugins(OptionsPlugin); // menu
+    app.add_plugins(CreatePlayerPlugin); // 
 
-    //app.add_plugin(CraftRayCastPlugin); // 
-    //app.add_plugin(WorldBasicPlugin); // 
-    app.add_plugin(NetworkMenuPlugin); // 
-    app.add_plugin(CraftEventPlugin); // Events
+    //app.add_plugins(CraftRayCastPlugin); // 
+    //app.add_plugins(WorldBasicPlugin); // 
+    app.add_plugins(NetworkMenuPlugin); // 
+    app.add_plugins(CraftEventPlugin); // Events
 
-    //app.add_plugin(PlayerPlugin);//conflict camera?
-    //app.add_plugin(CraftPlayerPlugin); //
+    //app.add_plugins(PlayerPlugin);//conflict camera?
+    //app.add_plugins(CraftPlayerPlugin); //
 
-    app.add_plugin(HUDHotBarPlugin); // set up hot bar
-    app.add_plugin(CraftPhysics3DPlugin); // set up physics
+    app.add_plugins(HUDHotBarPlugin); // set up hot bar
+    app.add_plugins(CraftPhysics3DPlugin); // set up physics
 
     // Test scene place 
-    app.add_plugin(BaseWorldPlugin); //preload entity tests
-    //app.add_plugin(NetworkCraftPlugin); //
-    //app.add_plugin(CraftSubAppPlugin); // testing app and sub app
-
-    //check for state
-    //app.add_startup_system(check_states); //
+    app.add_plugins(BaseWorldPlugin); //preload entity tests
+    //app.add_plugins(NetworkCraftPlugin); //
+    //app.add_plugins(CraftSubAppPlugin); // testing app and sub app
+    
   }
 }
 
@@ -167,7 +165,7 @@ impl Plugin for LoadingCraftPlayerPlugin{
     app.add_state::<CameraState>(); // state camera mode
     //app.add_plugin(PlayerPlugin);
 
-    app.add_plugin(CraftPlayerPlugin); // 
+    app.add_plugins(CraftPlayerPlugin); // 
 
     //test for state
     //app.add_startup_system(set_network_menu);

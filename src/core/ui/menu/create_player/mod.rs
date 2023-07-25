@@ -25,11 +25,11 @@ impl Plugin for CreatePlayerPlugin {
     //app.add_system(player_name_text_update.in_schedule(OnUpdate(AppState::CREATEPLAYERNAME))); //nope ???
 
     //create ui
-    app.add_system(spawn_create_player_menu.in_schedule(OnEnter(AppState::CREATEPLAYERNAME)));
+    app.add_systems(OnEnter(AppState::CREATEPLAYERNAME), spawn_create_player_menu);
     //remove ui
-    app.add_system(despawn_create_player_menu.in_schedule(OnExit(AppState::CREATEPLAYERNAME)));
+    app.add_systems(OnExit(AppState::CREATEPLAYERNAME), despawn_create_player_menu);
     //input text
-    app.add_system(player_name_text_update.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
+    app.add_systems(Update, player_name_text_update.run_if(in_state(AppState::CREATEPLAYERNAME)));
     //button event interact
     //app.add_system(interact_button_create_player.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));
     //app.add_system(interact_button_back.in_set(OnUpdate(AppState::CREATEPLAYERNAME)));

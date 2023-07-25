@@ -31,7 +31,7 @@ fn main() {
     //.insert_resource(WinitSettings::desktop_app())//lag input?
     //.add_plugin(ConsolePlugin)
     
-    .add_plugin(DefaultCraftPlugin)
+    .add_plugins(DefaultCraftPlugin)
     //.add_startup_system(set_window_icon)
     
     //.add_plugin(ConsoleCraftPlugin)

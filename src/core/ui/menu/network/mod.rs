@@ -20,16 +20,17 @@ impl Plugin for NetworkMenuPlugin {
   fn build(&self, app: &mut App){
     //println!("init network menu! plug in!");
 
-    app.add_system(spawn_network_menu.in_schedule(OnEnter(AppState::NETWORK)));
+    app.add_systems(OnEnter(AppState::NETWORK),spawn_network_menu);
     app.add_systems(
+      Update,
       (
       interact_with_host_button,
       interact_with_join_button,
       interact_with_back_button
-      ).in_set(OnUpdate(AppState::NETWORK))
+      ).run_if(in_state(AppState::NETWORK))
     );
 
-    app.add_system(despawn_network_menu.in_schedule(OnExit(AppState::NETWORK)));
+    app.add_systems(OnExit(AppState::NETWORK),despawn_network_menu);
   }
 }
 

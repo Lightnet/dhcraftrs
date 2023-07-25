@@ -26,10 +26,10 @@ impl Plugin for SplashScreenPlugin{
 
   fn build(&self, app: &mut App){
     // set up entity
-    app.add_startup_system(setup_splash_spawning);
-    app.add_startup_system(spawn_splash);
+    app.add_systems(Startup, setup_splash_spawning);
+    app.add_systems(Startup,spawn_splash);
     // timer to change sate.
-    app.add_system(splash_screen_time);
+    app.add_systems(Update,splash_screen_time);
     
   }
 

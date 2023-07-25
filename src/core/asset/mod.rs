@@ -50,7 +50,7 @@ impl Plugin for LoadingAssetPlugin{
     //loading assets
     app.add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading);
     //assets do something
-    app.add_system(use_my_assets.in_schedule(OnEnter(AppState::MainMenu)));
+    app.add_systems(OnEnter(AppState::MainMenu),use_my_assets);
     
   }
 }
