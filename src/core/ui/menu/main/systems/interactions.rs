@@ -3,12 +3,18 @@
   License: CC BY-SA
   Created by: Lightnet
   Information: Note there are other licenses.
- */
+*/
+
+// https://stackoverflow.com/questions/30292752/how-do-i-parse-a-json-file
+
+use std::fs::File;
 
 use bevy::app::AppExit;
 use bevy::prelude::*;
 
 use crate::core::api::AppState;
+use crate::core::components::PlayerDataSlot;
+use crate::core::components::PlayerInfo;
 use crate::core::ui::menu::main::components::*;
 use crate::core::ui::menu::main::styles::*;
 
@@ -43,11 +49,25 @@ pub fn interact_with_play_button(
     (Changed<Interaction>, With<PlayButton>)
   >,
   mut app_state_next_state:ResMut<NextState<AppState>>,
+  mut player_info: ResMut<PlayerInfo>,
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     match *interaction {
       Interaction::Pressed =>{
         *background_color = PRESSED_BUTTON_COLOR.into();
+
+        let file = File::open("playerdata.json").unwrap();
+        //let json: serde_json::Value = serde_json::from_reader(file).expect("file should be proper JSON");
+        let playerdata: PlayerDataSlot = serde_json::from_reader(file).expect("file should be proper JSON");
+        println!("playerdataslot {:?}", playerdata);
+        player_info.name = playerdata.name;
+
+        //let json = Json::from_str(&data).unwrap();
+        //let playerdataslot: PlayerDataSlot = serde_json::from_str(playerdata_file).expect("JSON was not well-formatted");
+        //let playerdata_file = "playerdata.json";
+        //let playerdataslot: PlayerDataSlot = serde_json::from_str(playerdata_file).expect("JSON was not well-formatted");
+        //println!("playerdataslot {:?}", playerdataslot);
+
         app_state_next_state.set(AppState::Game);
       }
       Interaction::Hovered =>{

@@ -26,7 +26,7 @@ impl Plugin for CraftBaseDataPlugin{
       name:"Guest".into(),
       idhash:"00".into() 
     });
-    //app.add_startup_system(setup_player_info_pkv);
+    //app.add_systems(Startup, setup_player_info_pkv);
   }
 }
 

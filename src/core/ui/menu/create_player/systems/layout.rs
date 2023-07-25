@@ -3,20 +3,18 @@
   License: CC BY-SA
   Created by: Lightnet
   Information: Note there are other licenses.
- */
+*/
 
 use bevy::prelude::*;
 
-use crate::{
-  core::ui::menu::{
+use crate::core::ui::menu::{
     create_player::components::{
       CREATEPLAYERNAME, 
       PlayerNameText, 
       CREATEPLAYERNAMEBUTTON, BackButton
     }, 
   main::styles::*
-  }
-};
+  };
 
 pub fn spawn_create_player_menu(
   mut commands: Commands,

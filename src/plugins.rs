@@ -17,7 +17,7 @@ use bevy::{
   //EguiPlugin
 //};
 
-use crate::core::systems::spawn_camera3d;
+use crate::core::{systems::spawn_camera3d, ui::player::display_name::DisplayPlayerNameTextPlugin};
 #[allow(unused_imports)]
 use crate::core::{
     api::{
@@ -39,9 +39,7 @@ use crate::core::{
     }, 
     event::CraftEventPlugin, 
     physics::CraftPhysics3DPlugin, 
-    //raycast::CraftRayCastPlugin, 
     world::BaseWorldPlugin, 
-    //network::NetworkCraftPlugin, 
     entity::creature::player::CraftPlayerPlugin
   };
 
@@ -73,7 +71,7 @@ impl Plugin for BaseCraftPlugin{
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
-    //app.add_startup_system(spawn_camera2d); // need this for bevy ui to render
+    // app.add_systems(Startup,spawn_camera2d); // need this for bevy ui to render
     app.add_systems(Startup, spawn_camera3d); // 
     //note it need one camera at the time else log error on multiple camera active.
 
@@ -90,8 +88,9 @@ impl Plugin for BaseCraftPlugin{
 
     //app.add_plugins(PlayerPlugin);//conflict camera?
     
-    //app.add_plugins(CraftPlayerPlugin); // event testing...
-    app.add_plugins(CraftPhysics3DPlugin); // event testing...
+    //app.add_plugins(CraftPlayerPlugin); // testing...
+    app.add_plugins(CraftPhysics3DPlugin); // testing...
+    app.add_plugins(DisplayPlayerNameTextPlugin); // testing...
 
   }
 }
@@ -118,8 +117,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     }));
     app.add_systems(Startup, set_window_icon);
     //app.add_plugins(FrameTimeDiagnosticsPlugin::default());
-    //app.add_state::<AppState>(); // state app
-    //app.add_plugins(CraftBaseDataPlugin); // loading player data base
+    app.add_plugins(CraftBaseDataPlugin); // loading player data base
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
@@ -152,6 +150,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugins(BaseWorldPlugin); //preload entity tests
     //app.add_plugins(NetworkCraftPlugin); //
     //app.add_plugins(CraftSubAppPlugin); // testing app and sub app
+    app.add_plugins(DisplayPlayerNameTextPlugin); // testing...
     
   }
 }

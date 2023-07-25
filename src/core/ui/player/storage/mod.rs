@@ -3,7 +3,7 @@
   License: CC BY-SA
   Created by: Lightnet
   Information: Note there are other licenses.
- */
+*/
 
 // player global storage ?
 

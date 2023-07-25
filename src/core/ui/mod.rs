@@ -15,3 +15,4 @@ pub mod loading;
 pub mod watermark;
 pub mod splashscreen;
 pub mod menu;
+pub mod player;

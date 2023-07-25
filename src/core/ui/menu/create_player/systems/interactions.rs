@@ -6,12 +6,20 @@
  */
 
 // https://github.com/bevyengine/bevy/blob/main/examples/ecs/ecs_guide.rs
+// https://stackoverflow.com/questions/69449293/how-to-write-a-vector-to-a-json-file
+// https://onelinerhub.com/rust/how-to-write-struct-to-json-file-in-rust
+
+
 use bevy::prelude::*;
+use serde_json::json;
 //use bevy_pkv::PkvStore;
 use crate::core::api::AppState;
 use crate::core::components::PlayerInfo;
 use crate::core::ui::menu::create_player::components::{CREATEPLAYERNAMEBUTTON, PlayerNameText, BackButton};
 use crate::core::ui::menu::main::styles::{PRESSED_BUTTON_COLOR, HOVERED_BUTTON_COLOR, NORMAL_BUTTON_COLOR};
+
+use std::fs::File;
+use std::io::BufWriter;
 
 pub fn interact_button_create_player(
   mut button_query:Query<
@@ -31,6 +39,18 @@ pub fn interact_button_create_player(
 
         //pkv.set_string("username", player_info.name.as_str() )
         //.expect("failed to store username");
+        let player_data = json!({
+          "name": player_info.name,
+          "idhash":"00"
+        });
+
+        println!("DATA: {}", player_data.to_string());
+
+        let mut file = File::create("playerdata.json").unwrap();
+        //let mut writer = BufWriter::new(file);
+        //serde_json::to_writer(&mut writer, &player_data).unwrap();
+        serde_json::to_writer_pretty(&mut file, &player_data).unwrap();
+
 
         //need to check blank incase of player name string is empty later...
         app_state_next_state.set(AppState::Game);

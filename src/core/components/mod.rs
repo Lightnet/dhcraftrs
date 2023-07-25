@@ -9,10 +9,17 @@
 // https://google.github.io/comprehensive-rust/structs/field-shorthand.html
 //use bevy::prelude::Component;
 use bevy::prelude::*;
+use serde::Deserialize;
 
 #[allow(dead_code)]
 #[derive(Debug, Default, Resource)]
 pub struct PlayerInfo {
+  pub name:String,
+  pub idhash:String,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct PlayerDataSlot {
   pub name:String,
   pub idhash:String,
 }
