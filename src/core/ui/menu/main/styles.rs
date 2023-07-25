@@ -15,10 +15,16 @@ pub fn get_button_style()-> Style{
   Style {
     justify_content:JustifyContent::Center,
     align_items:AlignItems::Center,
-    width: Val::Percent(200.0),
-    height: Val::Percent(80.0),
+    width: Val::Px(200.0),
+    height: Val::Px(80.0),
+    margin: UiRect {
+      bottom: Val::Px(2.0),
+      left: Val::Px(2.0),
+      right: Val::Px(2.0),
+      top: Val::Px(2.0)
+    },
     //size:Size::new(Val::Px(200.0),Val::Px(80.0)),
-    ..Style::DEFAULT
+    ..default()
   }
 }
 
@@ -27,9 +33,8 @@ pub fn get_main_menu_style()-> Style{
     flex_direction:FlexDirection::Column,
     justify_content:JustifyContent::Center,
     align_items:AlignItems::Center,
-    //width: Val::Percent(100.0),
-    //height: Val::Percent(100.0),
-    //size:Size::new(Val::Percent(100.0), Val::Percent(100.0)),
+    width: Val::Percent(100.0),
+    height: Val::Percent(100.0),
     //gap:Size::new(Val::Px(8.0), Val::Px(8.0)),
     ..default()
   }

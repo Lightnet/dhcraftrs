@@ -30,7 +30,8 @@ pub fn get_network_menu_style()-> Style {
     height:Val::Percent(100.0),
     //size:Size::new(Val::Percent(100.0), Val::Percent(100.0)),
     //gap:Size::new(Val::Px(8.0), Val::Px(8.0)),
-    ..Style::DEFAULT
+    //..Style::DEFAULT
+    ..default()
   }
 }
 
