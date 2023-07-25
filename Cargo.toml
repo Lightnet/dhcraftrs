@@ -68,9 +68,9 @@ path = "src/bin/game.rs"
 #name = "webgui"
 #path = "src/example/webgui.rs"
 
-#[[example]]
-#name = "pick_event"
-#path = "src/example/pick_event.rs"
+[[example]]
+name = "scene_save_load"
+path = "src/example/scene_save_load.rs"
 
 [[example]]
 name = "menu_test"

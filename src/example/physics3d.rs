@@ -7,7 +7,7 @@ use dhcraftrs::core::physics::CraftPhysics3DPlugin;
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_plugin(CraftPhysics3DPlugin)
+        .add_plugins(CraftPhysics3DPlugin)
         //.add_plugin(CraftPhysics3DPlugin)
         //.add_plugin(RapierPhysicsPlugin::<NoUserData>::default())
         //.add_plugin(RapierDebugRenderPlugin::default())

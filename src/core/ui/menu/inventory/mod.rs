@@ -20,7 +20,7 @@ impl Plugin for InventoryMenuPlugin {
   fn build(&self, app: &mut App) {
     //Inventory menu
 
-    app.add_startup_system( spawn_inventory_menu );
+    app.add_systems(Startup, spawn_inventory_menu );
 
     //app.add_systems( OnEnter(GameState::MainMenu),spawn_main_menu);
     //app.add_systems( Startup, spawn_inventory_menu);

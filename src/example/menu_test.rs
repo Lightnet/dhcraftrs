@@ -10,7 +10,7 @@ use dhcraftrs::core::{systems::spawn_camera3d, ui::menu::inventory::InventoryMen
 fn main() {
   App::new()
     .add_plugins(DefaultPlugins)
-    .add_startup_system(spawn_camera3d)
-    .add_plugin(InventoryMenuPlugin)
+    .add_systems(Update, spawn_camera3d)
+    .add_plugins(InventoryMenuPlugin)
     .run();
 }

@@ -21,7 +21,7 @@ fn main() {
   App::new()
     .add_plugins(DefaultPlugins)
     .insert_resource(PkvStore::new("dhcraftrs", "player")) // Users\<username>\AppData\Roaming\<dhcraftrs>
-    .add_startup_system(setup_pkv)
+    .add_systems(Startup, setup_pkv)
     .run();
 }
 
