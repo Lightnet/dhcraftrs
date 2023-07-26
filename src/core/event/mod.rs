@@ -45,7 +45,7 @@ fn debug_levelups(
 ) {
   for ev in ev_levelup.iter() {
     println!("Entity {:?} leveled up!", ev.0);
-    eprintln!("Entity {:?} leveled up!", ev.0);
+    //eprintln!("Entity {:?} leveled up!", ev.0);
   }
 }
 

@@ -1,7 +1,7 @@
 //===============================================
 //
 //===============================================
-use bevy::prelude::{shape::Plane, *};
+use bevy::prelude::*;
 use bevy_renet::{
     renet::{
         transport::{ClientAuthentication, ServerAuthentication, ServerConfig},
@@ -115,6 +115,7 @@ fn main() {
 
         app.add_systems(Update,
             (player_input, client_send_input, client_sync_players)
+                .run_if(bevy_renet::transport::client_connected())
                 //.distributive_run_if(bevy_renet::transport::client_connected)
                 //.in_base_set(CoreSet::Update),
         );

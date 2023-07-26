@@ -24,6 +24,10 @@ opt-level = 3
 name = "dhcraftrs"
 path = "src/bin/game.rs"
 
+[[bin]]
+name = "egui_network"
+path = "src/bin/egui_network.rs"
+
 #[[bin]]
 #name = "game"
 #path = "src/bin/game.rs"
@@ -109,8 +113,10 @@ eframe = { version = "0.22", default-features = false, features = [
 winit = "0.28.6"
 image = "0.24.6"
 
+
+bevy_egui = "0.21"
 #bevy_svg = "0.10.1"
-#bevy_egui = "0.20"
+
 #bevy_transform_gizmo = "0.6.0"
 #bevy_pkv = "0.7.0"
 #bevy_mod_picking = "0.13.0"
