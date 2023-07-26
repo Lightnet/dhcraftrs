@@ -76,6 +76,10 @@ path = "src/example/scene_save_load.rs"
 name = "menu_test"
 path = "src/example/menu_test.rs"
 
+[[example]]
+name = "mouse_picking"
+path = "src/example/mouse_picking.rs"
+
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_json = "1.0"

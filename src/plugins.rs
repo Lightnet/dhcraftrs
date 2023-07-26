@@ -8,7 +8,7 @@
 use bevy::{
   prelude::*, 
   //diagnostic::FrameTimeDiagnosticsPlugin, 
-  window::WindowResolution
+  window::{WindowResolution, PresentMode}
 };
 
 //use bevy_egui::{
@@ -17,7 +17,7 @@ use bevy::{
   //EguiPlugin
 //};
 
-use crate::core::{systems::spawn_camera3d, ui::player::display_name::DisplayPlayerNameTextPlugin};
+use crate::core::{systems::spawn_camera3d, ui::player::display_name::DisplayPlayerNameTextPlugin, raycast::CraftRayCastPlugin};
 #[allow(unused_imports)]
 use crate::core::{
     api::{
@@ -60,6 +60,7 @@ impl Plugin for BaseCraftPlugin{
         resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
         title: "Bevy Engine dhcraftrs".to_string(),
         resizable: false,
+        present_mode: PresentMode::AutoNoVsync,
         ..default()
       }),
       ..default()
@@ -118,6 +119,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_systems(Startup, set_window_icon);
     //app.add_plugins(FrameTimeDiagnosticsPlugin::default());
     app.add_plugins(CraftBaseDataPlugin); // loading player data base
+    app.add_plugins(CraftRayCastPlugin); // 
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render

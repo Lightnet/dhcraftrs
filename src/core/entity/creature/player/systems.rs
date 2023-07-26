@@ -7,10 +7,11 @@
 
 use bevy::prelude::*;
 use bevy::input::mouse::MouseMotion;
+use bevy_mod_raycast::RaycastSource;
 //use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
-use crate::core::api::AppState;
+use crate::core::{api::AppState, raycast::MyRaycastSet};
 use super::components::{PLAYERMOVABLE, PlayerCamera, IsGround, PlayerTool};
 
 // DEFAULT ?
@@ -60,6 +61,7 @@ pub fn create_entity_first_person_player(
         ..Default::default()
       },
       PlayerCamera,
+      RaycastSource::<MyRaycastSet>::new(),
       //RaycastPickCamera::default() //when main camera is active and select to update ray cast
     ));
 

@@ -6,7 +6,7 @@
  */
 
  use bevy::prelude::*;
- use bevy_mod_picking::prelude::*;
+ //use bevy_mod_picking::prelude::*;
 
 pub fn create_pick_cube(
   mut commands: Commands,
@@ -27,7 +27,7 @@ pub fn create_pick_cube(
       //transform: Transform::from_xyz(0.0, 0.0, 0.0),
       ..default()
     },           // The `bevy_picking_raycast` backend works with meshes
-    PickableBundle::default(),      // Makes the entity pickable
-    RaycastPickTarget::default()    // Marker for the `bevy_picking_raycast` backend
+    //PickableBundle::default(),      // Makes the entity pickable
+    //RaycastPickTarget::default()    // Marker for the `bevy_picking_raycast` backend
   ));
 }

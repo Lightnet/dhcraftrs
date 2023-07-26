@@ -1,5 +1,38 @@
 
 
+# Terms:
+ * .ron = Rusty Object Notation = JSON
+   * https://fileinfo.com/extension/ron
+ * 
+
+# 0.11.0:
+ * 
+
+```rs
+app.add_systems( StartUp, setup);
+app.add_systems( Update, componentA);
+app.add_systems( Update, componentB.run_if(in_state(AppState::MainMenu));
+app.add_systems(OnEnter(AppState::MainMenu), spawn_main_menu);
+app.add_systems(OnExit(AppState::MainMenu), despawn_main_menu);
+
+```
+
+```rs
+fn componentA(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+  asset_server: Res<AssetServer>,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+) {
+
+}
+
+```
+
+
+
 # 0.10.0:
  * https://www.youtube.com/watch?v=e92clhk0OBk
 ```rs
@@ -8,7 +41,7 @@ app.add_system(cleanup_main_menu.in_schedule(OnExit(AppState:MainMenu)))
 
 ```
 
-```
+```rs
 fn start_game(
   button_query:Query<&Interaction, With<StartGameButton>>,
   next_state:ResMut<NextState<AppState>>,
@@ -19,7 +52,7 @@ fn start_game(
 }
 ```
 
-```
+```rs
 app.add_systems(
   (
     system_a,
@@ -32,7 +65,7 @@ app.add_systems(
 
 
  * https://blog.logrocket.com/5-rust-game-engines-consider-next-project/
-```
+```rs
 asset_server.watch_for_changes().unwrap();
 ```
 
@@ -58,16 +91,12 @@ c:\Users\<username>\AppData\Roaming\<company>\<game>
 # Notes:
  * https://www.reddit.com/r/bevy/comments/xit4a5/the_stageless_scheduling_rfc_is_merged/
  * 
- * 
- * 
- * 
- * 
 
  # Entity: 
   * https://bevy-cheatbook.github.io/programming/commands.html
   * 
 
-```
+```rs
 fn despawn_system<M: Component>(
     mut commands: Commands, 
     query: Query<Entity, With<M>>
@@ -77,7 +106,7 @@ fn despawn_system<M: Component>(
     });
 }
 ```
-```
+```rs
 app.add_system_set( 
     SystemSet::on_exit(AppState::MenuUi) 
     .with_system(despawn_system<MenUiMarker>) 
