@@ -8,10 +8,11 @@
 use std::ops::Add;
 
 use bevy::prelude::*;
+use bevy_mod_raycast::RaycastMesh;
 //use bevy_mod_picking::prelude::*;
 use bevy_rapier3d::prelude::*;
 
-use crate::core::{components::PlaceHolder, entity::creature::player::components::{PLAYERMOVABLE, PlayerTool}};
+use crate::core::{components::PlaceHolder, entity::creature::player::components::{PLAYERMOVABLE, PlayerTool}, raycast::MyRaycastSet};
 //use bevy_eventlistener::prelude::*;
 
 //basic set up cube test
@@ -60,7 +61,9 @@ material: materials.add(StandardMaterial {
 }),
 */
 
-pub fn place_holder_update(){
+pub fn place_holder_update(
+  
+){
 
 }
 
@@ -139,6 +142,26 @@ pub fn create_entity_cube_physics(
 ){
   create_cube_physics(&mut commands, &mut meshes, &mut materials,  Vec3::new(0., 0., 0.));
   //create_cube_physics(&mut commands, &mut meshes, &mut materials,  Vec3::new(0., 0., -3.));
+}
+
+pub fn create_raycast_cube_physics(
+  mut commands: Commands,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<StandardMaterial>>,
+  //buttons: Res<Input<MouseButton>>,
+){
+  commands
+  .spawn((
+    PbrBundle{
+      mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+      material: materials.add(Color::BLACK.into()),
+      ..default()
+    },
+  ))
+  .insert(Collider::cuboid(0.5, 0.5, 0.5))
+  .insert(TransformBundle::from(Transform::from_xyz(0., 0., 0.)))
+  .insert(RaycastMesh::<MyRaycastSet>::default())
+  ;
 }
 
 // no System

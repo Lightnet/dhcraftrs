@@ -8,7 +8,9 @@ use bevy_mod_raycast::{
   RaycastMesh,
   //RaycastPluginState
 };
-use bevy_mod_raycast::DefaultPluginState as RaycastPluginState;
+//use bevy_mod_raycast::DefaultPluginState as RaycastPluginState;
+use bevy_mod_raycast::prelude::*;
+
 
 // This example will show you how to use your mouse cursor as a ray casting source, cast into the
 // scene, intersect a mesh, and mark the intersection with the built in debug cursor. If you are

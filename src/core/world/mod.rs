@@ -11,17 +11,14 @@ pub mod prefab;
 use bevy::prelude::*;
 
 use super::{
-  api::AppState, 
-  physics::{
-    create_ground
-  }, 
+  api::AppState,
   entity::{
-    creature::player::systems::{create_entity_prototype_player, move_player_physics01, read_result_system_player, create_entity_first_person_player, move_first_person_player_physics, move_first_person_player_cam}, 
+    creature::player::systems::{read_result_system_player, create_entity_first_person_player, move_first_person_player_physics, move_first_person_player_cam}, 
     mesh::cube::{ 
       //create_entity_cube_pick, 
-      create_entity_cube_physics, setup_ph_cube, place_holder_update
+      create_entity_cube_physics, setup_ph_cube, place_holder_update, create_raycast_cube_physics
     }
-  }
+  }, physics::create_ground
 };
 
 pub struct BaseWorldPlugin;
@@ -35,7 +32,9 @@ impl Plugin for BaseWorldPlugin{
 
     //app.add_system(create_entity_cube.in_schedule(OnEnter(AppState::InGame)));
     //app.add_system(create_entity_cube_pick.in_schedule(OnEnter(AppState::InGame)));
-    app.add_systems(OnEnter(AppState::Game) ,create_entity_cube_physics);
+
+    //app.add_systems(OnEnter(AppState::Game) ,create_entity_cube_physics);
+    app.add_systems(OnEnter(AppState::Game) ,create_raycast_cube_physics);
 
     app.add_systems(OnEnter(AppState::Game), setup_ph_cube);
     //app.add_system(create_entity_prototype_player.in_schedule(OnEnter(AppState::Game)));

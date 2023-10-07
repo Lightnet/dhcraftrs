@@ -129,7 +129,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     //note it need one camera at the time else log error on multiple camera active.
 
     //app.add_plugin(WaterMarkPlugin); // water mark //testing
-    app.add_plugins(SplashScreenPlugin); // Splash Screen //nope need rework
+    //app.add_plugins(SplashScreenPlugin); // Splash Screen //nope need rework
 
     app.add_plugins(LoadingAssetUIPlugin); // ui loading
     app.add_plugins(LoadingAssetPlugin); // loading call

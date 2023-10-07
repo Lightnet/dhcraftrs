@@ -18,7 +18,8 @@ use bevy_mod_raycast::{
   RaycastMesh,
   //RaycastPluginState
 };
-use bevy_mod_raycast::DefaultPluginState as RaycastPluginState;
+//use bevy_mod_raycast::DefaultPluginState as RaycastPluginState;
+use bevy_mod_raycast::prelude::*;
 
 // https://github.com/aevyrie/bevy_mod_picking/blob/v0.13/examples/event_listener.rs
 
@@ -46,7 +47,7 @@ impl Plugin for CraftRayCastPlugin{//main entry point still in testing...
     app.add_systems(Startup, (
       debug_raycast_setup, 
       print_intersections::<MyRaycastSet>,
-      raycast_mesh_test_setup
+      //raycast_mesh_test_setup
     ));
     //app.add_systems(Startup, (setup, print_intersections::<MyRaycastSet>));
   }
