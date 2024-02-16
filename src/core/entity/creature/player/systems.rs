@@ -7,7 +7,7 @@
 
 use bevy::prelude::*;
 use bevy::input::mouse::MouseMotion;
-use bevy_mod_raycast::RaycastSource;
+//use bevy_mod_raycast::RaycastSource;
 //use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
 
@@ -61,7 +61,7 @@ pub fn create_entity_first_person_player(
         ..Default::default()
       },
       PlayerCamera,
-      RaycastSource::<MyRaycastSet>::new(),
+      //RaycastSource::<MyRaycastSet>::new(),
       //RaycastPickCamera::default() //when main camera is active and select to update ray cast
     ));
 

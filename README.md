@@ -10,7 +10,7 @@
  * Rust 1.70.0 ( https://www.rust-lang.org/ )
 
 # Engine:
- * Bevy Engine 0.10.1  ( https://bevyengine.org/ )
+ * Bevy Engine 0.11.3  ( https://bevyengine.org/ )
 
 # Information: 
   Note this is prototype and work in progress testing. Files are subject to changes.
@@ -23,7 +23,7 @@
  * modules, components, functions query is work in progress
 
 # Crates:
- * bevy 0.10.1
+ * bevy 0.11.3
  * bevy_asset_loader v0.16 (assets loading files)
  * bevy_rapier3d vbevy_rapier3d ( physics 3D )
  * bevy_mod_picking v0.13.0 (ray casting)

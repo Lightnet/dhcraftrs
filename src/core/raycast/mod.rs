@@ -11,11 +11,11 @@ use bevy::prelude::*;
 //use bevy_mod_picking::prelude::*;
 use bevy_mod_raycast::{
   DefaultRaycastingPlugin, 
-  RaycastSystem, 
-  print_intersections, 
-  RaycastSource, 
-  RaycastMethod, 
-  RaycastMesh,
+  //RaycastSystem, 
+  //print_intersections, 
+  //RaycastSource, 
+  //RaycastMethod, 
+  //RaycastMesh,
   //RaycastPluginState
 };
 //use bevy_mod_raycast::DefaultPluginState as RaycastPluginState;
@@ -39,7 +39,8 @@ impl Plugin for CraftRayCastPlugin{//main entry point still in testing...
         //.disable::<DebugPickingPlugin>(),
     //);
     //app.add_startup_system(setup_test);
-    app.add_plugins(DefaultRaycastingPlugin::<MyRaycastSet>::default());
+    //app.add_plugins(DefaultRaycastingPlugin::<MyRaycastSet>::default());
+    app.add_plugins(DefaultRaycastingPlugin);
     app.add_systems(
       First,
       update_raycast_with_cursor.before(RaycastSystem::BuildRays::<MyRaycastSet>),

@@ -30,8 +30,9 @@ pub fn set_window_icon(
       let rgba = image.into_raw();
       (rgba, width, height)
     };
-    let icon = Icon::from_rgba(icon_rgba, icon_width, icon_height).unwrap();
-    primary.set_window_icon(Some(icon));
+    //TODOLIST
+    //let icon = Icon::from_rgba(icon_rgba, icon_width, icon_height).unwrap();
+    //primary.set_window_icon(Some(icon));
   }
 }
 

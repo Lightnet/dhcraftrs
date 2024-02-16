@@ -251,11 +251,11 @@ pub fn read_result_system(controllers: Query<(Entity, &KinematicCharacterControl
 pub struct CraftPhysics3DTestPlugin;
 impl Plugin for CraftPhysics3DTestPlugin{
   fn build(&self, app: &mut App){
-    app.add_plugin(RapierPhysicsPlugin::<NoUserData>::default());
-    app.add_plugin(RapierDebugRenderPlugin::default());
-    app.add_startup_system(setup_graphics);
-    app.add_startup_system(setup_physics);
-    app.add_system(print_ball_altitude);
+    app.add_plugins(RapierPhysicsPlugin::<NoUserData>::default());
+    app.add_plugins(RapierDebugRenderPlugin::default());
+    app.add_systems(Startup, setup_graphics);
+    app.add_systems(Startup, setup_physics);
+    app.add_systems(Update,print_ball_altitude);
   }
 }
 

@@ -13,8 +13,10 @@ pub struct WorldBasicPlugin;
 
 impl Plugin for WorldBasicPlugin{
   fn build(&self, app: &mut App){
+    //TODOLIST
     //test loading entity
-    app.add_system(basic_scene_test.in_schedule(OnEnter(AppState::Game)));
+    //app.add_systems(Startup, basic_scene_test.in_schedule(OnEnter(AppState::Game)));
+    app.add_systems(Startup, basic_scene_test);
   }
 }
 

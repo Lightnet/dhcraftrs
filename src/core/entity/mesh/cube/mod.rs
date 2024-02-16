@@ -8,7 +8,7 @@
 use std::ops::Add;
 
 use bevy::prelude::*;
-use bevy_mod_raycast::RaycastMesh;
+//use bevy_mod_raycast::RaycastMesh;
 //use bevy_mod_picking::prelude::*;
 use bevy_rapier3d::prelude::*;
 
@@ -160,7 +160,7 @@ pub fn create_raycast_cube_physics(
   ))
   .insert(Collider::cuboid(0.5, 0.5, 0.5))
   .insert(TransformBundle::from(Transform::from_xyz(0., 0., 0.)))
-  .insert(RaycastMesh::<MyRaycastSet>::default())
+  //.insert(RaycastMesh::<MyRaycastSet>::default())
   ;
 }
 
