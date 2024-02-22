@@ -17,7 +17,7 @@ use bevy::{
   //EguiPlugin
 //};
 
-use crate::core::{systems::spawn_camera3d, ui::player::display_name::DisplayPlayerNameTextPlugin, raycast::CraftRayCastPlugin};
+use crate::core::{systems::spawn_camera3d, ui::player::display_name::DisplayPlayerNameTextPlugin};
 #[allow(unused_imports)]
 use crate::core::{
     api::{
@@ -25,9 +25,9 @@ use crate::core::{
       CameraState, 
       NetworkState
     }, 
-    window::set_window_icon, 
+    //window::set_window_icon, 
     data::CraftBaseDataPlugin, 
-    asset::LoadingAssetPlugin, 
+    //asset::LoadingAssetPlugin, 
     ui::{
       menu::{
         main::MainMenuPlugin, 
@@ -46,6 +46,10 @@ use crate::core::{
 pub const HEIGHT: f32 = 720.0;
 pub const WIDTH: f32 = 1280.0;
 
+//===============================================
+// TEST?
+//===============================================
+/*
 pub struct BaseCraftPlugin;
 //testing need to bare minimal
 // for console, headless server?
@@ -65,7 +69,7 @@ impl Plugin for BaseCraftPlugin{
       }),
       ..default()
     }));
-    app.add_systems(Startup, set_window_icon);
+    //app.add_systems(Startup, set_window_icon);
     //app.add_plugins(FrameTimeDiagnosticsPlugin::default());
     //app.add_plugins(EguiPlugin); // menu 
     app.add_plugins(CraftBaseDataPlugin); // loading player data base
@@ -78,7 +82,7 @@ impl Plugin for BaseCraftPlugin{
 
     //app.add_plugins(SplashScreenPlugin); // Splash Screen //nope need rework
     //app.add_plugins(LoadingAssetUIPlugin); // ui loading
-    app.add_plugins(LoadingAssetPlugin); // loading call
+    //app.add_plugins(LoadingAssetPlugin); // loading assets call
     app.add_plugins(MainMenuPlugin); // main menu
     app.add_plugins(OptionsPlugin); // menu
     //app.add_plugins(WaterMarkPlugin); // water mark //testing
@@ -95,31 +99,31 @@ impl Plugin for BaseCraftPlugin{
 
   }
 }
-
+*/
 //===============================================
 // MAIN?
 //===============================================
-pub struct DefaultCraftPlugin;
+pub struct DefaultBaseCraftPlugin;
 
-impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
+impl Plugin for DefaultBaseCraftPlugin{//main entry point still in testing...
   fn build(&self, app: &mut App){
-    app.add_state::<AppState>(); // state app
-    app.add_state::<CameraState>(); // state camera mode
-    app.add_state::<NetworkState>(); // state network mode
+    app.init_state::<AppState>(); // state app
+    app.init_state::<CameraState>(); // state camera mode
+    app.init_state::<NetworkState>(); // state network mode
     //app.add_plugin(EguiPlugin);// menu 
     app.add_plugins(DefaultPlugins.set(WindowPlugin {
       primary_window: Some(Window {
         resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
-        title: "Bevy Game Test".to_string(),
+        title: "dhcraftrs Test".to_string(),
         resizable: false,
         ..default()
       }),
       ..default()
     }));
-    app.add_systems(Startup, set_window_icon);
+    //app.add_systems(Startup, set_window_icon);
     //app.add_plugins(FrameTimeDiagnosticsPlugin::default());
     app.add_plugins(CraftBaseDataPlugin); // loading player data base
-    app.add_plugins(CraftRayCastPlugin); // 
+    //app.add_plugins(CraftRayCastPlugin); // 
     
     // https://bevy-cheatbook.github.io/features/camera.html
     // for ui set up for camera need for render
@@ -132,7 +136,7 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     //app.add_plugins(SplashScreenPlugin); // Splash Screen //nope need rework
 
     app.add_plugins(LoadingAssetUIPlugin); // ui loading
-    app.add_plugins(LoadingAssetPlugin); // loading call
+    //app.add_plugins(LoadingAssetPlugin); // loading assets
     app.add_plugins(MainMenuPlugin); // main menu
     app.add_plugins(OptionsPlugin); // menu
     app.add_plugins(CreatePlayerPlugin); // 
@@ -152,11 +156,16 @@ impl Plugin for DefaultCraftPlugin{//main entry point still in testing...
     app.add_plugins(BaseWorldPlugin); //preload entity tests
     //app.add_plugins(NetworkCraftPlugin); //
     //app.add_plugins(CraftSubAppPlugin); // testing app and sub app
-    app.add_plugins(DisplayPlayerNameTextPlugin); // testing...
+    //app.add_plugins(DisplayPlayerNameTextPlugin); // testing...
     
   }
 }
 
+
+//===============================================
+// LOADING TEST
+//===============================================
+/*
 pub struct LoadingCraftPlayerPlugin;
 
 impl Plugin for LoadingCraftPlayerPlugin{
@@ -179,3 +188,4 @@ impl Plugin for LoadingCraftPlayerPlugin{
     //app.add_system(ui_example_system);
   }
 }
+*/

@@ -61,7 +61,7 @@ fn update_raycast_with_cursor(
   mut query: Query<&mut RaycastSource<MyRaycastSet>>,
 ) {
   // Grab the most recent cursor event if it exists:
-  let Some(cursor_moved) = cursor.iter().last() else { return };
+  let Some(cursor_moved) = cursor.read().last() else { return };
   for mut pick_source in &mut query {
       pick_source.cast_method = RaycastMethod::Screenspace(cursor_moved.position);
   }
@@ -90,7 +90,7 @@ fn debug_raycast_setup(
     //.insert(RaycastMesh::<MyRaycastSet>::default()); // Make this mesh ray cast-able
 
 }
-
+#[allow(dead_code)]
 fn raycast_mesh_test_setup(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,

@@ -53,7 +53,7 @@ pub fn build_water_mark(
               get_button_text_style(&asset_server),
             )
           ],
-          alignment: TextAlignment::Center,
+          //alignment: TextAlignment::Center,
           ..default()
         },
         ..default()

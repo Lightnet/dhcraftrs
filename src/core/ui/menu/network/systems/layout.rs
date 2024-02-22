@@ -52,7 +52,7 @@ pub fn build_network_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -68,7 +68,7 @@ pub fn build_network_menu(
               get_button_text_style(&asset_server),
             )
           ],
-          alignment: TextAlignment::Center,
+          //alignment: TextAlignment::Center,
           ..default()
         },
         ..default()
@@ -86,7 +86,7 @@ pub fn build_network_menu(
               get_button_text_style(&asset_server),
             )
           ],
-          alignment: TextAlignment::Center,
+          //alignment: TextAlignment::Center,
           ..default()
         },
         ..default()
@@ -103,7 +103,7 @@ pub fn build_network_menu(
               get_button_text_style(&asset_server),
             )
           ],
-          alignment: TextAlignment::Center,
+          //alignment: TextAlignment::Center,
           ..default()
         },
         ..default()
@@ -132,7 +132,7 @@ pub fn build_network_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -158,7 +158,7 @@ pub fn build_network_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -184,7 +184,7 @@ pub fn build_network_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()

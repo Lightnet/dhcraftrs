@@ -53,7 +53,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -79,7 +79,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -105,7 +105,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -131,7 +131,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -157,7 +157,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -183,7 +183,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -209,7 +209,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -235,7 +235,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -261,7 +261,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -287,7 +287,7 @@ pub fn build_hot_bar(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()

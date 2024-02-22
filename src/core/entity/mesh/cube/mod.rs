@@ -5,14 +5,14 @@
   Information: Note there are other licenses.
  */
 
-use std::ops::Add;
+//use std::ops::Add;
 
 use bevy::prelude::*;
 //use bevy_mod_raycast::RaycastMesh;
 //use bevy_mod_picking::prelude::*;
 use bevy_rapier3d::prelude::*;
-
-use crate::core::{components::PlaceHolder, entity::creature::player::components::{PLAYERMOVABLE, PlayerTool}, raycast::MyRaycastSet};
+#[allow(unused_imports)]
+use crate::core::{components::PlaceHolder, entity::creature::player::components::{PLAYERMOVABLE, PlayerTool}};
 //use bevy_eventlistener::prelude::*;
 
 //basic set up cube test
@@ -22,8 +22,8 @@ pub fn setup_create_cube(
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
   commands.spawn(PbrBundle {
-    mesh: meshes.add(Mesh::from(shape::Cube { size:1.0 })),
-    material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
+    mesh: meshes.add(Cuboid::new(1.0, 1.0, 1.0)),
+    material: materials.add(Color::rgb(0.8, 0.7, 0.6)),
     transform: Transform::from_xyz(0.0, 0.0, 0.0),
     ..default()
   }).insert(Name::new("cube"));
@@ -35,7 +35,7 @@ pub fn setup_ph_cube(
   mut materials: ResMut<Assets<StandardMaterial>>,
 ){
   commands.spawn(PbrBundle {
-    mesh: meshes.add(Mesh::from(shape::Cube { size:1.0 })),
+    mesh: meshes.add(Cuboid::new(1.0, 1.0, 1.0)),
     //material: materials.add(Color::rgb(0.8, 0.7, 0.6).into()),
     material: materials.add(StandardMaterial {
       base_color: Color::rgba(0.9, 0.9, 0.9, 0.5),
@@ -77,7 +77,7 @@ pub fn create_entity_cube(
   commands
     .spawn(
       PbrBundle{
-        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+        mesh: meshes.add(Cuboid::new(1.0, 1.0, 1.0)),
         material: materials.add(StandardMaterial {
           base_color: Color::rgba(0.6, 0.6, 0.6, 0.5),
           alpha_mode: AlphaMode::Blend,
@@ -98,8 +98,8 @@ pub fn create_entity_cube_pick(
   commands
     .spawn((
       PbrBundle{
-        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-        material: materials.add(Color::WHITE.into()),
+        mesh: meshes.add(Cuboid::new(1.0, 1.0, 1.0)),
+        material: materials.add(Color::WHITE),
         //material: materials.add(StandardMaterial {
           //base_color: Color::rgba(0.1, 0.6, 0.6, 0.5),
           //alpha_mode: AlphaMode::Blend,
@@ -153,8 +153,8 @@ pub fn create_raycast_cube_physics(
   commands
   .spawn((
     PbrBundle{
-      mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-      material: materials.add(Color::BLACK.into()),
+      mesh: meshes.add(Cuboid::new(1.0, 1.0, 1.0)),
+      material: materials.add(Color::BLACK),
       ..default()
     },
   ))
@@ -176,8 +176,8 @@ pub fn create_cube_physics(
   commands
   .spawn((
     PbrBundle{
-      mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-      material: materials.add(Color::BLACK.into()),
+      mesh: meshes.add(Cuboid::new(1.0, 1.0, 1.0)),
+      material: materials.add(Color::BLACK),
       ..default()
     },
     //#[allow(dead_code,unused_variables)]

@@ -64,7 +64,7 @@ pub fn build_main_menu(
                 get_title_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -96,7 +96,7 @@ pub fn build_main_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -122,7 +122,7 @@ pub fn build_main_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -148,7 +148,7 @@ pub fn build_main_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -174,7 +174,7 @@ pub fn build_main_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -200,7 +200,7 @@ pub fn build_main_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()

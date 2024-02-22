@@ -57,7 +57,7 @@ pub fn spawn_splash(
               get_button_text_style(&asset_server),
             )
           ],
-          alignment: TextAlignment::Center,
+          //alignment: TextAlignment::Center,
           ..default()
         },
         ..default()

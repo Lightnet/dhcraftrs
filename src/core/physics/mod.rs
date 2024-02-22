@@ -81,7 +81,7 @@ pub fn create_player(
 ){
 
   //https://bevyengine.org/examples/3d/parenting/
-  let cube_handle = meshes.add(Mesh::from(shape::Cube { size: 0.2 }));
+  let cube_handle = meshes.add(Cuboid::new(1.0, 1.0, 1.0));
   let cube_material_handle = materials.add(StandardMaterial {
     base_color: Color::rgb(0.8, 0.7, 0.6),
     ..default()

@@ -9,7 +9,7 @@
 pub mod prefab;
 
 use bevy::prelude::*;
-
+#[allow(unused_imports)]
 use super::{
   api::AppState,
   entity::{

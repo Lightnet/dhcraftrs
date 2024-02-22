@@ -48,7 +48,11 @@ impl Plugin for LoadingAssetPlugin{
         //.continue_to_state(AppState::AssetLoading)//test
     );
     //loading assets
-    app.add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading);
+    //app.add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading);
+    app.configure_loading_state(
+      LoadingStateConfig::new(AppState::AssetLoading)
+      .load_collection::<MyAssets>(),
+    );
     //assets do something
     app.add_systems(OnEnter(AppState::MainMenu),use_my_assets);
     

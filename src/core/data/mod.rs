@@ -31,6 +31,7 @@ impl Plugin for CraftBaseDataPlugin{
 }
 
 // check user local storage if exist then load if not create default name
+#[allow(dead_code, unused_variables, unused_mut)]
 pub fn setup_player_info_pkv(
   //mut pkv: ResMut<PkvStore>,
   mut player_info: ResMut<PlayerInfo>,

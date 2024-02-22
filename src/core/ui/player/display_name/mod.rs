@@ -7,7 +7,10 @@
 
 use bevy::prelude::*;
 
-use crate::core::{api::AppState, ui::menu::main::styles::{get_main_menu_style, get_title_text_style}, components::PlayerInfo};
+use crate::core::{api::AppState, ui::menu::main::styles::{
+  //get_main_menu_style, 
+  get_title_text_style
+}, components::PlayerInfo};
 
 #[derive(Component)]
 pub struct UIPLAYERNAME;
@@ -57,7 +60,7 @@ pub fn build_create_player_name(
               get_title_text_style(&asset_server),
             )
           ],
-          alignment: TextAlignment::Center,
+          //alignment: TextAlignment::Center,
           ..default()
         },
         ..default()

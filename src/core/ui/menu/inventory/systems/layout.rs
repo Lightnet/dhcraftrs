@@ -64,7 +64,7 @@ pub fn build_inventory_menu(
                 get_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()
@@ -193,7 +193,7 @@ pub fn build_inventory_menu(
                 get_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()

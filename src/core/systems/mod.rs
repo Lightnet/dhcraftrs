@@ -19,7 +19,7 @@ use bevy::window::PrimaryWindow;
 #[allow(unused_imports)]
 use crate::core::api::{CameraState, AppState};
 
-use super::raycast::MyRaycastSet;
+//use super::raycast::MyRaycastSet;
 
 pub fn get_text_style(asset_server: &Res<AssetServer>) -> TextStyle {
   TextStyle {
@@ -59,7 +59,7 @@ pub fn spawn_camera3d(
 }
 
 pub fn system_query_info(
-  keyboard_input: Res<Input<KeyCode>>,
+  keyboard_input: Res<ButtonInput<KeyCode>>,
   //mut player_info: ResMut<PlayerInfo>,
 ){
   //if keyboard_input.pressed(KeyCode::A) {
@@ -69,12 +69,12 @@ pub fn system_query_info(
 
   //keyboard_input.get_just_released()
 
-  if keyboard_input.just_released(KeyCode::A) {
+  if keyboard_input.just_released(KeyCode::KeyA) {
     //println!("player_info: {:?}", player_info);
     //println!("player Name: {:}", player_info.name);
   }
 
-  if keyboard_input.just_pressed(KeyCode::D) {
+  if keyboard_input.just_pressed(KeyCode::KeyD) {
     //println!("[[player_info]]: {:?}", player_info);
   }
 }

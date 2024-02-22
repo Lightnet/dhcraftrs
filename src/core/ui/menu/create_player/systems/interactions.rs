@@ -99,28 +99,29 @@ pub fn interact_button_back(
   }
 }
 
+/*
 pub fn player_name_text_update(
   //diagnostics: Res<Diagnostics>,
   mut query: Query<&mut Text, With<PlayerNameText>>,
   mut evr_char: EventReader<ReceivedCharacter>,
-  kbd: Res<Input<KeyCode>>,
+  kbd: Res<ButtonInput<KeyCode>>,
   //mut string: Local<String>,
   mut player_info: ResMut<PlayerInfo>,
 ) {
 
   //println!("player name: {:?}", player_info.name);
-  if kbd.just_pressed(KeyCode::Return) {
+  if kbd.just_pressed(KeyCode::Return) {//Return
     //println!("Text input: {}", &*string);
     //string.clear();
     //println!("Text input: {}", &* player_info.name);
     //player_info.name = string.to_string();
     //player_info.name = "test".into();
   }
-  if kbd.just_pressed(KeyCode::Back) {
+  if kbd.just_pressed(KeyCode::KeyBack) {
     //string.pop();
     player_info.name.pop();
   }
-  for ev in evr_char.iter() {
+  for ev in evr_char.read() {
     // ignore control (special) characters
     if !ev.char.is_control() {
       //string.push(ev.char);
@@ -143,3 +144,4 @@ pub fn player_name_text_update(
       text.sections[0].value = format!("{}", player_info.name.to_string());
   }
 }
+*/

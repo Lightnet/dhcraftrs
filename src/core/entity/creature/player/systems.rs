@@ -10,8 +10,8 @@ use bevy::input::mouse::MouseMotion;
 //use bevy_mod_raycast::RaycastSource;
 //use bevy_mod_picking::prelude::RaycastPickCamera;
 use bevy_rapier3d::prelude::*;
-
-use crate::core::{api::AppState, raycast::MyRaycastSet};
+#[allow(unused_imports)]
+use crate::core::{api::AppState};
 use super::components::{PLAYERMOVABLE, PlayerCamera, IsGround, PlayerTool};
 
 // DEFAULT ?
@@ -135,7 +135,7 @@ pub fn create_entity_prototype_player(
 // https://rapier.rs/docs/user_guides/bevy_plugin/character_controller
 #[allow(dead_code, unused_variables)]
 pub fn move_player_physics01(
-  input: Res<Input<KeyCode>>,
+  input: Res<ButtonInput<KeyCode>>,
   time: Res<Time>,
   mut query: Query<(
     &mut Transform, 
@@ -155,24 +155,24 @@ pub fn move_player_physics01(
   ) in query.iter_mut() {
     //println!("IsGround: {}", is_ground.0);
     let gravity = Vec3::new(0.0, -0.1, 0.0);
-    if input.pressed( KeyCode::W) {
+    if input.pressed( KeyCode::KeyW) {
       let direction = entity_transform.forward() * 0.1;
       //controller.translation.apply() ; Some(direction)
       //controller.translation;
       controller.translation = Some(direction + gravity);
-    }else if input.pressed( KeyCode::S) {
+    }else if input.pressed( KeyCode::KeyS) {
       let direction = entity_transform.back() * 0.1;
       controller.translation = Some(direction + gravity);
     }else{
       controller.translation = Some(gravity);
     }
   
-    if input.pressed( KeyCode::A) {
+    if input.pressed( KeyCode::KeyA) {
       entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
         0., 1.0 * 0.1, 0.)
       );
     }
-    if input.pressed( KeyCode::D) {
+    if input.pressed( KeyCode::KeyD) {
       entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
         0., 1.0 * -0.1, 0.)
       );
@@ -190,7 +190,7 @@ pub fn move_player_physics01(
 
 }
 
-
+#[allow(unused_mut)]
 pub fn move_first_person_player_cam(
   time: Res<Time>,
   mut mouse_motion: EventReader<MouseMotion>,
@@ -213,7 +213,7 @@ pub fn move_first_person_player_cam(
 // https://bevy-cheatbook.github.io/features/camera.html
 #[allow(dead_code, unused_variables)]
 pub fn move_first_person_player_physics(
-  input: Res<Input<KeyCode>>,
+  input: Res<ButtonInput<KeyCode>>,
   time: Res<Time>,
   mut mouse_motion: EventReader<MouseMotion>,
   mut query: Query<(
@@ -253,31 +253,31 @@ pub fn move_first_person_player_physics(
   ) in query.iter_mut() {
     //println!("IsGround: {}", is_ground.0);
     let gravity = Vec3::new(0.0, -0.1, 0.0);
-    if input.pressed( KeyCode::W) {
+    if input.pressed( KeyCode::KeyW) {
       let direction = entity_transform.forward() * 0.1;
       //controller.translation.apply() ; Some(direction)
       //controller.translation;
       controller.translation = Some(direction + gravity);
-    }else if input.pressed( KeyCode::S) {
+    }else if input.pressed( KeyCode::KeyS) {
       let direction = entity_transform.back() * 0.1;
       controller.translation = Some(direction + gravity);
     }else{
       controller.translation = Some(gravity);
     }
   
-    if input.pressed( KeyCode::A) {
+    if input.pressed( KeyCode::KeyA) {
       //entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
         //0., 1.0 * 0.1, 0.)
       //);
       let direction = entity_transform.left() * 0.1;
       controller.translation = Some(direction + gravity);
     }
-    if input.pressed( KeyCode::D) {
+    if input.pressed( KeyCode::KeyD) {
       let direction = entity_transform.right() * 0.1;
       controller.translation = Some(direction + gravity);
     }
 
-    for ev in mouse_motion.iter() { //rewrite
+    for ev in mouse_motion.read() { //rewrite
       //entity_transform.rotate(Quat::from_euler(EulerRot::XYZ,
         //ev.delta.y * -0.001, ev.delta.x * -0.001, 0.)
       //);

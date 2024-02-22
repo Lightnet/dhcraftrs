@@ -78,7 +78,7 @@ pub fn build_create_options_menu(
                 get_button_text_style(&asset_server),
               )
             ],
-            alignment: TextAlignment::Center,
+            //alignment: TextAlignment::Center,
             ..default()
           },
           ..default()

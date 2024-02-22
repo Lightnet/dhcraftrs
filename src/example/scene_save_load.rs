@@ -1,7 +1,13 @@
 // https://github.com/bevyengine/bevy/blob/main/examples/scene/scene.rs
-
+// https://bevyengine.org/news/bevy-0-12/
+// asset::ChangeWatcher > cargo run --features bevy/file_watcher
 //! This example illustrates loading scenes from files.
-use bevy::{asset::ChangeWatcher, prelude::*, tasks::IoTaskPool, utils::Duration};
+use bevy::{
+    //asset::ChangeWatcher, 
+    prelude::*, 
+    tasks::IoTaskPool, 
+    utils::Duration
+};
 use std::{fs::File, io::Write};
 
 fn main() {
@@ -9,7 +15,7 @@ fn main() {
         .add_plugins(DefaultPlugins.set(AssetPlugin {
             // This tells the AssetServer to watch for changes to assets.
             // It enables our scenes to automatically reload in game when we modify their files.
-            watch_for_changes: ChangeWatcher::with_delay(Duration::from_millis(200)),
+            //watch_for_changes: ChangeWatcher::with_delay(Duration::from_millis(200)),
             ..default()
         }))
         .register_type::<ComponentA>()
