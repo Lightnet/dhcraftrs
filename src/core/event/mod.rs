@@ -65,6 +65,7 @@ fn create_test_player(
     PlayerXp(1000),
   ));
 }
+
 #[allow(dead_code)]
 fn switch_camera(
   keys: Res<ButtonInput<KeyCode>>,

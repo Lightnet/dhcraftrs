@@ -6,16 +6,21 @@
 
 # Created By: Lightnet
 
+# Status:
+ * Unstable
+
 # Code Language:
- * Rust 1.70.0 ( https://www.rust-lang.org/ )
+ * Rust 1.76.0 ( https://www.rust-lang.org/ )
 
 # Engine:
- * Bevy Engine 0.11.3  ( https://bevyengine.org/ )
+ * Bevy Engine 0.13.0  ( https://bevyengine.org/ )
 
 # Information: 
   Note this is prototype and work in progress testing. Files are subject to changes.
 
   To build crafting and sandbox game base on minecraft. To play test how logic and module components work in Bevy Engine in Rust Langauge.
+
+  Required a lot knowlege to handle mesh render, loading, syncs and phyiscis. As well other things.
 
 # Notes:
  * Work in progress build and subject to change.
@@ -23,31 +28,31 @@
  * modules, components, functions query is work in progress
 
 # Crates:
- * bevy 0.11.3
- * bevy_asset_loader v0.16 (assets loading files)
- * bevy_rapier3d vbevy_rapier3d ( physics 3D )
- * bevy_mod_picking v0.13.0 (ray casting)
+ * bevy
+ * bevy_asset_loader (assets loading files)
+ * bevy_rapier3d ( physics 3D )
+ * bevy_mod_picking (ray casting)
  * ...
- * clap v4.1.10
- * bevy_console v0.7.0 ( console gui )
- * bevy-inspector-egui v0.18.3 ( gui )
- * bevy_egui v0.20 ( gui )
- * bevy_flycam v0.10 (camera control)
- * bevy_renet v0.0.12 (network)
+ * clap
+ * bevy_console ( console gui )
+ * bevy-inspector-egui ( gui )
+ * bevy_egui ( gui )
+ * bevy_flycam (camera control)
+ * bevy_renet (network)
  * ...
- * moonshine-save v0.2.3 ()
- * bevy_svg v0.10.1
- * bevy_pkv v0.7.0 (config save and load)
- * bevy_transform_gizmo v0.6 ( editor transform handler location, rotation and scale )
+ * moonshine-save 
+ * bevy_svg 
+ * bevy_pkv  (config save and load)
+ * bevy_transform_gizmo ( editor transform handler location, rotation and scale )
 
 # Run Tests:
 ```
 cargo run (testing)
 cargo run --bin game ( testing )
-cargo run --bin launcher ( testing )
-cargo run --bin testapp ( prototyping )
-cargo run --bin physics3d ( prototyping )
-cargo run --bin webgui ( prototyping http rest api )
+cargo run --bin launcher ( testing , N/A )
+cargo run --bin testapp ( prototyping , N/A)
+cargo run --bin physics3d ( prototyping , N/A)
+cargo run --bin webgui ( prototyping http rest api , N/A)
 ```
 
 # Controls:
@@ -55,7 +60,7 @@ cargo run --bin webgui ( prototyping http rest api )
  * W,S = direction movement
  * mouse, click = interaction
 
-## Network test:
+## Network Test ( N/A ):
 
 ```
 cargo run --bin network -- server
