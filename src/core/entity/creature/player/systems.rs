@@ -25,10 +25,7 @@ pub fn create_entity_first_person_player(
   commands
   .spawn(
     PbrBundle{
-      mesh: meshes.add(Mesh::from(shape::Capsule {  
-        radius:0.9,
-        ..default()
-      })),
+      mesh: meshes.add(Capsule3d::default()),
       material: materials.add(StandardMaterial {
         base_color: Color::rgba(0.9, 0.9, 0.9, 0.5),
         alpha_mode: AlphaMode::Blend,
@@ -81,10 +78,7 @@ pub fn create_entity_prototype_player(
   commands
     .spawn(
       PbrBundle{
-        mesh: meshes.add(Mesh::from(shape::Capsule {  
-          radius:0.9,
-          ..default()
-        })),
+        mesh: meshes.add(Capsule3d::default()),
         material: materials.add(StandardMaterial {
           //base_color: Color::GREEN,
           //base_color: Color::rgba(0.2, 0.7, 0.1, 0.0),

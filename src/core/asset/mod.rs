@@ -44,17 +44,18 @@ impl Plugin for LoadingAssetPlugin{
     app.add_loading_state(
       LoadingState::new(AppState::AssetLoading)
         .continue_to_state(AppState::MainMenu)
+        .load_collection::<MyAssets>(),
         //.on_failure_continue_to_state(next)
         //.continue_to_state(AppState::AssetLoading)//test
     );
     //loading assets
     //app.add_collection_to_loading_state::<_, MyAssets>(AppState::AssetLoading);
-    app.configure_loading_state(
-      LoadingStateConfig::new(AppState::AssetLoading)
-      .load_collection::<MyAssets>(),
-    );
+    //app.configure_loading_state(
+      //LoadingStateConfig::new(AppState::AssetLoading)
+      //.load_collection::<MyAssets>(),
+    //);
     //assets do something
-    app.add_systems(OnEnter(AppState::MainMenu),use_my_assets);
+    //app.add_systems(OnEnter(AppState::MainMenu),use_my_assets);
     
   }
 }

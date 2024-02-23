@@ -9,7 +9,7 @@
 // CORE dhcraftrs
 //===============================================
 
-//pub mod asset;
+pub mod asset;
 pub mod systems;
 pub mod ui;
 pub mod controller;

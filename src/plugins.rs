@@ -27,7 +27,7 @@ use crate::core::{
     }, 
     //window::set_window_icon, 
     data::CraftBaseDataPlugin, 
-    //asset::LoadingAssetPlugin, 
+    asset::LoadingAssetPlugin, 
     ui::{
       menu::{
         main::MainMenuPlugin, 
@@ -136,14 +136,15 @@ impl Plugin for DefaultBaseCraftPlugin{//main entry point still in testing...
     //app.add_plugins(SplashScreenPlugin); // Splash Screen //nope need rework
 
     app.add_plugins(LoadingAssetUIPlugin); // ui loading
-    //app.add_plugins(LoadingAssetPlugin); // loading assets
+    app.add_plugins(LoadingAssetPlugin); // loading assets
+
     app.add_plugins(MainMenuPlugin); // main menu
     app.add_plugins(OptionsPlugin); // menu
     app.add_plugins(CreatePlayerPlugin); // 
 
     //app.add_plugins(CraftRayCastPlugin); // 
     //app.add_plugins(WorldBasicPlugin); // 
-    app.add_plugins(NetworkMenuPlugin); // 
+    //app.add_plugins(NetworkMenuPlugin); // 
     app.add_plugins(CraftEventPlugin); // Events
 
     //app.add_plugins(PlayerPlugin);//conflict camera?
