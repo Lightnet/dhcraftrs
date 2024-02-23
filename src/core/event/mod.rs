@@ -29,7 +29,7 @@ use bevy::prelude::*;
 pub struct LevelUpEvent(pub Entity);
 
 #[derive(Event)]
-pub struct SwitchCameraEvent(pub Entity);
+pub struct SwitchCameraEvent(pub String);
 
 #[derive(Component, Debug)]
 pub struct PlayerXp(pub i64);
@@ -69,6 +69,7 @@ fn create_test_player(
 #[allow(dead_code)]
 fn switch_camera(
   keys: Res<ButtonInput<KeyCode>>,
+  mut ev_switch_camera: EventWriter<SwitchCameraEvent>,
 ){
   if keys.just_pressed(KeyCode::Space) {
     // Space was pressed
@@ -76,7 +77,13 @@ fn switch_camera(
   }
   if keys.just_pressed(KeyCode::KeyC) {
     // C
-    println!("C")
+    //println!("C");
+    let hello = String::from("firstperson");
+    ev_switch_camera.send(SwitchCameraEvent(hello));
+  }
+  if keys.just_pressed(KeyCode::KeyV) {
+    let hello = String::from("spector");
+    ev_switch_camera.send(SwitchCameraEvent(hello));
   }
 }
 

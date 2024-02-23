@@ -8,7 +8,7 @@
 use bevy::{
   prelude::*, 
   //diagnostic::FrameTimeDiagnosticsPlugin, 
-  window::{WindowResolution, PresentMode}
+  window::{WindowResolution, PresentMode},
 };
 
 //use bevy_egui::{
@@ -17,7 +17,7 @@ use bevy::{
   //EguiPlugin
 //};
 
-use crate::core::{systems::spawn_camera3d, ui::player::display_name::DisplayPlayerNameTextPlugin};
+use crate::core::{systems::spawn_camera3d, ui::player::display_name::DisplayPlayerNameTextPlugin, window::set_window_icon};
 #[allow(unused_imports)]
 use crate::core::{
     api::{
@@ -115,12 +115,13 @@ impl Plugin for DefaultBaseCraftPlugin{//main entry point still in testing...
       primary_window: Some(Window {
         resolution: WindowResolution::new(WIDTH, HEIGHT).with_scale_factor_override(1.0),
         title: "dhcraftrs Test".to_string(),
+        //icon:,
         resizable: false,
         ..default()
       }),
       ..default()
     }));
-    //app.add_systems(Startup, set_window_icon);
+    app.add_systems(Startup, set_window_icon);
     //app.add_plugins(FrameTimeDiagnosticsPlugin::default());
     app.add_plugins(CraftBaseDataPlugin); // loading player data base
     //app.add_plugins(CraftRayCastPlugin); // 
@@ -161,6 +162,12 @@ impl Plugin for DefaultBaseCraftPlugin{//main entry point still in testing...
     
   }
 }
+
+// Add an icon to the window task bar.  Only works in Windows and Linux.
+//fn setup_icon(mut commands: Commands, asset_server: Res<AssetServer>) {
+  //let icon_handle = asset_server.load("branding/icon.png");
+  //commands.spawn(WindowIcon(Some(icon_handle)));
+//}
 
 
 //===============================================
