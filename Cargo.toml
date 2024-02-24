@@ -9,6 +9,11 @@ resolver = "2" # path reslove packages
 
 [profile.dev]
 opt-level = 1
+debug = 0
+overflow-checks = false # Disable integer overflow checks.
+
+[profile.dev.build-override]
+opt-level = 3
 
 [profile.dev.package."*"]
 opt-level = 3
@@ -101,13 +106,13 @@ path = "src/bin/game.rs"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1.0"
 bevy = { version = "0.13.0", features = [
-  #"bevy_ui",
+  "bevy_ui",
   #"bmp", 
   #"jpeg", 
   #"wav", 
-  #"zlib", 
-  #"bevy_animation",
-  #"dynamic_linking"
+  "zlib", 
+  "bevy_animation",
+  "dynamic_linking"
 ]}
 bevy_asset_loader = {version ="0.20.0"}
 bevy_rapier3d = {version="0.25.0", features = [ "simd-stable", "debug-render-3d" ] }

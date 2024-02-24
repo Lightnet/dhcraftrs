@@ -13,6 +13,7 @@ use bevy::app::AppExit;
 use bevy::prelude::*;
 
 use crate::core::api::AppState;
+use crate::core::components::CameraMainMenu;
 use crate::core::components::PlayerDataSlot;
 use crate::core::components::PlayerInfo;
 use crate::core::ui::menu::main::components::*;
@@ -44,12 +45,15 @@ pub fn interact_with_new_button(
 
 // PLAY ACTION
 pub fn interact_with_play_button(
+  mut commands: Commands,
   mut button_query:Query<
     (&Interaction, &mut BackgroundColor),
     (Changed<Interaction>, With<PlayButton>)
   >,
   mut app_state_next_state:ResMut<NextState<AppState>>,
   mut player_info: ResMut<PlayerInfo>,
+
+  camera_main_menu_query:Query<Entity, With<CameraMainMenu>>,
 ){
   if let Ok((interaction, mut background_color)) = button_query.get_single_mut(){
     match *interaction {
@@ -67,6 +71,11 @@ pub fn interact_with_play_button(
         //let playerdata_file = "playerdata.json";
         //let playerdataslot: PlayerDataSlot = serde_json::from_str(playerdata_file).expect("JSON was not well-formatted");
         //println!("playerdataslot {:?}", playerdataslot);
+
+        //remove camera2d frin main menu
+        if let Ok(camera_main_menu_entity) = camera_main_menu_query.get_single(){
+          commands.entity(camera_main_menu_entity).despawn_recursive();
+        }
 
         app_state_next_state.set(AppState::Game);
       }

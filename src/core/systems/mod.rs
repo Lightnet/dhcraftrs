@@ -19,6 +19,8 @@ use bevy::window::PrimaryWindow;
 #[allow(unused_imports)]
 use crate::core::api::{CameraState, AppState};
 
+use super::components::CameraMainMenu;
+
 //use super::raycast::MyRaycastSet;
 
 pub fn get_text_style(asset_server: &Res<AssetServer>) -> TextStyle {
@@ -55,7 +57,7 @@ pub fn spawn_camera3d(
       //RaycastSource::<MyRaycastSet>::new() // Designate the camera as our source
     //RaycastPickCamera::default(),
     )
-  );
+  ).insert(CameraMainMenu);
 }
 
 pub fn system_query_info(

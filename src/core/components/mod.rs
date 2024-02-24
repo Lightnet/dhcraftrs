@@ -61,3 +61,6 @@ pub struct Defense {}
 
 #[derive(Component)]
 pub struct PlaceHolder;
+
+#[derive(Component)]
+pub struct CameraMainMenu;
